@@ -1,12 +1,13 @@
 // init.js
+import dotenv from "dotenv";
+import app from "./app";
 
-import express from "express";
+dotenv.config();
 
-const app = express();
-
-const PORT = 3000;
+const { PORT } = process.env;
 
 function handleListening() {
+  // eslint-disable-next-line no-irregular-whitespace
   console.log(`✅　Listening on: http://localhost:${PORT}`);
 }
 

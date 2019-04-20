@@ -19,6 +19,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "helmet": "^3.16.0",
     "node-sass": "^4.11.0",
+    "morgan": "^1.9.1",
     "postcss-loader": "^3.0.0",
     "pug": "^2.0.3",
     "sass-loader": "^7.1.0",
@@ -35,6 +36,7 @@
     "prettier": "^1.17.0"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node ./src/init.js --delay 2"
+    "dev:server": "nodemon --exec babel-node ./src/init.js --delay 2 --ignore '.scss' 'static'",
+    "dev:assets": "webpack -w"
   }
 }
