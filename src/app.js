@@ -1,5 +1,6 @@
 // app.js
 
+// Imports
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import express from "express";
@@ -7,8 +8,9 @@ import helmet from "helmet";
 import path from "path";
 import routes from "./routes";
 
-// Router
+// Import Routers
 import globalRouter from "./routers/globalRouter";
+import { localsMiddleware } from "./middlewares";
 
 const app = express();
 
@@ -21,6 +23,10 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Middle Wares
+app.use(localsMiddleware);
+
+// Route
 app.get(routes.home, globalRouter);
 
 export default app;

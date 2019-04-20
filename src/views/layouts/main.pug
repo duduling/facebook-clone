@@ -9,9 +9,11 @@ html(lang="ko")
         meta(name="description", content="Facebook")
         meta(name="keywords", content="친구, 친목, 사진, SNS")
         //- Title
-        title #{pageTile} | Facebook
+        title #{pageTile} | #{siteName}
         //- Link
-        link(rel="stylesheet", type="text/css", href="/static/styles.css")
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.8.1/css/all.css", integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf", crossorigin="anonymous")
+        link(href="https://fonts.googleapis.com/css?family=Fredericka+the+Great", rel="stylesheet")
+        link(rel="stylesheet", href="/static/styles.css")
     body
         header
             include ../partials/header.pug

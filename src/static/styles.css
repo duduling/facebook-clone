@@ -136,5 +136,19 @@ input {
   input:focus, input:active {
     outline: none; }
 
-body {
-  background-color: #ea232c; }
+.header {
+  background-color: #4e69a2; }
+  .header .header__wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 100%; }
+    .header .header__wrapper .header__logo {
+      float: left;
+      font-size: 40px;
+      color: #fff;
+      font-weight: bold;
+      text-transform: lowercase;
+      padding-top: 12px; }
+    .header .header__wrapper .header__login {
+      float: right; }

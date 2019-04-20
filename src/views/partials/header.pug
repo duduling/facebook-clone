@@ -1,1 +1,23 @@
-h1 Header
+.header
+    .header__wrapper
+        ul.header__column.header__logo
+            h1
+                a(href=routes.home)
+                    | #{siteName}
+        ul.header__column.header__login
+            form
+                table
+                    tr
+                        th
+                            label(for="inputId") 아이디
+                        th
+                            label(for="inputPw") 비밀번호
+                    tr
+                        td
+                            input(type="text", id="inputId")
+                    tr
+                        td
+                            input(type="text", id="inputPw")
+                    tr
+                        td
+                            input(type="submit", value="로그인")
