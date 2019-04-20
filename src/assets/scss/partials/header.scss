@@ -1,12 +1,16 @@
+@import "../config/varialbes";
+
 .header {
-  background-color: #4e69a2;
+  background-color: #3b5998;
+  background-image: linear-gradient(#4e69a2, #3b5998 50%);
+  border-bottom: 1px solid #133783;
+  z-index: 1;
+  padding: 5px 0 15px;
   .header__wrapper {
     width: 1200px;
     margin: 0 auto;
     overflow: hidden;
     height: 100%;
-    .header__column {
-    }
     .header__logo {
       float: left;
       font-size: 40px;
@@ -17,6 +21,42 @@
     }
     .header__login {
       float: right;
+      text-align: left;
+      padding-top: 10px;
+      form {
+        display: flex;
+        .header__login-box {
+          flex: 2;
+          margin-right: -10px;
+          & > label {
+            color: #fff;
+            display: inline-block;
+            margin-bottom: 5px;
+            font-size: 12px;
+          }
+          & > input {
+            padding: 5px 10px;
+            font-size: 12px;
+          }
+        }
+        .header__login-btn {
+          flex: 1;
+          margin-top: 18px;
+          & > input {
+            background-color: #4267b2;
+            border: 1px solid #ccd0d5;
+            border-color: #29487d;
+            border-radius: 2px;
+            color: #fff;
+            padding: 3px 7px;
+            cursor: pointer;
+            &:hover {
+              background-color: #365899;
+              border-color: #29487d;
+            }
+          }
+        }
+      }
     }
   }
 }
