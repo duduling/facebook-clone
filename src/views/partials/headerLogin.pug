@@ -1,0 +1,16 @@
+.header-loginPage
+    .header-loginPage__wrapper
+        ul.header-loginPage__logo
+            h1
+                a(href=routes.home)
+                    | #{siteName}
+        ul.header-loginPage__login
+            form
+                .header-loginPage__login-box
+                    label(for="inputId") 아이디
+                    input(type="text", id="inputId")
+                .header-loginPage__login-box
+                    label(for="inputPw") 비밀번호
+                    input(type="password", id="inputPw")
+                .header-loginPage__login-btn
+                    input(type="submit", value="로그인")

@@ -14,10 +14,17 @@ html(lang="ko")
         link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.8.1/css/all.css", integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf", crossorigin="anonymous")
         link(href="https://fonts.googleapis.com/css?family=Fredericka+the+Great", rel="stylesheet")
         link(rel="stylesheet", href="/static/styles.css")
-    body
+    body#body__wrap
         header
-            include ../partials/header.pug
+            if true
+                include ../partials/headerLogin.pug
+            else
+                include ../partials/header.pug
         main
             block content
-        footer
-            include ../partials/footer.pug
+        if true
+            footer
+                include ../partials/footerLogin.pug
+        else
+            footer#footer__wrap
+                include ../partials/footer.pug
