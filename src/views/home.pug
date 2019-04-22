@@ -12,20 +12,17 @@ block content
                     h5 항상 지금처럼 무료로 즐기실 수 있습니다.
                 form
                     .homePage__join-form
-                        input(type="name", name="userName", aria-="name", placeholder="이름")
-                        input(type="email", name="email", aria-="email", placeholder="이메일")
-                        input(type="password", name="password", aria-="password", placeholder="비밀번호")
-                        input(type="password", name="password1", aria-="password", placeholder="비밀번호 확인")
+                        input(type="text", name="userName", aria-="name", placeholder="이름", required="true")
+                        input(type="email", name="email", aria-="email", placeholder="이메일", required="true")
+                        input(type="password", name="password", aria-="password", placeholder="비밀번호", required="true", minlength="6", maxlength="16")
+                        input(type="password", name="password1", aria-="password", placeholder="비밀번호 확인", required="true", minlength="6", maxlength="16")
                         label(for="homePage__join-form--birth") 생일
                         #homePage__join-form--birth
-                            select(name="birthYear")
-                                option(value="2000", selected) 2000
+                            select(name="birthYear")#jsbirthYear
                             span 년
-                            select(name="birthMonth")
-                                option(value="2000", selected) 1
+                            select(name="birthMonth")#jsbirthMonth
                             span 월
-                            select(name="birthDay")
-                                option(value="2000", selected) 1
+                            select(name="birthDay")#jsbirthDay
                             span 일
                         #homePage__join-form--sex
                             input(type="radio", name="gender", value="남성", checked)
