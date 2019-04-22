@@ -146,14 +146,96 @@ input {
   height: 70px;
   background: #ccc; }
 
+.homePage__background {
+  background: linear-gradient(white, #d3d8e8);
+  padding-bottom: 20px; }
+  .homePage__background .homePage__container {
+    width: 980px;
+    margin: 0 auto;
+    display: flex; }
+    .homePage__background .homePage__container .homePage__info {
+      flex: 1; }
+      .homePage__background .homePage__container .homePage__info > p {
+        color: #0e385f;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 29px;
+        margin-top: 40px;
+        width: 450px;
+        word-spacing: -1px; }
+    .homePage__background .homePage__container .homePage__join {
+      flex: 1;
+      margin: 0 30px; }
+      .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle {
+        padding-top: 30px;
+        padding-bottom: 30px; }
+        .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h4 {
+          font-size: 36px;
+          font-weight: 600;
+          color: #333;
+          padding-bottom: 15px; }
+        .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h5 {
+          color: #1d2129;
+          font-size: 19px;
+          font-weight: 500; }
+      .homePage__background .homePage__container .homePage__join .homePage__join-form {
+        margin-left: 10px; }
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > input {
+          display: inline-block;
+          font-size: 20px;
+          padding: 7px 10px;
+          width: 100%;
+          border-radius: 5px;
+          border: #c9cacd solid 0.5px;
+          margin-top: 10px; }
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > label {
+          color: #1d2129;
+          font-size: 19px;
+          font-weight: 500;
+          display: block;
+          padding: 10px 0; }
+        .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--birth {
+          padding-bottom: 15px; }
+          .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--birth > select {
+            padding: 3px;
+            margin: 0 3px 10px; }
+        .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--sex {
+          font-size: 20px; }
+          .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--sex > input:nth-child(2) {
+            margin-left: 10px; }
+        .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-formTerms {
+          font-size: 10px;
+          color: #999;
+          word-spacing: 1px;
+          padding: 20px 10px;
+          line-height: normal; }
+        .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--btn {
+          color: #fff;
+          font-size: 20px;
+          font-weight: bold;
+          background: linear-gradient(#67ae55, #578843);
+          background-color: #69a74e;
+          box-shadow: inset 0 1px 1px #a4e388;
+          border-color: #3b6e22 #3b6e22 #2c5115;
+          cursor: pointer;
+          margin-bottom: 10px; }
+          .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--btn:hover {
+            background: linear-gradient(#79bc64, #578843); }
+
+@media (max-width: 1054px) {
+  .homePage__background .homePage__container {
+    width: 100%; }
+    .homePage__background .homePage__container .homePage__info {
+      display: none; } }
+
 .header-loginPage {
   background-color: #3b5998;
   background-image: linear-gradient(#4e69a2, #3b5998 50%);
   border-bottom: 1px solid #133783;
   z-index: 1;
-  padding: 5px 0 15px; }
+  padding: 5px 0 20px; }
   .header-loginPage .header-loginPage__wrapper {
-    width: 1200px;
+    width: 980px;
     margin: 0 auto;
     overflow: hidden;
     height: 100%; }
@@ -170,20 +252,29 @@ input {
       padding-top: 10px; }
       .header-loginPage .header-loginPage__wrapper .header-loginPage__login form {
         display: flex; }
-        .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__login-box {
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__loginId,
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__loginPw {
           flex: 2;
           margin-right: -10px; }
-          .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__login-box > label {
+          .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__loginId > label,
+          .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__loginPw > label {
             color: #fff;
             display: inline-block;
             margin-bottom: 5px;
             font-size: 12px; }
-          .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__login-box > input {
+          .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__loginId > input,
+          .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__loginPw > input {
             padding: 5px 10px;
-            font-size: 12px; }
+            font-size: 12px;
+            width: 150px; }
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__loginPw {
+          margin-right: -20px; }
         .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__login-btn {
           flex: 1;
-          margin-top: 18px; }
+          display: flex;
+          margin-top: 18px;
+          align-items: flex-end;
+          justify-content: center; }
           .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__login-btn > input {
             background-color: #4267b2;
             border: 1px solid #ccd0d5;
@@ -196,7 +287,56 @@ input {
               background-color: #365899;
               border-color: #29487d; }
 
-.footer-loginPage .footer-loginPage__wrapper ul > a {
-  display: inline-block;
-  padding-left: 10px;
-  width: auto; }
+@media screen and (max-width: 1054px) {
+  .header-loginPage .header-loginPage__wrapper {
+    width: 100%; }
+    .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
+      padding-left: 30px; } }
+
+@media screen and (max-width: 768px) {
+  .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
+    padding-left: 0;
+    width: 100%;
+    text-align: center; }
+  .header-loginPage .header-loginPage__wrapper .header-loginPage__login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-left: 40px; } }
+
+.footer-loginPage {
+  width: 980px;
+  margin: 0 auto;
+  padding: 30px; }
+  .footer-loginPage .footer-loginPage__wrapper .footer-loginPage__language {
+    padding-top: 20px;
+    padding-bottom: 10px; }
+    .footer-loginPage .footer-loginPage__wrapper .footer-loginPage__language ul > a {
+      display: inline-block;
+      padding-left: 10px;
+      width: auto;
+      color: #365899;
+      font-size: 12px; }
+  .footer-loginPage .footer-loginPage__wrapper .footer-loginPage__designLine {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc; }
+  .footer-loginPage .footer-loginPage__wrapper .footer-loginPage__etc ul > a {
+    display: inline-block;
+    padding-right: 20px;
+    padding-top: 10px;
+    width: auto;
+    color: #365899;
+    font-size: 12px; }
+  .footer-loginPage .footer-loginPage__wrapper .footer-loginPage__etc :nth-child(28) {
+    padding-right: 15px; }
+  .footer-loginPage .footer-loginPage__wrapper .footer-loginPage__logo > span {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 11px;
+    color: #737373; }
+
+@media screen and (max-width: 1054px) {
+  .footer-loginPage {
+    width: 100%; } }
