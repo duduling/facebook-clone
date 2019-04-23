@@ -13,32 +13,54 @@ export const postLogin = (req, res) => {
 
 export const postJoin = (req, res) => {
   const {
-    body: { userName, email, birthYear, birthMonth, birthDay, sex }
+    body: { userName, email, birthYear, sex }
+  } = req;
+
+  let {
+    body: { birthMonth, birthDay }
   } = req;
 
   let {
     body: { password }
   } = req;
 
+  toString(birthYear);
+
+  if (birthMonth < 10) {
+    toString(birthYear);
+    birthMonth = `0${birthMonth}`;
+  } else {
+    toString(birthYear);
+  }
+
+  if (birthDay < 10) {
+    toString(birthYear);
+    birthDay = `0${birthDay}`;
+  } else {
+    toString(birthDay);
+  }
+
   let userPwSalt;
-  const randomNumber = parseInt(process.env.CRYPTO_SECRET, 10);
+
+  const bitrh = birthYear + birthMonth + birthDay;
 
   crypto.randomBytes(64, (_, buf) => {
     crypto.pbkdf2(
       password,
       buf.toString("base64"),
-      randomNumber,
-      64,
-      "sha512",
+      parseInt(process.env.CRYPTO_SECRET, 10),
+      parseInt(process.env.CRYPTO_OPTION1, 10),
+      process.env.CRYPTO_OPTION2,
       (_, key) => {
         // 비밀번호
         password = key.toString("base64");
         // 해당 비밀번호 salt
         userPwSalt = buf.toString("base64");
 
+        // 가입 정보 넣기
         const sql =
           "INSERT INTO Users(`id`, `pw`, `pw_salt`, `name`, `birth`, `sex`) VALUES(?, ?, ?, ?, ?, ?);";
-        const data = [email, password, userPwSalt, userName, "19931009", sex];
+        const data = [email, password, userPwSalt, userName, bitrh, sex];
 
         db.query(sql, data, (error, _, __) => {
           if (error) {

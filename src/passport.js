@@ -19,6 +19,7 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
   new LocalStrategy(
+    // post from name
     {
       usernameField: "loginId",
       passwordField: "loginPw"
@@ -37,6 +38,7 @@ passport.use(
           done(null, false, { message: "Incorrect username." });
         }
 
+        // 암호화 비밀번호 확인
         crypto.pbkdf2(
           password,
           user.pw_salt,
