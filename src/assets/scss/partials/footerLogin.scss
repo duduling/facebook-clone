@@ -1,9 +1,49 @@
 .footer-loginPage {
+  width: 980px;
+  margin: 0 auto;
+  padding: 30px;
   .footer-loginPage__wrapper {
-    ul > a {
-      display: inline-block;
-      padding-left: 10px;
-      width: auto;
+    .footer-loginPage__language {
+      ul > a {
+        display: inline-block;
+        padding-left: 10px;
+        width: auto;
+        color: #365899;
+        font-size: 12px;
+      }
+      padding-top: 20px;
+      padding-bottom: 10px;
     }
+    .footer-loginPage__designLine {
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+    }
+    .footer-loginPage__etc {
+      ul > a {
+        display: inline-block;
+        padding-right: 20px;
+        padding-top: 10px;
+        width: auto;
+        color: #365899;
+        font-size: 12px;
+      }
+      & :nth-child(28) {
+        padding-right: 15px;
+      }
+    }
+    .footer-loginPage__logo > span {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 11px;
+      color: #737373;
+    }
+  }
+}
+
+@media screen and (max-width: 1054px) {
+  .footer-loginPage {
+    width: 100%;
   }
 }

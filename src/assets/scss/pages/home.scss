@@ -1,0 +1,104 @@
+.homePage__background {
+  background: linear-gradient(white, #d3d8e8);
+  padding-bottom: 20px;
+  .homePage__container {
+    width: 980px;
+    margin: 0 auto;
+    display: flex;
+    .homePage__info {
+      flex: 1;
+      & > p {
+        color: #0e385f;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 29px;
+        margin-top: 40px;
+        width: 450px;
+        word-spacing: -1px;
+      }
+    }
+    .homePage__join {
+      flex: 1;
+      margin: 0 30px;
+      .homePage__join-boxTitle {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        & > h4 {
+          font-size: 36px;
+          font-weight: 600;
+          color: #333;
+          padding-bottom: 15px;
+        }
+        & > h5 {
+          color: #1d2129;
+          font-size: 19px;
+          font-weight: 500;
+        }
+      }
+      .homePage__join-form {
+        margin-left: 10px;
+        & > input {
+          display: inline-block;
+          font-size: 20px;
+          padding: 7px 10px;
+          width: 100%;
+          border-radius: 5px;
+          border: #c9cacd solid 0.5px;
+          margin-top: 10px;
+        }
+        & > label {
+          color: #1d2129;
+          font-size: 19px;
+          font-weight: 500;
+          display: block;
+          padding: 10px 0;
+        }
+        #homePage__join-form--birth {
+          padding-bottom: 15px;
+          & > select {
+            padding: 3px;
+            margin: 0 3px 10px;
+          }
+        }
+        #homePage__join-form--sex {
+          font-size: 20px;
+          & > input:nth-child(2) {
+            margin-left: 10px;
+          }
+        }
+        #homePage__join-formTerms {
+          font-size: 10px;
+          color: #999;
+          word-spacing: 1px;
+          padding: 20px 10px;
+          line-height: normal;
+        }
+        #homePage__join-form--btn {
+          color: #fff;
+          font-size: 20px;
+          font-weight: bold;
+          background: linear-gradient(#67ae55, #578843);
+          background-color: #69a74e;
+          box-shadow: inset 0 1px 1px #a4e388;
+          border-color: #3b6e22 #3b6e22 #2c5115;
+          cursor: pointer;
+          margin-bottom: 10px;
+          &:hover {
+            background: linear-gradient(#79bc64, #578843);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1054px) {
+  .homePage__background {
+    .homePage__container {
+      width: 100%;
+      .homePage__info {
+        display: none;
+      }
+    }
+  }
+}

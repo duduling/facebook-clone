@@ -1,4 +1,33 @@
 extends ./layouts/main.pug
 
 block content
-    h1 Home
+    .homePage__background
+        .homePage__container
+            .homePage__info
+                p Facebook에서 전세계에 있는 친구, 가족, 지인들과 함께 이야기를 나눠보세요.
+                img(src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/OBaVg52wtTZ.png", alt="communication")
+            .homePage__join
+                .homePage__join-boxTitle
+                    h4 가입하기
+                    h5 항상 지금처럼 무료로 즐기실 수 있습니다.
+                form
+                    .homePage__join-form
+                        input(type="text", name="userName", aria-="name", placeholder="이름", required="true")
+                        input(type="email", name="email", aria-="email", placeholder="이메일", required="true")
+                        input(type="password", name="password", aria-="password", placeholder="비밀번호", required="true", minlength="6", maxlength="16")
+                        input(type="password", name="password1", aria-="password", placeholder="비밀번호 확인", required="true", minlength="6", maxlength="16")
+                        label(for="homePage__join-form--birth") 생일
+                        #homePage__join-form--birth
+                            select(name="birthYear")#jsbirthYear
+                            span 년
+                            select(name="birthMonth")#jsbirthMonth
+                            span 월
+                            select(name="birthDay")#jsbirthDay
+                            span 일
+                        #homePage__join-form--sex
+                            input(type="radio", name="gender", value="남성", checked)
+                            |남성
+                            input(type="radio", name="gender", value="여성")
+                            |여성
+                        p#homePage__join-formTerms 가입하기 버튼을 클릭하면 Facebook의 약관, 데이터 정책 및 쿠키 정책에 동의하게 됩니다. Facebook으로부터 SMS 알림을 받을 수 있으며 알림은 언제든지 옵트 아웃할 수 있습니다.
+                        input(type="submit",id="homePage__join-form--btn", value="가입하기")
