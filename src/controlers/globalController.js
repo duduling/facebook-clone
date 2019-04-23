@@ -21,12 +21,13 @@ export const postJoin = (req, res) => {
   } = req;
 
   let userPwSalt;
+  const randomNumber = parseInt(process.env.CRYPTO_SECRET, 10);
 
   crypto.randomBytes(64, (_, buf) => {
     crypto.pbkdf2(
       password,
       buf.toString("base64"),
-      161602,
+      randomNumber,
       64,
       "sha512",
       (_, key) => {
@@ -36,7 +37,7 @@ export const postJoin = (req, res) => {
         userPwSalt = buf.toString("base64");
 
         const sql =
-          "INSERT INTO Users(`id`, `pw`, `pw-salt`, `name`, `birth`, `sex`) VALUES(?, ?, ?, ?, ?, ?);";
+          "INSERT INTO Users(`id`, `pw`, `pw_salt`, `name`, `birth`, `sex`) VALUES(?, ?, ?, ?, ?, ?);";
         const data = [email, password, userPwSalt, userName, "19931009", sex];
 
         db.query(sql, data, (error, _, __) => {
