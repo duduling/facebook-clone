@@ -1,6 +1,5 @@
-import routes from "../routes";
-
 // Global Controller.js
+import routes from "../routes";
 
 export const getHome = (req, res) => {
   res.render("home", { pageTile: "Home" });
