@@ -5,7 +5,7 @@
                 a(href=routes.home)
                     | #{siteName}
         ul.header-loginPage__login
-            form
+            form(action=routes.login, method="post", name="login-from", id="login-form")
                 .header-loginPage__loginId
                     label(for="inputId") 아이디
                     input(type="text", id="inputId")
