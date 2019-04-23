@@ -1,5 +1,6 @@
 // Global Router.js
 import express from "express";
+
 import routes from "../routes";
 import { getHome, postLogin, postJoin } from "../controlers/globalController";
 
