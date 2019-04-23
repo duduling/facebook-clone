@@ -1,9 +1,16 @@
+import axios from "axios";
+
 const homePageBirthForm = document.getElementById("homePage__join-form--birth");
 const jsbirthYear = document.getElementById("jsbirthYear");
 const jsbirthMonth = document.getElementById("jsbirthMonth");
 const jsbirthDay = document.getElementById("jsbirthDay");
 
 const jsEmail = document.getElementById("jsEmail");
+
+let checkWord;
+
+let booleanId = false;
+let booleanPw = false;
 
 const selectOptions = async () => {
   const toYear = new Date().getFullYear();
@@ -31,8 +38,23 @@ const selectOptions = async () => {
   }
 };
 
-const handleInput = () => {
-  console.log(jsEmail.value);
+const handleInput = async () => {
+  checkWord = jsEmail.value;
+
+  const response = await axios({
+    url: `/api/checkId`,
+    method: "POST",
+    data: {
+      checkWord
+    }
+  });
+
+  // 중복시 테투리 빨간색으로
+  if (!response.data) {
+    jsEmail.style.borderColor = "#ff0000";
+  } else {
+    jsEmail.style.borderColor = "#c9cacd";
+  }
 };
 
 const init = () => {

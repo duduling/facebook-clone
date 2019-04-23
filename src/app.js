@@ -18,6 +18,7 @@ import feedRouter from "./routers/feedRouter";
 import { localsMiddleware } from "./middlewares";
 
 import "./passport";
+import apiRouter from "./routers/apiRouter";
 
 const app = express();
 
@@ -51,5 +52,6 @@ app.use(localsMiddleware);
 // Route
 app.use(routes.home, globalRouter);
 app.use(routes.feeds, feedRouter);
+app.use(routes.api, apiRouter);
 
 export default app;
