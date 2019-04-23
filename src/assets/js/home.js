@@ -3,6 +3,8 @@ const jsbirthYear = document.getElementById("jsbirthYear");
 const jsbirthMonth = document.getElementById("jsbirthMonth");
 const jsbirthDay = document.getElementById("jsbirthDay");
 
+const jsEmail = document.getElementById("jsEmail");
+
 const selectOptions = async () => {
   const toYear = new Date().getFullYear();
   const end = toYear - 100;
@@ -29,8 +31,13 @@ const selectOptions = async () => {
   }
 };
 
+const handleInput = () => {
+  console.log(jsEmail.value);
+};
+
 const init = () => {
   selectOptions();
+  jsEmail.addEventListener("input", handleInput);
 };
 
 if (homePageBirthForm) {
