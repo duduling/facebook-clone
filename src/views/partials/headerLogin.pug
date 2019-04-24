@@ -8,9 +8,9 @@
             form(action=routes.login, method="post", name="login-from", id="login-form")
                 .header-loginPage__loginId
                     label(for="inputId") 아이디
-                    input(type="text", name="loginId", id="loginId", required)
+                    input(type="text", name="email", id="loginId", required)
                 .header-loginPage__loginPw
                     label(for="inputPw") 비밀번호
-                    input(type="password", name="loginPw", id="loginPw", required)
+                    input(type="password", name="password", id="loginPw", required)
                 .header-loginPage__login-btn
                     input(type="submit", value="로그인")

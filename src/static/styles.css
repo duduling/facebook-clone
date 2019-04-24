@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);@charset "UTF-8";
 html,
 body,
 div,
@@ -83,8 +84,8 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  font-family: "Noto Sans KR", sans-serif; }
 
 /* HTML5 display-role reset for older browsers */
 article,
@@ -136,15 +137,38 @@ input {
   input:focus, input:active {
     outline: none; }
 
+/* IR 효과 */
+/* 1. 의미있는 이미지의 대체 텍스트를 제공하는 경우 */
+.ir_pm {
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px; }
+
+/* 2. 의미있는 이미지의 대체 텍스트로 이미지가 보이지 않을 때 대체 텍스트가 보임*/
+.ir_wa {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+  width: 100px;
+  height: 100px; }
+
+/* 3. 대체 텍스트가 아닌 접근성을 위한 숨김 텍스트를 제공 할 때 */
+.ir_su {
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px; }
+
+.font {
+  font-family: "Noto Sans KR", sans-serif; }
+
 #body__wrap {
   min-height: 100vh; }
-
-#footer__wrap {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 70px;
-  background: #ccc; }
 
 .homePage__background {
   background: linear-gradient(white, #d3d8e8);
@@ -228,6 +252,15 @@ input {
     .homePage__background .homePage__container .homePage__info {
       display: none; } }
 
+.feed-main {
+  background-color: #ddd;
+  min-height: 100vh; }
+  .feed-main .feed-main__wrapper {
+    background-color: #eee;
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100vh; }
+
 .header-loginPage {
   background-color: #3b5998;
   background-image: linear-gradient(#4e69a2, #3b5998 50%);
@@ -291,7 +324,10 @@ input {
   .header-loginPage .header-loginPage__wrapper {
     width: 100%; }
     .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
-      padding-left: 30px; } }
+      padding-left: 30px; }
+    .header-loginPage .header-loginPage__wrapper .header-loginPage__login .header-loginPage__loginId > input,
+    .header-loginPage .header-loginPage__wrapper .header-loginPage__login .header-loginPage__loginPw > input {
+      width: 130px; } }
 
 @media screen and (max-width: 768px) {
   .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
@@ -302,7 +338,8 @@ input {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-left: 40px; } }
+    padding-left: 40px;
+    padding-top: 25px; } }
 
 .footer-loginPage {
   width: 980px;
@@ -340,3 +377,58 @@ input {
 @media screen and (max-width: 1054px) {
   .footer-loginPage {
     width: 100%; } }
+
+.header {
+  background-color: #3b5998;
+  background-image: linear-gradient(#4e69a2, #3b5998 50%);
+  border-bottom: 1px solid #133783;
+  z-index: 1;
+  padding: 0 0 6px;
+  height: 50px; }
+  .header .header__wrapper {
+    width: 980px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px; }
+    .header .header__wrapper .header__logo {
+      font-size: 30px;
+      color: #fff;
+      text-transform: lowercase;
+      padding-bottom: 10px; }
+      .header .header__wrapper .header__logo > a {
+        position: relative;
+        top: 4px; }
+    .header .header__wrapper .header__search-bar #header__searchBar {
+      min-width: 150px;
+      width: 500px;
+      font-size: 16px;
+      padding: 5px 10px;
+      border-radius: 5px 0 0 5px; }
+    .header .header__wrapper .header__search-bar #header__searchBar-btn {
+      width: 40px;
+      position: relative;
+      top: -0.5px;
+      padding: 6.5px 10px;
+      border-radius: 0 2px 2px 0; }
+    .header .header__wrapper .header__profile > a {
+      display: flex;
+      align-items: center; }
+      .header .header__wrapper .header__profile > a > img {
+        width: 30px;
+        height: 30px;
+        border-radius: 13px; }
+      .header .header__wrapper .header__profile > a > span {
+        margin-left: 10px;
+        color: #fff;
+        font-size: 17px;
+        position: relative;
+        top: -2px; }
+    .header .header__wrapper .header__subMenu {
+      display: flex;
+      justify-content: space-between; }
+      .header .header__wrapper .header__subMenu > ul {
+        margin-right: 25px; }
+        .header .header__wrapper .header__subMenu > ul .fas {
+          font-size: 25px; }

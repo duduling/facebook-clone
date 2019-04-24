@@ -21,8 +21,8 @@ passport.use(
   new LocalStrategy(
     // post from name
     {
-      usernameField: "loginId",
-      passwordField: "loginPw"
+      usernameField: "email",
+      passwordField: "password"
     },
     (username, password, done) => {
       db.query("SELECT * FROM Users WHERE `id`=?", [username], (err, rows) => {
@@ -46,8 +46,6 @@ passport.use(
           parseInt(process.env.CRYPTO_OPTION1, 10),
           process.env.CRYPTO_OPTION2,
           (err, key) => {
-            console.log(key.toString("base64"));
-            console.log(user.pw);
             if (key.toString("base64") === user.pw) {
               // 로그인 성공
               done(null, user);

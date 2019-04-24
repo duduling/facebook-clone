@@ -1,5 +1,6 @@
 // Global Controller.js
 import crypto from "crypto";
+import passport from "passport";
 import db from "../db";
 import routes from "../routes";
 
@@ -7,11 +8,18 @@ export const getHome = (req, res) => {
   res.render("home", { pageTile: "Home" });
 };
 
-export const postLogin = (req, res) => {
-  res.redirect(`/feeds${routes.feedsMain}`);
+export const postLogin = passport.authenticate("local", {
+  successRedirect: `/feeds${routes.feedsMain}`,
+  failureRedirect: routes.home
+});
+
+export const logout = (req, res) => {
+  req.logout();
+  res.locals.user = null;
+  res.redirect(routes.home);
 };
 
-export const postJoin = (req, res) => {
+export const postJoin = (req, res, next) => {
   const {
     body: { userName, email, birthYear, sex }
   } = req;
@@ -65,11 +73,10 @@ export const postJoin = (req, res) => {
         db.query(sql, data, (error, _, __) => {
           if (error) {
             console.log(error);
-            res.redirect(routes.home);
           } else {
             console.log(userPwSalt);
-            res.redirect(`/feeds${routes.feedsMain}`);
           }
+          next();
         });
       }
     );
