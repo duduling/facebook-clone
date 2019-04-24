@@ -4,6 +4,7 @@ import db from "../db";
 import routes from "../routes";
 
 export const getHome = (req, res) => {
+  req.logout();
   res.render("home", { pageTile: "Home" });
 };
 
