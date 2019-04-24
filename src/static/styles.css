@@ -291,7 +291,10 @@ input {
   .header-loginPage .header-loginPage__wrapper {
     width: 100%; }
     .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
-      padding-left: 30px; } }
+      padding-left: 30px; }
+    .header-loginPage .header-loginPage__wrapper .header-loginPage__login .header-loginPage__loginId > input,
+    .header-loginPage .header-loginPage__wrapper .header-loginPage__login .header-loginPage__loginPw > input {
+      width: 130px; } }
 
 @media screen and (max-width: 768px) {
   .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
@@ -302,7 +305,8 @@ input {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-left: 40px; } }
+    padding-left: 40px;
+    padding-top: 25px; } }
 
 .footer-loginPage {
   width: 980px;

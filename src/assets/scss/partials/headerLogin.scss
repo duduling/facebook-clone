@@ -77,7 +77,11 @@
         padding-left: 30px;
       }
       .header-loginPage__login {
-        .header-loginPage__login-btn {
+        .header-loginPage__loginId,
+        .header-loginPage__loginPw {
+          & > input {
+            width: 130px;
+          }
         }
       }
     }
@@ -97,6 +101,7 @@
         display: flex;
         justify-content: center;
         padding-left: 40px;
+        padding-top: 25px;
       }
     }
   }
