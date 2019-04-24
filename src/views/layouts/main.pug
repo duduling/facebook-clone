@@ -16,16 +16,15 @@ html(lang="ko")
         link(rel="stylesheet", href="/static/styles.css")
     body#body__wrap
         header
-            if true
-                include ../partials/headerLogin.pug
-            else
-                include ../partials/header.pug
+        if !user || null
+            include ../partials/headerLogin.pug
+        else
+            include ../partials/header.pug
         main
             block content
-        if true
-            footer
-                include ../partials/footerLogin.pug
+        footer
+        if !user || null
+            include ../partials/footerLogin.pug
         else
-            footer#footer__wrap
-                include ../partials/footer.pug
+            include ../partials/footer.pug
         script(src="/static/main.js")

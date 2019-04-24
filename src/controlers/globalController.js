@@ -5,7 +5,6 @@ import db from "../db";
 import routes from "../routes";
 
 export const getHome = (req, res) => {
-  req.logout();
   res.render("home", { pageTile: "Home" });
 };
 
@@ -13,6 +12,13 @@ export const postLogin = passport.authenticate("local", {
   successRedirect: `/feeds${routes.feedsMain}`,
   failureRedirect: routes.home
 });
+
+export const middlewareLogout = (req, res, next) => {
+  req.logout();
+  // middle ware가 logout 보다 처리순서가 앞이라 로그아웃하면서 초기화 시켜줘야 함
+  res.locals.user = null;
+  next();
+};
 
 export const postJoin = (req, res, next) => {
   const {
