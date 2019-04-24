@@ -4,6 +4,7 @@
 const HOME = "/";
 const JOIN = "/join";
 const LOGIN = "/login";
+const LOGOUT = "/logout";
 
 // Feed
 const FEEDS = "/feeds";
@@ -18,6 +19,7 @@ const routes = {
   home: HOME,
   join: JOIN,
   login: LOGIN,
+  logout: LOGOUT,
   feeds: FEEDS,
   feedsMain: FEEDS_MAIN,
   api: API,

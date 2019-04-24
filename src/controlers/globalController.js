@@ -13,11 +13,10 @@ export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.home
 });
 
-export const middlewareLogout = (req, res, next) => {
+export const logout = (req, res) => {
   req.logout();
-  // middle ware가 logout 보다 처리순서가 앞이라 로그아웃하면서 초기화 시켜줘야 함
   res.locals.user = null;
-  next();
+  res.redirect(routes.home);
 };
 
 export const postJoin = (req, res, next) => {

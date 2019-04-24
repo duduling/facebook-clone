@@ -1,1 +1,24 @@
-h1 Header
+.header
+    .header__wrapper
+        .header__logo
+            h1.ir_su facebook
+            a(href=routes.home)
+                i.fab.fa-facebook
+        .header__search-bar
+            form
+                input(type="search", name="searchWord", placeholder="Searching")#header__searchBar
+                input(type="submit", value="　")#header__searchBar-btn
+        .header__profile
+            a(href="#")
+                img(src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/56696881_2562572260481360_7683948637189046272_n.jpg?_nc_cat=100&_nc_ht=scontent-icn1-1.xx&oh=b13311bb13255151e1b2ece6fa941350&oe=5D74FC9F", alt="userProfile")
+                span=user.name
+        .header__subMenu
+            ul.header__subMenu-friend
+                a(href="#")
+                    i.fas.fa-user-friends
+            ul.header__subMenu-notice
+                a(href="#")
+                    i.fas.fa-bell
+            ul.header__subMenu-logout
+                a(href="#")
+                    i.fas.fa-sign-out-alt

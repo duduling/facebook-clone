@@ -18,14 +18,17 @@ import feedRouter from "./routers/feedRouter";
 import { localsMiddleware } from "./middlewares";
 
 import "./passport";
+import db from "./db";
 import apiRouter from "./routers/apiRouter";
 
 const app = express();
+const MysqlStore = require("express-mysql-session")(session);
 
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+// Session 유지
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
@@ -33,7 +36,8 @@ app.use(
     resave: false,
     cookie: {
       maxAge: 1000 * 60 * 60 // 유효기간 1시간
-    }
+    },
+    store: new MysqlStore({}, db)
   })
 );
 app.use(flash());
