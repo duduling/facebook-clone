@@ -10,7 +10,7 @@ export const localsMiddleware = (req, res, next) => {
 // 로그인 한 유저 못들어감
 export const onlyPublic = (req, res, next) => {
   if (req.user) {
-    res.redirect(routes.home);
+    res.redirect(`/feeds${routes.feedsMain}`);
   } else {
     next();
   }

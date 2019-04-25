@@ -1,6 +1,33 @@
-extends ./layouts/main.pug
+extends ./layouts/main
+include ./mixins/feedMainBlock
 
 block content
-    .feed-main
-        .feed-main__wrapper
-            h1 Main Feed
+    .bgc
+        .feed-main
+            .feed-main__wrapper
+                h1.ir_su Feed-Main
+                .feed-main__gridLayout
+                    .feed-main__gridLayout-feed
+                        h3.ir_su feed
+                        .feed-main__upload
+                            .feed-main__upload-title
+                                h5 Create Post
+                            form.feed-main__upload-form
+                                .feed-main__upload-form-description
+                                    img(src="/img/profile_male.png", alt="profile")
+                                    textarea(name="uploadText", cols="30", rows="7")
+                                .feed-main__upload-form-file
+                                    input(type="file", name="uploadFile")
+                                    input(type="submit", value="Share")
+                        .feed-main__feeds
+                            each item in feeds
+                                +feedBlock({
+                                    idx: item.idx,
+                                    writer: item.writer,
+                                    createdAt: item.createdAt,
+                                    fileUrl: item.fileUrl,
+                                    description: item.description,
+                                    likes: item.likes
+                                })
+                    .feed-main__gridLayout-ad
+                        h3 ad

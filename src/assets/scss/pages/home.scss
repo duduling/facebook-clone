@@ -11,10 +11,13 @@
         color: #0e385f;
         font-size: 20px;
         font-weight: bold;
-        line-height: 29px;
+        line-height: 30px;
         margin-top: 40px;
         width: 450px;
         word-spacing: -1px;
+      }
+      & > img {
+        margin-top: 15px;
       }
     }
     .homePage__join {
@@ -74,7 +77,7 @@
           line-height: normal;
         }
         #homePage__join-form--btn {
-          color: #fff;
+          color: white;
           font-size: 20px;
           font-weight: bold;
           background: linear-gradient(#67ae55, #578843);

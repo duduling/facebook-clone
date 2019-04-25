@@ -7,13 +7,13 @@ import {
   postJoin,
   logout
 } from "../controlers/globalController";
-import { onlyPublic } from "../middlewares";
+import { onlyPublic, onlyPrivate } from "../middlewares";
 
 const globalRouter = express.Router();
 
 globalRouter.get(routes.home, onlyPublic, getHome);
 globalRouter.post(routes.join, onlyPublic, postJoin, postLogin);
 globalRouter.post(routes.login, onlyPublic, postLogin);
-globalRouter.get(routes.logout, onlyPublic, logout);
+globalRouter.get(routes.logout, onlyPrivate, logout);
 
 export default globalRouter;

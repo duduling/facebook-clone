@@ -8,7 +8,7 @@
             form(action=routes.login, method="post", name="login-from", id="login-form")
                 .header-loginPage__loginId
                     label(for="inputId") 아이디
-                    input(type="text", name="email", id="loginId", required)
+                    input(type="text", name="email", id="loginId", required, autocomplete="off")
                 .header-loginPage__loginPw
                     label(for="inputPw") 비밀번호
                     input(type="password", name="password", id="loginPw", required)
