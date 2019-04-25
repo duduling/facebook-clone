@@ -11,10 +11,13 @@
         color: #0e385f;
         font-size: 20px;
         font-weight: bold;
-        line-height: 29px;
+        line-height: 30px;
         margin-top: 40px;
         width: 450px;
         word-spacing: -1px;
+      }
+      & > img {
+        margin-top: 15px;
       }
     }
     .homePage__join {

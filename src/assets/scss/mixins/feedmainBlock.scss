@@ -3,10 +3,10 @@
   border-radius: 7px;
   margin-top: 15px;
   background-color: #fff;
+  padding: 10px;
   .feedBlock__header {
     display: grid;
     grid-template-columns: 2fr 17fr 1fr;
-    padding: 10px;
     #feedBolck-url-img {
       width: 60px;
       height: 60px;
@@ -40,17 +40,17 @@
     }
     .feedBlock__body-img {
       & > img {
-        width: 600px;
-        height: 600px;
+        width: 650px;
+        height: 650px;
       }
     }
   }
   .feedBlock__footer {
-    padding: 10px;
+    padding-top: 15px;
     & > img {
       width: 16px;
       height: 16px;
-      margin-left: 10px;
+      margin-left: 5px;
     }
     .feedBlock__footer-like {
       margin-left: 5px;
