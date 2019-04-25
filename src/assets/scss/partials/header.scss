@@ -31,11 +31,18 @@
         border-radius: 5px 0 0 5px;
       }
       #header__searchBar-btn {
-        width: 40px;
+        width: 50px;
         position: relative;
         top: -0.5px;
         padding: 6.5px 10px;
         border-radius: 0 2px 2px 0;
+        background: #eee url(https://img.icons8.com/cotton/64/000000/search.png)
+          center no-repeat;
+        background-size: 25px 25px;
+        cursor: pointer;
+        &:hover {
+          background-color: #ddd;
+        }
       }
     }
     .header__profile {
@@ -53,6 +60,12 @@
           font-size: 17px;
           position: relative;
           top: -2px;
+          transition: 0.2s;
+        }
+        &:hover {
+          & > span {
+            color: #ddd;
+          }
         }
       }
     }
@@ -60,9 +73,16 @@
       display: flex;
       justify-content: space-between;
       & > ul {
-        margin-right: 25px;
+        margin-left: 25px;
         .fas {
           font-size: 25px;
+          transition: 0.2s;
+          &:hover {
+            color: #fff;
+          }
+          .header__subMenu-friend {
+            margin-left: 0;
+          }
         }
       }
     }

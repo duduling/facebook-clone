@@ -407,11 +407,16 @@ input {
       padding: 5px 10px;
       border-radius: 5px 0 0 5px; }
     .header .header__wrapper .header__search-bar #header__searchBar-btn {
-      width: 40px;
+      width: 50px;
       position: relative;
       top: -0.5px;
       padding: 6.5px 10px;
-      border-radius: 0 2px 2px 0; }
+      border-radius: 0 2px 2px 0;
+      background: #eee url(https://img.icons8.com/cotton/64/000000/search.png) center no-repeat;
+      background-size: 25px 25px;
+      cursor: pointer; }
+      .header .header__wrapper .header__search-bar #header__searchBar-btn:hover {
+        background-color: #ddd; }
     .header .header__wrapper .header__profile > a {
       display: flex;
       align-items: center; }
@@ -424,11 +429,19 @@ input {
         color: #fff;
         font-size: 17px;
         position: relative;
-        top: -2px; }
+        top: -2px;
+        transition: 0.2s; }
+      .header .header__wrapper .header__profile > a:hover > span {
+        color: #ddd; }
     .header .header__wrapper .header__subMenu {
       display: flex;
       justify-content: space-between; }
       .header .header__wrapper .header__subMenu > ul {
-        margin-right: 25px; }
+        margin-left: 25px; }
         .header .header__wrapper .header__subMenu > ul .fas {
-          font-size: 25px; }
+          font-size: 25px;
+          transition: 0.2s; }
+          .header .header__wrapper .header__subMenu > ul .fas:hover {
+            color: #fff; }
+          .header .header__wrapper .header__subMenu > ul .fas .header__subMenu-friend {
+            margin-left: 0; }

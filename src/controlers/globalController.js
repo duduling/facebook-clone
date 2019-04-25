@@ -13,10 +13,15 @@ export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.home
 });
 
-export const logout = (req, res) => {
-  req.logout();
-  res.locals.user = null;
-  res.redirect(routes.home);
+export const logout = async (req, res) => {
+  try {
+    await req.logout();
+    res.locals.user = null;
+    res.redirect(routes.home);
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  }
 };
 
 export const postJoin = (req, res, next) => {
