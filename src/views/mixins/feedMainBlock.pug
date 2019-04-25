@@ -1,9 +1,31 @@
 mixin feedBlock(feed = {})
     .feedBlock
-        a(href=routes.videoDetail(feed.id))
-            img.feedBlock__thumbnail(src=feed.videoFile)
-            h4.videoBlock__title=feed.title
-            if feed.likes === 1
-                h6.feedBlock__likes 1 like
-            else
-                h6.feedBlock__likes #{feed.likes} likes
+        .feedBlock__header
+            a(href="#")#feedBolck-url
+                img(src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/56696881_2562572260481360_7683948637189046272_n.jpg?_nc_cat=100&_nc_ht=scontent-icn1-1.xx&oh=b13311bb13255151e1b2ece6fa941350&oe=5D74FC9F", alt="userProfile")#feedBolck-url-img
+            .feedBlock__header-grid
+                a(href="#")#feedBolck-name
+                    span=feed.writer
+                    sapn#feedBolck-time=feed.createdAt
+            sapn#feedBolck-btn 클릭
+        .feedBlock__body
+            span=feed.description
+
+        .feedBlock__footer
+
+            span=feed.likes
+    .feedBlock
+        .feedBlock__header
+            a(href="#")#feedBolck-url
+                img(src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/56696881_2562572260481360_7683948637189046272_n.jpg?_nc_cat=100&_nc_ht=scontent-icn1-1.xx&oh=b13311bb13255151e1b2ece6fa941350&oe=5D74FC9F", alt="userProfile")#feedBolck-url-img
+            .feedBlock__header-grid
+                a(href="#")#feedBolck-name
+                    span=feed.writer
+                    sapn#feedBolck-time=feed.createdAt
+            sapn#feedBolck-btn 클릭
+        .feedBlock__body
+            span=feed.description
+
+        .feedBlock__footer
+
+            span=feed.likes

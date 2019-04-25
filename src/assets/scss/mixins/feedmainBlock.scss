@@ -1,0 +1,28 @@
+.feedBlock {
+  padding: 10px;
+  border: #ddd solid 1px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  .feedBlock__header {
+    display: grid;
+    grid-template-columns: 2fr 17fr 1fr;
+    #feedBolck-url-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 25px;
+    }
+    #feedBolck-name {
+      height: 100%;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+    }
+  }
+  .feedBlock__body {
+    height: 400px;
+    background-color: #aaa;
+  }
+  .feedBlock__footer {
+    height: 100px;
+    background-color: #bbb;
+  }
+}

@@ -1,4 +1,5 @@
-extends ./layouts/main.pug
+extends ./layouts/main
+include ./mixins/feedMainBlock
 
 block content
     .feed-main
@@ -7,8 +8,16 @@ block content
             .feed-main__gridLayout
                 .feed-main__gridLayout-feed
                     h3.ir_su feed
+                    .feed-main__upload
+                        
                     each item in feeds
                         +feedBlock({
+                            idx: item.idx,
+                            writer: item.writer,
+                            createdAt: item.createdAt,
+                            fileUrl: item.fileUrl,
+                            description: item.description,
+                            likes: item.likes
                         })
                 .feed-main__gridLayout-ad
                     h3 ad

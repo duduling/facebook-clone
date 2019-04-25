@@ -1,6 +1,8 @@
 .feed-main {
   background-color: #ddd;
   min-height: 100vh;
+  position: relative;
+  top: 50px;
   .feed-main__wrapper {
     background-color: #eee;
     width: 980px;
@@ -8,24 +10,23 @@
     min-height: 100vh;
     .feed-main__gridLayout {
       display: grid;
-      grid-template-columns: auto auto auto;
+      grid-template-columns: 5fr 2fr;
       grid-gap: 10px;
       padding: 10px;
       .feed-main__gridLayout-feed,
       .feed-main__gridLayout-ad {
         background-color: $hoverColor;
-        text-align: center;
-        padding: 20px 0;
-        font-size: 30px;
         min-height: 100vh;
       }
       .feed-main__gridLayout-feed {
-        grid-column-start: 1;
-        grid-column-end: 8;
+        .feed-main__upload {
+          width: 100%;
+          height: 300px;
+          background-color: #aaa;
+          margin-bottom: 15px;
+        }
       }
       .feed-main__gridLayout-ad {
-        grid-column-start: 8;
-        grid-column-end: 10;
       }
     }
   }

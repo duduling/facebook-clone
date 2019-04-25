@@ -29,6 +29,9 @@ export const postJoin = (req, res, next) => {
     body: { userName, email, birthYear, sex }
   } = req;
 
+  const profile =
+    sex === "남성" ? process.env.SEX_MALE : process.env.SEX_FEMALE;
+
   let {
     body: { birthMonth, birthDay }
   } = req;
@@ -72,8 +75,16 @@ export const postJoin = (req, res, next) => {
 
         // 가입 정보 넣기
         const sql =
-          "INSERT INTO Users(`id`, `pw`, `pw_salt`, `name`, `birth`, `sex`) VALUES(?, ?, ?, ?, ?, ?);";
-        const data = [email, password, userPwSalt, userName, bitrh, sex];
+          "INSERT INTO Users(`id`, `pw`, `pw_salt`, `name`, `birth`, `sex`, `profile`) VALUES(?, ?, ?, ?, ?, ?, ?);";
+        const data = [
+          email,
+          password,
+          userPwSalt,
+          userName,
+          bitrh,
+          sex,
+          profile
+        ];
 
         db.query(sql, data, (error, _, __) => {
           if (error) {

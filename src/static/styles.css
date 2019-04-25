@@ -254,7 +254,9 @@ input {
 
 .feed-main {
   background-color: #ddd;
-  min-height: 100vh; }
+  min-height: 100vh;
+  position: relative;
+  top: 50px; }
   .feed-main .feed-main__wrapper {
     background-color: #eee;
     width: 980px;
@@ -262,22 +264,18 @@ input {
     min-height: 100vh; }
     .feed-main .feed-main__wrapper .feed-main__gridLayout {
       display: grid;
-      grid-template-columns: auto auto auto;
+      grid-template-columns: 5fr 2fr;
       grid-gap: 10px;
       padding: 10px; }
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed,
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-ad {
         background-color: rgba(255, 255, 255, 0.8);
-        text-align: center;
-        padding: 20px 0;
-        font-size: 30px;
         min-height: 100vh; }
-      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
-        grid-column-start: 1;
-        grid-column-end: 8; }
-      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-ad {
-        grid-column-start: 8;
-        grid-column-end: 10; }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload {
+        width: 100%;
+        height: 300px;
+        background-color: #aaa;
+        margin-bottom: 15px; }
 
 .header-loginPage {
   background-color: #3b5998;
@@ -400,9 +398,13 @@ input {
   background-color: #3b5998;
   background-image: linear-gradient(#4e69a2, #3b5998 50%);
   border-bottom: 1px solid #133783;
-  z-index: 1;
   padding: 0 0 6px;
-  height: 50px; }
+  height: 50px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%; }
   .header .header__wrapper {
     width: 980px;
     margin: 0 auto;
@@ -466,3 +468,26 @@ input {
             color: white; }
           .header .header__wrapper .header__subMenu > ul .fas .header__subMenu-friend {
             margin-left: 0; }
+
+.feedBlock {
+  padding: 10px;
+  border: #ddd solid 1px;
+  border-radius: 5px;
+  margin-bottom: 15px; }
+  .feedBlock .feedBlock__header {
+    display: grid;
+    grid-template-columns: 2fr 17fr 1fr; }
+    .feedBlock .feedBlock__header #feedBolck-url-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 25px; }
+    .feedBlock .feedBlock__header #feedBolck-name {
+      height: 100%;
+      display: grid;
+      grid-template-rows: 1fr 1fr; }
+  .feedBlock .feedBlock__body {
+    height: 400px;
+    background-color: #aaa; }
+  .feedBlock .feedBlock__footer {
+    height: 100px;
+    background-color: #bbb; }
