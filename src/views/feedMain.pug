@@ -3,4 +3,12 @@ extends ./layouts/main.pug
 block content
     .feed-main
         .feed-main__wrapper
-            h1 Main Feed
+            h1.ir_su Feed-Main
+            .feed-main__gridLayout
+                .feed-main__gridLayout-feed
+                    h3.ir_su feed
+                    each item in feeds
+                        +feedBlock({
+                        })
+                .feed-main__gridLayout-ad
+                    h3 ad

@@ -234,7 +234,7 @@ input {
           padding: 20px 10px;
           line-height: normal; }
         .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--btn {
-          color: #fff;
+          color: white;
           font-size: 20px;
           font-weight: bold;
           background: linear-gradient(#67ae55, #578843);
@@ -260,6 +260,24 @@ input {
     width: 980px;
     margin: 0 auto;
     min-height: 100vh; }
+    .feed-main .feed-main__wrapper .feed-main__gridLayout {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 10px;
+      padding: 10px; }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed,
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-ad {
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        padding: 20px 0;
+        font-size: 30px;
+        min-height: 100vh; }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
+        grid-column-start: 1;
+        grid-column-end: 8; }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-ad {
+        grid-column-start: 8;
+        grid-column-end: 10; }
 
 .header-loginPage {
   background-color: #3b5998;
@@ -275,7 +293,7 @@ input {
     .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
       float: left;
       font-size: 40px;
-      color: #fff;
+      color: white;
       font-weight: bold;
       text-transform: lowercase;
       padding-top: 12px; }
@@ -291,7 +309,7 @@ input {
           margin-right: -10px; }
           .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__loginId > label,
           .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__loginPw > label {
-            color: #fff;
+            color: white;
             display: inline-block;
             margin-bottom: 5px;
             font-size: 12px; }
@@ -313,7 +331,7 @@ input {
             border: 1px solid #ccd0d5;
             border-color: #29487d;
             border-radius: 2px;
-            color: #fff;
+            color: white;
             padding: 3px 7px;
             cursor: pointer; }
             .header-loginPage .header-loginPage__wrapper .header-loginPage__login form .header-loginPage__login-btn > input:hover {
@@ -394,12 +412,15 @@ input {
     height: 50px; }
     .header .header__wrapper .header__logo {
       font-size: 30px;
-      color: #fff;
+      color: white;
       text-transform: lowercase;
-      padding-bottom: 10px; }
+      padding-bottom: 10px;
+      transition: 0.2s; }
       .header .header__wrapper .header__logo > a {
         position: relative;
         top: 4px; }
+      .header .header__wrapper .header__logo:hover {
+        color: rgba(255, 255, 255, 0.8); }
     .header .header__wrapper .header__search-bar #header__searchBar {
       min-width: 150px;
       width: 500px;
@@ -426,13 +447,13 @@ input {
         border-radius: 13px; }
       .header .header__wrapper .header__profile > a > span {
         margin-left: 10px;
-        color: #fff;
+        color: white;
         font-size: 17px;
         position: relative;
         top: -2px;
         transition: 0.2s; }
       .header .header__wrapper .header__profile > a:hover > span {
-        color: #ddd; }
+        color: rgba(255, 255, 255, 0.8); }
     .header .header__wrapper .header__subMenu {
       display: flex;
       justify-content: space-between; }
@@ -442,6 +463,6 @@ input {
           font-size: 25px;
           transition: 0.2s; }
           .header .header__wrapper .header__subMenu > ul .fas:hover {
-            color: #fff; }
+            color: white; }
           .header .header__wrapper .header__subMenu > ul .fas .header__subMenu-friend {
             margin-left: 0; }
