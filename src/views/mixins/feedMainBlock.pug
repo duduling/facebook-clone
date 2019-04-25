@@ -4,14 +4,26 @@ mixin feedBlock(feed = {})
             a(href="#")#feedBolck-url
                 img(src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/56696881_2562572260481360_7683948637189046272_n.jpg?_nc_cat=100&_nc_ht=scontent-icn1-1.xx&oh=b13311bb13255151e1b2ece6fa941350&oe=5D74FC9F", alt="userProfile")#feedBolck-url-img
             .feedBlock__header-grid
-                a(href="#")#feedBolck-name
-                    span=feed.writer
+                #feedBolck-name
+                    a(href="#")
+                        span=feed.writer
                 span#feedBolck-time=feed.createdAt
-            a(href="#")#feedBolck-btn
-                img(src="https://image.flaticon.com/icons/svg/61/61099.svg", alt="dot menu")
+            #feedBolck-btn
+                i.fas.fa-ellipsis-h
         .feedBlock__body
             span=feed.description
             .feedBlock__body-img
                 img(src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/56696881_2562572260481360_7683948637189046272_n.jpg?_nc_cat=100&_nc_ht=scontent-icn1-1.xx&oh=b13311bb13255151e1b2ece6fa941350&oe=5D74FC9F", alt="content img")
         .feedBlock__footer
-            span=feed.likes
+            img(src="/img/like.png", alt="like img")
+            span.feedBlock__footer-like=feed.likes
+            span.feedBlock__footer-comment 댓글 100개
+            .feedBlock__designLine
+            .feedBlock__footer-btn
+                button
+                    i.far.fa-thumbs-up
+                    span Like
+                button
+                    i.far.fa-comment-alt
+                    span Comment
+            
