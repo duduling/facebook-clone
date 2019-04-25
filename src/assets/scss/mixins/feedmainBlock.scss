@@ -1,25 +1,45 @@
 .feedBlock {
-  padding: 10px;
   border: #ddd solid 1px;
-  border-radius: 5px;
+  border-radius: 7px;
   margin-bottom: 15px;
+  background-color: #fff;
   .feedBlock__header {
     display: grid;
     grid-template-columns: 2fr 17fr 1fr;
+    padding: 10px;
     #feedBolck-url-img {
       width: 60px;
       height: 60px;
       border-radius: 25px;
     }
-    #feedBolck-name {
+    .feedBlock__header-grid {
       height: 100%;
       display: grid;
       grid-template-rows: 1fr 1fr;
+      span {
+        margin-left: 10px;
+        line-height: 30px;
+      }
+    }
+    #feedBolck-btn {
+      & > img {
+        float: right;
+        width: 20px;
+        height: 20px;
+      }
     }
   }
   .feedBlock__body {
-    height: 400px;
-    background-color: #aaa;
+    & > span {
+      display: block;
+      padding: 10px;
+    }
+    .feedBlock__body-img {
+      & > img {
+        width: 600px;
+        height: 600px;
+      }
+    }
   }
   .feedBlock__footer {
     height: 100px;
