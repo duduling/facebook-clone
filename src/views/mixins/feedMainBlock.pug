@@ -1,11 +1,11 @@
 mixin feedBlock(feed = {})
     .feedBlock
         .feedBlock__header
-            a(href="#")#feedBolck-url
+            a(href=routes.feedsUser(feed.writerIdx))#feedBolck-url
                 img(src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/56696881_2562572260481360_7683948637189046272_n.jpg?_nc_cat=100&_nc_ht=scontent-icn1-1.xx&oh=b13311bb13255151e1b2ece6fa941350&oe=5D74FC9F", alt="userProfile")#feedBolck-url-img
             .feedBlock__header-grid
                 #feedBolck-name
-                    a(href="#")
+                    a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
                 span#feedBolck-time=feed.createdAt
             #feedBolck-btn
@@ -15,14 +15,14 @@ mixin feedBlock(feed = {})
             .feedBlock__body-img
                 img(src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/56696881_2562572260481360_7683948637189046272_n.jpg?_nc_cat=100&_nc_ht=scontent-icn1-1.xx&oh=b13311bb13255151e1b2ece6fa941350&oe=5D74FC9F", alt="content img")
         .feedBlock__footer
-            img(src="/img/like.png", alt="like img")
+            img(src="/img/like_on.png", alt="like img")
             span.feedBlock__footer-like=feed.likes
             span.feedBlock__footer-comment 댓글 100개
             .feedBlock__designLine
             .feedBlock__footer-btn
                 button
-                    i.far.fa-thumbs-up
+                    img(src="/img/like_off.png", alt="like img").feedBlock__footer-btn--like
                     span Like
                 button
-                    i.far.fa-comment-alt
+                    img(src="/img/comment_off.png", alt="like img").feedBlock__footer-btn--comment
                     span Comment

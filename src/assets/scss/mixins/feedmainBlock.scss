@@ -74,11 +74,20 @@
         padding: 5px;
         cursor: pointer;
         transition: 0.2s;
-        & > i,
-        span {
-          font-size: 16px;
+        .feedBlock__footer-btn--like,
+        .feedBlock__footer-btn--comment {
+          width: 20px;
+          height: 20px;
+          position: relative;
+        }
+        .feedBlock__footer-btn--like {
+          top: 2px;
+        }
+        .feedBlock__footer-btn--comment {
+          top: 4px;
         }
         & > span {
+          font-size: 16px;
           margin-left: 5px;
         }
         &:hover {

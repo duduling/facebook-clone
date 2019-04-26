@@ -1,0 +1,31 @@
+extends ./layouts/main.pug
+include ./mixins/feedMainBlock
+
+block content
+    .feed-user
+        .feed-user__wrapper
+            h1.ir_su Feed User
+            section.feed-user__info
+                article.feed-user__info--backgroud-img
+                    .feed-user__info--backgroud-effect
+                        img(src=otherUser.profile, alt="user profile")
+                        span=otherUser.name
+                nav.feed-user__info-subNav
+                    h4=`${otherUser.name}님의 타임라인`
+                    a(href="#") Edit User Profile
+            section.feed-user__grid-layout
+                aside.feed-user__side
+                .feed-user__feed
+                    article.feed-user__upload
+                        include ./partials/feedUpload.pug
+                    article.feed-user__content
+                        each item in feeds
+                            +feedBlock({
+                                idx: item.idx,
+                                writer: item.writer,
+                                writerIdx: item.writer_idx,
+                                createdAt: item.createdAt,
+                                fileUrl: item.fileUrl,
+                                description: item.description,
+                                likes: item.likes
+                            })

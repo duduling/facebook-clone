@@ -3,15 +3,15 @@ extends ./layouts/main.pug
 block content
     .homePage__background
         .homePage__container
-            .homePage__info
+            section.homePage__info
                 p Facebook에서 전세계에 있는 친구, 가족, 지인들과 함께 이야기를 나눠보세요.
                 img(src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/OBaVg52wtTZ.png", alt="communication")
-            .homePage__join
-                .homePage__join-boxTitle
+            section.homePage__join
+                article.homePage__join-boxTitle
                     h4 가입하기
                     h5 항상 지금처럼 무료로 즐기실 수 있습니다.
-                form(action=routes.join, method="post")
-                    .homePage__join-form
+                article.homePage__join-form
+                    form(action=routes.join, method="post")
                         input(type="text", name="userName", aria-="name", placeholder="이름", required="true", autocomplete="off")
                         input(type="email", name="email", aria-="email" placeholder="이메일", required="true", autocomplete="off")#jsEmail
                         input(type="password", name="password", aria-="password", id="jsPassword" placeholder="비밀번호", required="true", minlength="6", maxlength="16")

@@ -11,17 +11,18 @@
   width: 100%;
   .header__wrapper {
     width: 980px;
+    height: 50px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 50px;
+    justify-content: space-between;
     .header__logo {
       font-size: 30px;
       color: white;
       text-transform: lowercase;
       padding-bottom: 10px;
       transition: 0.2s;
+      cursor: pointer;
       & > a {
         position: relative;
         top: 4px;
