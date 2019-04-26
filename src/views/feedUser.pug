@@ -1,0 +1,13 @@
+extends ./layouts/main.pug
+
+block content
+    .feed-user
+        .feed-user__wrapper
+            h1.ir_su Feed User
+            .feed-user__info
+                img(src=user.profile, alt="user profile")
+                span=user.name
+                button Edit Profile
+            .feed-user__feed
+
+    

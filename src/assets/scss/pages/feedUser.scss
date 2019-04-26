@@ -1,0 +1,15 @@
+.feed-user {
+  background-color: $feedBGC;
+  min-height: 100vh;
+  position: relative;
+  top: 50px;
+  .feed-user__wrapper {
+    background-color: $feedBGC;
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100vh;
+    .feed-user__info {
+      background-color: #fff;
+    }
+  }
+}

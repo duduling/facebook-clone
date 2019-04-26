@@ -254,82 +254,93 @@ input {
     .homePage__background .homePage__container .homePage__info {
       display: none; } }
 
-.bgc {
+.feed-main {
   background-color: #e9ebee;
-  height: 100%; }
-  .bgc .feed-main {
+  min-height: 100vh;
+  position: relative;
+  padding-top: 10px;
+  top: 50px; }
+  .feed-main .feed-main__wrapper {
     background-color: #e9ebee;
-    min-height: 100vh;
-    position: relative;
-    top: 65px; }
-    .bgc .feed-main .feed-main__wrapper {
-      background-color: #e9ebee;
-      width: 980px;
-      margin: 0 auto;
-      min-height: 100vh; }
-      .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout {
-        display: grid;
-        grid-template-columns: 4fr 2fr;
-        grid-gap: 10px; }
-        .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
-          background-color: #e9ebee;
-          min-height: 100vh; }
-          .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload {
-            width: 100%;
-            height: 250px;
-            border-radius: 7px;
-            background-color: white;
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100vh; }
+    .feed-main .feed-main__wrapper .feed-main__gridLayout {
+      display: grid;
+      grid-template-columns: 4fr 2fr;
+      grid-gap: 10px; }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
+        background-color: #e9ebee;
+        min-height: 100vh; }
+        .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload {
+          width: 100%;
+          height: 250px;
+          border-radius: 7px;
+          background-color: white;
+          display: grid;
+          grid-template-rows: 1fr 7fr; }
+          .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-title {
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            background-color: #f5f6f7;
+            border-radius: 7px 7px 0 0;
+            border-bottom: 1px solid #dddfe2; }
+          .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form {
             display: grid;
-            grid-template-rows: 1fr 7fr; }
-            .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-title {
+            grid-template-rows: 4fr 1fr; }
+            .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description {
+              display: grid;
+              grid-template-columns: 1fr 9fr;
+              border-bottom: 1px solid #dddfe2; }
+              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description > img {
+                width: 50px;
+                height: 50px;
+                margin-top: 8px;
+                margin-left: 8px;
+                border-radius: 20px;
+                background-color: #ccc; }
+              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description > textarea {
+                font-family: "Noto Sans KR", sans-serif;
+                font-size: 14px;
+                padding: 15px 25px 15px 15px;
+                border: none;
+                resize: none; }
+            .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file {
+              display: grid;
+              grid-template-columns: 9fr 1fr;
               display: flex;
               align-items: center;
-              padding-left: 10px;
-              background-color: #f5f6f7;
-              border-radius: 7px 7px 0 0;
-              border-bottom: 1px solid #dddfe2; }
-            .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form {
-              display: grid;
-              grid-template-rows: 4fr 1fr; }
-              .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description {
-                display: grid;
-                grid-template-columns: 1fr 9fr;
-                border-bottom: 1px solid #dddfe2; }
-                .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description > img {
-                  width: 50px;
-                  height: 50px;
-                  margin-top: 8px;
-                  margin-left: 8px;
-                  border-radius: 20px;
-                  background-color: #ccc; }
-                .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description > textarea {
-                  font-family: "Noto Sans KR", sans-serif;
-                  font-size: 14px;
-                  padding: 15px 25px 15px 15px;
-                  border: none;
-                  resize: none; }
-              .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file {
-                display: grid;
-                grid-template-columns: 9fr 1fr;
-                display: flex;
-                align-items: center;
-                justify-content: space-between; }
-                .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(1) {
-                  margin-left: 10px;
-                  width: 100%; }
-                .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(2) {
-                  margin-right: 10px;
-                  font-size: 14px;
-                  padding: 7px 25px;
-                  border-radius: 5px;
-                  cursor: pointer;
-                  background: #f5f6f7;
-                  transition: 0.2s; }
-                .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(2):hover {
-                  background: #c7c7c785; }
-        .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-ad {
-          background-color: rgba(255, 255, 255, 0.8);
-          min-height: 100vh; }
+              justify-content: space-between; }
+              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(1) {
+                margin-left: 10px;
+                width: 100%; }
+              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(2) {
+                margin-right: 10px;
+                font-size: 14px;
+                padding: 7px 25px;
+                border-radius: 5px;
+                cursor: pointer;
+                background: #f5f6f7;
+                transition: 0.2s; }
+              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(2):hover {
+                background: #c7c7c785; }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-ad {
+        background-color: rgba(255, 255, 255, 0.8);
+        min-height: 100vh; }
+
+.feed-user {
+  background-color: #e9ebee;
+  min-height: 100vh;
+  position: relative;
+  top: 50px; }
+  .feed-user .feed-user__wrapper {
+    background-color: #e9ebee;
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100vh; }
+    .feed-user .feed-user__wrapper .feed-user__info {
+      background-color: #fff; }
 
 .header-loginPage {
   background-color: #3b5998;

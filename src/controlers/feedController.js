@@ -11,3 +11,10 @@ export const getFeedMain = (req, res) => {
     res.render("feedMain", { pageTile: "Feed Main", feeds: [] });
   }
 };
+
+export const getFeedUser = (req, res) => {
+  const {
+    params: { idx }
+  } = req;
+  res.render("feedUser", { pageTile: "Feed User", otherUser: idx });
+};
