@@ -206,7 +206,7 @@ input {
           font-weight: 500; }
       .homePage__background .homePage__container .homePage__join .homePage__join-form {
         margin-left: 10px; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form > input {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form > input {
           display: inline-block;
           font-size: 20px;
           padding: 7px 10px;
@@ -214,28 +214,28 @@ input {
           border-radius: 5px;
           border: #c9cacd solid 0.5px;
           margin-top: 10px; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form > label {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form > label {
           color: #1d2129;
           font-size: 19px;
           font-weight: 500;
           display: block;
           padding: 10px 0; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--birth {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--birth {
           padding-bottom: 15px; }
-          .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--birth > select {
+          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--birth > select {
             padding: 3px;
             margin: 0 3px 10px; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--sex {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--sex {
           font-size: 20px; }
-          .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--sex > input:nth-child(2) {
+          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--sex > input:nth-child(2) {
             margin-left: 10px; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-formTerms {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-formTerms {
           font-size: 10px;
           color: #999;
           word-spacing: 1px;
           padding: 20px 10px;
           line-height: normal; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--btn {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--btn {
           color: white;
           font-size: 20px;
           font-weight: bold;
@@ -245,7 +245,7 @@ input {
           border-color: #3b6e22 #3b6e22 #2c5115;
           cursor: pointer;
           margin-bottom: 10px; }
-          .homePage__background .homePage__container .homePage__join .homePage__join-form #homePage__join-form--btn:hover {
+          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--btn:hover {
             background: linear-gradient(#79bc64, #578843); }
 
 @media (max-width: 1054px) {
@@ -272,59 +272,6 @@ input {
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
         background-color: #e9ebee;
         min-height: 100vh; }
-        .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload {
-          width: 100%;
-          height: 250px;
-          border-radius: 7px;
-          background-color: white;
-          display: grid;
-          grid-template-rows: 1fr 7fr; }
-          .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-title {
-            display: flex;
-            align-items: center;
-            padding-left: 10px;
-            background-color: #f5f6f7;
-            border-radius: 7px 7px 0 0;
-            border-bottom: 1px solid #dddfe2; }
-          .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form {
-            display: grid;
-            grid-template-rows: 4fr 1fr; }
-            .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description {
-              display: grid;
-              grid-template-columns: 1fr 9fr;
-              border-bottom: 1px solid #dddfe2; }
-              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description > img {
-                width: 50px;
-                height: 50px;
-                margin-top: 8px;
-                margin-left: 8px;
-                border-radius: 20px;
-                background-color: #ccc; }
-              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description > textarea {
-                font-family: "Noto Sans KR", sans-serif;
-                font-size: 14px;
-                padding: 15px 25px 15px 15px;
-                border: none;
-                resize: none; }
-            .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file {
-              display: grid;
-              grid-template-columns: 9fr 1fr;
-              display: flex;
-              align-items: center;
-              justify-content: space-between; }
-              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(1) {
-                margin-left: 10px;
-                width: 100%; }
-              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(2) {
-                margin-right: 10px;
-                font-size: 14px;
-                padding: 7px 25px;
-                border-radius: 5px;
-                cursor: pointer;
-                background: #f5f6f7;
-                transition: 0.2s; }
-              .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(2):hover {
-                background: #c7c7c785; }
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-ad {
         background-color: rgba(255, 255, 255, 0.8);
         min-height: 100vh; }
@@ -341,6 +288,17 @@ input {
     min-height: 100vh; }
     .feed-user .feed-user__wrapper .feed-user__info {
       background-color: #fff; }
+    .feed-user .feed-user__wrapper .feed-user__grid-layout {
+      display: grid;
+      grid-template-columns: 4fr 2fr;
+      grid-gap: 10px;
+      padding-top: 15px; }
+      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__feed {
+        background-color: #bbb;
+        min-height: 100vh; }
+      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__side {
+        background-color: #ccc;
+        min-height: 100vh; }
 
 .header-loginPage {
   background-color: #3b5998;
@@ -534,6 +492,60 @@ input {
             color: white; }
           .header .header__wrapper .header__subMenu > ul .fas .header__subMenu-friend {
             margin-left: 0; }
+
+.feed-main__upload-wrapper {
+  width: 100%;
+  height: 250px;
+  border-radius: 7px;
+  background-color: white;
+  display: grid;
+  grid-template-rows: 1fr 7fr; }
+  .feed-main__upload-wrapper .feed-main__upload-title {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    background-color: #f5f6f7;
+    border-radius: 7px 7px 0 0;
+    border-bottom: 1px solid #dddfe2; }
+  .feed-main__upload-wrapper .feed-main__upload-form {
+    display: grid;
+    grid-template-rows: 4fr 1fr; }
+    .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-description {
+      display: grid;
+      grid-template-columns: 1fr 9fr;
+      border-bottom: 1px solid #dddfe2; }
+      .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-description > img {
+        width: 50px;
+        height: 50px;
+        margin-top: 8px;
+        margin-left: 8px;
+        border-radius: 20px;
+        background-color: #ccc; }
+      .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-description > textarea {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 14px;
+        padding: 15px 25px 15px 15px;
+        border: none;
+        resize: none; }
+    .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file {
+      display: grid;
+      grid-template-columns: 9fr 1fr;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(1) {
+        margin-left: 10px;
+        width: 100%; }
+      .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(2) {
+        margin-right: 10px;
+        font-size: 14px;
+        padding: 7px 25px;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #f5f6f7;
+        transition: 0.2s; }
+      .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(2):hover {
+        background: #c7c7c785; }
 
 .feedBlock {
   border: #ddd solid 1px;

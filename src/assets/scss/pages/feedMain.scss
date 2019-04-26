@@ -16,69 +16,6 @@
       .feed-main__gridLayout-feed {
         background-color: $feedBGC;
         min-height: 100vh;
-        .feed-main__upload {
-          width: 100%;
-          height: 250px;
-          border-radius: 7px;
-          background-color: white;
-          display: grid;
-          grid-template-rows: 1fr 7fr;
-          .feed-main__upload-title {
-            display: flex;
-            align-items: center;
-            padding-left: 10px;
-            background-color: #f5f6f7;
-            border-radius: 7px 7px 0 0;
-            border-bottom: 1px solid #dddfe2;
-          }
-          .feed-main__upload-form {
-            display: grid;
-            grid-template-rows: 4fr 1fr;
-            .feed-main__upload-form-description {
-              display: grid;
-              grid-template-columns: 1fr 9fr;
-              border-bottom: 1px solid #dddfe2;
-              & > img {
-                width: 50px;
-                height: 50px;
-                margin-top: 8px;
-                margin-left: 8px;
-                border-radius: 20px;
-                background-color: #ccc;
-              }
-              & > textarea {
-                font-family: "Noto Sans KR", sans-serif;
-                font-size: 14px;
-                padding: 15px 25px 15px 15px;
-                border: none;
-                resize: none;
-              }
-            }
-            .feed-main__upload-form-file {
-              display: grid;
-              grid-template-columns: 9fr 1fr;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              & :nth-child(1) {
-                margin-left: 10px;
-                width: 100%;
-              }
-              & :nth-child(2) {
-                margin-right: 10px;
-                font-size: 14px;
-                padding: 7px 25px;
-                border-radius: 5px;
-                cursor: pointer;
-                background: #f5f6f7;
-                transition: 0.2s;
-              }
-              & :nth-child(2):hover {
-                background: #c7c7c785;
-              }
-            }
-          }
-        }
       }
       .feed-main__gridLayout-ad {
         background-color: $hoverColor;

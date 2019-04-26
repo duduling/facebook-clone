@@ -11,5 +11,19 @@
     .feed-user__info {
       background-color: #fff;
     }
+    .feed-user__grid-layout {
+      display: grid;
+      grid-template-columns: 4fr 2fr;
+      grid-gap: 10px;
+      padding-top: 15px;
+      .feed-user__feed {
+        background-color: #bbb;
+        min-height: 100vh;
+      }
+      .feed-user__side {
+        background-color: #ccc;
+        min-height: 100vh;
+      }
+    }
   }
 }

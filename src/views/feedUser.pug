@@ -1,13 +1,26 @@
 extends ./layouts/main.pug
+include ./mixins/feedMainBlock
 
 block content
     .feed-user
         .feed-user__wrapper
             h1.ir_su Feed User
-            .feed-user__info
+            section.feed-user__info
                 img(src=user.profile, alt="user profile")
                 span=user.name
                 button Edit Profile
-            .feed-user__feed
-
-    
+            section.feed-user__grid-layout
+                .feed-user__feed
+                    article.feed-user__upload
+                        include ./partials/feedUpload.pug
+                    article.feed-user__content
+                        each item in feeds
+                            +feedBlock({
+                                idx: item.idx,
+                                writer: item.writer,
+                                createdAt: item.createdAt,
+                                fileUrl: item.fileUrl,
+                                description: item.description,
+                                likes: item.likes
+                            })
+                aside.feed-user__side

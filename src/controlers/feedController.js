@@ -1,5 +1,6 @@
 // Feed Controller.js
 import db from "../db";
+import routes from "../routes";
 
 export const getFeedMain = (req, res) => {
   try {
@@ -16,5 +17,16 @@ export const getFeedUser = (req, res) => {
   const {
     params: { idx }
   } = req;
-  res.render("feedUser", { pageTile: "Feed User", otherUser: idx });
+  try {
+    db.query("SELECT * FROM Feeds where `writer_idx`=?", [idx], (_, rows) => {
+      res.render("feedUser", {
+        pageTile: "Feed User",
+        otherUser: idx,
+        feeds: rows
+      });
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.home);
+  }
 };

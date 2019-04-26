@@ -40,54 +40,56 @@
       }
       .homePage__join-form {
         margin-left: 10px;
-        & > input {
-          display: inline-block;
-          font-size: 20px;
-          padding: 7px 10px;
-          width: 100%;
-          border-radius: 5px;
-          border: #c9cacd solid 0.5px;
-          margin-top: 10px;
-        }
-        & > label {
-          color: #1d2129;
-          font-size: 19px;
-          font-weight: 500;
-          display: block;
-          padding: 10px 0;
-        }
-        #homePage__join-form--birth {
-          padding-bottom: 15px;
-          & > select {
-            padding: 3px;
-            margin: 0 3px 10px;
+        & > form {
+          & > input {
+            display: inline-block;
+            font-size: 20px;
+            padding: 7px 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: #c9cacd solid 0.5px;
+            margin-top: 10px;
           }
-        }
-        #homePage__join-form--sex {
-          font-size: 20px;
-          & > input:nth-child(2) {
-            margin-left: 10px;
+          & > label {
+            color: #1d2129;
+            font-size: 19px;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
           }
-        }
-        #homePage__join-formTerms {
-          font-size: 10px;
-          color: #999;
-          word-spacing: 1px;
-          padding: 20px 10px;
-          line-height: normal;
-        }
-        #homePage__join-form--btn {
-          color: white;
-          font-size: 20px;
-          font-weight: bold;
-          background: linear-gradient(#67ae55, #578843);
-          background-color: #69a74e;
-          box-shadow: inset 0 1px 1px #a4e388;
-          border-color: #3b6e22 #3b6e22 #2c5115;
-          cursor: pointer;
-          margin-bottom: 10px;
-          &:hover {
-            background: linear-gradient(#79bc64, #578843);
+          #homePage__join-form--birth {
+            padding-bottom: 15px;
+            & > select {
+              padding: 3px;
+              margin: 0 3px 10px;
+            }
+          }
+          #homePage__join-form--sex {
+            font-size: 20px;
+            & > input:nth-child(2) {
+              margin-left: 10px;
+            }
+          }
+          #homePage__join-formTerms {
+            font-size: 10px;
+            color: #999;
+            word-spacing: 1px;
+            padding: 20px 10px;
+            line-height: normal;
+          }
+          #homePage__join-form--btn {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(#67ae55, #578843);
+            background-color: #69a74e;
+            box-shadow: inset 0 1px 1px #a4e388;
+            border-color: #3b6e22 #3b6e22 #2c5115;
+            cursor: pointer;
+            margin-bottom: 10px;
+            &:hover {
+              background: linear-gradient(#79bc64, #578843);
+            }
           }
         }
       }
