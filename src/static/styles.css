@@ -278,30 +278,36 @@ input {
             width: 100%;
             height: 250px;
             border-radius: 7px;
-            background-color: #aaa;
+            background-color: white;
             display: grid;
             grid-template-rows: 1fr 7fr; }
             .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-title {
               display: flex;
               align-items: center;
-              margin-left: 10px; }
+              padding-left: 10px;
+              background-color: #f5f6f7;
+              border-radius: 7px 7px 0 0;
+              border-bottom: 1px solid #dddfe2; }
             .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form {
               display: grid;
               grid-template-rows: 4fr 1fr; }
               .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description {
                 display: grid;
-                grid-template-columns: 1fr 9fr; }
+                grid-template-columns: 1fr 9fr;
+                border-bottom: 1px solid #dddfe2; }
                 .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description > img {
                   width: 50px;
                   height: 50px;
                   margin-top: 8px;
                   margin-left: 8px;
                   border-radius: 20px;
-                  background-color: #fff; }
+                  background-color: #ccc; }
                 .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-description > textarea {
                   font-family: "Noto Sans KR", sans-serif;
                   font-size: 14px;
-                  padding: 15px; }
+                  padding: 15px 25px 15px 15px;
+                  border: none;
+                  resize: none; }
               .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file {
                 display: grid;
                 grid-template-columns: 9fr 1fr;
@@ -314,7 +320,13 @@ input {
                 .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(2) {
                   margin-right: 10px;
                   font-size: 14px;
-                  padding: 5px 20px; }
+                  padding: 7px 25px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  background: #f5f6f7;
+                  transition: 0.2s; }
+                .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed .feed-main__upload .feed-main__upload-form .feed-main__upload-form-file :nth-child(2):hover {
+                  background: #c7c7c785; }
         .bgc .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-ad {
           background-color: rgba(255, 255, 255, 0.8);
           min-height: 100vh; }
@@ -570,10 +582,17 @@ input {
         padding: 5px;
         cursor: pointer;
         transition: 0.2s; }
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button > i,
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button span {
-          font-size: 16px; }
+        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--like,
+        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--comment {
+          width: 20px;
+          height: 20px;
+          position: relative; }
+        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--like {
+          top: 2px; }
+        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--comment {
+          top: 4px; }
         .feedBlock .feedBlock__footer .feedBlock__footer-btn > button > span {
+          font-size: 16px;
           margin-left: 5px; }
         .feedBlock .feedBlock__footer .feedBlock__footer-btn > button:hover {
           background-color: #e9ebee8a; }
