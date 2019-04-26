@@ -9,11 +9,58 @@
     margin: 0 auto;
     min-height: 100vh;
     .feed-user__info {
-      background-color: #fff;
+      .feed-user__info--backgroud-img {
+        background: url(/img/background_img.jpg) no-repeat center;
+        .feed-user__info--backgroud-effect {
+          background: linear-gradient(
+            rgba(0, 0, 0, 0) 65%,
+            rgba(0, 0, 0, 0.53)
+          );
+          & > img {
+            width: 150px;
+            height: 150px;
+            border-radius: 100px;
+            margin: 150px 0 10px 20px;
+            background-color: #ccc;
+            border: 5px solid #fff;
+          }
+          & > span {
+            color: #fff;
+            font-weight: bold;
+            font-size: 25px;
+            position: relative;
+            left: 20px;
+            bottom: 30px;
+          }
+        }
+      }
+      .feed-user__info-subNav {
+        background-color: #fff;
+        overflow: hidden;
+        border: #c7c7c785 solid 1px;
+        & > h4 {
+          display: inline-block;
+          padding: 12px;
+          font-size: 20px;
+        }
+        & > a {
+          float: right;
+          padding: 12px;
+          font-size: 16px;
+          line-height: 20px;
+          font-weight: bold;
+          transition: 0.2s;
+          background-color: white;
+          border-left: #c7c7c785 solid 1px;
+          &:hover {
+            background-color: #f5f6f7;
+          }
+        }
+      }
     }
     .feed-user__grid-layout {
       display: grid;
-      grid-template-columns: 4fr 2fr;
+      grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px;
       .feed-user__feed {

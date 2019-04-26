@@ -6,10 +6,15 @@ block content
         .feed-user__wrapper
             h1.ir_su Feed User
             section.feed-user__info
-                img(src=user.profile, alt="user profile")
-                span=user.name
-                button Edit Profile
+                article.feed-user__info--backgroud-img
+                    .feed-user__info--backgroud-effect
+                        img(src=user.profile, alt="user profile")
+                        span=user.name
+                nav.feed-user__info-subNav
+                    h4 김두현님의 타임라인
+                    a(href="#") Edit User Profile
             section.feed-user__grid-layout
+                aside.feed-user__side
                 .feed-user__feed
                     article.feed-user__upload
                         include ./partials/feedUpload.pug
@@ -23,4 +28,3 @@ block content
                                 description: item.description,
                                 likes: item.likes
                             })
-                aside.feed-user__side
