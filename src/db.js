@@ -11,6 +11,7 @@ const db = mysql.createConnection({
   database: process.env.MYSQL_DB,
   connectionLimit: 50,
   queueLimit: 0,
+  multipleStatements: true,
   waitForConnection: true
 });
 

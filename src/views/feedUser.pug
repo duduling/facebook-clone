@@ -8,10 +8,10 @@ block content
             section.feed-user__info
                 article.feed-user__info--backgroud-img
                     .feed-user__info--backgroud-effect
-                        img(src=user.profile, alt="user profile")
-                        span=user.name
+                        img(src=otherUser.profile, alt="user profile")
+                        span=otherUser.name
                 nav.feed-user__info-subNav
-                    h4 김두현님의 타임라인
+                    h4=`${otherUser.name}님의 타임라인`
                     a(href="#") Edit User Profile
             section.feed-user__grid-layout
                 aside.feed-user__side
@@ -23,6 +23,7 @@ block content
                             +feedBlock({
                                 idx: item.idx,
                                 writer: item.writer,
+                                writerIdx: item.writer_idx,
                                 createdAt: item.createdAt,
                                 fileUrl: item.fileUrl,
                                 description: item.description,

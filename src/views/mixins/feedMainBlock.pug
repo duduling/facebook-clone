@@ -1,11 +1,11 @@
 mixin feedBlock(feed = {})
     .feedBlock
         .feedBlock__header
-            a(href=routes.feedsUser(feed.idx))#feedBolck-url
+            a(href=routes.feedsUser(feed.writerIdx))#feedBolck-url
                 img(src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/56696881_2562572260481360_7683948637189046272_n.jpg?_nc_cat=100&_nc_ht=scontent-icn1-1.xx&oh=b13311bb13255151e1b2ece6fa941350&oe=5D74FC9F", alt="userProfile")#feedBolck-url-img
             .feedBlock__header-grid
                 #feedBolck-name
-                    a(href=routes.feedsUser(feed.idx))
+                    a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
                 span#feedBolck-time=feed.createdAt
             #feedBolck-btn

@@ -18,11 +18,16 @@ export const getFeedUser = (req, res) => {
     params: { idx }
   } = req;
   try {
-    db.query("SELECT * FROM Feeds where `writer_idx`=?", [idx], (_, rows) => {
+    const query =
+      "SELECT * FROM Users where `idx`=?; SELECT * FROM Feeds where `writer_idx`=?";
+    db.query(query, [idx, idx], (_, rows) => {
+      const otherUser = rows[0][0];
+      const feeds = rows[1];
+
       res.render("feedUser", {
         pageTile: "Feed User",
-        otherUser: idx,
-        feeds: rows
+        otherUser,
+        feeds
       });
     });
   } catch (error) {
