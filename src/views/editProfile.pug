@@ -1,0 +1,21 @@
+extends ./layouts/main
+
+block content
+        .edit-profile
+            .edit-profile__wrapper
+                h1.ir_su Edit Profile
+                section.edit-profile__box
+                    nav.edit-profile__box-nav
+                        a.not-active(href=`/user${routes.editProfile}`) Edit Profile
+                        a(href=`#`) Edit PassWord
+                        a(href=`#`) Edit Info
+                    article.edit-profile__box-form
+                        form 
+                            .edit-profile__box-form--backgroud-img(style=`background-image: url(${logged.bg_profile});`)
+                                .edit-profile__box-form--backgroud-effect
+                                    img(src=logged.profile, alt="user profile")
+                                    span=logged.name
+                            label(for="editProfileFile", value="ㅇㅇ")
+                            input(type="file", name="profile", id="editProfileFile")
+                            input(type="file", name="bg_profile", id="editBackgroundFile")
+                            input(type="submit", value="Change the picture")

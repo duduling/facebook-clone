@@ -177,3 +177,10 @@ input {
 .font {
   font-family: "Noto Sans KR", sans-serif;
 }
+
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  background-color: #e2f1ff;
+}

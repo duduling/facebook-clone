@@ -35,6 +35,8 @@ passport.use(
         if (rows == "") {
           done(null, false, { message: "Incorrect username." });
         } else {
+          console.log(rows);
+
           const user = rows[0];
 
           // 암호화 비밀번호 확인

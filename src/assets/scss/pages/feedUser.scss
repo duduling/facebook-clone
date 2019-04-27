@@ -51,10 +51,9 @@
           line-height: 20px;
           font-weight: bold;
           transition: 0.2s;
-          background-color: white;
           border-left: #c7c7c785 solid 1px;
           &:hover {
-            background-color: #f5f6f7;
+            background-color: $menuHover;
           }
         }
       }

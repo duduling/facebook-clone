@@ -167,6 +167,12 @@ input {
 .font {
   font-family: "Noto Sans KR", sans-serif; }
 
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  background-color: #e2f1ff; }
+
 #body__wrap {
   min-height: 100vh; }
 
@@ -320,10 +326,9 @@ input {
         line-height: 20px;
         font-weight: bold;
         transition: 0.2s;
-        background-color: white;
         border-left: #c7c7c785 solid 1px; }
         .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > a:hover {
-          background-color: #f5f6f7; }
+          background-color: #e2f1ff; }
     .feed-user .feed-user__wrapper .feed-user__grid-layout {
       display: grid;
       grid-template-columns: 2fr 4fr;
@@ -335,6 +340,54 @@ input {
       .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__side {
         background-color: #ccc;
         min-height: 100vh; }
+
+.edit-profile {
+  background-color: #e9ebee;
+  min-height: 100vh;
+  position: relative;
+  top: 50px; }
+  .edit-profile .edit-profile__wrapper {
+    background-color: #e9ebee;
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100vh; }
+    .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-nav {
+      background-color: #fff;
+      overflow: hidden;
+      border: #c7c7c785 solid 1px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; }
+      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-nav > a {
+        padding: 10px;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: bold;
+        transition: 0.2s;
+        border-left: #c7c7c785 solid 1px;
+        cursor: pointer; }
+        .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-nav > a:hover {
+          background-color: #e2f1ff; }
+      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-nav:first-child {
+        border-left: none; }
+    .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--backgroud-img {
+      background: no-repeat center/100%; }
+      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--backgroud-img .edit-profile__box-form--backgroud-effect {
+        background: linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53)); }
+        .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--backgroud-img .edit-profile__box-form--backgroud-effect > img {
+          width: 150px;
+          height: 150px;
+          border-radius: 100px;
+          margin: 150px 0 10px 20px;
+          background-color: #ccc;
+          border: 5px solid #fff; }
+        .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--backgroud-img .edit-profile__box-form--backgroud-effect > span {
+          text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+          position: relative;
+          left: 20px;
+          bottom: 30px;
+          color: #fff;
+          font-size: 25px;
+          font-weight: bold; }
 
 .header-loginPage {
   background-color: #3b5998;

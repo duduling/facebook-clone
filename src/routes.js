@@ -37,7 +37,7 @@ const routes = {
   },
   // User
   user: USER,
-  eidtProfile: EDIT_PROFILE,
+  editProfile: EDIT_PROFILE,
   // API
   api: API,
   checkId: CHECK_ID,
