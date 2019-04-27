@@ -388,6 +388,29 @@ input {
           color: #fff;
           font-size: 25px;
           font-weight: bold; }
+    .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 30px 50px;
+      border: #9c9c9c solid 1px;
+      background-color: white; }
+      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs > * {
+        margin-top: 20px;
+        font-size: 18px; }
+      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs .edit-profile__box-form--inputs-coverImg > input {
+        border: #9c9c9c solid 1px;
+        margin-left: 15px; }
+      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs .edit-profile__box-form--inputs-profileImg > input {
+        border: #9c9c9c solid 1px;
+        margin-left: 10px; }
+      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs > input {
+        margin-top: 50px;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer; }
+        .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs > input:hover {
+          background-color: #c7c7c785; }
 
 .header-loginPage {
   background-color: #3b5998;

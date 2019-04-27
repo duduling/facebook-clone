@@ -11,11 +11,15 @@ block content
                         a(href=`#`) Edit Info
                     article.edit-profile__box-form
                         form 
-                            .edit-profile__box-form--backgroud-img(style=`background-image: url(${logged.bg_profile});`)
+                            .edit-profile__box-form--backgroud-img(style=`background-image: url(${logged.cover});`)
                                 .edit-profile__box-form--backgroud-effect
                                     img(src=logged.profile, alt="user profile")
                                     span=logged.name
-                            label(for="editProfileFile", value="ㅇㅇ")
-                            input(type="file", name="profile", id="editProfileFile")
-                            input(type="file", name="bg_profile", id="editBackgroundFile")
-                            input(type="submit", value="Change the picture")
+                            .edit-profile__box-form--inputs
+                                .edit-profile__box-form--inputs-coverImg
+                                    label(for="editProfileFile") Cover Image
+                                    input(type="file", name="profile", id="editProfileFile")
+                                .edit-profile__box-form--inputs-profileImg
+                                    label(for="editCoverFile") Profile Image
+                                    input(type="file", name="cover", id="editCoverFile")
+                                input(type="submit", value="Change the picture")
