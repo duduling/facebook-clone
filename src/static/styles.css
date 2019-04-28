@@ -278,9 +278,11 @@ input {
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
         background-color: #e9ebee;
         min-height: 100vh; }
-      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-ad {
-        background-color: rgba(255, 255, 255, 0.8);
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside {
         min-height: 100vh; }
+        .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-users {
+          background-color: white;
+          padding: 10px; }
 
 .feed-user {
   background-color: #e9ebee;
@@ -765,3 +767,20 @@ input {
           margin-left: 5px; }
         .feedBlock .feedBlock__footer .feedBlock__footer-btn > button:hover {
           background-color: #e9ebee8a; }
+
+.feed-main__aside-users--block {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 5px;
+  margin-top: 10px; }
+  .feed-main__aside-users--block > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #ccc; }
+  .feed-main__aside-users--block .feed-main__aside-users--block-link {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-left: 5px; }
+    .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
+      margin-left: 5px; }
