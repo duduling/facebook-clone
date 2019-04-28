@@ -13,7 +13,6 @@ block content
                 nav.feed-user__info-subNav
                     h4=`${otherUser.name}님의 타임라인`
                     if user.idx === otherUser.idx
-                        a(href=`/user${routes.editInfo}`) Edit Info
                         a(href=`/user${routes.editPassword}`) Edit Password
                         a(href=`/user${routes.editProfile}`) Edit Profile
             section.feed-user__grid-layout

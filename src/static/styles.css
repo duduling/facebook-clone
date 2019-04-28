@@ -356,7 +356,7 @@ input {
       overflow: hidden;
       border: #9c9c9c solid 1px;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr; }
+      grid-template-columns: 1fr 1fr; }
       .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box-nav > a {
         padding: 10px;
         font-size: 14px;

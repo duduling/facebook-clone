@@ -10,7 +10,6 @@ block content
                         span.ir_su=pageTile
                         a(href=`/user${routes.editProfile}`) Edit Profile
                         a(href=`/user${routes.editPassword}`) Edit PassWord
-                        a(href=`/user${routes.editInfo}`) Edit Info
                     article.edit-userDetail__box--backgroud-img(style=`background-image: url(${logged.cover});`)
                         .edit-userDetail__box--backgroud-effect
                             img(src=logged.profile, alt="user profile")
@@ -21,6 +20,4 @@ block content
                             include ./partials/editProfile
                         else if pageTile === "Edit Password"
                             include ./partials/editPassword
-                        else if pageTile === "Edit Info"
-                            include ./partials/editInfo
                             

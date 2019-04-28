@@ -15,7 +15,6 @@ const FEEDS_USER = "/:idx";
 const USER = "/user";
 const EDIT_PROFILE = "/editProfile";
 const EDIT_PASSWORD = "/editPassword";
-const EDIT_INFO = "/editInfo";
 
 // API
 const API = "/api";
@@ -41,7 +40,6 @@ const routes = {
   user: USER,
   editProfile: EDIT_PROFILE,
   editPassword: EDIT_PASSWORD,
-  editInfo: EDIT_INFO,
   // API
   api: API,
   checkId: CHECK_ID,
