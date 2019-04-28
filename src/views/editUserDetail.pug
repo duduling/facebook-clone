@@ -1,0 +1,26 @@
+extends ./layouts/main
+
+block content
+        .edit-userDetail
+            .edit-userDetail__wrapper
+                h1.ir_su Edit Profile
+                section.edit-userDetail__box
+                    nav.edit-userDetail__box-nav
+                        //- 어디 페이지인지 분기 처리 부분 나중에 JS로 .not-active 붙이기
+                        span.ir_su=pageTile
+                        a(href=`/user${routes.editProfile}`) Edit Profile
+                        a(href=`/user${routes.editPassword}`) Edit PassWord
+                        a(href=`/user${routes.editInfo}`) Edit Info
+                    article.edit-userDetail__box--backgroud-img(style=`background-image: url(${logged.cover});`)
+                        .edit-userDetail__box--backgroud-effect
+                            img(src=logged.profile, alt="user profile")
+                            span=logged.name
+                    article.edit-userDetail__box-form
+                        //- Form 별로 분기 처리
+                        if pageTile === "Edit Profile"
+                            include ./partials/editProfile
+                        else if pageTile === "Edit Password"
+                            include ./partials/editPassword
+                        else if pageTile === "Edit Info"
+                            include ./partials/editInfo
+                            

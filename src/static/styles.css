@@ -341,23 +341,23 @@ input {
         background-color: #ccc;
         min-height: 100vh; }
 
-.edit-profile {
+.edit-userDetail {
   background-color: #e9ebee;
   min-height: 100vh;
   position: relative;
   top: 50px; }
-  .edit-profile .edit-profile__wrapper {
+  .edit-userDetail .edit-userDetail__wrapper {
     background-color: #e9ebee;
     width: 980px;
     margin: 0 auto;
     min-height: 100vh; }
-    .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-nav {
+    .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box-nav {
       background-color: #fff;
       overflow: hidden;
-      border: #c7c7c785 solid 1px;
+      border: #9c9c9c solid 1px;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr; }
-      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-nav > a {
+      .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box-nav > a {
         padding: 10px;
         font-size: 14px;
         line-height: 20px;
@@ -365,22 +365,20 @@ input {
         transition: 0.2s;
         border-left: #c7c7c785 solid 1px;
         cursor: pointer; }
-        .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-nav > a:hover {
+        .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box-nav > a:hover {
           background-color: #e2f1ff; }
-      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-nav:first-child {
-        border-left: none; }
-    .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--backgroud-img {
+    .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img {
       background: no-repeat center/100%; }
-      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--backgroud-img .edit-profile__box-form--backgroud-effect {
+      .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect {
         background: linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53)); }
-        .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--backgroud-img .edit-profile__box-form--backgroud-effect > img {
+        .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > img {
           width: 150px;
           height: 150px;
           border-radius: 100px;
           margin: 150px 0 10px 20px;
           background-color: #ccc;
           border: 5px solid #fff; }
-        .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--backgroud-img .edit-profile__box-form--backgroud-effect > span {
+        .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > span {
           text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
           position: relative;
           left: 20px;
@@ -388,29 +386,6 @@ input {
           color: #fff;
           font-size: 25px;
           font-weight: bold; }
-    .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      padding: 30px 50px;
-      border: #9c9c9c solid 1px;
-      background-color: white; }
-      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs > * {
-        margin-top: 20px;
-        font-size: 18px; }
-      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs .edit-profile__box-form--inputs-coverImg > input {
-        border: #9c9c9c solid 1px;
-        margin-left: 15px; }
-      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs .edit-profile__box-form--inputs-profileImg > input {
-        border: #9c9c9c solid 1px;
-        margin-left: 10px; }
-      .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs > input {
-        margin-top: 50px;
-        padding: 10px;
-        border-radius: 10px;
-        cursor: pointer; }
-        .edit-profile .edit-profile__wrapper .edit-profile__box .edit-profile__box-form .edit-profile__box-form--inputs > input:hover {
-          background-color: #c7c7c785; }
 
 .header-loginPage {
   background-color: #3b5998;
@@ -660,6 +635,62 @@ input {
         transition: 0.2s; }
       .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(2):hover {
         background: #c7c7c785; }
+
+.edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 50px;
+  border: #9c9c9c solid 1px;
+  background-color: white; }
+  .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs > * {
+    margin-top: 20px;
+    font-size: 18px; }
+  .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs .edit-userDetail__box-form-profile-inputs--coverImg > label {
+    margin-left: 5px; }
+  .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs .edit-userDetail__box-form-profile-inputs--coverImg > input {
+    border: #9c9c9c solid 1px;
+    margin-left: 10px; }
+  .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs .edit-userDetail__box-form-profile-inputs--profileImg > input {
+    border: #9c9c9c solid 1px;
+    margin-left: 10px; }
+  .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs > input {
+    margin-top: 50px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer; }
+    .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs > input:hover {
+      background-color: #c7c7c785; }
+
+.edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr) 2fr;
+  padding: 30px 50px;
+  border: #9c9c9c solid 1px;
+  background-color: white; }
+  .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--oldPassword,
+  .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPassword,
+  .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPasswordRe {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+    text-align: right; }
+    .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--oldPassword > *,
+    .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPassword > *,
+    .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPasswordRe > * {
+      padding: 10px;
+      font-size: 16px; }
+  .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--submit {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--submit > input {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer; }
+    .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--submit :hover {
+      background-color: #c7c7c785; }
 
 .feedBlock {
   border: #ddd solid 1px;

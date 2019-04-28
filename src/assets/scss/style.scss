@@ -7,13 +7,16 @@
 @import "./pages/home.scss";
 @import "./pages/feedMain.scss";
 @import "./pages/feedUser.scss";
-@import "./pages/editProfile.scss";
+@import "./pages/editUserDetail.scss";
 
 // Patials
 @import "./partials/headerLogin.scss";
 @import "./partials/footerLogin.scss";
 @import "./partials/header.scss";
 @import "./partials/feedUpload.scss";
+@import "./partials/editProfile.scss";
+@import "./partials/editPassword.scss";
+@import "./partials/editInfo.scss";
 
 // Mixins
 @import "./mixins/feedmainBlock.scss";
