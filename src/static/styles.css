@@ -299,7 +299,7 @@ input {
         .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
           width: 150px;
           height: 150px;
-          border-radius: 100px;
+          border-radius: 100%;
           margin: 150px 0 10px 20px;
           background-color: #ccc;
           border: 5px solid #fff; }
@@ -374,7 +374,7 @@ input {
         .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > img {
           width: 150px;
           height: 150px;
-          border-radius: 100px;
+          border-radius: 100%;
           margin: 150px 0 10px 20px;
           background-color: #ccc;
           border: 5px solid #fff; }
@@ -608,7 +608,7 @@ input {
         height: 50px;
         margin-top: 8px;
         margin-left: 8px;
-        border-radius: 20px;
+        border-radius: 100%;
         background-color: #ccc; }
       .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-description > textarea {
         font-family: "Noto Sans KR", sans-serif;
@@ -704,7 +704,8 @@ input {
     .feedBlock .feedBlock__header #feedBolck-url-img {
       width: 60px;
       height: 60px;
-      border-radius: 25px; }
+      border-radius: 100%;
+      background-color: #ccc; }
     .feedBlock .feedBlock__header .feedBlock__header-grid {
       height: 100%;
       display: grid;
