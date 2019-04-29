@@ -1,0 +1,38 @@
+.edit-userDetail__box-form-profile {
+  .edit-userDetail__box-form-profile-inputs {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 50px;
+    border: $grayLine solid 1px;
+    background-color: white;
+    & > * {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .edit-userDetail__box-form-profile-inputs--coverImg {
+      & > label {
+        margin-left: 5px;
+      }
+      & > input {
+        border: $grayLine solid 1px;
+        margin-left: 10px;
+      }
+    }
+    .edit-userDetail__box-form-profile-inputs--profileImg {
+      & > input {
+        border: $grayLine solid 1px;
+        margin-left: 10px;
+      }
+    }
+    & > input {
+      margin-top: 50px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: $grayHover;
+      }
+    }
+  }
+}

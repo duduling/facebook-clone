@@ -3,8 +3,10 @@ import db from "../db";
 import routes from "../routes";
 
 export const getFeedMain = (req, res) => {
+  const joinQurey =
+    "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx;";
   try {
-    db.query("SELECT * FROM Feeds", (_, rows) => {
+    db.query(joinQurey, (_, rows) => {
       res.render("feedMain", { pageTile: "Feed Main", feeds: rows });
     });
   } catch (error) {

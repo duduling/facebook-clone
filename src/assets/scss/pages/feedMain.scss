@@ -17,9 +17,14 @@
         background-color: $feedBGC;
         min-height: 100vh;
       }
-      .feed-main__gridLayout-ad {
-        background-color: $hoverColor;
+      .feed-main__gridLayout-aside {
         min-height: 100vh;
+        .feed-main__aside-users {
+          background-color: white;
+          padding: 10px;
+        }
+        .feed-main__aside-ad {
+        }
       }
     }
   }

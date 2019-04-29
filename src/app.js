@@ -20,6 +20,7 @@ import { localsMiddleware } from "./middlewares";
 import "./passport";
 import db from "./db";
 import apiRouter from "./routers/apiRouter";
+import userRouter from "./routers/userRouter";
 
 const app = express();
 const MysqlStore = require("express-mysql-session")(session);
@@ -57,6 +58,7 @@ app.use(localsMiddleware);
 // Route
 app.use(routes.home, globalRouter);
 app.use(routes.feeds, feedRouter);
+app.use(routes.user, userRouter);
 app.use(routes.api, apiRouter);
 
 export default app;
