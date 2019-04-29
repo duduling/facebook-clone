@@ -17,14 +17,8 @@ block content
                         a(href=`/user${routes.editPassword}`) Edit Password
                         a(href=`/user${routes.editProfile}`) Edit Profile
             section.feed-user__grid-layout
-                article.feed-user__aside-users
-                    h5 Random Users
-                        each item in [0,0,0,0,0]
-                            +randomFriendBlock({
-                                idx: item.idx,
-                                profile: item.profile,
-                                name: item.name
-                            })
+                aside.feed-main__gridLayout-aside
+                    include ./partials/aside.pug
                 .feed-user__feed
                     article.feed-user__upload
                         include ./partials/feedUpload.pug

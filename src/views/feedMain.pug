@@ -1,7 +1,5 @@
 extends ./layouts/main
 include ./mixins/feedMainBlock
-include ./mixins/randomFriendBlock
-include ./mixins/adBlock
 
 block content
     .bgc
@@ -26,20 +24,4 @@ block content
                                     likes: item.likes
                                 })
                     aside.feed-main__gridLayout-aside
-                        h3.ir_su aside
-                        article.feed-main__aside-users
-                            h5 Random Users
-                            each item in [0,0,0,0,0]
-                                +randomFriendBlock({
-                                    idx: item.idx,
-                                    profile: item.profile,
-                                    name: item.name
-                                })
-                        article.feed-main__aside-ad
-                            h5 AD
-                            each item in [0,0,0]
-                             +adBlock({
-                                    idx: item.idx,
-                                    profile: item.profile,
-                                    name: item.name
-                                })
+                       include ./partials/aside.pug

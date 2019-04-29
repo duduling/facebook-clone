@@ -278,15 +278,6 @@ input {
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
         background-color: #e9ebee;
         min-height: 100vh; }
-      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-users {
-        background-color: white;
-        border-radius: 7px;
-        padding: 10px; }
-      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad {
-        margin-top: 15px;
-        padding: 10px;
-        border-radius: 7px;
-        background-color: white; }
 
 .feed-user {
   background-color: #e9ebee;
@@ -340,9 +331,6 @@ input {
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px; }
-      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__aside-users {
-        background-color: white;
-        padding: 10px; }
       .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__feed {
         background-color: #bbb; }
 
@@ -701,6 +689,17 @@ input {
       cursor: pointer; }
     .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--submit :hover {
       background-color: #c7c7c785; }
+
+.ad-block .feed-main__aside-users {
+  background-color: white;
+  border-radius: 7px;
+  padding: 10px; }
+
+.ad-block .feed-main__aside-ad {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: white; }
 
 .feedBlock {
   border: #ddd solid 1px;
