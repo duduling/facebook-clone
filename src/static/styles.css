@@ -331,10 +331,39 @@ input {
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px; }
-      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr); }
+      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend {
+        background-color: white;
+        padding: 10px;
+        border-radius: 7px; }
+        .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid {
+          display: grid;
+          grid-template-columns: 4fr 2fr;
+          margin-bottom: 15px; }
+          .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) {
+            display: flex;
+            align-items: center; }
+            .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > img {
+              width: 20px;
+              height: 20px; }
+            .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > h5 {
+              display: inline-block;
+              margin-left: 10px; }
+            .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > span {
+              margin-left: 10px;
+              text-align: right;
+              color: crimson; }
+          .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(2) {
+            font-size: 14px;
+            line-height: 16px;
+            text-align: right;
+            color: cadetblue; }
+        .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-grid {
+          display: grid;
+          grid-gap: 5px;
+          padding: 5px;
+          background-color: white;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(3, 1fr); }
 
 .edit-userDetail {
   background-color: #e9ebee;
@@ -727,7 +756,7 @@ input {
     .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--submit :hover {
       background-color: #c7c7c785; }
 
-.ad-block > span {
+.aside-block > span {
   display: block;
   font-size: 12px;
   margin-top: 15px;
@@ -835,6 +864,24 @@ input {
     margin-left: 5px; }
     .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
       margin-left: 5px; }
+
+.friend-block__link .friend-block__BGC {
+  background-color: #ccc; }
+  .friend-block__link .friend-block__BGC .friend-block__box {
+    text-align: center;
+    width: 85px;
+    height: 85px;
+    background: url(/img/profile_male.png) no-repeat center/100%; }
+    .friend-block__link .friend-block__BGC .friend-block__box .friend-profile__box--effect {
+      background: linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
+      width: 85px;
+      height: 85px; }
+      .friend-block__link .friend-block__BGC .friend-block__box .friend-profile__box--effect > span {
+        position: relative;
+        top: 70px;
+        left: -20px;
+        color: white;
+        font-size: 13px; }
 
 .search-users--block {
   display: grid;
