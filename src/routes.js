@@ -14,6 +14,7 @@ const FEEDS_SEARCH = "/search";
 
 // User
 const USER = "/user";
+const USER_FRIENDS = "/userFriends";
 const EDIT_PROFILE = "/editProfile";
 const EDIT_PASSWORD = "/editPassword";
 
@@ -38,6 +39,7 @@ const routes = {
     return FEEDS_USER;
   },
   feedsSearch: FEEDS_SEARCH,
+  userFriends: USER_FRIENDS,
   // User
   user: USER,
   editProfile: EDIT_PROFILE,

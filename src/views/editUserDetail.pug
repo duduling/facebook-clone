@@ -1,23 +1,26 @@
 extends ./layouts/main
 
 block content
-        .edit-userDetail
-            .edit-userDetail__wrapper
-                h1.ir_su Edit Profile
-                section.edit-userDetail__box
-                    nav.edit-userDetail__box-nav
-                        //- 어디 페이지인지 분기 처리 부분 나중에 JS로 .not-active 붙이기
-                        span.ir_su=pageTile
-                        a(href=`/user${routes.editProfile}`) Edit Profile
-                        a(href=`/user${routes.editPassword}`) Edit PassWord
-                    article.edit-userDetail__box--backgroud-img(style=`background-image: url(${logged.cover});`)
-                        .edit-userDetail__box--backgroud-effect
-                            img(src=logged.profile, alt="user profile")
-                            span=logged.name
-                    article.edit-userDetail__box-form
-                        //- Form 별로 분기 처리
-                        if pageTile === "Edit Profile"
-                            include ./partials/editProfile
-                        else if pageTile === "Edit Password"
-                            include ./partials/editPassword
-                            
+    .edit-userDetail
+        .edit-userDetail__wrapper
+            h1.ir_su Edit Profile
+            section.edit-userDetail__box
+                article.edit-userDetail__box--backgroud-img(style=`background-image: url(${otherUser.cover});`)
+                    .edit-userDetail__box--backgroud-effect
+                        img(src=otherUser.profile, alt="user profile")
+                        span=otherUser.name
+                nav.edit-userDetail__box-nav
+                    //- 어디 페이지인지 분기 처리 부분 나중에 JS로 .not-active 붙이기
+                    span.ir_su=pageTile
+                    a(href=`/user${routes.userFriends}`) User Friends
+                    a(href=`/user${routes.editProfile}`) Edit Profile
+                    a(href=`/user${routes.editPassword}`) Edit PassWord
+                article.edit-userDetail__box-form
+                    //- Form 별로 분기 처리
+                    if pageTile === "User Friends"
+                        include ./partials/userFriends
+                    if pageTile === "Edit Profile"
+                        include ./partials/editProfile
+                    else if pageTile === "Edit Password"
+                        include ./partials/editPassword
+                        

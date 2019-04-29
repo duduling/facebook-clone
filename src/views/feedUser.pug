@@ -23,11 +23,10 @@ block content
                         //- include ./partials/asideFriends
                         article.feed-main__aside-friend
                             .feed-main__aside-friend-link--grid
-                                a(href="#")
-                                    img(src="/img/friend.png", alt="")
+                                a(href=`/user${routes.userFriends}`)
+                                    img(src="/img/friend.png", alt="user friends icon")
                                     h5 Friend
                                     span 283
-                                a(href="#") Find Friends
                             .feed-main__aside-friend-grid
                                 each friendProfileBlock in [0,0,0,0,0,0,0,0,0]
                                     +friendProfileBlock({

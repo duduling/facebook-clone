@@ -1,0 +1,26 @@
+.userFriends {
+  background-color: white;
+  border: $grayLine solid 1px;
+  .userFriends__wrapper {
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100vh;
+    .userFriends__header {
+      & > form {
+        border: black solid 1px;
+      }
+    }
+    .userFriends__body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      .userFriends__body-friendBlock {
+        display: grid;
+        grid-template-columns: 2fr 4fr 1fr;
+        & > img {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    }
+  }
+}

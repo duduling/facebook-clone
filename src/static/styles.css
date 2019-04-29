@@ -336,8 +336,7 @@ input {
         padding: 10px;
         border-radius: 7px; }
         .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid {
-          display: grid;
-          grid-template-columns: 4fr 2fr;
+          display: inline-block;
           margin-bottom: 15px; }
           .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) {
             display: flex;
@@ -349,9 +348,7 @@ input {
               display: inline-block;
               margin-left: 10px; }
             .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > span {
-              margin-left: 10px;
-              text-align: right;
-              color: crimson; }
+              margin-left: 5px; }
           .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(2) {
             font-size: 14px;
             line-height: 16px;
@@ -379,8 +376,9 @@ input {
       background-color: #fff;
       overflow: hidden;
       border: #9c9c9c solid 1px;
+      border-bottom: none;
       display: grid;
-      grid-template-columns: 1fr 1fr; }
+      grid-auto-flow: column; }
       .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box-nav > a {
         padding: 10px;
         font-size: 14px;
@@ -691,6 +689,25 @@ input {
         transition: 0.2s; }
       .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(2):hover {
         background: #c7c7c785; }
+
+.userFriends {
+  background-color: white;
+  border: #9c9c9c solid 1px; }
+  .userFriends .userFriends__wrapper {
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100vh; }
+    .userFriends .userFriends__wrapper .userFriends__header > form {
+      border: black solid 1px; }
+    .userFriends .userFriends__wrapper .userFriends__body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; }
+      .userFriends .userFriends__wrapper .userFriends__body-grid .userFriends__body-friendBlock {
+        display: grid;
+        grid-template-columns: 2fr 4fr 1fr; }
+        .userFriends .userFriends__wrapper .userFriends__body-grid .userFriends__body-friendBlock > img {
+          width: 150px;
+          height: 150px; }
 
 .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs {
   display: flex;
