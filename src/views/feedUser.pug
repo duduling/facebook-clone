@@ -1,5 +1,6 @@
 extends ./layouts/main.pug
 include ./mixins/feedMainBlock
+include ./mixins/randomFriendBlock
 
 block content
     .feed-user
@@ -16,7 +17,14 @@ block content
                         a(href=`/user${routes.editPassword}`) Edit Password
                         a(href=`/user${routes.editProfile}`) Edit Profile
             section.feed-user__grid-layout
-                aside.feed-user__side
+                article.feed-user__aside-users
+                    h5 Random Users
+                        each item in [0,0,0,0,0]
+                            +randomFriendBlock({
+                                idx: item.idx,
+                                profile: item.profile,
+                                name: item.name
+                            })
                 .feed-user__feed
                     article.feed-user__upload
                         include ./partials/feedUpload.pug
@@ -26,6 +34,7 @@ block content
                                 idx: item.idx,
                                 writer: item.writer,
                                 writerIdx: item.writer_idx,
+                                writerProfile: otherUser.profile,
                                 createdAt: item.createdAt,
                                 fileUrl: item.fileUrl,
                                 description: item.description,

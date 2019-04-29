@@ -34,7 +34,7 @@ passport.use(
         // Not User
         if (rows == "") {
           done(null, false, { message: "Incorrect username." });
-        } else {
+        } else if (rows != undefined) {
           console.log(rows);
 
           const user = rows[0];
@@ -56,6 +56,8 @@ passport.use(
               }
             }
           );
+        } else {
+          done(null, false, { message: "Incorrect username." });
         }
       });
     }

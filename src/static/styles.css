@@ -278,11 +278,15 @@ input {
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
         background-color: #e9ebee;
         min-height: 100vh; }
-      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside {
-        min-height: 100vh; }
-        .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-users {
-          background-color: white;
-          padding: 10px; }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-users {
+        background-color: white;
+        border-radius: 7px;
+        padding: 10px; }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 7px;
+        background-color: white; }
 
 .feed-user {
   background-color: #e9ebee;
@@ -336,12 +340,11 @@ input {
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px; }
+      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__aside-users {
+        background-color: white;
+        padding: 10px; }
       .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__feed {
-        background-color: #bbb;
-        min-height: 100vh; }
-      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__side {
-        background-color: #ccc;
-        min-height: 100vh; }
+        background-color: #bbb; }
 
 .edit-userDetail {
   background-color: #e9ebee;
@@ -647,7 +650,7 @@ input {
   background-color: white; }
   .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs > * {
     margin-top: 20px;
-    font-size: 18px; }
+    font-size: 16px; }
   .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs .edit-userDetail__box-form-profile-inputs--coverImg > label {
     margin-left: 5px; }
   .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs .edit-userDetail__box-form-profile-inputs--coverImg > input {
@@ -680,8 +683,13 @@ input {
     .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--oldPassword > *,
     .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPassword > *,
     .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPasswordRe > * {
-      padding: 10px;
+      padding: 5px;
       font-size: 16px; }
+    .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--oldPassword > input,
+    .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPassword > input,
+    .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPasswordRe > input {
+      margin-right: auto;
+      border: #9c9c9c solid 1px; }
   .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--submit {
     display: flex;
     align-items: center;
@@ -784,3 +792,18 @@ input {
     margin-left: 5px; }
     .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
       margin-left: 5px; }
+
+.feed-main__aside-ad-link {
+  display: block;
+  padding: 10px; }
+  .feed-main__aside-ad-link > img {
+    width: 100%;
+    margin-bottom: 10px; }
+  .feed-main__aside-ad-link > p {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px; }
+  .feed-main__aside-ad-link > span {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 300; }
