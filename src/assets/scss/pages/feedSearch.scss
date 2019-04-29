@@ -1,0 +1,39 @@
+.feed-search {
+  background-color: $feedBGC;
+  min-height: 100vh;
+  position: relative;
+  padding-top: 10px;
+  top: 50px;
+  .feed-search__wrapper {
+    background-color: $feedBGC;
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100vh;
+    .feed-search__gridLayout {
+      display: grid;
+      grid-template-columns: 2fr 4fr;
+      grid-gap: 10px;
+      .feed-search__gridLayout-feed {
+        background-color: $feedBGC;
+        min-height: 100vh;
+        .feed-search__users {
+          background-color: white;
+          margin-bottom: 15px;
+          padding: 15px;
+          border-radius: 7px;
+          & > h5 {
+            margin-bottom: 20px;
+          }
+        }
+        .feed-search__feeds {
+          padding: 12px;
+          border-radius: 7px;
+          background-color: white;
+          & > .feedBlock {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

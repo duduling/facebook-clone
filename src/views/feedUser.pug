@@ -1,6 +1,6 @@
 extends ./layouts/main.pug
 include ./mixins/feedMainBlock
-include ./mixins/randomFriendBlock
+include ./mixins/friendProfileBlock
 
 block content
     .feed-user
@@ -18,7 +18,17 @@ block content
                         a(href=`/user${routes.editProfile}`) Edit Profile
             section.feed-user__grid-layout
                 aside.feed-main__gridLayout-aside
-                    include ./partials/aside.pug
+                    section.aside-block
+                        h3.ir_su aside
+                        //- include ./partials/asideFriends
+                        article.feed-main__aside-friend
+                            h5 Friend
+                            .feed-main__aside-friend-grid
+                                each friendProfileBlock in [0,0,0,0,0,0,0,0,0]
+                                    +friendProfileBlock({
+                                        })
+                        include ./partials/asideAd
+                        span Facebook &copy; #{new Date().getFullYear()}
                 .feed-user__feed
                     article.feed-user__upload
                         include ./partials/feedUpload.pug

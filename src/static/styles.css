@@ -331,8 +331,10 @@ input {
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px; }
-      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__feed {
-        background-color: #bbb; }
+      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr); }
 
 .edit-userDetail {
   background-color: #e9ebee;
@@ -379,6 +381,38 @@ input {
           color: #fff;
           font-size: 25px;
           font-weight: bold; }
+
+.feed-search {
+  background-color: #e9ebee;
+  min-height: 100vh;
+  position: relative;
+  padding-top: 10px;
+  top: 50px; }
+  .feed-search .feed-search__wrapper {
+    background-color: #e9ebee;
+    width: 980px;
+    margin: 0 auto;
+    min-height: 100vh; }
+    .feed-search .feed-search__wrapper .feed-search__gridLayout {
+      display: grid;
+      grid-template-columns: 2fr 4fr;
+      grid-gap: 10px; }
+      .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed {
+        background-color: #e9ebee;
+        min-height: 100vh; }
+        .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__users {
+          background-color: white;
+          margin-bottom: 15px;
+          padding: 15px;
+          border-radius: 7px; }
+          .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__users > h5 {
+            margin-bottom: 20px; }
+        .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__feeds {
+          padding: 12px;
+          border-radius: 7px;
+          background-color: white; }
+          .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__feeds > .feedBlock {
+            border: none; }
 
 .header-loginPage {
   background-color: #3b5998;
@@ -643,10 +677,12 @@ input {
     margin-left: 5px; }
   .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs .edit-userDetail__box-form-profile-inputs--coverImg > input {
     border: #9c9c9c solid 1px;
-    margin-left: 10px; }
+    margin-left: 10px;
+    border-radius: 3px; }
   .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs .edit-userDetail__box-form-profile-inputs--profileImg > input {
     border: #9c9c9c solid 1px;
-    margin-left: 10px; }
+    margin-left: 10px;
+    border-radius: 3px; }
   .edit-userDetail__box-form-profile .edit-userDetail__box-form-profile-inputs > input {
     margin-top: 50px;
     padding: 10px 20px;
@@ -677,7 +713,8 @@ input {
     .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPassword > input,
     .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--newPasswordRe > input {
       margin-right: auto;
-      border: #9c9c9c solid 1px; }
+      border: #9c9c9c solid 1px;
+      border-radius: 3px; }
   .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--submit {
     display: flex;
     align-items: center;
@@ -690,12 +727,19 @@ input {
     .edit-userDetail__box-form-password .edit-userDetail__box-form-password-inputs .edit-userDetail__box-form-password-inputs--submit :hover {
       background-color: #c7c7c785; }
 
-.ad-block .feed-main__aside-users {
+.ad-block > span {
+  display: block;
+  font-size: 12px;
+  margin-top: 15px;
+  color: #737373;
+  text-align: center; }
+
+.feed-main__aside-users {
   background-color: white;
   border-radius: 7px;
   padding: 10px; }
 
-.ad-block .feed-main__aside-ad {
+.feed-main__aside-ad {
   margin-top: 15px;
   padding: 10px;
   border-radius: 7px;
@@ -791,6 +835,32 @@ input {
     margin-left: 5px; }
     .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
       margin-left: 5px; }
+
+.search-users--block {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 5px; }
+  .search-users--block .search-users--block-profile {
+    display: flex;
+    justify-content: center;
+    padding: 10px; }
+    .search-users--block .search-users--block-profile > img {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      background-color: #ccc; }
+  .search-users--block .search-users--block-link {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-left: 5px; }
+    .search-users--block .search-users--block-link > a {
+      align-items: center;
+      display: flex; }
+    .search-users--block .search-users--block-link .search-users--block-link-btn {
+      display: flex;
+      align-items: center; }
+      .search-users--block .search-users--block-link .search-users--block-link-btn > button:nth-child(2) {
+        margin-left: 5px; }
 
 .feed-main__aside-ad-link {
   display: block;

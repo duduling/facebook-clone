@@ -10,6 +10,7 @@ const LOGOUT = "/logout";
 const FEEDS = "/feeds";
 const FEEDS_MAIN = "/main";
 const FEEDS_USER = "/:idx";
+const FEEDS_SEARCH = "/search";
 
 // User
 const USER = "/user";
@@ -36,6 +37,7 @@ const routes = {
     }
     return FEEDS_USER;
   },
+  feedsSearch: FEEDS_SEARCH,
   // User
   user: USER,
   editProfile: EDIT_PROFILE,

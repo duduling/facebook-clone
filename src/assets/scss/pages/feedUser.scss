@@ -63,8 +63,16 @@
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px;
-      .feed-user__feed {
-        background-color: #bbb;
+      .feed-main__gridLayout-aside {
+        .aside-block {
+          .feed-main__aside-friend {
+            .feed-main__aside-friend-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-template-rows: repeat(3, 1fr);
+            }
+          }
+        }
       }
     }
   }

@@ -1,0 +1,10 @@
+include ../mixins/adBlock
+
+article.feed-main__aside-ad
+    h5 AD
+    each item in [0,0,0]
+        +adBlock({
+                idx: item.idx,
+                profile: item.profile,
+                name: item.name
+            })

@@ -1,0 +1,38 @@
+extends ./layouts/main.pug
+include ./mixins/searchUsers
+include ./mixins/feedMainBlock
+
+block content
+    .feed-search
+        .feed-search__wrapper
+            h1.ir_su Feed-Search
+            .feed-search__gridLayout
+                aside.feed-search__gridLayout-aside
+                    section.ad-block
+                        h3.ir_su aside
+                        include ./partials/asideUsers
+                        include ./partials/asideAd
+                        span Facebook &copy; #{new Date().getFullYear()}
+                section.feed-search__gridLayout-feed
+                    h3.ir_su feed search
+                    article.feed-search__users
+                        h5 Search Users
+                        each item in [0,0,0]
+                            +searchUsersBlock({
+                                idx: item.idx,
+                                profile: item.profile,
+                                name: item.name
+                            })
+                    article.feed-search__feeds
+                        h5 Search Feeds
+                        each item in feeds
+                            +feedBlock({
+                                idx: item.idx,
+                                writer: item.writer,
+                                writerIdx: item.writer_idx,
+                                writerProfile: item.profile,
+                                createdAt: item.createdAt,
+                                fileUrl: item.fileUrl,
+                                description: item.description,
+                                likes: item.likes
+                            })
