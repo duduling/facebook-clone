@@ -17,6 +17,35 @@
         background-color: $feedBGC;
         min-height: 100vh;
       }
+      .feed-main__gridLayout-aside {
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .feed-main {
+    .feed-main__wrapper {
+      width: 90%;
+      .feed-main__gridLayout {
+        .feed-main__gridLayout-feed {
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .feed-main {
+    .feed-main__wrapper {
+      .feed-main__gridLayout {
+        grid-template-columns: 1fr;
+        .feed-main__gridLayout-feed {
+        }
+        .feed-main__gridLayout-aside {
+          display: none;
+        }
+      }
     }
   }
 }
