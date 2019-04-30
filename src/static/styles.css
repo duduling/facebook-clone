@@ -675,60 +675,51 @@ input {
   .header__dropMenu > li {
     float: right;
     list-style: none; }
+    .header__dropMenu > li:hover .header__dropMenu--open-list {
+      display: block;
+      /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */ }
     .header__dropMenu > li .header__dropMenu--icon {
       width: 30px;
       height: 30px;
       margin-top: 10px;
-      margin-bottom: 9px; }
-    .header__dropMenu > li .header__dropMenu--list {
+      margin-bottom: 9px;
+      cursor: pointer; }
+    .header__dropMenu > li .header__dropMenu--open-list {
       display: none;
       width: 140px;
       position: absolute;
       right: 0px; }
-      .header__dropMenu > li .header__dropMenu--list .header__dropMenu-link {
-        background: #3b5898;
-        display: block;
-        float: none;
-        width: 140px; }
-        .header__dropMenu > li .header__dropMenu--list .header__dropMenu-link > a {
+      .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link {
+        background: #3b5898; }
+        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a {
           color: #cccccc;
           display: block;
-          font-weight: normal;
-          line-height: 50px;
-          margin: 0px;
-          text-align: center;
-          text-decoration: none;
+          font-weight: 300;
+          line-height: 45px;
           padding: 0 15px; }
-          .header__dropMenu > li .header__dropMenu--list .header__dropMenu-link > a > img {
+          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a > img {
             width: 20px;
             height: 20px;
             position: relative;
             top: 5px;
             right: 5px;
             border-radius: 100%; }
-      .header__dropMenu > li .header__dropMenu--list .menuUserFeed {
+      .header__dropMenu > li .header__dropMenu--open-list .menuUserFeed {
         padding-left: 12px; }
-        .header__dropMenu > li .header__dropMenu--list .menuUserFeed > a > span {
-          margin-left: 3px; }
-      .header__dropMenu > li .header__dropMenu--list .menuUserFriend {
+        .header__dropMenu > li .header__dropMenu--open-list .menuUserFeed > a > span {
+          margin-left: 7px; }
+      .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend {
         padding-left: 10px; }
-        .header__dropMenu > li .header__dropMenu--list .menuUserFriend > a > span {
+        .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > a > span {
           margin-left: 10px; }
-      .header__dropMenu > li .header__dropMenu--list .menuUserNotice {
+      .header__dropMenu > li .header__dropMenu--open-list .menuUserNotice {
         padding-left: 10px; }
-        .header__dropMenu > li .header__dropMenu--list .menuUserNotice > a > span {
+        .header__dropMenu > li .header__dropMenu--open-list .menuUserNotice > a > span {
           margin-left: 15px; }
-      .header__dropMenu > li .header__dropMenu--list .menuUserLogout {
+      .header__dropMenu > li .header__dropMenu--open-list .menuUserLogout {
         padding-left: 10px; }
-        .header__dropMenu > li .header__dropMenu--list .menuUserLogout > a > span {
+        .header__dropMenu > li .header__dropMenu--open-list .menuUserLogout > a > span {
           margin-left: 13px; }
-
-.header__dropMenu > li:hover > .header__dropMenu--list {
-  display: block;
-  /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */ }
-
-.header__dropMenu-link:hover > a {
-  background: none; }
 
 @media (max-width: 768px) {
   .header__dropMenu {
