@@ -1,3 +1,5 @@
+include ../mixins/friendPageBlock
+
 .userFriends
     section.userFriends__wrapper
         .userFriends__header
@@ -7,17 +9,9 @@
                 input(type="text", aria="user friend search")
                 input(type="submit", id="userFriendSearchSubmit", value="　")
         .userFriends__body-grid
-            article.userFriends__body-friendBlock
-                a(href="#")
-                    img(src="/img/profile_male.png", alt="")
-                .userFriends__body-friendBlock--border
-                    a(href="#")
-                        span 김두현
-                button Remove Friend
-            article.userFriends__body-friendBlock
-                a(href="#")
-                    img(src="/img/profile_male.png", alt="")
-                .userFriends__body-friendBlock--border
-                    a(href="#")
-                        span 김두현
-                button Remove Friend
+            each item in [0]
+                +friendPageBlock({
+                    idx: item.idx,
+                    profile: item.profile,
+                    name: item.name
+                })

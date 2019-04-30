@@ -1,0 +1,28 @@
+.userFriends__body-friendBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: $lightGrayLine solid 1px;
+  & > a > img {
+    width: 160px;
+    height: 160px;
+  }
+  .userFriends__body-friendBlock--border {
+    display: flex;
+    align-items: center;
+    border: $lightGrayLine solid 1px;
+    border-width: 0 0 0 1px;
+    & > a {
+      font-size: 18px;
+      font-weight: 500;
+      color: #365899;
+      margin-left: 15px;
+    }
+  }
+  & > button {
+    display: flex;
+    margin: auto;
+    padding: 5px 10px;
+    border: #c9c9c9 solid 1px;
+    background-color: #f5f6f7;
+  }
+}

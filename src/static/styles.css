@@ -721,29 +721,6 @@ input {
       grid-template-columns: 1fr 1fr;
       grid-gap: 10px;
       padding: 15px; }
-      .userFriends .userFriends__wrapper .userFriends__body-grid .userFriends__body-friendBlock {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        border: #9c9c8c5c solid 1px; }
-        .userFriends .userFriends__wrapper .userFriends__body-grid .userFriends__body-friendBlock > a > img {
-          width: 160px;
-          height: 160px; }
-        .userFriends .userFriends__wrapper .userFriends__body-grid .userFriends__body-friendBlock .userFriends__body-friendBlock--border {
-          display: flex;
-          align-items: center;
-          border: #9c9c8c5c solid 1px;
-          border-width: 0 0 0 1px; }
-          .userFriends .userFriends__wrapper .userFriends__body-grid .userFriends__body-friendBlock .userFriends__body-friendBlock--border > a {
-            font-size: 18px;
-            font-weight: 500;
-            color: #365899;
-            margin-left: 15px; }
-        .userFriends .userFriends__wrapper .userFriends__body-grid .userFriends__body-friendBlock > button {
-          display: flex;
-          margin: auto;
-          padding: 5px 10px;
-          border: #c9c9c9 solid 1px;
-          background-color: #f5f6f7; }
 
 .editProfile .editProfile__wrapper .editProfile__header {
   margin-top: 20px;
@@ -959,6 +936,30 @@ input {
         left: -20px;
         color: white;
         font-size: 13px; }
+
+.userFriends__body-friendBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: #9c9c8c5c solid 1px; }
+  .userFriends__body-friendBlock > a > img {
+    width: 160px;
+    height: 160px; }
+  .userFriends__body-friendBlock .userFriends__body-friendBlock--border {
+    display: flex;
+    align-items: center;
+    border: #9c9c8c5c solid 1px;
+    border-width: 0 0 0 1px; }
+    .userFriends__body-friendBlock .userFriends__body-friendBlock--border > a {
+      font-size: 18px;
+      font-weight: 500;
+      color: #365899;
+      margin-left: 15px; }
+  .userFriends__body-friendBlock > button {
+    display: flex;
+    margin: auto;
+    padding: 5px 10px;
+    border: #c9c9c9 solid 1px;
+    background-color: #f5f6f7; }
 
 .search-users--block {
   display: grid;
