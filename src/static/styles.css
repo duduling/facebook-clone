@@ -342,11 +342,12 @@ input {
       padding-top: 15px; }
       .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend {
         background-color: white;
-        padding: 10px;
+        padding: 5px;
         border-radius: 7px; }
         .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid {
           display: inline-block;
-          margin-bottom: 15px; }
+          margin-bottom: 5px;
+          padding: 10px; }
           .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) {
             display: flex;
             align-items: center; }
@@ -919,9 +920,11 @@ input {
 
 .feed-main__aside-ad {
   margin-top: 15px;
-  padding: 10px;
+  padding: 12px;
   border-radius: 7px;
   background-color: white; }
+  .feed-main__aside-ad > h5 {
+    margin-bottom: 10px; }
 
 .feedBlock {
   border: #ddd solid 1px;
@@ -1021,12 +1024,12 @@ input {
   background-color: #ccc; }
   .friend-block__link .friend-block__BGC .friend-block__box {
     text-align: center;
-    width: 85px;
+    width: 88px;
     height: 85px;
     background: url(/img/profile_male.png) no-repeat center/100%; }
     .friend-block__link .friend-block__BGC .friend-block__box .friend-profile__box--effect {
       background: linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
-      width: 85px;
+      width: 88px;
       height: 85px; }
       .friend-block__link .friend-block__BGC .friend-block__box .friend-profile__box--effect > span {
         position: relative;
@@ -1086,7 +1089,7 @@ input {
 
 .feed-main__aside-ad-link {
   display: block;
-  padding: 10px; }
+  padding: 10px 0; }
   .feed-main__aside-ad-link > img {
     width: 100%;
     margin-bottom: 10px; }
