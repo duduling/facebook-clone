@@ -8,10 +8,6 @@
             form(action=`/feeds/search`, method="get")
                 input(type="text", name="searchWord", placeholder="Searching", autocomplete="off")#header__searchBar
                 input(type="submit", value="　")#header__searchBar-btn
-        .header__profile
-            a(href=routes.feedsUser(user.idx), title="My feed")
-                img(src=user.profile, alt="userProfile")
-                span=user.name
         .header__subMenu
             ul.header__subMenu-friend
                 a(href="#", title="My friends")
@@ -22,3 +18,27 @@
             ul.header__subMenu-logout
                 a(href=routes.logout, title="Log Out")
                     i.fas.fa-sign-out-alt
+        .header__profile
+            a(href=routes.feedsUser(user.idx), title="My feed")
+                img(src=user.profile, alt="userProfile")
+                span=user.name
+        .header__dropMenu
+            li
+                img.header__dropMenu--icon(src="/img/menu.png", alt="menu icon")
+                ul.header__dropMenu--list
+                    li.header__dropMenu-link.menuUserFeed
+                        a(href=routes.feedsUser(user.idx), title="My feed")
+                            img(src=user.profile, alt="user profile")
+                            span=user.name
+                    li.header__dropMenu-link.menuUserFriend
+                        a(href="#", title="My friends")
+                            i.fas.fa-user-friends
+                            span Friend
+                    li.header__dropMenu-link.menuUserNotice
+                        a(href="#", title="My notices")
+                            i.fas.fa-bell
+                            span Notice
+                    li.header__dropMenu-link.menuUserLogout
+                        a(href=routes.logout, title="Log Out")
+                            i.fas.fa-sign-out-alt
+                            span Log Out
