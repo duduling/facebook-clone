@@ -45,8 +45,7 @@
         top: -0.5px;
         padding: 6.5px 10px;
         border-radius: 0 2px 2px 0;
-        background: #eee url(https://img.icons8.com/cotton/64/000000/search.png)
-          center no-repeat;
+        background: #eee url(/img/search.png) center no-repeat;
         background-size: 25px 25px;
         cursor: pointer;
         &:hover {
@@ -61,8 +60,7 @@
         & > img {
           width: 30px;
           height: 30px;
-          border-radius: 13px;
-          background-color: #ccc;
+          border-radius: 100%;
         }
         & > span {
           margin-left: 10px;

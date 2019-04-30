@@ -1,24 +1,70 @@
 .userFriends {
   background-color: white;
   border: $grayLine solid 1px;
+  margin-top: 20px;
   .userFriends__wrapper {
     width: 980px;
     margin: 0 auto;
-    min-height: 100vh;
     .userFriends__header {
-      & > form {
-        border: black solid 1px;
+      overflow: hidden;
+      background-color: #f5f6f7;
+      margin-right: 2px;
+      border-bottom: #c9c9c9 solid 1px;
+      padding-bottom: 20px;
+      & > i {
+        margin-left: 10px;
+        color: #aaa;
+        & > h1 {
+          display: inline-block;
+          padding: 12px;
+          color: black;
+        }
+      }
+      .userFriends__header--search {
+        border: $lightGrayLine solid 1px;
+        padding: 5px 10px;
+        float: right;
+        margin: 30px 30px 0 0;
+        background-color: white;
+        #userFriendSearchSubmit {
+          background: transparent url(/img/search.png) center no-repeat/40%;
+          border-left: #c9c9c9 solid 1px;
+          padding: 3px 12px;
+          cursor: pointer;
+        }
       }
     }
     .userFriends__body-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      padding: 15px;
       .userFriends__body-friendBlock {
         display: grid;
-        grid-template-columns: 2fr 4fr 1fr;
-        & > img {
-          width: 150px;
-          height: 150px;
+        grid-template-columns: 1fr 1fr 1fr;
+        border: $lightGrayLine solid 1px;
+        & > a > img {
+          width: 160px;
+          height: 160px;
+        }
+        .userFriends__body-friendBlock--border {
+          display: flex;
+          align-items: center;
+          border: $lightGrayLine solid 1px;
+          border-width: 0 0 0 1px;
+          & > a {
+            font-size: 18px;
+            font-weight: 500;
+            color: #365899;
+            margin-left: 15px;
+          }
+        }
+        & > button {
+          display: flex;
+          margin: auto;
+          padding: 5px 10px;
+          border: #c9c9c9 solid 1px;
+          background-color: #f5f6f7;
         }
       }
     }

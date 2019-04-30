@@ -1,39 +1,58 @@
-.edit-userDetail__box-form-profile {
-  .edit-userDetail__box-form-profile-inputs {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 30px 50px;
-    border: $grayLine solid 1px;
-    background-color: white;
-    & > * {
+.editProfile {
+  .editProfile__wrapper {
+    .editProfile__header {
       margin-top: 20px;
-      font-size: 16px;
-    }
-    .edit-userDetail__box-form-profile-inputs--coverImg {
-      & > label {
-        margin-left: 5px;
-      }
-      & > input {
-        border: $grayLine solid 1px;
+      background-color: $lightGrayColor;
+      border: $grayLine solid 1px;
+      border-bottom: none;
+      & > i {
         margin-left: 10px;
-        border-radius: 3px;
+        color: #aaa;
+        & > h1 {
+          display: inline-block;
+          padding: 12px;
+          color: black;
+        }
       }
     }
-    .edit-userDetail__box-form-profile-inputs--profileImg {
-      & > input {
+    .editProfile-form-profile {
+      .editProfile-form-profile-inputs {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px 50px;
         border: $grayLine solid 1px;
-        margin-left: 10px;
-        border-radius: 3px;
-      }
-    }
-    & > input {
-      margin-top: 50px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      &:hover {
-        background-color: $grayHover;
+        background-color: white;
+        & > * {
+          margin-top: 20px;
+          font-size: 16px;
+        }
+        .editProfile-form-profile-inputs--coverImg {
+          & > label {
+            margin-left: 5px;
+          }
+          & > input {
+            border: $grayLine solid 1px;
+            margin-left: 10px;
+            border-radius: 3px;
+          }
+        }
+        .editProfile-form-profile-inputs--profileImg {
+          & > input {
+            border: $grayLine solid 1px;
+            margin-left: 10px;
+            border-radius: 3px;
+          }
+        }
+        & > input {
+          margin-top: 50px;
+          padding: 10px 20px;
+          border-radius: 10px;
+          cursor: pointer;
+          &:hover {
+            background-color: $grayHover;
+          }
+        }
       }
     }
   }
