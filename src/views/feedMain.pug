@@ -1,6 +1,5 @@
 extends ./layouts/main
 include ./mixins/feedMainBlock
-include ./mixins/randomFriendBlock
 
 block content
     .bgc
@@ -25,14 +24,8 @@ block content
                                     likes: item.likes
                                 })
                     aside.feed-main__gridLayout-aside
-                        h3.ir_su aside
-                        article.feed-main__aside-users
-                            h5 Random Users
-                                each item in [0,0,0,0,0]
-                                    +randomFriendBlock({
-                                        idx: item.idx,
-                                        profile: item.profile,
-                                        name: item.name
-                                    })
-                        article.feed-main__aside-ad
-                            
+                        section.aside-block
+                            h3.ir_su aside
+                            include ./partials/asideUsers
+                            include ./partials/asideAd
+                            span Facebook &copy; #{new Date().getFullYear()}

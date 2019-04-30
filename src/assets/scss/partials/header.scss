@@ -13,10 +13,8 @@
     width: 980px;
     height: 50px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     .header__logo {
+      display: inline;
       font-size: 30px;
       color: white;
       text-transform: lowercase;
@@ -32,44 +30,52 @@
       }
     }
     .header__search-bar {
-      #header__searchBar {
-        min-width: 150px;
-        width: 550px;
-        font-size: 16px;
-        padding: 5px 10px;
-        border-radius: 5px 0 0 5px;
-      }
-      #header__searchBar-btn {
-        width: 50px;
-        position: relative;
-        top: -0.5px;
-        padding: 6.5px 10px;
-        border-radius: 0 2px 2px 0;
-        background: #eee url(https://img.icons8.com/cotton/64/000000/search.png)
-          center no-repeat;
-        background-size: 25px 25px;
-        cursor: pointer;
-        &:hover {
-          background-color: #ddd;
+      display: inline-block;
+      & > form {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        margin-left: 30px;
+        #header__searchBar {
+          min-width: 150px;
+          width: 550px;
+          font-size: 16px;
+          padding: 5px 10px;
+          border-radius: 5px 0 0 5px;
+        }
+        #header__searchBar-btn {
+          width: 50px;
+          position: relative;
+          top: -0.5px;
+          padding: 6.5px 10px;
+          border-radius: 0 2px 2px 0;
+          background: #eee url(/img/search.png) center no-repeat;
+          background-size: 25px 25px;
+          cursor: pointer;
+          &:hover {
+            background-color: #ddd;
+          }
         }
       }
     }
     .header__profile {
+      float: right;
+      width: 11%;
+      height: 50px;
+      display: flex;
+      align-items: center;
       & > a {
-        display: flex;
-        align-items: center;
         & > img {
           width: 30px;
           height: 30px;
-          border-radius: 13px;
-          background-color: #ccc;
+          border-radius: 100%;
         }
         & > span {
           margin-left: 10px;
           color: white;
           font-size: 17px;
           position: relative;
-          top: -2px;
+          top: -8px;
           transition: 0.2s;
         }
         &:hover {
@@ -80,10 +86,13 @@
       }
     }
     .header__subMenu {
+      height: 100%;
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      float: right;
       & > ul {
-        margin-left: 25px;
+        display: inline-block;
+        margin-left: 20px;
         .fas {
           font-size: 25px;
           transition: 0.2s;
@@ -94,6 +103,41 @@
             margin-left: 0;
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    .header__wrapper {
+      width: 90%;
+      .header__search-bar {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    .header__wrapper {
+      .header__profile {
+        width: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    .header__wrapper {
+      .header__search-bar {
+        width: 80%;
+      }
+      .header__profile,
+      .header__subMenu {
+        display: none;
       }
     }
   }

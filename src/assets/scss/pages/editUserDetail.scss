@@ -14,7 +14,7 @@
         overflow: hidden;
         border: $grayLine solid 1px;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: column;
         & > a {
           padding: 10px;
           font-size: 14px;
@@ -40,7 +40,6 @@
             height: 150px;
             border-radius: 100%;
             margin: 150px 0 10px 20px;
-            background-color: #ccc;
             border: 5px solid #fff;
           }
           & > span {

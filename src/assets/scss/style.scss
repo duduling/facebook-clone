@@ -8,16 +8,25 @@
 @import "./pages/feedMain.scss";
 @import "./pages/feedUser.scss";
 @import "./pages/editUserDetail.scss";
+@import "./pages/feedSearch.scss";
 
 // Patials
 @import "./partials/headerLogin.scss";
 @import "./partials/footerLogin.scss";
 @import "./partials/header.scss";
+@import "./partials/dropMenu.scss";
 @import "./partials/feedUpload.scss";
+@import "./partials/userFriends.scss";
 @import "./partials/editProfile.scss";
 @import "./partials/editPassword.scss";
-@import "./partials/editInfo.scss";
+@import "./partials/asideFooter.scss";
+@import "./partials/asideUsers.scss";
+@import "./partials/asideAd.scss";
 
 // Mixins
 @import "./mixins/feedmainBlock.scss";
 @import "./mixins/randomFriendBlock.scss";
+@import "./mixins/friendProfileBlock.scss";
+@import "./mixins/friendPageBlock.scss";
+@import "./mixins/searchUsers.scss";
+@import "./mixins/adBlock.scss";

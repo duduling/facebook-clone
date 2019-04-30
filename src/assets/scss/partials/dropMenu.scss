@@ -1,0 +1,74 @@
+.header__dropMenu {
+  display: none;
+  font-weight: bold;
+  & > li {
+    float: right;
+    list-style: none;
+    &:hover {
+      .header__dropMenu--open-list {
+        display: block; /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
+      }
+    }
+    .header__dropMenu--icon {
+      width: 30px;
+      height: 30px;
+      margin-top: 10px;
+      margin-bottom: 9px;
+      cursor: pointer;
+    }
+    .header__dropMenu--open-list {
+      display: none;
+      width: 140px;
+      position: absolute;
+      right: 0px;
+      .header__dropMenu-link {
+        background: #3b5898;
+        & > a {
+          color: #cccccc;
+          display: block;
+          font-weight: 300;
+          line-height: 45px;
+          padding: 0 15px;
+          & > img {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            top: 5px;
+            right: 5px;
+            border-radius: 100%;
+          }
+        }
+      }
+      .menuUserFeed {
+        padding-left: 12px;
+        & > a > span {
+          margin-left: 7px;
+        }
+      }
+      .menuUserFriend {
+        padding-left: 10px;
+        & > a > span {
+          margin-left: 10px;
+        }
+      }
+      .menuUserNotice {
+        padding-left: 10px;
+        & > a > span {
+          margin-left: 15px;
+        }
+      }
+      .menuUserLogout {
+        padding-left: 10px;
+        & > a > span {
+          margin-left: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header__dropMenu {
+    display: inline;
+  }
+}

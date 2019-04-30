@@ -37,3 +37,16 @@ export const getFeedUser = (req, res) => {
     res.redirect(routes.home);
   }
 };
+
+export const getFeedSearch = (req, res) => {
+  const joinQurey =
+    "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx;";
+  try {
+    db.query(joinQurey, (_, rows) => {
+      res.render("feedSearch", { pageTile: "Feed Search", feeds: rows });
+    });
+  } catch (error) {
+    console.log(error);
+    res.render("feedSearch", { pageTile: "Feed Search", feeds: [] });
+  }
+};

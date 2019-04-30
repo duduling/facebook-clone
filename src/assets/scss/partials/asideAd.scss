@@ -1,0 +1,9 @@
+.feed-main__aside-ad {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 7px;
+  background-color: white;
+  & > h5 {
+    margin-bottom: 10px;
+  }
+}

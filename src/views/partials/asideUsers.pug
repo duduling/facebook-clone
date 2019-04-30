@@ -1,0 +1,10 @@
+include ../mixins/randomFriendBlock
+
+article.feed-main__aside-users
+    h5 Random Users
+    each item in [0,0,0,0]
+        +randomFriendBlock({
+            idx: item.idx,
+            profile: item.profile,
+            name: item.name
+        })

@@ -1,0 +1,17 @@
+include ../mixins/friendPageBlock
+
+.userFriends
+    section.userFriends__wrapper
+        .userFriends__header
+            i.fas.fa-user-friends
+                h1 User Friends
+            form.userFriends__header--search
+                input(type="text", aria="user friend search")
+                input(type="submit", id="userFriendSearchSubmit", value="　")
+        .userFriends__body-grid
+            each item in [0]
+                +friendPageBlock({
+                    idx: item.idx,
+                    profile: item.profile,
+                    name: item.name
+                })

@@ -1,0 +1,9 @@
+.aside-block {
+  & > span {
+    display: block;
+    font-size: 12px;
+    margin-top: 15px;
+    color: #737373;
+    text-align: center;
+  }
+}

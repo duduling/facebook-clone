@@ -1,0 +1,31 @@
+.search-users--block {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 5px;
+  .search-users--block-profile {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    & > img {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+    }
+  }
+  .search-users--block-link {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-left: 5px;
+    & > a {
+      align-items: center;
+      display: flex;
+    }
+    .search-users--block-link-btn {
+      display: flex;
+      align-items: center;
+      & > button:nth-child(2) {
+        margin-left: 5px;
+      }
+    }
+  }
+}
