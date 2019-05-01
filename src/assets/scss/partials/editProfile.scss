@@ -5,7 +5,7 @@
       background-color: $lightGrayColor;
       border: $grayLine solid 1px;
       border-bottom: none;
-      & > i {
+      .fa-id-card {
         margin-left: 10px;
         color: #aaa;
         & > h1 {
@@ -17,40 +17,102 @@
     }
     .editProfile-form-profile {
       .editProfile-form-profile-inputs {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        padding: 30px 50px;
+        display: grid;
+        grid-template-rows: repeat(2, 1fr) 2fr;
+        padding: 30px;
         border: $grayLine solid 1px;
         background-color: white;
         & > * {
-          margin-top: 20px;
+          padding: 5px;
           font-size: 16px;
         }
+        & > input {
+          margin-right: auto;
+          border: $grayLine solid 1px;
+          border-radius: 3px;
+        }
         .editProfile-form-profile-inputs--coverImg {
+          display: grid;
+          grid-template-columns: repeat(2, 2fr) 1fr;
+          padding: 10px;
+          text-align: right;
           & > label {
-            margin-left: 5px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
           }
           & > input {
-            border: $grayLine solid 1px;
-            margin-left: 10px;
+            border: $grayLine outset 1px;
             border-radius: 3px;
+            margin: auto 0 auto 10px;
           }
         }
         .editProfile-form-profile-inputs--profileImg {
+          display: grid;
+          grid-template-columns: repeat(2, 2fr) 1fr;
+          padding: 10px;
+          text-align: right;
+          & > label {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+          }
           & > input {
-            border: $grayLine solid 1px;
-            margin-left: 10px;
+            border: $grayLine outset 1px;
             border-radius: 3px;
+            margin: auto 0 auto 10px;
           }
         }
-        & > input {
-          margin-top: 50px;
-          padding: 10px 20px;
-          border-radius: 10px;
-          cursor: pointer;
-          &:hover {
-            background-color: $grayHover;
+        .editProfile-form-profile-inputs--submit {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          & > input {
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            &:hover {
+              background-color: $grayHover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .editProfile {
+    .editProfile__wrapper {
+      .editProfile-form-profile {
+        .editProfile-form-profile-inputs {
+          .editProfile-form-profile-inputs--coverImg,
+          .editProfile-form-profile-inputs--profileImg,
+          .editProfile-form-profile-inputs--submit {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .editProfile {
+    .editProfile__wrapper {
+      .editProfile-form-profile {
+        .editProfile-form-profile-inputs {
+          .editProfile-form-profile-inputs--coverImg,
+          .editProfile-form-profile-inputs--profileImg {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr);
+            & > label {
+              justify-content: flex-start;
+              margin-bottom: 10px;
+            }
+            & > input {
+              width: 90%;
+            }
           }
         }
       }
