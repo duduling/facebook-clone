@@ -37,3 +37,28 @@
     grid-template-rows: repeat(3, 1fr);
   }
 }
+
+@media (max-width: 900px) {
+  .feed-main__aside-friend {
+    .feed-main__aside-friend-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .feed-main__aside-friend {
+    .feed-main__aside-friend-grid {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: none;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .feed-main__aside-friend {
+    .feed-main__aside-friend-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

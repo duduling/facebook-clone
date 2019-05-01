@@ -4,6 +4,7 @@
     form.feed-main__upload-form
         .feed-main__upload-form-description
             img(src=user.profile, alt="profile")
+            //- window.innerWidth 이거로 길이 가져와서 rows 크기 맞춰 주기
             textarea(name="uploadText", cols="30", rows="7", placeholder="What's on your mind?")
         .feed-main__upload-form-file
             input(type="file", name="uploadFile", accept="video/*, image/*")

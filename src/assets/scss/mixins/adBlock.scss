@@ -15,6 +15,26 @@
       font-size: 12px;
       margin-top: 10px;
       font-weight: 300;
+      // 한줄로 변환
+      /* autoprefixer: ignore next */
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 13px;
+      word-wrap: break-word;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .feed-main__aside-ad-block {
+    .feed-main__aside-ad-link {
+      padding: 10px;
+    }
+    &:last-child {
+      display: none;
     }
   }
 }
