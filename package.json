@@ -45,7 +45,7 @@
     "prettier": "^1.17.0"
   },
   "scripts": {
-    "dev:server": "nodemon --exec babel-node ./src/init.js --delay 2 --ignore '.scss' 'static'",
+    "dev:server": "nodemon --exec babel-node ./src/init.js --delay 2 --ignore '.scss' --ignore 'static'",
     "dev:assets": "webpack --mode development -w"
   }
 }
