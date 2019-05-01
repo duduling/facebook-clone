@@ -16,6 +16,8 @@
       margin-left: 2px;
       & > button {
         font-size: 12px;
+        margin-bottom: 5px;
+        color: $darkGray;
       }
       & > button:nth-child(2) {
         margin-left: 5px;

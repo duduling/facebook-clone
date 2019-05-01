@@ -1489,7 +1489,9 @@ input {
     .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn {
       margin-left: 2px; }
       .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button {
-        font-size: 12px; }
+        font-size: 12px;
+        margin-bottom: 5px;
+        color: #4b4f56; }
       .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
         margin-left: 5px; }
 
@@ -1597,7 +1599,7 @@ input {
               border-radius: 100%; }
   .search-users--block .search-users--block-link {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     margin-left: 5px; }
     .search-users--block .search-users--block-link > a {
       -webkit-box-align: center;
@@ -1610,19 +1612,71 @@ input {
       display: -moz-box;
       display: -ms-flexbox;
       display: flex; }
+    .search-users--block .search-users--block-link .search-users--block-info {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+         -moz-box-orient: vertical;
+         -moz-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+         -moz-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+      .search-users--block .search-users--block-link .search-users--block-info > a {
+        font-size: 24px;
+        margin-bottom: 15px; }
+      .search-users--block .search-users--block-link .search-users--block-info > span {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 3px;
+        color: #4b4f56; }
     .search-users--block .search-users--block-link .search-users--block-link-btn {
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-         -moz-box-align: center;
-          -ms-flex-align: center;
-              align-items: center; }
-      .search-users--block .search-users--block-link .search-users--block-link-btn > button:nth-child(2) {
-        margin-left: 5px; }
+      -webkit-box-pack: end;
+      -webkit-justify-content: flex-end;
+         -moz-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
+      -webkit-box-align: baseline;
+      -webkit-align-items: baseline;
+         -moz-box-align: baseline;
+          -ms-flex-align: baseline;
+              align-items: baseline; }
+      .search-users--block .search-users--block-link .search-users--block-link-btn > button {
+        color: #4b4f56;
+        margin: 15px 20px 0 0; }
+        .search-users--block .search-users--block-link .search-users--block-link-btn > button:nth-child(2) {
+          margin-left: 5px; }
+
+@media (max-width: 768px) {
+  .search-users--block .search-users--block-profile > img {
+    width: 70px;
+    height: 70px; }
+  .search-users--block .search-users--block-link .search-users--block-info > a {
+    font-size: 22px; }
+  .search-users--block .search-users--block-link .search-users--block-info > span {
+    font-size: 13px; }
+  .search-users--block .search-users--block-link .search-users--block-link-btn > button {
+    font-size: 11px; } }
+
+@media (max-width: 600px) {
+  .search-users--block .search-users--block-link .search-users--block-info > a {
+    font-size: 20px;
+    margin-bottom: 10px; }
+  .search-users--block .search-users--block-link .search-users--block-info > span {
+    font-size: 12px; } }
 
 .feed-main__aside-ad-block .feed-main__aside-ad-link {
   display: block;
