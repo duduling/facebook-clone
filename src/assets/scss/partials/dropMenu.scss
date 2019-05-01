@@ -4,9 +4,15 @@
   & > li {
     float: right;
     list-style: none;
-    &:hover {
+    &:focus-within,
+    &:hover,
+    &:focus {
       .header__dropMenu--open-list {
-        display: block; /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
+        visibility: visible; /* shows sub-menu */
+        opacity: 1;
+        z-index: 1;
+        transform: translateY(0%);
+        transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
       }
     }
     .header__dropMenu--icon {
@@ -17,10 +23,17 @@
       cursor: pointer;
     }
     .header__dropMenu--open-list {
-      display: none;
+      // display: none;
       width: 140px;
+      right: -10px;
+      visibility: hidden; /* hides sub-menu */
+      opacity: 0;
       position: absolute;
-      right: 0px;
+      top: 100%;
+      transform: translateY(-2em);
+      z-index: -1;
+      transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s,
+        z-index 0s linear 0.01s;
       .header__dropMenu-link {
         background: #3b5898;
         & > a {
@@ -47,8 +60,11 @@
       }
       .menuUserFriend {
         padding-left: 10px;
+        & > a > i {
+          margin-left: -3px;
+        }
         & > a > span {
-          margin-left: 10px;
+          margin-left: 12px;
         }
       }
       .menuUserNotice {

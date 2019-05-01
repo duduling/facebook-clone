@@ -868,9 +868,21 @@ input {
   .header__dropMenu > li {
     float: right;
     list-style: none; }
-    .header__dropMenu > li:hover .header__dropMenu--open-list {
-      display: block;
-      /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */ }
+    .header__dropMenu > li:focus-within .header__dropMenu--open-list, .header__dropMenu > li:hover .header__dropMenu--open-list, .header__dropMenu > li:focus .header__dropMenu--open-list {
+      visibility: visible;
+      /* shows sub-menu */
+      opacity: 1;
+      z-index: 1;
+      -webkit-transform: translateY(0%);
+         -moz-transform: translateY(0%);
+          -ms-transform: translateY(0%);
+           -o-transform: translateY(0%);
+              transform: translateY(0%);
+      -webkit-transition-delay: 0s, 0s, 0.3s;
+         -moz-transition-delay: 0s, 0s, 0.3s;
+           -o-transition-delay: 0s, 0s, 0.3s;
+              transition-delay: 0s, 0s, 0.3s;
+      /* this removes the transition delay so the menu will be visible while the other styles transition */ }
     .header__dropMenu > li .header__dropMenu--icon {
       width: 30px;
       height: 30px;
@@ -878,10 +890,23 @@ input {
       margin-bottom: 9px;
       cursor: pointer; }
     .header__dropMenu > li .header__dropMenu--open-list {
-      display: none;
       width: 140px;
+      right: -10px;
+      visibility: hidden;
+      /* hides sub-menu */
+      opacity: 0;
       position: absolute;
-      right: 0px; }
+      top: 100%;
+      -webkit-transform: translateY(-2em);
+         -moz-transform: translateY(-2em);
+          -ms-transform: translateY(-2em);
+           -o-transform: translateY(-2em);
+              transform: translateY(-2em);
+      z-index: -1;
+      -webkit-transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+      -o-transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+      -moz-transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+      transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s; }
       .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link {
         background: #3b5898; }
         .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a {
@@ -905,8 +930,10 @@ input {
           margin-left: 7px; }
       .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend {
         padding-left: 10px; }
+        .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > a > i {
+          margin-left: -3px; }
         .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > a > span {
-          margin-left: 10px; }
+          margin-left: 12px; }
       .header__dropMenu > li .header__dropMenu--open-list .menuUserNotice {
         padding-left: 10px; }
         .header__dropMenu > li .header__dropMenu--open-list .menuUserNotice > a > span {
@@ -1490,7 +1517,7 @@ input {
       margin-left: 2px; }
       .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button {
         font-size: 12px;
-        margin-bottom: 5px;
+        margin-bottom: 2px;
         color: #4b4f56; }
       .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
         margin-left: 5px; }
