@@ -4,15 +4,17 @@
   & > li {
     float: right;
     list-style: none;
-    &:focus-within,
-    &:hover,
-    &:focus {
+
+    &:hover {
       .header__dropMenu--open-list {
-        visibility: visible; /* shows sub-menu */
+        // 조건 부합하면 비추기
+        visibility: visible;
+        // 흩날리는 효과
         opacity: 1;
-        z-index: 1;
+        // 날라오는 효과
         transform: translateY(0%);
-        transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+        // 효과 딜레이
+        transition-delay: 0s, 0s, 0.3s;
       }
     }
     .header__dropMenu--icon {
@@ -23,17 +25,17 @@
       cursor: pointer;
     }
     .header__dropMenu--open-list {
-      // display: none;
       width: 140px;
-      right: -10px;
-      visibility: hidden; /* hides sub-menu */
-      opacity: 0;
       position: absolute;
-      top: 100%;
+      right: -10px;
+      // 평소에 감추기
+      visibility: hidden;
+      // 흩날리는 효과
+      opacity: 0;
+      // 날라오는 효과
       transform: translateY(-2em);
-      z-index: -1;
-      transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s,
-        z-index 0s linear 0.01s;
+      // 효과 설정
+      transition: all 0.3s ease-in-out 0s;
       .header__dropMenu-link {
         background: #3b5898;
         & > a {
