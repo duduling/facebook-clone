@@ -1,6 +1,5 @@
 .feed-main {
   background-color: $feedBGC;
-  min-height: 100vh;
   position: relative;
   padding-top: 10px;
   top: 50px;
@@ -8,14 +7,12 @@
     background-color: $feedBGC;
     width: 980px;
     margin: 0 auto;
-    min-height: 100vh;
     .feed-main__gridLayout {
       display: grid;
-      grid-template-columns: 4fr 2fr;
+      grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       .feed-main__gridLayout-feed {
         background-color: $feedBGC;
-        min-height: 100vh;
       }
       .feed-main__gridLayout-aside {
       }
@@ -40,10 +37,33 @@
     .feed-main__wrapper {
       .feed-main__gridLayout {
         grid-template-columns: 1fr;
-        .feed-main__gridLayout-feed {
-        }
         .feed-main__gridLayout-aside {
-          display: none;
+          & > span {
+            display: none;
+          }
+          .feed-main__aside-ad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            .feed-main__aside-ad-block {
+              .feed-main__aside-ad-link {
+                padding: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .feed-main {
+    .feed-main__wrapper {
+      .feed-main__gridLayout {
+        .feed-main__gridLayout-aside {
+          .feed-main__aside-ad-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
       }
     }

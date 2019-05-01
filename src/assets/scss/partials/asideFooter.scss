@@ -1,4 +1,6 @@
-.aside-block {
+.feed-main__gridLayout-aside,
+.feed-user__gridLayout-aside,
+.feed-search__gridLayout-aside {
   & > span {
     display: block;
     font-size: 12px;

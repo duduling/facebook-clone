@@ -1,27 +1,25 @@
 .feed-user {
   background-color: $feedBGC;
-  min-height: 100vh;
   position: relative;
   top: 50px;
   .feed-user__wrapper {
     background-color: $feedBGC;
     width: 980px;
     margin: 0 auto;
-    min-height: 100vh;
     .feed-user__info {
       .feed-user__info--backgroud-img {
-        background: no-repeat center/100%;
+        background: no-repeat center/cover;
         .feed-user__info--backgroud-effect {
           background: linear-gradient(
             rgba(0, 0, 0, 0) 65%,
             rgba(0, 0, 0, 0.53)
           );
           & > img {
-            width: 150px;
-            height: 150px;
+            width: 15%;
+            height: 15%;
             border-radius: 100%;
             margin: 150px 0 10px 20px;
-            border: 5px solid #fff;
+            border: 3px solid #fff;
           }
           & > span {
             text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
@@ -42,11 +40,12 @@
           display: inline-block;
           padding: 12px;
           font-size: 20px;
+          line-height: 20px;
         }
         & > a {
           float: right;
           padding: 12px;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 20px;
           font-weight: bold;
           transition: 0.2s;
@@ -62,46 +61,82 @@
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px;
-      .feed-main__gridLayout-aside {
-        .aside-block {
-          .feed-main__aside-friend {
-            background-color: white;
-            padding: 5px;
-            border-radius: 7px;
-            .feed-main__aside-friend-link--grid {
-              display: inline-block;
-              margin-bottom: 5px;
-              padding: 10px;
-              & > a:nth-child(1) {
-                display: flex;
-                align-items: center;
-                & > img {
-                  width: 20px;
-                  height: 20px;
-                }
-                & > h5 {
-                  display: inline-block;
-                  margin-left: 10px;
-                }
-                & > span {
-                  margin-left: 5px;
-                }
-              }
-              & > a:nth-child(2) {
-                font-size: 14px;
-                line-height: 16px;
-                text-align: right;
-                color: cadetblue;
-              }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .feed-user {
+    .feed-user__wrapper {
+      width: 90%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .feed-user {
+    .feed-user__wrapper {
+      .feed-user__info {
+        .feed-user__info-subNav {
+          & > h4 {
+            font-size: 18px;
+          }
+          & > a {
+            font-size: 13px;
+          }
+        }
+        .feed-user__info--backgroud-img {
+          .feed-user__info--backgroud-effect {
+            & > img {
+              width: 20%;
+              height: 20%;
             }
-            .feed-main__aside-friend-grid {
-              display: grid;
-              grid-gap: 5px;
-              padding: 5px;
-              background-color: white;
-              grid-template-columns: repeat(3, 1fr);
-              grid-template-rows: repeat(3, 1fr);
-            }
+          }
+        }
+      }
+      .feed-user__grid-layout {
+        grid-template-columns: 1fr;
+        .feed-user__gridLayout-aside {
+          & > span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .feed-user {
+    .feed-user__wrapper {
+      .feed-user__info {
+        .feed-user__info-subNav {
+          & > h4 {
+            font-size: 17px;
+            padding: 8px;
+          }
+          & > a {
+            font-size: 12px;
+            padding: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .feed-user {
+    .feed-user__wrapper {
+      .feed-user__info {
+        .feed-user__info-subNav {
+          & > h4 {
+            font-size: 15px;
+            padding: 6px;
+          }
+          & > a {
+            font-size: 10px;
+            padding: 6px;
           }
         }
       }

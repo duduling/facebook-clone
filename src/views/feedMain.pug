@@ -7,6 +7,11 @@ block content
             .feed-main__wrapper
                 h1.ir_su Feed-Main
                 .feed-main__gridLayout
+                    aside.feed-main__gridLayout-aside
+                        h3.ir_su aside
+                        include ./partials/asideUsers
+                        include ./partials/asideAd
+                        span Facebook &copy; #{new Date().getFullYear()}
                     section.feed-main__gridLayout-feed
                         h3.ir_su feed
                         article.feed-main__upload
@@ -23,9 +28,3 @@ block content
                                     description: item.description,
                                     likes: item.likes
                                 })
-                    aside.feed-main__gridLayout-aside
-                        section.aside-block
-                            h3.ir_su aside
-                            include ./partials/asideUsers
-                            include ./partials/asideAd
-                            span Facebook &copy; #{new Date().getFullYear()}

@@ -14,17 +14,79 @@
   }
   .search-users--block-link {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     margin-left: 5px;
     & > a {
       align-items: center;
       display: flex;
     }
+    .search-users--block-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      & > a {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+      & > span {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 3px;
+        color: $darkGray;
+      }
+    }
     .search-users--block-link-btn {
       display: flex;
-      align-items: center;
-      & > button:nth-child(2) {
-        margin-left: 5px;
+      justify-content: flex-end;
+      align-items: baseline;
+      & > button {
+        color: $darkGray;
+        margin: 15px 20px 0 0;
+        &:nth-child(2) {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .search-users--block {
+    .search-users--block-profile {
+      & > img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+    .search-users--block-link {
+      .search-users--block-info {
+        & > a {
+          font-size: 22px;
+        }
+        & > span {
+          font-size: 13px;
+        }
+      }
+      .search-users--block-link-btn {
+        & > button {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .search-users--block {
+    .search-users--block-link {
+      .search-users--block-info {
+        & > a {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+        & > span {
+          font-size: 12px;
+        }
       }
     }
   }

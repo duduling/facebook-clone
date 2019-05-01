@@ -2,9 +2,6 @@ const path = require("path");
 const ExtractCSS = require("extract-text-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 
-// 2가지 모드: 1. development 2.production
-const MODE = process.env.WEBPACK_ENV;
-
 // 경로 접근 방법 2가지 1. resolve 2. join
 const ENTRY_FILE = path.resolve(__dirname, "./src/assets/js/main.js");
 const OUTPUT_DIR = path.join(__dirname, "./src/static");
@@ -12,9 +9,6 @@ const OUTPUT_DIR = path.join(__dirname, "./src/static");
 const config = {
   // Load File
   entry: ["@babel/polyfill", ENTRY_FILE],
-
-  // Build Mode
-  mode: MODE,
 
   // Module
   module: {
@@ -44,7 +38,7 @@ const config = {
             loader: "postcss-loader",
             options: {
               plugins() {
-                return [autoprefixer({ browserlist: "cover 99.5%" })];
+                return [autoprefixer({ browsers: "cover 99.5%" })];
               }
             }
           },

@@ -1,10 +1,11 @@
 include ../mixins/adBlock
 
-article.feed-main__aside-ad
+section.feed-main__aside-ad
     h5 AD
-    each item in [0,0,0]
-        +adBlock({
-                idx: item.idx,
-                profile: item.profile,
-                name: item.name
-            })
+    section.feed-main__aside-ad-grid
+        each item in [0,0,0]
+            +adBlock({
+                    idx: item.idx,
+                    profile: item.profile,
+                    name: item.name
+                })

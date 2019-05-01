@@ -1,6 +1,5 @@
 extends ./layouts/main.pug
 include ./mixins/feedMainBlock
-include ./mixins/friendProfileBlock
 
 block content
     .feed-user
@@ -17,26 +16,15 @@ block content
                         a(href=`/user${routes.editPassword}`) Edit Password
                         a(href=`/user${routes.editProfile}`) Edit Profile
             section.feed-user__grid-layout
-                aside.feed-main__gridLayout-aside
-                    section.aside-block
-                        h3.ir_su aside
-                        //- include ./partials/asideFriends
-                        article.feed-main__aside-friend
-                            .feed-main__aside-friend-link--grid
-                                a(href=`/user${routes.userFriends}`)
-                                    img(src="/img/friend.png", alt="user friends icon")
-                                    h5 Friend
-                                    span 283
-                            .feed-main__aside-friend-grid
-                                each friendProfileBlock in [0,0,0,0,0,0,0,0,0]
-                                    +friendProfileBlock({
-                                        })
-                        include ./partials/asideAd
-                        span Facebook &copy; #{new Date().getFullYear()}
-                .feed-user__feed
+                aside.feed-user__gridLayout-aside
+                    h3.ir_su aside
+                    include ./partials/asideFriends
+                    include ./partials/asideAd
+                    span Facebook &copy; #{new Date().getFullYear()}
+                section.feed-user__feed
                     article.feed-user__upload
                         include ./partials/feedUpload.pug
-                    article.feed-user__content
+                    section.feed-user__content
                         each item in feeds
                             +feedBlock({
                                 idx: item.idx,
