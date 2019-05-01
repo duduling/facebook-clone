@@ -303,7 +303,7 @@ input {
     margin: 0 auto; }
     .feed-main .feed-main__wrapper .feed-main__gridLayout {
       display: grid;
-      grid-template-columns: 4fr 2fr;
+      grid-template-columns: 2fr 4fr;
       grid-gap: 10px; }
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
         background-color: #e9ebee; }
@@ -350,7 +350,7 @@ input {
              -moz-border-radius: 100%;
                   border-radius: 100%;
           margin: 150px 0 10px 20px;
-          border: 5px solid #fff; }
+          border: 3px solid #fff; }
         .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
           text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
           position: relative;
@@ -423,7 +423,8 @@ input {
 .edit-userDetail {
   background-color: #e9ebee;
   position: relative;
-  top: 50px; }
+  top: 50px;
+  min-height: 100vh; }
   .edit-userDetail .edit-userDetail__wrapper {
     background-color: #e9ebee;
     width: 980px;
@@ -1223,6 +1224,24 @@ input {
       -webkit-border-radius: 3px;
          -moz-border-radius: 3px;
               border-radius: 3px; }
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--oldPassword > label,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPassword > label,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPasswordRe > label {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: end;
+      -webkit-justify-content: flex-end;
+         -moz-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
   .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--submit {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1467,8 +1486,12 @@ input {
     display: grid;
     grid-template-rows: 1fr 1fr;
     margin-left: 5px; }
-    .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
-      margin-left: 5px; }
+    .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn {
+      margin-left: 2px; }
+      .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button {
+        font-size: 12px; }
+      .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
+        margin-left: 5px; }
 
 .friend-block {
   position: relative; }

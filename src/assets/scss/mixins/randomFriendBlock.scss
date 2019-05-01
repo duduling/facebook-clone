@@ -13,6 +13,10 @@
     grid-template-rows: 1fr 1fr;
     margin-left: 5px;
     .feed-main__aside-users--block-link-btn {
+      margin-left: 2px;
+      & > button {
+        font-size: 12px;
+      }
       & > button:nth-child(2) {
         margin-left: 5px;
       }
