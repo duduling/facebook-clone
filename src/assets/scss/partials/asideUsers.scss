@@ -3,3 +3,9 @@
   border-radius: 7px;
   padding: 10px;
 }
+
+@media (max-width: 960px) {
+  .feed-main__aside-users {
+    display: none;
+  }
+}

@@ -294,22 +294,19 @@ input {
 
 .feed-main {
   background-color: #e9ebee;
-  min-height: 100vh;
   position: relative;
   padding-top: 10px;
   top: 50px; }
   .feed-main .feed-main__wrapper {
     background-color: #e9ebee;
     width: 980px;
-    margin: 0 auto;
-    min-height: 100vh; }
+    margin: 0 auto; }
     .feed-main .feed-main__wrapper .feed-main__gridLayout {
       display: grid;
       grid-template-columns: 4fr 2fr;
       grid-gap: 10px; }
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-feed {
-        background-color: #e9ebee;
-        min-height: 100vh; }
+        background-color: #e9ebee; }
 
 @media (max-width: 1024px) {
   .feed-main .feed-main__wrapper {
@@ -318,12 +315,20 @@ input {
 @media (max-width: 960px) {
   .feed-main .feed-main__wrapper .feed-main__gridLayout {
     grid-template-columns: 1fr; }
-    .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside {
-      display: none; } }
+    .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside > span {
+      display: none; }
+    .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad-grid .feed-main__aside-ad-block .feed-main__aside-ad-link {
+        padding: 10px; } }
+
+@media (max-width: 768px) {
+  .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad-grid {
+    grid-template-columns: repeat(2, 1fr); } }
 
 .feed-user {
   background-color: #e9ebee;
-  min-height: 100vh;
   position: relative;
   top: 50px; }
   .feed-user .feed-user__wrapper {
@@ -417,14 +422,12 @@ input {
 
 .edit-userDetail {
   background-color: #e9ebee;
-  min-height: 100vh;
   position: relative;
   top: 50px; }
   .edit-userDetail .edit-userDetail__wrapper {
     background-color: #e9ebee;
     width: 980px;
-    margin: 0 auto;
-    min-height: 100vh; }
+    margin: 0 auto; }
     .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box-nav {
       background-color: #fff;
       overflow: hidden;
@@ -496,22 +499,19 @@ input {
 
 .feed-search {
   background-color: #e9ebee;
-  min-height: 100vh;
   position: relative;
   padding-top: 10px;
   top: 50px; }
   .feed-search .feed-search__wrapper {
     background-color: #e9ebee;
     width: 980px;
-    margin: 0 auto;
-    min-height: 100vh; }
+    margin: 0 auto; }
     .feed-search .feed-search__wrapper .feed-search__gridLayout {
       display: grid;
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px; }
       .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed {
-        background-color: #e9ebee;
-        min-height: 100vh; }
+        background-color: #e9ebee; }
         .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__users {
           background-color: white;
           margin-bottom: 15px;
@@ -529,6 +529,25 @@ input {
           background-color: white; }
           .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__feeds > .feedBlock {
             border: none; }
+
+@media (max-width: 1024px) {
+  .feed-search .feed-search__wrapper {
+    width: 90%; } }
+
+@media (max-width: 960px) {
+  .feed-search .feed-search__wrapper .feed-search__gridLayout {
+    grid-template-columns: 1fr; }
+    .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-aside > span {
+      display: none; }
+    .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-aside .feed-main__aside-ad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); }
+      .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-aside .feed-main__aside-ad-grid .feed-main__aside-ad-block .feed-main__aside-ad-link {
+        padding: 10px; } }
+
+@media (max-width: 768px) {
+  .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-aside .feed-main__aside-ad-grid {
+    grid-template-columns: repeat(2, 1fr); } }
 
 .header-loginPage {
   background-color: #3b5998;
@@ -1273,6 +1292,10 @@ input {
      -moz-border-radius: 7px;
           border-radius: 7px;
   padding: 10px; }
+
+@media (max-width: 960px) {
+  .feed-main__aside-users {
+    display: none; } }
 
 .feed-main__aside-friend {
   background-color: white;
