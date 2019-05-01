@@ -254,7 +254,7 @@ input {
           .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--btn:hover {
             background: linear-gradient(#79bc64, #578843); }
 
-@media (max-width: 1054px) {
+@media (max-width: 1024px) {
   .homePage__background .homePage__container {
     width: 100%; }
     .homePage__background .homePage__container .homePage__info {
@@ -340,37 +340,10 @@ input {
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px; }
-      .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend {
-        background-color: white;
-        padding: 5px;
-        border-radius: 7px; }
-        .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid {
-          display: inline-block;
-          margin-bottom: 5px;
-          padding: 10px; }
-          .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) {
-            display: flex;
-            align-items: center; }
-            .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > img {
-              width: 20px;
-              height: 20px; }
-            .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > h5 {
-              display: inline-block;
-              margin-left: 10px; }
-            .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > span {
-              margin-left: 5px; }
-          .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(2) {
-            font-size: 14px;
-            line-height: 16px;
-            text-align: right;
-            color: cadetblue; }
-        .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-main__gridLayout-aside .aside-block .feed-main__aside-friend .feed-main__aside-friend-grid {
-          display: grid;
-          grid-gap: 5px;
-          padding: 5px;
-          background-color: white;
-          grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: repeat(3, 1fr); }
+
+@media (max-width: 1024px) {
+  .feed-user .feed-user__wrapper {
+    width: 90%; } }
 
 .edit-userDetail {
   background-color: #e9ebee;
@@ -918,6 +891,38 @@ input {
   border-radius: 7px;
   padding: 10px; }
 
+.feed-main__aside-friend {
+  background-color: white;
+  padding: 5px;
+  border-radius: 7px; }
+  .feed-main__aside-friend .feed-main__aside-friend-link--grid {
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 10px; }
+    .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) {
+      display: flex;
+      align-items: center; }
+      .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > img {
+        width: 20px;
+        height: 20px; }
+      .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > h5 {
+        display: inline-block;
+        margin-left: 10px; }
+      .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(1) > span {
+        margin-left: 5px; }
+    .feed-main__aside-friend .feed-main__aside-friend-link--grid > a:nth-child(2) {
+      font-size: 14px;
+      line-height: 16px;
+      text-align: right;
+      color: cadetblue; }
+  .feed-main__aside-friend .feed-main__aside-friend-grid {
+    display: grid;
+    grid-gap: 5px;
+    padding: 5px;
+    background-color: white;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr); }
+
 .feed-main__aside-ad {
   margin-top: 15px;
   padding: 12px;
@@ -999,7 +1004,7 @@ input {
         .feedBlock .feedBlock__footer .feedBlock__footer-btn > button:hover {
           background-color: #e9ebee8a; }
 
-@media (max-width: 1054px) {
+@media (max-width: 1024px) {
   .feedBlock .feedBlock__body .feedBlock__body-img > img {
     width: 100%;
     height: 100%; } }
@@ -1020,23 +1025,20 @@ input {
     .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
       margin-left: 5px; }
 
-.friend-block__link .friend-block__BGC {
-  background-color: #ccc; }
-  .friend-block__link .friend-block__BGC .friend-block__box {
-    text-align: center;
-    width: 88px;
-    height: 85px;
-    background: url(/img/profile_male.png) no-repeat center/100%; }
-    .friend-block__link .friend-block__BGC .friend-block__box .friend-profile__box--effect {
-      background: linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
-      width: 88px;
-      height: 85px; }
-      .friend-block__link .friend-block__BGC .friend-block__box .friend-profile__box--effect > span {
-        position: relative;
-        top: 70px;
-        left: -20px;
-        color: white;
-        font-size: 13px; }
+.friend-block {
+  position: relative; }
+  .friend-block .friend-block__link > img {
+    width: 100%;
+    height: 100%; }
+  .friend-block .friend-block__link .friend-profile__box--effect {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    padding: 5px;
+    font-size: 12px; }
 
 .userFriends__body-friendBlock {
   display: grid;
@@ -1087,17 +1089,17 @@ input {
       .search-users--block .search-users--block-link .search-users--block-link-btn > button:nth-child(2) {
         margin-left: 5px; }
 
-.feed-main__aside-ad-link {
+.feed-main__aside-ad-block .feed-main__aside-ad-link {
   display: block;
   padding: 10px 0; }
-  .feed-main__aside-ad-link > img {
+  .feed-main__aside-ad-block .feed-main__aside-ad-link > img {
     width: 100%;
     margin-bottom: 10px; }
-  .feed-main__aside-ad-link > p {
+  .feed-main__aside-ad-block .feed-main__aside-ad-link > p {
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 5px; }
-  .feed-main__aside-ad-link > span {
+  .feed-main__aside-ad-block .feed-main__aside-ad-link > span {
     font-size: 12px;
     margin-top: 10px;
     font-weight: 300; }

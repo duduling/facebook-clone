@@ -1,0 +1,39 @@
+.feed-main__aside-friend {
+  background-color: white;
+  padding: 5px;
+  border-radius: 7px;
+  .feed-main__aside-friend-link--grid {
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 10px;
+    & > a:nth-child(1) {
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+      }
+      & > h5 {
+        display: inline-block;
+        margin-left: 10px;
+      }
+      & > span {
+        margin-left: 5px;
+      }
+    }
+    & > a:nth-child(2) {
+      font-size: 14px;
+      line-height: 16px;
+      text-align: right;
+      color: cadetblue;
+    }
+  }
+  .feed-main__aside-friend-grid {
+    display: grid;
+    grid-gap: 5px;
+    padding: 5px;
+    background-color: white;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
