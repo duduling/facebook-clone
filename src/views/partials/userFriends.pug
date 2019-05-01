@@ -9,7 +9,7 @@ include ../mixins/friendPageBlock
                 input(type="text", aria="user friend search")
                 input(type="submit", id="userFriendSearchSubmit", value="　")
         .userFriends__body-grid
-            each item in [0]
+            each item in [0, 0]
                 +friendPageBlock({
                     idx: item.idx,
                     profile: item.profile,
