@@ -45,6 +45,7 @@ app.use(flash());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use("/img", express.static(path.join(__dirname, "img")));
+app.use("/src/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(morgan("dev"));
 

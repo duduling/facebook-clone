@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const homePageBirthForm = document.getElementById("homePage__join-form--birth");
+const homePageBirthForm = document.getElementById("joinFormBirth");
 const jsbirthYear = document.getElementById("jsbirthYear");
 const jsbirthMonth = document.getElementById("jsbirthMonth");
 const jsbirthDay = document.getElementById("jsbirthDay");

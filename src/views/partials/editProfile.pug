@@ -3,13 +3,13 @@
         .editProfile__header
             i.fas.fa-id-card
                 h1 Edit Profile
-        form.editProfile-form-profile
+        form.editProfile-form-profile(action=`/user${routes.editProfile}`, method="post", enctype="multipart/form-data")
             .editProfile-form-profile-inputs
                 .editProfile-form-profile-inputs--coverImg
                     label(for="editProfileFile") Cover Image
-                    input(type="file", name="profile", id="editProfileFile")
+                    input(type="file", name="cover", id="editProfileFile", accept="image/*")
                 .editProfile-form-profile-inputs--profileImg
                     label(for="editCoverFile") Profile Image
-                    input(type="file", name="cover", id="editCoverFile")
+                    input(type="file", name="profile", id="editCoverFile", accept="image/*")
                 .editProfile-form-profile-inputs--submit
                     input(type="submit", value="Edit Profile")

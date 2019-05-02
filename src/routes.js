@@ -21,7 +21,7 @@ const EDIT_PASSWORD = "/editPassword";
 // API
 const API = "/api";
 const CHECK_ID = "/checkId";
-const CHECK_PW = "/checkPw";
+const CHECK_CHANGE_PW = "/checkChangePw";
 
 const routes = {
   // Global
@@ -47,7 +47,7 @@ const routes = {
   // API
   api: API,
   checkId: CHECK_ID,
-  checkPw: CHECK_PW
+  chaeckChangePw: CHECK_CHANGE_PW
 };
 
 export default routes;

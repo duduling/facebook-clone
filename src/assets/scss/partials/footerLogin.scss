@@ -22,7 +22,7 @@
     .footer-loginPage__etc {
       ul > a {
         display: inline-block;
-        padding-right: 20px;
+        padding-right: 18px;
         padding-top: 10px;
         width: auto;
         color: #365899;
@@ -42,7 +42,7 @@
   }
 }
 
-@media screen and (max-width: 1054px) {
+@media screen and (max-width: 1024px) {
   .footer-loginPage {
     width: 100%;
   }

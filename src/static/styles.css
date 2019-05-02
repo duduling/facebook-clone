@@ -190,33 +190,20 @@ input {
   .homePage__background .homePage__container {
     width: 980px;
     margin: 0 auto;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex; }
-    .homePage__background .homePage__container .homePage__info {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-         -moz-box-flex: 1;
-          -ms-flex: 1;
-              flex: 1; }
-      .homePage__background .homePage__container .homePage__info > p {
-        color: #0e385f;
-        font-size: 20px;
-        font-weight: bold;
-        line-height: 30px;
-        margin-top: 40px;
-        width: 450px;
-        word-spacing: -1px; }
-      .homePage__background .homePage__container .homePage__info > img {
-        margin-top: 15px; }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); }
+    .homePage__background .homePage__container .homePage__info > p {
+      display: inline-block;
+      color: #0e385f;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 30px;
+      margin-top: 40px;
+      word-spacing: 1px; }
+    .homePage__background .homePage__container .homePage__info > img {
+      width: 100%;
+      margin-top: 15px; }
     .homePage__background .homePage__container .homePage__join {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-         -moz-box-flex: 1;
-          -ms-flex: 1;
-              flex: 1;
       margin: 0 30px; }
       .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle {
         padding-top: 30px;
@@ -248,16 +235,16 @@ input {
           font-weight: 500;
           display: block;
           padding: 10px 0; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--birth {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormBirth {
           padding-bottom: 15px; }
-          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--birth > select {
+          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormBirth > select {
             padding: 3px;
             margin: 0 3px 10px; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--sex {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormSex {
           font-size: 20px; }
-          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--sex > input:nth-child(2) {
+          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormSex > input:nth-child(2) {
             margin-left: 10px; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-formTerms {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormTerms {
           font-size: 10px;
           color: #999;
           word-spacing: 1px;
@@ -265,7 +252,6 @@ input {
           line-height: normal; }
         .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--btn {
           color: white;
-          font-size: 20px;
           font-weight: bold;
           background: -webkit-gradient(linear, left top, left bottom, from(#67ae55), to(#578843));
           background: -webkit-linear-gradient(#67ae55, #578843);
@@ -288,9 +274,43 @@ input {
 
 @media (max-width: 1024px) {
   .homePage__background .homePage__container {
-    width: 100%; }
+    width: 95%; } }
+
+@media (max-width: 960px) {
+  .homePage__background .homePage__container .homePage__info > p {
+    font-size: 18px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h4 {
+    font-size: 30px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h5 {
+    font-size: 17px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form > input,
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form label {
+    font-size: 18px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormBirth {
+    padding-bottom: 12px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormSex {
+    font-size: 18px; } }
+
+@media (max-width: 768px) {
+  .homePage__background .homePage__container {
+    grid-template-columns: 1fr; }
     .homePage__background .homePage__container .homePage__info {
       display: none; } }
+
+@media (max-width: 480px) {
+  .homePage__background .homePage__container .homePage__info > p {
+    font-size: 16px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h4 {
+    font-size: 28px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h5 {
+    font-size: 15px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form > input,
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form label {
+    font-size: 16px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormBirth {
+    padding-bottom: 11px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormSex {
+    font-size: 16px; } }
 
 .feed-main {
   background-color: #e9ebee;
@@ -344,13 +364,22 @@ input {
         background: -o-linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
         background: linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53)); }
         .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
-          width: 15%;
-          height: 15%;
+          width: 150px;
+          height: 150px;
           -webkit-border-radius: 100%;
              -moz-border-radius: 100%;
                   border-radius: 100%;
           margin: 150px 0 10px 20px;
-          border: 3px solid #fff; }
+          border: 3px solid #fff;
+          -webkit-transition: 0.3s;
+          -o-transition: 0.3s;
+          -moz-transition: 0.3s;
+          transition: 0.3s;
+          -o-object-fit: cover;
+             object-fit: cover;
+          -o-object-position: top;
+             object-position: top;
+          border: rgba(0, 0, 0, 0.1) solid 1px; }
         .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
           text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
           position: relative;
@@ -358,7 +387,11 @@ input {
           bottom: 30px;
           color: #fff;
           font-size: 25px;
-          font-weight: bold; }
+          font-weight: bold;
+          -webkit-transition: 0.3s;
+          -o-transition: 0.3s;
+          -moz-transition: 0.3s;
+          transition: 0.3s; }
     .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav {
       background-color: #fff;
       overflow: hidden;
@@ -391,28 +424,36 @@ input {
   .feed-user .feed-user__wrapper {
     width: 90%; } }
 
-@media (max-width: 768px) {
-  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > h4 {
-    font-size: 18px; }
-  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > a {
-    font-size: 13px; }
+@media (max-width: 900px) {
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
-    width: 20%;
-    height: 20%; }
-  .feed-user .feed-user__wrapper .feed-user__grid-layout {
-    grid-template-columns: 1fr; }
-    .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__gridLayout-aside > span {
-      display: none; } }
+    width: 120px;
+    height: 120px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
+    font-size: 22px; } }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > h4 {
     font-size: 17px;
     padding: 8px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > a {
     font-size: 12px;
-    padding: 8px; } }
+    padding: 8px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
+    width: 100px;
+    height: 100px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
+    font-size: 20px; }
+  .feed-user .feed-user__wrapper .feed-user__grid-layout {
+    grid-template-columns: 1fr; }
+    .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__gridLayout-aside > span {
+      display: none; } }
 
 @media (max-width: 480px) {
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
+    width: 70px;
+    height: 70px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
+    font-size: 17px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > h4 {
     font-size: 15px;
     padding: 6px; }
@@ -457,13 +498,21 @@ input {
         background: -o-linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
         background: linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53)); }
         .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > img {
-          width: 20%;
-          height: 20%;
+          width: 150px;
+          height: 150px;
           -webkit-border-radius: 100%;
              -moz-border-radius: 100%;
                   border-radius: 100%;
           margin: 150px 0 10px 20px;
-          border: 5px solid #fff; }
+          -o-object-fit: cover;
+             object-fit: cover;
+          -o-object-position: top;
+             object-position: top;
+          border: 3px solid currentColor;
+          -webkit-transition: 0.3s;
+          -o-transition: 0.3s;
+          -moz-transition: 0.3s;
+          transition: 0.3s; }
         .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > span {
           text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
           position: relative;
@@ -479,8 +528,8 @@ input {
 
 @media (max-width: 768px) {
   .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > img {
-    width: 15%;
-    height: 15%; }
+    width: 100px;
+    height: 100px; }
   .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > span {
     font-size: 20px; } }
 
@@ -495,6 +544,9 @@ input {
 @media (max-width: 480px) {
   .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box-nav > a {
     font-size: 11px; }
+  .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > img {
+    width: 70px;
+    height: 70px; }
   .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > span {
     font-size: 14px; } }
 
@@ -639,16 +691,16 @@ input {
               background-color: #365899;
               border-color: #29487d; }
 
-@media screen and (max-width: 1054px) {
+@media (max-width: 1024px) {
   .header-loginPage .header-loginPage__wrapper {
-    width: 100%; }
+    width: 95%; }
     .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
-      padding-left: 30px; }
+      padding-left: 0; }
     .header-loginPage .header-loginPage__wrapper .header-loginPage__login .header-loginPage__loginId > input,
     .header-loginPage .header-loginPage__wrapper .header-loginPage__login .header-loginPage__loginPw > input {
       width: 130px; } }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
     padding-left: 0;
     width: 100%;
@@ -667,6 +719,27 @@ input {
             justify-content: center;
     padding-left: 40px;
     padding-top: 25px; } }
+
+@media (max-width: 480px) {
+  .header-loginPage .header-loginPage__wrapper .header-loginPage__login {
+    padding-top: 15px;
+    padding-left: 0; }
+    .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr); }
+      .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginId,
+      .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginPw {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        margin-right: 0; }
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginId > input,
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginPw > input {
+          width: 100%; }
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginId > label,
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginPw > label {
+          -webkit-align-self: center;
+              -ms-flex-item-align: center;
+                  align-self: center; } }
 
 .footer-loginPage {
   width: 980px;
@@ -687,7 +760,7 @@ input {
     background-color: #ccc; }
   .footer-loginPage .footer-loginPage__wrapper .footer-loginPage__etc ul > a {
     display: inline-block;
-    padding-right: 20px;
+    padding-right: 18px;
     padding-top: 10px;
     width: auto;
     color: #365899;
@@ -701,7 +774,7 @@ input {
     font-size: 11px;
     color: #737373; }
 
-@media screen and (max-width: 1054px) {
+@media screen and (max-width: 1024px) {
   .footer-loginPage {
     width: 100%; } }
 
@@ -774,8 +847,8 @@ input {
         .header .header__wrapper .header__search-bar > form #header__searchBar-btn {
           width: 50px;
           position: relative;
-          top: -0.5px;
-          padding: 6.5px 10px;
+          top: 0;
+          padding: 6px 10px;
           -webkit-border-radius: 0 2px 2px 0;
              -moz-border-radius: 0 2px 2px 0;
                   border-radius: 0 2px 2px 0;
@@ -805,7 +878,16 @@ input {
         height: 30px;
         -webkit-border-radius: 100%;
            -moz-border-radius: 100%;
-                border-radius: 100%; }
+                border-radius: 100%;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: top;
+           object-position: top;
+        border: rgba(0, 0, 0, 0.1) solid 1px; }
       .header .header__wrapper .header__profile > a > span {
         margin-left: 10px;
         color: white;
@@ -910,18 +992,27 @@ input {
           line-height: 45px;
           padding: 0 15px; }
           .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a > img {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             position: relative;
-            top: 5px;
+            top: 10px;
             right: 5px;
             -webkit-border-radius: 100%;
                -moz-border-radius: 100%;
-                    border-radius: 100%; }
+                    border-radius: 100%;
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            -moz-transition: 0.3s;
+            transition: 0.3s;
+            -o-object-fit: cover;
+               object-fit: cover;
+            -o-object-position: top;
+               object-position: top;
+            border: rgba(0, 0, 0, 0.1) solid 1px; }
       .header__dropMenu > li .header__dropMenu--open-list .menuUserFeed {
-        padding-left: 12px; }
+        padding-left: 7px; }
         .header__dropMenu > li .header__dropMenu--open-list .menuUserFeed > a > span {
-          margin-left: 7px; }
+          margin-left: 3px; }
       .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend {
         padding-left: 10px; }
         .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > a > i {
@@ -981,7 +1072,16 @@ input {
         margin-left: 8px;
         -webkit-border-radius: 100%;
            -moz-border-radius: 100%;
-                border-radius: 100%; }
+                border-radius: 100%;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: top;
+           object-position: top;
+        border: rgba(0, 0, 0, 0.1) solid 1px; }
       .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-description > textarea {
         font-family: "Noto Sans KR", sans-serif;
         font-size: 14px;
@@ -1073,6 +1173,8 @@ input {
       margin-right: 0; } }
 
 @media (max-width: 600px) {
+  .userFriends .userFriends__wrapper .userFriends__header .userFriends__header--search > input {
+    font-size: 10px; }
   .userFriends .userFriends__wrapper .userFriends__body-grid {
     grid-template-columns: 1fr; } }
 
@@ -1206,6 +1308,21 @@ input {
     .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--profileImg > input {
       width: 90%; } }
 
+@media (max-width: 480px) {
+  .editProfile .editProfile__wrapper .editProfile__header .fa-id-card > h1 {
+    padding: 8px; }
+  .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs {
+    grid-template-rows: repeat(4, 1fr);
+    padding: 15px; }
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--coverImg > input,
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--coverImg label,
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--profileImg > input,
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--profileImg label {
+      font-size: 10px; }
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--submit > input {
+      font-size: 10px;
+      padding: 5px 15px; } }
+
 .editPassword .editPassword__wrapper .editPassword__header {
   margin-top: 20px;
   background-color: #f5f6f7;
@@ -1299,6 +1416,37 @@ input {
   .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--submit > input,
   .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--submit label {
     font-size: 14px; } }
+
+@media (max-width: 600px) {
+  .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--oldPassword,
+  .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPassword,
+  .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPasswordRe {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr); }
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--oldPassword > input,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPassword > input,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPasswordRe > input {
+      width: 60%;
+      margin: auto; }
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--oldPassword > label,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPassword > label,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPasswordRe > label {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+         -moz-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      margin-left: 15%; } }
 
 @media (max-width: 480px) {
   .editPassword .editPassword__wrapper .editPassword__header .fa-lock > h1 {
@@ -1423,7 +1571,16 @@ input {
       height: 60px;
       -webkit-border-radius: 100%;
          -moz-border-radius: 100%;
-              border-radius: 100%; }
+              border-radius: 100%;
+      -webkit-transition: 0.3s;
+      -o-transition: 0.3s;
+      -moz-transition: 0.3s;
+      transition: 0.3s;
+      -o-object-fit: cover;
+         object-fit: cover;
+      -o-object-position: top;
+         object-position: top;
+      border: rgba(0, 0, 0, 0.1) solid 1px; }
     .feedBlock .feedBlock__header .feedBlock__header-grid {
       height: 100%;
       display: grid;
@@ -1551,11 +1708,19 @@ input {
 
 .userFriends__body-friendBlock {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto 1fr 1fr;
   border: #9c9c8c5c solid 1px; }
   .userFriends__body-friendBlock > a > img {
-    width: 100%;
-    height: 100%; }
+    width: 125px;
+    height: 125px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    -moz-transition: 0.3s;
+    transition: 0.3s;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top; }
   .userFriends__body-friendBlock .userFriends__body-friendBlock--border {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1586,15 +1751,21 @@ input {
     background-color: #f5f6f7; }
 
 @media (max-width: 900px) {
+  .userFriends__body-friendBlock > a > img {
+    width: 100px;
+    height: 100px; }
   .userFriends__body-friendBlock > button {
     font-size: 12px;
     padding: 4px 8px; } }
 
 @media (max-width: 768px) {
-  .userFriends__body-friendBlock .userFriends__body-friendBlock--border > a {
-    font-size: 16px; }
+  .userFriends__body-friendBlock > a > img {
+    width: 90px;
+    height: 90px; }
   .userFriends__body-friendBlock > button {
-    font-size: 10px; } }
+    font-size: 10px; }
+  .userFriends__body-friendBlock .userFriends__body-friendBlock--border > a {
+    font-size: 16px; } }
 
 .search-users--block {
   display: grid;

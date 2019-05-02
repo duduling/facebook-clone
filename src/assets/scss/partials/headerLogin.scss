@@ -67,12 +67,12 @@
   }
 }
 
-@media screen and (max-width: 1054px) {
+@media (max-width: 1024px) {
   .header-loginPage {
     .header-loginPage__wrapper {
-      width: 100%;
+      width: 95%;
       .header-loginPage__logo {
-        padding-left: 30px;
+        padding-left: 0;
       }
       .header-loginPage__login {
         .header-loginPage__loginId,
@@ -86,7 +86,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .header-loginPage {
     .header-loginPage__wrapper {
       .header-loginPage__logo {
@@ -100,6 +100,33 @@
         justify-content: center;
         padding-left: 40px;
         padding-top: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header-loginPage {
+    .header-loginPage__wrapper {
+      .header-loginPage__login {
+        padding-top: 15px;
+        padding-left: 0;
+        & > form {
+          display: grid;
+          grid-template-rows: repeat(3, 1fr);
+          .header-loginPage__loginId,
+          .header-loginPage__loginPw {
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            margin-right: 0;
+            & > input {
+              width: 100%;
+            }
+            & > label {
+              align-self: center;
+            }
+          }
+        }
       }
     }
   }

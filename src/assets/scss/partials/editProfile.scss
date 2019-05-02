@@ -119,3 +119,36 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .editProfile {
+    .editProfile__wrapper {
+      .editProfile__header {
+        .fa-id-card {
+          & > h1 {
+            padding: 8px;
+          }
+        }
+      }
+      .editProfile-form-profile {
+        .editProfile-form-profile-inputs {
+          grid-template-rows: repeat(4, 1fr);
+          padding: 15px;
+          .editProfile-form-profile-inputs--coverImg,
+          .editProfile-form-profile-inputs--profileImg {
+            & > input,
+            label {
+              font-size: 10px;
+            }
+          }
+          .editProfile-form-profile-inputs--submit {
+            & > input {
+              font-size: 10px;
+              padding: 5px 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

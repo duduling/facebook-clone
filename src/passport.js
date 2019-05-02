@@ -32,11 +32,9 @@ passport.use(
         }
 
         // Not User
-        if (rows == "") {
+        if (rows == undefined) {
           done(null, false, { message: "Incorrect username." });
-        } else if (rows != undefined) {
-          console.log(rows);
-
+        } else {
           const user = rows[0];
 
           // 암호화 비밀번호 확인
@@ -47,17 +45,20 @@ passport.use(
             parseInt(process.env.CRYPTO_OPTION1, 10),
             process.env.CRYPTO_OPTION2,
             (err, key) => {
+              if (err) {
+                done(err);
+              }
+
               if (key.toString("base64") === user.pw) {
                 // 로그인 성공
                 done(null, user);
               } else {
                 // 비밀번호가 일치하지 않습니다.
                 done(null, false, { message: "Incorrect password." });
+                console.log("비밀번호 틀림");
               }
             }
           );
-        } else {
-          done(null, false, { message: "Incorrect username." });
         }
       });
     }
