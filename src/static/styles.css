@@ -244,7 +244,7 @@ input {
           font-size: 20px; }
           .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormSex > input:nth-child(2) {
             margin-left: 10px; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-formTerms {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormTerms {
           font-size: 10px;
           color: #999;
           word-spacing: 1px;
