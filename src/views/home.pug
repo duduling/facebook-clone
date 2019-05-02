@@ -5,7 +5,7 @@ block content
         .homePage__container
             section.homePage__info
                 p Facebook에서 전세계에 있는 친구, 가족, 지인들과 함께 이야기를 나눠보세요.
-                img(src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/OBaVg52wtTZ.png", alt="communication")
+                img(src="/img/loginHome.png", alt="communication")
             section.homePage__join
                 article.homePage__join-boxTitle
                     h4 가입하기
@@ -16,15 +16,15 @@ block content
                         input(type="email", name="email", aria-="email" placeholder="이메일", required="true", autocomplete="off")#jsEmail
                         input(type="password", name="password", aria-="password", id="jsPassword" placeholder="비밀번호", required="true", minlength="6", maxlength="16")
                         input(type="password", name="password1", aria-="password", id="jsPassword1" placeholder="비밀번호 확인", required="true", minlength="6", maxlength="16")
-                        label(for="homePage__join-form--birth") 생일
-                        #homePage__join-form--birth
+                        label(for="joinFormBirth") 생일
+                        #joinFormBirth
                             select(name="birthYear")#jsbirthYear
                             span 년
                             select(name="birthMonth")#jsbirthMonth
                             span 월
                             select(name="birthDay")#jsbirthDay
                             span 일
-                        #homePage__join-form--sex
+                        #joinFormSex
                             input(type="radio", name="sex", value="남성", checked)
                             |남성
                             input(type="radio", name="sex", value="여성")

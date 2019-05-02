@@ -4,24 +4,24 @@
   .homePage__container {
     width: 980px;
     margin: 0 auto;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     .homePage__info {
-      flex: 1;
       & > p {
+        display: inline-block;
         color: #0e385f;
         font-size: 20px;
         font-weight: bold;
         line-height: 30px;
         margin-top: 40px;
-        width: 450px;
-        word-spacing: -1px;
+        word-spacing: 1px;
       }
       & > img {
+        width: 100%;
         margin-top: 15px;
       }
     }
     .homePage__join {
-      flex: 1;
       margin: 0 30px;
       .homePage__join-boxTitle {
         padding-top: 30px;
@@ -57,14 +57,14 @@
             display: block;
             padding: 10px 0;
           }
-          #homePage__join-form--birth {
+          #joinFormBirth {
             padding-bottom: 15px;
             & > select {
               padding: 3px;
               margin: 0 3px 10px;
             }
           }
-          #homePage__join-form--sex {
+          #joinFormSex {
             font-size: 20px;
             & > input:nth-child(2) {
               margin-left: 10px;
@@ -79,7 +79,6 @@
           }
           #homePage__join-form--btn {
             color: white;
-            font-size: 20px;
             font-weight: bold;
             background: linear-gradient(#67ae55, #578843);
             background-color: #69a74e;
@@ -100,9 +99,89 @@
 @media (max-width: 1024px) {
   .homePage__background {
     .homePage__container {
-      width: 100%;
+      width: 95%;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .homePage__background {
+    .homePage__container {
+      .homePage__info {
+        & > p {
+          font-size: 18px;
+        }
+      }
+      .homePage__join {
+        .homePage__join-boxTitle {
+          & > h4 {
+            font-size: 30px;
+          }
+          & > h5 {
+            font-size: 17px;
+          }
+        }
+        .homePage__join-form {
+          & > form {
+            & > input,
+            label {
+              font-size: 18px;
+            }
+            #joinFormBirth {
+              padding-bottom: 12px;
+            }
+            #joinFormSex {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .homePage__background {
+    .homePage__container {
+      grid-template-columns: 1fr;
       .homePage__info {
         display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .homePage__background {
+    .homePage__container {
+      .homePage__info {
+        & > p {
+          font-size: 16px;
+        }
+      }
+      .homePage__join {
+        .homePage__join-boxTitle {
+          & > h4 {
+            font-size: 28px;
+          }
+          & > h5 {
+            font-size: 15px;
+          }
+        }
+        .homePage__join-form {
+          & > form {
+            & > input,
+            label {
+              font-size: 16px;
+            }
+            #joinFormBirth {
+              padding-bottom: 11px;
+            }
+            #joinFormSex {
+              font-size: 16px;
+            }
+          }
+        }
       }
     }
   }

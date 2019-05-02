@@ -190,33 +190,20 @@ input {
   .homePage__background .homePage__container {
     width: 980px;
     margin: 0 auto;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex; }
-    .homePage__background .homePage__container .homePage__info {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-         -moz-box-flex: 1;
-          -ms-flex: 1;
-              flex: 1; }
-      .homePage__background .homePage__container .homePage__info > p {
-        color: #0e385f;
-        font-size: 20px;
-        font-weight: bold;
-        line-height: 30px;
-        margin-top: 40px;
-        width: 450px;
-        word-spacing: -1px; }
-      .homePage__background .homePage__container .homePage__info > img {
-        margin-top: 15px; }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); }
+    .homePage__background .homePage__container .homePage__info > p {
+      display: inline-block;
+      color: #0e385f;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 30px;
+      margin-top: 40px;
+      word-spacing: 1px; }
+    .homePage__background .homePage__container .homePage__info > img {
+      width: 100%;
+      margin-top: 15px; }
     .homePage__background .homePage__container .homePage__join {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-         -moz-box-flex: 1;
-          -ms-flex: 1;
-              flex: 1;
       margin: 0 30px; }
       .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle {
         padding-top: 30px;
@@ -248,14 +235,14 @@ input {
           font-weight: 500;
           display: block;
           padding: 10px 0; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--birth {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormBirth {
           padding-bottom: 15px; }
-          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--birth > select {
+          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormBirth > select {
             padding: 3px;
             margin: 0 3px 10px; }
-        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--sex {
+        .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormSex {
           font-size: 20px; }
-          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--sex > input:nth-child(2) {
+          .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormSex > input:nth-child(2) {
             margin-left: 10px; }
         .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-formTerms {
           font-size: 10px;
@@ -265,7 +252,6 @@ input {
           line-height: normal; }
         .homePage__background .homePage__container .homePage__join .homePage__join-form > form #homePage__join-form--btn {
           color: white;
-          font-size: 20px;
           font-weight: bold;
           background: -webkit-gradient(linear, left top, left bottom, from(#67ae55), to(#578843));
           background: -webkit-linear-gradient(#67ae55, #578843);
@@ -288,9 +274,43 @@ input {
 
 @media (max-width: 1024px) {
   .homePage__background .homePage__container {
-    width: 100%; }
+    width: 95%; } }
+
+@media (max-width: 960px) {
+  .homePage__background .homePage__container .homePage__info > p {
+    font-size: 18px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h4 {
+    font-size: 30px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h5 {
+    font-size: 17px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form > input,
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form label {
+    font-size: 18px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormBirth {
+    padding-bottom: 12px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormSex {
+    font-size: 18px; } }
+
+@media (max-width: 768px) {
+  .homePage__background .homePage__container {
+    grid-template-columns: 1fr; }
     .homePage__background .homePage__container .homePage__info {
       display: none; } }
+
+@media (max-width: 480px) {
+  .homePage__background .homePage__container .homePage__info > p {
+    font-size: 16px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h4 {
+    font-size: 28px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-boxTitle > h5 {
+    font-size: 15px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form > input,
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form label {
+    font-size: 16px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormBirth {
+    padding-bottom: 11px; }
+  .homePage__background .homePage__container .homePage__join .homePage__join-form > form #joinFormSex {
+    font-size: 16px; } }
 
 .feed-main {
   background-color: #e9ebee;
@@ -639,16 +659,16 @@ input {
               background-color: #365899;
               border-color: #29487d; }
 
-@media screen and (max-width: 1054px) {
+@media (max-width: 1024px) {
   .header-loginPage .header-loginPage__wrapper {
-    width: 100%; }
+    width: 95%; }
     .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
-      padding-left: 30px; }
+      padding-left: 0; }
     .header-loginPage .header-loginPage__wrapper .header-loginPage__login .header-loginPage__loginId > input,
     .header-loginPage .header-loginPage__wrapper .header-loginPage__login .header-loginPage__loginPw > input {
       width: 130px; } }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .header-loginPage .header-loginPage__wrapper .header-loginPage__logo {
     padding-left: 0;
     width: 100%;
@@ -667,6 +687,27 @@ input {
             justify-content: center;
     padding-left: 40px;
     padding-top: 25px; } }
+
+@media (max-width: 480px) {
+  .header-loginPage .header-loginPage__wrapper .header-loginPage__login {
+    padding-top: 15px;
+    padding-left: 0; }
+    .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr); }
+      .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginId,
+      .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginPw {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        margin-right: 0; }
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginId > input,
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginPw > input {
+          width: 100%; }
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginId > label,
+        .header-loginPage .header-loginPage__wrapper .header-loginPage__login > form .header-loginPage__loginPw > label {
+          -webkit-align-self: center;
+              -ms-flex-item-align: center;
+                  align-self: center; } }
 
 .footer-loginPage {
   width: 980px;
@@ -687,7 +728,7 @@ input {
     background-color: #ccc; }
   .footer-loginPage .footer-loginPage__wrapper .footer-loginPage__etc ul > a {
     display: inline-block;
-    padding-right: 20px;
+    padding-right: 18px;
     padding-top: 10px;
     width: auto;
     color: #365899;
@@ -701,7 +742,7 @@ input {
     font-size: 11px;
     color: #737373; }
 
-@media screen and (max-width: 1054px) {
+@media screen and (max-width: 1024px) {
   .footer-loginPage {
     width: 100%; } }
 
