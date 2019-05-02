@@ -364,13 +364,22 @@ input {
         background: -o-linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
         background: linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53)); }
         .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
-          width: 15%;
-          height: 15%;
+          width: 150px;
+          height: 150px;
           -webkit-border-radius: 100%;
              -moz-border-radius: 100%;
                   border-radius: 100%;
           margin: 150px 0 10px 20px;
-          border: 3px solid #fff; }
+          border: 3px solid #fff;
+          -webkit-transition: 0.3s;
+          -o-transition: 0.3s;
+          -moz-transition: 0.3s;
+          transition: 0.3s;
+          -o-object-fit: cover;
+             object-fit: cover;
+          -o-object-position: top;
+             object-position: top;
+          border: rgba(0, 0, 0, 0.1) solid 1px; }
         .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
           text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
           position: relative;
@@ -378,7 +387,11 @@ input {
           bottom: 30px;
           color: #fff;
           font-size: 25px;
-          font-weight: bold; }
+          font-weight: bold;
+          -webkit-transition: 0.3s;
+          -o-transition: 0.3s;
+          -moz-transition: 0.3s;
+          transition: 0.3s; }
     .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav {
       background-color: #fff;
       overflow: hidden;
@@ -411,14 +424,23 @@ input {
   .feed-user .feed-user__wrapper {
     width: 90%; } }
 
+@media (max-width: 900px) {
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
+    width: 120px;
+    height: 120px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
+    font-size: 22px; } }
+
 @media (max-width: 768px) {
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > h4 {
     font-size: 18px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > a {
     font-size: 13px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
-    width: 20%;
-    height: 20%; }
+    width: 100px;
+    height: 100px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
+    font-size: 20px; }
   .feed-user .feed-user__wrapper .feed-user__grid-layout {
     grid-template-columns: 1fr; }
     .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__gridLayout-aside > span {
@@ -433,6 +455,11 @@ input {
     padding: 8px; } }
 
 @media (max-width: 480px) {
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
+    width: 70px;
+    height: 70px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
+    font-size: 17px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > h4 {
     font-size: 15px;
     padding: 6px; }
@@ -477,13 +504,21 @@ input {
         background: -o-linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
         background: linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53)); }
         .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > img {
-          width: 20%;
-          height: 20%;
+          width: 150px;
+          height: 150px;
           -webkit-border-radius: 100%;
              -moz-border-radius: 100%;
                   border-radius: 100%;
           margin: 150px 0 10px 20px;
-          border: 5px solid #fff; }
+          -o-object-fit: cover;
+             object-fit: cover;
+          -o-object-position: top;
+             object-position: top;
+          border: 3px solid currentColor;
+          -webkit-transition: 0.3s;
+          -o-transition: 0.3s;
+          -moz-transition: 0.3s;
+          transition: 0.3s; }
         .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > span {
           text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
           position: relative;
@@ -499,8 +534,8 @@ input {
 
 @media (max-width: 768px) {
   .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > img {
-    width: 15%;
-    height: 15%; }
+    width: 100px;
+    height: 100px; }
   .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > span {
     font-size: 20px; } }
 
@@ -515,6 +550,9 @@ input {
 @media (max-width: 480px) {
   .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box-nav > a {
     font-size: 11px; }
+  .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > img {
+    width: 70px;
+    height: 70px; }
   .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box--backgroud-img .edit-userDetail__box--backgroud-effect > span {
     font-size: 14px; } }
 
@@ -846,7 +884,16 @@ input {
         height: 30px;
         -webkit-border-radius: 100%;
            -moz-border-radius: 100%;
-                border-radius: 100%; }
+                border-radius: 100%;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: top;
+           object-position: top;
+        border: rgba(0, 0, 0, 0.1) solid 1px; }
       .header .header__wrapper .header__profile > a > span {
         margin-left: 10px;
         color: white;
@@ -951,18 +998,27 @@ input {
           line-height: 45px;
           padding: 0 15px; }
           .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a > img {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             position: relative;
-            top: 5px;
+            top: 10px;
             right: 5px;
             -webkit-border-radius: 100%;
                -moz-border-radius: 100%;
-                    border-radius: 100%; }
+                    border-radius: 100%;
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            -moz-transition: 0.3s;
+            transition: 0.3s;
+            -o-object-fit: cover;
+               object-fit: cover;
+            -o-object-position: top;
+               object-position: top;
+            border: rgba(0, 0, 0, 0.1) solid 1px; }
       .header__dropMenu > li .header__dropMenu--open-list .menuUserFeed {
-        padding-left: 12px; }
+        padding-left: 7px; }
         .header__dropMenu > li .header__dropMenu--open-list .menuUserFeed > a > span {
-          margin-left: 7px; }
+          margin-left: 3px; }
       .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend {
         padding-left: 10px; }
         .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > a > i {
@@ -1022,7 +1078,16 @@ input {
         margin-left: 8px;
         -webkit-border-radius: 100%;
            -moz-border-radius: 100%;
-                border-radius: 100%; }
+                border-radius: 100%;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: top;
+           object-position: top;
+        border: rgba(0, 0, 0, 0.1) solid 1px; }
       .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-description > textarea {
         font-family: "Noto Sans KR", sans-serif;
         font-size: 14px;
@@ -1464,7 +1529,16 @@ input {
       height: 60px;
       -webkit-border-radius: 100%;
          -moz-border-radius: 100%;
-              border-radius: 100%; }
+              border-radius: 100%;
+      -webkit-transition: 0.3s;
+      -o-transition: 0.3s;
+      -moz-transition: 0.3s;
+      transition: 0.3s;
+      -o-object-fit: cover;
+         object-fit: cover;
+      -o-object-position: top;
+         object-position: top;
+      border: rgba(0, 0, 0, 0.1) solid 1px; }
     .feedBlock .feedBlock__header .feedBlock__header-grid {
       height: 100%;
       display: grid;
