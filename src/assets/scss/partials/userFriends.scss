@@ -59,6 +59,13 @@
 @media (max-width: 600px) {
   .userFriends {
     .userFriends__wrapper {
+      .userFriends__header {
+        .userFriends__header--search {
+          & > input {
+            font-size: 10px;
+          }
+        }
+      }
       .userFriends__body-grid {
         grid-template-columns: 1fr;
       }

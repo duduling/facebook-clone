@@ -433,9 +433,11 @@ input {
 
 @media (max-width: 768px) {
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > h4 {
-    font-size: 18px; }
+    font-size: 17px;
+    padding: 8px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > a {
-    font-size: 13px; }
+    font-size: 12px;
+    padding: 8px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
     width: 100px;
     height: 100px; }
@@ -445,14 +447,6 @@ input {
     grid-template-columns: 1fr; }
     .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__gridLayout-aside > span {
       display: none; } }
-
-@media (max-width: 600px) {
-  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > h4 {
-    font-size: 17px;
-    padding: 8px; }
-  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > a {
-    font-size: 12px;
-    padding: 8px; } }
 
 @media (max-width: 480px) {
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
@@ -853,8 +847,8 @@ input {
         .header .header__wrapper .header__search-bar > form #header__searchBar-btn {
           width: 50px;
           position: relative;
-          top: -0.5px;
-          padding: 6.5px 10px;
+          top: 0;
+          padding: 6px 10px;
           -webkit-border-radius: 0 2px 2px 0;
              -moz-border-radius: 0 2px 2px 0;
                   border-radius: 0 2px 2px 0;
@@ -1179,6 +1173,8 @@ input {
       margin-right: 0; } }
 
 @media (max-width: 600px) {
+  .userFriends .userFriends__wrapper .userFriends__header .userFriends__header--search > input {
+    font-size: 10px; }
   .userFriends .userFriends__wrapper .userFriends__body-grid {
     grid-template-columns: 1fr; } }
 
@@ -1312,6 +1308,21 @@ input {
     .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--profileImg > input {
       width: 90%; } }
 
+@media (max-width: 480px) {
+  .editProfile .editProfile__wrapper .editProfile__header .fa-id-card > h1 {
+    padding: 8px; }
+  .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs {
+    grid-template-rows: repeat(4, 1fr);
+    padding: 15px; }
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--coverImg > input,
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--coverImg label,
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--profileImg > input,
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--profileImg label {
+      font-size: 10px; }
+    .editProfile .editProfile__wrapper .editProfile-form-profile .editProfile-form-profile-inputs .editProfile-form-profile-inputs--submit > input {
+      font-size: 10px;
+      padding: 5px 15px; } }
+
 .editPassword .editPassword__wrapper .editPassword__header {
   margin-top: 20px;
   background-color: #f5f6f7;
@@ -1405,6 +1416,37 @@ input {
   .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--submit > input,
   .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--submit label {
     font-size: 14px; } }
+
+@media (max-width: 600px) {
+  .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--oldPassword,
+  .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPassword,
+  .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPasswordRe {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr); }
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--oldPassword > input,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPassword > input,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPasswordRe > input {
+      width: 60%;
+      margin: auto; }
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--oldPassword > label,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPassword > label,
+    .editPassword .editPassword__wrapper .editPassword-form-password .editPassword-form-password-inputs .editPassword-form-password-inputs--newPasswordRe > label {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+         -moz-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      margin-left: 15%; } }
 
 @media (max-width: 480px) {
   .editPassword .editPassword__wrapper .editPassword__header .fa-lock > h1 {
@@ -1666,11 +1708,19 @@ input {
 
 .userFriends__body-friendBlock {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto 1fr 1fr;
   border: #9c9c8c5c solid 1px; }
   .userFriends__body-friendBlock > a > img {
-    width: 100%;
-    height: 100%; }
+    width: 125px;
+    height: 125px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    -moz-transition: 0.3s;
+    transition: 0.3s;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top; }
   .userFriends__body-friendBlock .userFriends__body-friendBlock--border {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1701,15 +1751,21 @@ input {
     background-color: #f5f6f7; }
 
 @media (max-width: 900px) {
+  .userFriends__body-friendBlock > a > img {
+    width: 100px;
+    height: 100px; }
   .userFriends__body-friendBlock > button {
     font-size: 12px;
     padding: 4px 8px; } }
 
 @media (max-width: 768px) {
-  .userFriends__body-friendBlock .userFriends__body-friendBlock--border > a {
-    font-size: 16px; }
+  .userFriends__body-friendBlock > a > img {
+    width: 90px;
+    height: 90px; }
   .userFriends__body-friendBlock > button {
-    font-size: 10px; } }
+    font-size: 10px; }
+  .userFriends__body-friendBlock .userFriends__body-friendBlock--border > a {
+    font-size: 16px; } }
 
 .search-users--block {
   display: grid;

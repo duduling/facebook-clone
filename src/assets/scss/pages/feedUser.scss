@@ -104,10 +104,12 @@
       .feed-user__info {
         .feed-user__info-subNav {
           & > h4 {
-            font-size: 18px;
+            font-size: 17px;
+            padding: 8px;
           }
           & > a {
-            font-size: 13px;
+            font-size: 12px;
+            padding: 8px;
           }
         }
         .feed-user__info--backgroud-img {
@@ -127,25 +129,6 @@
         .feed-user__gridLayout-aside {
           & > span {
             display: none;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 600px) {
-  .feed-user {
-    .feed-user__wrapper {
-      .feed-user__info {
-        .feed-user__info-subNav {
-          & > h4 {
-            font-size: 17px;
-            padding: 8px;
-          }
-          & > a {
-            font-size: 12px;
-            padding: 8px;
           }
         }
       }
