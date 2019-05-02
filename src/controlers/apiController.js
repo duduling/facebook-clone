@@ -1,5 +1,6 @@
 // Feed Controller.js
 
+import crypto from "crypto";
 import db from "../db";
 
 export const postCheckId = async (req, res) => {
@@ -24,4 +25,38 @@ export const postCheckId = async (req, res) => {
   }
 };
 
-export const postCheckPw = async (req, res) => {};
+export const postChaeckChangePw = async (req, res) => {
+  const {
+    body: { checkChangePw }
+  } = req;
+  try {
+    await db.query(
+      "SELECT * FROM Users WHERE `id`=?",
+      [req.user.id],
+      (err, rows) => {
+        const checkUser = rows[0];
+        // 암호화 비밀번호 확인
+        crypto.pbkdf2(
+          // 넘어 온 비밀번호
+          checkChangePw,
+          // 확인 할 유저의 솔트
+          checkUser.pw_salt,
+          parseInt(process.env.CRYPTO_SECRET, 10),
+          parseInt(process.env.CRYPTO_OPTION1, 10),
+          process.env.CRYPTO_OPTION2,
+          (err, key) => {
+            if (key.toString("base64") === checkUser.pw) {
+              // 로그인 성공
+              res.end("true");
+            } else {
+              // 비밀번호가 일치하지 않습니다.
+              res.end("false");
+            }
+          }
+        );
+      }
+    );
+  } catch (error) {
+    res.status(400);
+  }
+};

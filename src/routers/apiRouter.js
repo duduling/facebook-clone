@@ -1,11 +1,11 @@
 // Global Router.js
 import express from "express";
 import routes from "../routes";
-import { postCheckId, postCheckPw } from "../controlers/apiController";
+import { postCheckId, postChaeckChangePw } from "../controlers/apiController";
 
 const apiRouter = express.Router();
 
 apiRouter.post(routes.checkId, postCheckId);
-apiRouter.post(routes.checkPw, postCheckPw);
+apiRouter.post(routes.chaeckChangePw, postChaeckChangePw);
 
 export default apiRouter;
