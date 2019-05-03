@@ -13,7 +13,12 @@ import {
 const userRouter = express.Router();
 
 userRouter.get(routes.userFriends, onlyPrivate, getuserFriends);
-userRouter.post(routes.editProfile, uploadProfile, postEditProfile);
+userRouter.post(
+  routes.editProfile,
+  onlyPrivate,
+  uploadProfile,
+  postEditProfile
+);
 userRouter.get(routes.editProfile, onlyPrivate, getEditProfile);
 userRouter.post(routes.editPassword, onlyPrivate, postEditPassword);
 userRouter.get(routes.editPassword, onlyPrivate, getEditPassword);

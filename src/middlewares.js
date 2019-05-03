@@ -4,6 +4,7 @@ import routes from "./routes";
 
 // 파일 저장할 경로 지정
 const multerVideo = multer({ dest: "src/uploads/videos/" });
+const multerFeed = multer({ dest: "src/uploads/feeds/" });
 const multerProfile = multer({ dest: "src/uploads/profiles/" });
 
 export const localsMiddleware = (req, res, next) => {
@@ -36,4 +37,5 @@ export const uploadProfile = multerProfile.fields([
   { name: "cover", maxCount: 1 },
   { name: "profile", maxCount: 1 }
 ]);
+export const uploadFeed = multerFeed.single("uploadFeed");
 export const uploadVideo = multerVideo.single("videoFile");

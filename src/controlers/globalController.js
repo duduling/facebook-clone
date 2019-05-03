@@ -58,7 +58,7 @@ export const postJoin = (req, res, next) => {
 
   let userPwSalt;
 
-  const bitrh = birthYear + birthMonth + birthDay;
+  const birth = birthYear + birthMonth + birthDay;
 
   crypto.randomBytes(64, (_, buf) => {
     crypto.pbkdf2(
@@ -74,23 +74,20 @@ export const postJoin = (req, res, next) => {
         userPwSalt = buf.toString("base64");
 
         // 가입 정보 넣기
-        const sql =
-          "INSERT INTO Users(`id`, `pw`, `pw_salt`, `name`, `birth`, `sex`, `profile`) VALUES(?, ?, ?, ?, ?, ?, ?);";
-        const data = [
-          email,
-          password,
-          userPwSalt,
-          userName,
-          bitrh,
+        const $joinInsert = "INSERT INTO Users set ? ;";
+        const $dataObj = {
+          id: email,
+          pw: password,
+          pw_salt: userPwSalt,
+          name: userName,
+          birth,
           sex,
           profile
-        ];
+        };
 
-        db.query(sql, data, (error, _, __) => {
+        db.query($joinInsert, $dataObj, (error, _, __) => {
           if (error) {
-            console.log(error);
-          } else {
-            console.log(userPwSalt);
+            return res.status(400);
           }
           next();
         });

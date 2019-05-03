@@ -63,7 +63,7 @@ export const postEditPassword = (req, res) => {
           // 해당 비밀번호 salt
           userPwSalt = buf.toString("base64");
 
-          // 가입 정보 넣기
+          // 수정된 정보 넣기
           const sql = "UPDATE Users SET `pw` = ?, `pw_salt` = ? where `id`= ?";
           const data = [newPassword, userPwSalt, req.user.id];
 

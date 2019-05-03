@@ -91,3 +91,17 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .search-users--block {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    .search-users--block-link {
+      .search-users--block-link-btn {
+        & > button {
+          margin: 15px 20px 0 0;
+        }
+      }
+    }
+  }
+}

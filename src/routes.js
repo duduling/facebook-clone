@@ -11,6 +11,9 @@ const FEEDS = "/feeds";
 const FEEDS_MAIN = "/main";
 const FEEDS_USER = "/:idx";
 const FEEDS_SEARCH = "/search";
+const FEEDS_UPLOAD = "/upload";
+const FEEDS_EDIT = "/:idx/edit";
+const FEEDS_DELETE = "/:idx/delete";
 
 // User
 const USER = "/user";
@@ -39,9 +42,12 @@ const routes = {
     return FEEDS_USER;
   },
   feedsSearch: FEEDS_SEARCH,
-  userFriends: USER_FRIENDS,
+  feedsUpload: FEEDS_UPLOAD,
+  feedsEdit: FEEDS_EDIT,
+  feedsDelete: FEEDS_DELETE,
   // User
   user: USER,
+  userFriends: USER_FRIENDS,
   editProfile: EDIT_PROFILE,
   editPassword: EDIT_PASSWORD,
   // API

@@ -13,11 +13,16 @@ mixin feedBlock(feed = {})
         .feedBlock__body
             span=feed.description
             .feedBlock__body-img
-                img(src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/56696881_2562572260481360_7683948637189046272_n.jpg?_nc_cat=100&_nc_ht=scontent-icn1-1.xx&oh=b13311bb13255151e1b2ece6fa941350&oe=5D74FC9F", alt="content img")
+                if feed.fileUrl !== null
+                    img(src=feed.fileUrl, alt="content img")
         .feedBlock__footer
-            img(src="/img/like_on.png", alt="like img")
-            span.feedBlock__footer-like=feed.likes
-            span.feedBlock__footer-comment 댓글 100개
+            .feedBlock__footer-top
+                .feedBlock__footer-like
+                    img(src="/img/like_on.png", alt="like img")
+                    span=feed.likes
+                .feedBlock__footer-comment
+                    img(src="/img/comment_on.png", alt="comment img")
+                    span=feed.comments
             .feedBlock__designLine
             .feedBlock__footer-btn
                 button

@@ -47,14 +47,8 @@
   .feed-search {
     .feed-search__wrapper {
       .feed-search__gridLayout {
-        grid-template-columns: 1fr;
         .feed-search__gridLayout-aside {
-          & > span {
-            display: none;
-          }
           .feed-main__aside-ad-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
             .feed-main__aside-ad-block {
               .feed-main__aside-ad-link {
                 padding: 10px;
@@ -71,7 +65,11 @@
   .feed-search {
     .feed-search__wrapper {
       .feed-search__gridLayout {
+        grid-template-columns: 1fr;
         .feed-search__gridLayout-aside {
+          & > span {
+            display: none;
+          }
           .feed-main__aside-ad-grid {
             grid-template-columns: repeat(2, 1fr);
           }
