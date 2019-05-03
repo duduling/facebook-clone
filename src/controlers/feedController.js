@@ -3,11 +3,11 @@ import db from "../db";
 import routes from "../routes";
 
 export const getFeedMain = (req, res) => {
-  const $feedSelect =
+  const $feedJoinUser =
     "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
   const $adSelect = "select * from Ad order by rand() limit 3;";
   try {
-    db.query($feedSelect + $adSelect, (_, rows) => {
+    db.query($feedJoinUser + $adSelect, (_, rows) => {
       const feeds = rows[0];
       const asideAd = rows[1];
 
@@ -77,11 +77,16 @@ export const postFeedsUpload = (req, res) => {
 };
 
 export const getFeedSearch = (req, res) => {
-  const joinQurey =
+  const $feedJoinUser =
     "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx;";
+  const $adSelect = "select * from Ad order by rand() limit 3;";
+
   try {
-    db.query(joinQurey, (_, rows) => {
-      res.render("feedSearch", { pageTile: "Feed Search", feeds: rows });
+    db.query($feedJoinUser + $adSelect, (_, rows) => {
+      const feeds = rows[0];
+      const asideAd = rows[1];
+
+      res.render("feedSearch", { pageTile: "Feed Search", feeds, asideAd });
     });
   } catch (error) {
     console.log(error);

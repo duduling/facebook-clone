@@ -1933,7 +1933,7 @@ input {
     overflow: hidden;
     -o-text-overflow: ellipsis;
        text-overflow: ellipsis;
-    height: 13px;
+    line-height: 14px;
     word-wrap: break-word; }
 
 @media (max-width: 768px) {
