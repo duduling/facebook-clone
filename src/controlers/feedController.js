@@ -23,16 +23,25 @@ export const getFeedUser = (req, res) => {
     params: { idx }
   } = req;
   try {
-    const query =
-      "SELECT * FROM Users where `idx`=?; SELECT * FROM Feeds where `writer_idx`=?";
-    db.query(query, [idx, idx], (_, rows) => {
+    const $loggedUserSelect = db.format(
+      "SELECT * FROM Users where `idx`=?;",
+      idx
+    );
+    const $feedSelect = db.format(
+      "SELECT * FROM Feeds where `writer_idx`=?;",
+      idx
+    );
+    const $adSelect = "select * from Ad order by rand() limit 3;";
+
+    db.query($loggedUserSelect + $feedSelect + $adSelect, (_, rows) => {
       const otherUser = rows[0][0];
       const feeds = rows[1];
-
+      const asideAd = rows[2];
       res.render("feedUser", {
         pageTile: "Feed User",
         otherUser,
-        feeds
+        feeds,
+        asideAd
       });
     });
   } catch (error) {
