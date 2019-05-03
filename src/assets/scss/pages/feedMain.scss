@@ -1,12 +1,13 @@
 .feed-main {
   background-color: $feedBGC;
   position: relative;
-  padding-top: 10px;
   top: 50px;
   .feed-main__wrapper {
     background-color: $feedBGC;
     width: 980px;
     margin: 0 auto;
+    padding-top: 10px;
+    min-height: 100vh;
     .feed-main__gridLayout {
       display: grid;
       grid-template-columns: 2fr 4fr;

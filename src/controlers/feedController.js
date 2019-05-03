@@ -4,7 +4,7 @@ import routes from "../routes";
 
 export const getFeedMain = (req, res) => {
   const joinQurey =
-    "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx;";
+    "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
   try {
     db.query(joinQurey, (_, rows) => {
       res.render("feedMain", { pageTile: "Feed Main", feeds: rows });
@@ -43,8 +43,25 @@ export const postFeedsUpload = (req, res) => {
     body: { uploadText },
     file
   } = req;
-  console.log(uploadText);
-  console.log(file);
+  try {
+    const feedInsert =
+      "INSERT INTO Feeds(`writer`, `writer_idx`, `fileUrl`, `description`) VALUES(?, ?, ?, ?);";
+    const data = [
+      req.user.name,
+      req.user.idx,
+      file ? `/${file.path}` : null,
+      uploadText
+    ];
+    db.query(feedInsert, data, (err, rows, fields) => {
+      if (err) {
+        throw err;
+      } else {
+        res.redirect(`/feeds${routes.feedsMain}`);
+      }
+    });
+  } catch (error) {
+    res.status(400);
+  }
 };
 
 export const getFeedSearch = (req, res) => {

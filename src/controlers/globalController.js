@@ -74,7 +74,7 @@ export const postJoin = (req, res, next) => {
         userPwSalt = buf.toString("base64");
 
         // 가입 정보 넣기
-        const sql =
+        const joinInsert =
           "INSERT INTO Users(`id`, `pw`, `pw_salt`, `name`, `birth`, `sex`, `profile`) VALUES(?, ?, ?, ?, ?, ?, ?);";
         const data = [
           email,
@@ -86,11 +86,9 @@ export const postJoin = (req, res, next) => {
           profile
         ];
 
-        db.query(sql, data, (error, _, __) => {
+        db.query(joinInsert, data, (error, _, __) => {
           if (error) {
-            console.log(error);
-          } else {
-            console.log(userPwSalt);
+            return res.status(400);
           }
           next();
         });

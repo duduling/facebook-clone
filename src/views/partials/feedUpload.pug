@@ -1,7 +1,7 @@
 .feed-main__upload-wrapper
     .feed-main__upload-title
         h5 Create Post
-    form.feed-main__upload-form(action=`/feeds${routes.feedsUpload}`, method="post")
+    form.feed-main__upload-form(action=`/feeds${routes.feedsUpload}`, method="post", enctype="multipart/form-data")
         .feed-main__upload-form-description
             img(src=user.profile, alt="profile")
             //- window.innerWidth 이거로 길이 가져와서 rows 크기 맞춰 주기

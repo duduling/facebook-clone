@@ -315,12 +315,13 @@ input {
 .feed-main {
   background-color: #e9ebee;
   position: relative;
-  padding-top: 10px;
   top: 50px; }
   .feed-main .feed-main__wrapper {
     background-color: #e9ebee;
     width: 980px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    padding-top: 10px;
+    min-height: 100vh; }
     .feed-main .feed-main__wrapper .feed-main__gridLayout {
       display: grid;
       grid-template-columns: 2fr 4fr;
@@ -1601,15 +1602,31 @@ input {
     height: 650px; }
   .feedBlock .feedBlock__footer {
     padding-top: 15px; }
-    .feedBlock .feedBlock__footer > img {
-      width: 16px;
-      height: 16px;
-      margin-left: 5px; }
-    .feedBlock .feedBlock__footer .feedBlock__footer-like {
-      margin-left: 5px; }
-    .feedBlock .feedBlock__footer .feedBlock__footer-comment {
-      float: right;
-      margin-right: 5px; }
+    .feedBlock .feedBlock__footer .feedBlock__footer-top {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+         -moz-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
+      .feedBlock .feedBlock__footer .feedBlock__footer-top .feedBlock__footer-like > img {
+        width: 16px;
+        height: 16px;
+        margin-left: 7px; }
+      .feedBlock .feedBlock__footer .feedBlock__footer-top .feedBlock__footer-like > span {
+        margin-left: 7px; }
+      .feedBlock .feedBlock__footer .feedBlock__footer-top .feedBlock__footer-comment > img {
+        position: relative;
+        top: 3px;
+        width: 16px;
+        height: 16px;
+        margin-right: 7px; }
+      .feedBlock .feedBlock__footer .feedBlock__footer-top .feedBlock__footer-comment > span {
+        margin-right: 7px; }
     .feedBlock .feedBlock__footer .feedBlock__designLine {
       margin: 10px 0;
       width: 100%;
