@@ -12,15 +12,46 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     margin-left: 5px;
+    & > a {
+      align-self: center;
+    }
     .feed-main__aside-users--block-link-btn {
       margin-left: 2px;
+      align-self: self-end;
       & > button {
+        padding: 1px 17px;
         font-size: 12px;
-        margin-bottom: 2px;
         color: $darkGray;
+        transition: 0.3s;
       }
       & > button:nth-child(2) {
         margin-left: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .feed-main__aside-users--block {
+    .feed-main__aside-users--block-link {
+      .feed-main__aside-users--block-link-btn {
+        & > button {
+          padding: 1px 15px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .feed-main__aside-users--block {
+    .feed-main__aside-users--block-link {
+      .feed-main__aside-users--block-link-btn {
+        & > button {
+          padding: 1px 6px;
+          font-size: 11px;
+        }
       }
     }
   }

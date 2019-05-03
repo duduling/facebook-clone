@@ -38,6 +38,15 @@ export const getFeedUser = (req, res) => {
   }
 };
 
+export const postFeedsUpload = (req, res) => {
+  const {
+    body: { uploadText },
+    file
+  } = req;
+  console.log(uploadText);
+  console.log(file);
+};
+
 export const getFeedSearch = (req, res) => {
   const joinQurey =
     "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx;";

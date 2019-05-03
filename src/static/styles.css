@@ -333,19 +333,20 @@ input {
     width: 90%; } }
 
 @media (max-width: 960px) {
-  .feed-main .feed-main__wrapper .feed-main__gridLayout {
-    grid-template-columns: 1fr; }
+  .feed-main .feed-main__wrapper {
+    width: 90%; }
     .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside > span {
       display: none; }
-    .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); }
-      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad-grid .feed-main__aside-ad-block .feed-main__aside-ad-link {
-        padding: 10px; } }
+    .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad-grid .feed-main__aside-ad-block .feed-main__aside-ad-link {
+      padding: 10px; } }
 
 @media (max-width: 768px) {
-  .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad-grid {
-    grid-template-columns: repeat(2, 1fr); } }
+  .feed-main .feed-main__wrapper {
+    width: 90%; }
+    .feed-main .feed-main__wrapper .feed-main__gridLayout {
+      grid-template-columns: 1fr; }
+      .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad-grid {
+        grid-template-columns: repeat(2, 1fr); } }
 
 .feed-user {
   background-color: #e9ebee;
@@ -424,7 +425,7 @@ input {
   .feed-user .feed-user__wrapper {
     width: 90%; } }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > img {
     width: 120px;
     height: 120px; }
@@ -588,19 +589,16 @@ input {
     width: 90%; } }
 
 @media (max-width: 960px) {
+  .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-aside .feed-main__aside-ad-grid .feed-main__aside-ad-block .feed-main__aside-ad-link {
+    padding: 10px; } }
+
+@media (max-width: 768px) {
   .feed-search .feed-search__wrapper .feed-search__gridLayout {
     grid-template-columns: 1fr; }
     .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-aside > span {
       display: none; }
     .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-aside .feed-main__aside-ad-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); }
-      .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-aside .feed-main__aside-ad-grid .feed-main__aside-ad-block .feed-main__aside-ad-link {
-        padding: 10px; } }
-
-@media (max-width: 768px) {
-  .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-aside .feed-main__aside-ad-grid {
-    grid-template-columns: repeat(2, 1fr); } }
+      grid-template-columns: repeat(2, 1fr); } }
 
 .header-loginPage {
   background-color: #3b5998;
@@ -933,7 +931,7 @@ input {
     .header .header__wrapper .header__search-bar {
       width: 60%; } }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .header .header__wrapper .header__profile {
     width: auto; } }
 
@@ -1481,7 +1479,7 @@ input {
           border-radius: 7px;
   padding: 10px; }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .feed-main__aside-users {
     display: none; } }
 
@@ -1527,7 +1525,7 @@ input {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr); }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .feed-main__aside-friend .feed-main__aside-friend-grid {
     grid-template-columns: repeat(2, 1fr); } }
 
@@ -1664,14 +1662,35 @@ input {
     display: grid;
     grid-template-rows: 1fr 1fr;
     margin-left: 5px; }
+    .feed-main__aside-users--block .feed-main__aside-users--block-link > a {
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center; }
     .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn {
-      margin-left: 2px; }
+      margin-left: 2px;
+      -webkit-align-self: self-end;
+          -ms-flex-item-align: self-end;
+              align-self: self-end; }
       .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button {
+        padding: 1px 17px;
         font-size: 12px;
-        margin-bottom: 2px;
-        color: #4b4f56; }
+        color: #4b4f56;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s; }
       .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
         margin-left: 5px; }
+
+@media (max-width: 1024px) {
+  .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button {
+    padding: 1px 15px;
+    font-size: 12px; } }
+
+@media (max-width: 960px) {
+  .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button {
+    padding: 1px 6px;
+    font-size: 11px; } }
 
 .friend-block {
   position: relative; }
@@ -1692,7 +1711,7 @@ input {
     padding: 5px;
     font-size: 12px; }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .friend-block:nth-child(9),
   .friend-block:nth-child(8),
   .friend-block:nth-child(7) {
@@ -1750,7 +1769,7 @@ input {
     border: #c9c9c9 solid 1px;
     background-color: #f5f6f7; }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .userFriends__body-friendBlock > a > img {
     width: 100px;
     height: 100px; }
@@ -1869,6 +1888,13 @@ input {
     margin-bottom: 10px; }
   .search-users--block .search-users--block-link .search-users--block-info > span {
     font-size: 12px; } }
+
+@media (max-width: 480px) {
+  .search-users--block {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr); }
+    .search-users--block .search-users--block-link .search-users--block-link-btn > button {
+      margin: 15px 20px 0 0; } }
 
 .feed-main__aside-ad-block .feed-main__aside-ad-link {
   display: block;
