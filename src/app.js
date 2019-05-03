@@ -35,9 +35,9 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     saveUninitialized: false,
     resave: false,
-    cookie: {
-      maxAge: 1000 * 60 * 60 // 유효기간 1시간
-    },
+    // cookie: {
+    //   maxAge: 1000 * 60 * 60 // 유효기간 1시간
+    // },
     store: new MysqlStore({}, db)
   })
 );

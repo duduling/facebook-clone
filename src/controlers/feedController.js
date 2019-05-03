@@ -3,14 +3,17 @@ import db from "../db";
 import routes from "../routes";
 
 export const getFeedMain = (req, res) => {
-  const joinQurey =
+  const $feedSelect =
     "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
+  const $adSelect = "select * from Ad order by rand() limit 3;";
   try {
-    db.query(joinQurey, (_, rows) => {
-      res.render("feedMain", { pageTile: "Feed Main", feeds: rows });
+    db.query($feedSelect + $adSelect, (_, rows) => {
+      const feeds = rows[0];
+      const asideAd = rows[1];
+
+      res.render("feedMain", { pageTile: "Feed Main", feeds, asideAd });
     });
   } catch (error) {
-    console.log(error);
     res.render("feedMain", { pageTile: "Feed Main", feeds: [] });
   }
 };
