@@ -3886,6 +3886,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 
 /***/ }),
 
+/***/ "./src/assets/js/feedUpload.js":
+/*!*************************************!*\
+  !*** ./src/assets/js/feedUpload.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("var jsUploadTextarea = document.getElementById(\"jsUploadTextarea\");\n\nvar textareaResponsiveRows = function textareaResponsiveRows() {\n  console.log(\"fdsa\");\n\n  if (matchMedia(\"screen and (max-width: 480px)\").matches) {\n    jsUploadTextarea.setAttribute(\"rows\", \"5\");\n  } else if (matchMedia(\"screen and (max-width: 600px)\").matches) {\n    jsUploadTextarea.setAttribute(\"rows\", \"6\");\n  } else {\n    jsUploadTextarea.setAttribute(\"rows\", \"7\");\n  }\n};\n\nvar init = function init() {\n  window.addEventListener(\"resize\", textareaResponsiveRows);\n};\n\nif (jsUploadTextarea) {\n  init();\n}\n\n//# sourceURL=webpack:///./src/assets/js/feedUpload.js?");
+
+/***/ }),
+
 /***/ "./src/assets/js/home.js":
 /*!*******************************!*\
   !*** ./src/assets/js/home.js ***!
@@ -3906,7 +3917,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./src/assets/js/home.js\");\n/* harmony import */ var _editPassword__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editPassword */ \"./src/assets/js/editPassword.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/assets/scss/style.scss\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_2__);\n// JS\n\n // SCSS\n\n\n\n//# sourceURL=webpack:///./src/assets/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./src/assets/js/home.js\");\n/* harmony import */ var _feedUpload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./feedUpload */ \"./src/assets/js/feedUpload.js\");\n/* harmony import */ var _feedUpload__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_feedUpload__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _editPassword__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editPassword */ \"./src/assets/js/editPassword.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/assets/scss/style.scss\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_3__);\n// JS\n\n\n // SCSS\n\n\n\n//# sourceURL=webpack:///./src/assets/js/main.js?");
 
 /***/ }),
 
