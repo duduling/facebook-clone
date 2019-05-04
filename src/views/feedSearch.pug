@@ -16,6 +16,8 @@ block content
                     h3.ir_su feed search
                     article.feed-search__users
                         h5 Search Users
+                        if searchUsers.length === 0
+                            include ./partials/notFound
                         each item in searchUsers
                             +searchUsersBlock({
                                 idx: item.idx,
@@ -27,6 +29,8 @@ block content
                             })
                     article.feed-search__feeds
                         h5 Search Feeds
+                        if feeds.length === 0
+                            include ./partials/notFound
                         each item in feeds
                             +feedBlock({
                                 idx: item.idx,
