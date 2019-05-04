@@ -360,6 +360,7 @@ input {
     .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img {
       background: no-repeat center/cover; }
       .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect {
+        position: relative;
         background: -webkit-gradient(linear, left top, left bottom, color-stop(65%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.53)));
         background: -webkit-linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
         background: -moz-linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
@@ -394,6 +395,18 @@ input {
           -o-transition: 0.3s;
           -moz-transition: 0.3s;
           transition: 0.3s; }
+        .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > button {
+          position: absolute;
+          right: 40px;
+          bottom: 25px;
+          -webkit-border-radius: 5px;
+             -moz-border-radius: 5px;
+                  border-radius: 5px;
+          padding: 5px 10px;
+          border: none;
+          background-color: #f5f6f7; }
+          .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > button:hover {
+            background-color: #c9c9c9; }
     .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav {
       background-color: #fff;
       overflow: hidden;
@@ -445,6 +458,11 @@ input {
     height: 100px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
     font-size: 20px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > button {
+    right: 20px;
+    bottom: 20px;
+    padding: 4px 9px;
+    font-size: 11px; }
   .feed-user .feed-user__wrapper .feed-user__grid-layout {
     grid-template-columns: 1fr; }
     .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__gridLayout-aside > span {
@@ -456,6 +474,11 @@ input {
     height: 70px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
     font-size: 17px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > button {
+    right: 15px;
+    bottom: 15px;
+    padding: 4px 7px;
+    font-size: 10px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > h4 {
     font-size: 15px;
     padding: 6px; }
@@ -1692,7 +1715,7 @@ input {
   grid-template-columns: 1fr 4fr;
   padding: 5px;
   margin-top: 10px; }
-  .feed-main__aside-users--block > img {
+  .feed-main__aside-users--block > a > img {
     width: 50px;
     height: 50px;
     -webkit-border-radius: 100%;

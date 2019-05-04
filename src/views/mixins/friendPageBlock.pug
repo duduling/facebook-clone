@@ -1,8 +1,8 @@
 mixin friendPageBlock(friend = {})
     article.userFriends__body-friendBlock
-        a(href="#")
-            img(src="/img/ad-github.png", alt="friend profile")
+        a(href=`/feeds/${friend.idx}`)
+            img(src=friend.profile, alt="friend profile")
         .userFriends__body-friendBlock--border
-            a(href="#")
-                span 김두현
+            a(href=`/feeds/${friend.idx}`)
+                span=friend.name
         button Remove

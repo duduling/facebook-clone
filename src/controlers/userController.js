@@ -84,8 +84,29 @@ export const postEditPassword = (req, res) => {
 };
 
 export const getuserFriends = (req, res) => {
-  res.render("editUserDetail", {
-    pageTile: "User Friends",
-    otherUser: req.user
-  });
+  const {
+    user: { idx: loggedIdx }
+  } = req;
+
+  const $selectIAddYouFriends = `
+  select Users.idx, name, profile from Users 
+  left join iAddYouFriend on iAddYouFriend.recipient = Users.idx 
+  left join youAddMeFriend on youAddMeFriend.sender = Users.idx 
+  where iAddYouFriend.sender = "${loggedIdx}" 
+  or youAddMeFriend.recipient = "${loggedIdx}" 
+  order by Users.name asc;`;
+  try {
+    db.query($selectIAddYouFriends, (error, rows) => {
+      const myFriends = rows;
+
+      res.render("editUserDetail", {
+        pageTile: "User Friends",
+        otherUser: req.user,
+        myFriends
+      });
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  }
 };

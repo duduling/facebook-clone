@@ -1,6 +1,7 @@
 mixin randomFriendBlock(ramdomUser = {})
     .feed-main__aside-users--block
-        img(src=ramdomUser.profile, alt="user profile")
+        a(href=`/feeds/${ramdomUser.idx}`)
+            img(src=ramdomUser.profile, alt="user profile")
         .feed-main__aside-users--block-link
             a(href=`/feeds/${ramdomUser.idx}`)=ramdomUser.name
             .feed-main__aside-users--block-link-btn
