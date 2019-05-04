@@ -1,13 +1,14 @@
 mixin searchUsersBlock(searchUser = {})
     .search-users--block
         .search-users--block-profile
-            img(src="/img/profile_male.png", alt="user profile")
+            a(href=`/feeds/${searchUser.idx}`)
+                img(src=searchUser.profile, alt="user profile")
         .search-users--block-link
             .search-users--block-info
-                a(href="#") user
-                span qwe@qwe.qwe
-                span 남성
-                span 25살
+                a(href=`/feeds/${searchUser.idx}`)=searchUser.name
+                span=searchUser.id
+                span=searchUser.sex
+                span=searchUser.birth
             .search-users--block-link-btn
                 button
                     i.fas.fa-user-plus  Add

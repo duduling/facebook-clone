@@ -14,9 +14,9 @@ block content
                         span Facebook &copy; #{new Date().getFullYear()}
                     section.feed-main__gridLayout-feed
                         h3.ir_su feed
-                        article.feed-main__upload
+                        section.feed-main__upload
                             include ./partials/feedUpload.pug
-                        article.feed-main__feeds
+                        section.feed-main__feeds
                             each item in feeds
                                 +feedBlock({
                                     idx: item.idx,

@@ -5,8 +5,8 @@
             a(href=`/feeds${routes.feedsMain}`, title="Feed Main")
                 i.fab.fa-facebook
         .header__search-bar
-            form(action=`/feeds/search`, method="get")
-                input(type="text", name="searchWord", placeholder="Searching", autocomplete="off")#header__searchBar
+            form(action=`/feeds${routes.feedsSearch}`, method="get")
+                input(type="text", name="searchWord", placeholder="Searching", autocomplete="off", required)#header__searchBar
                 input(type="submit", value="　")#header__searchBar-btn
         .header__subMenu
             ul.header__subMenu-friend

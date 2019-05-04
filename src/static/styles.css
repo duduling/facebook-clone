@@ -582,8 +582,6 @@ input {
              -moz-border-radius: 7px;
                   border-radius: 7px;
           background-color: white; }
-          .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__feeds > .feedBlock {
-            border: none; }
 
 @media (max-width: 1024px) {
   .feed-search .feed-search__wrapper {
@@ -1674,7 +1672,11 @@ input {
     height: 50px;
     -webkit-border-radius: 100%;
        -moz-border-radius: 100%;
-            border-radius: 100%; }
+            border-radius: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top; }
   .feed-main__aside-users--block .feed-main__aside-users--block-link {
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -1819,7 +1821,7 @@ input {
         -ms-flex-pack: center;
             justify-content: center;
     padding: 10px; }
-    .search-users--block .search-users--block-profile > img {
+    .search-users--block .search-users--block-profile > a > img {
       width: 100px;
       height: 100px;
       -webkit-border-radius: 100%;

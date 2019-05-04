@@ -21,10 +21,11 @@ export const postEditProfile = async (req, res) => {
 
   try {
     // 가입 정보 넣기
-    const sql = "UPDATE Users SET `profile` = ?, `cover` = ? where `id`= ?";
-    const data = [userProfileUrl, userCoverUrl, req.user.id];
+    const $userProfileUpdate =
+      "UPDATE Users SET `profile` = ?, `cover` = ? where `id`= ?";
+    const $data = [userProfileUrl, userCoverUrl, req.user.id];
 
-    await db.query(sql, data, (error, _, __) => {
+    await db.query($userProfileUpdate, $data, (error, _, __) => {
       if (error) {
         console.log(error);
       }
@@ -64,10 +65,11 @@ export const postEditPassword = (req, res) => {
           userPwSalt = buf.toString("base64");
 
           // 수정된 정보 넣기
-          const sql = "UPDATE Users SET `pw` = ?, `pw_salt` = ? where `id`= ?";
-          const data = [newPassword, userPwSalt, req.user.id];
+          const $userPwUpdate =
+            "UPDATE Users SET `pw` = ?, `pw_salt` = ? where `id`= ?";
+          const $data = [newPassword, userPwSalt, req.user.id];
 
-          db.query(sql, data, (error, _, __) => {
+          db.query($userPwUpdate, $data, (error, _, __) => {
             if (error) {
               console.log(error);
             }
