@@ -17,7 +17,7 @@ const FEEDS_DELETE = "/:idx/delete";
 
 // User
 const USER = "/user";
-const USER_FRIENDS = "/userFriends";
+const USER_FRIENDS = "/:idx/Friends";
 const EDIT_PROFILE = "/editProfile";
 const EDIT_PASSWORD = "/editPassword";
 
@@ -47,7 +47,12 @@ const routes = {
   feedsDelete: FEEDS_DELETE,
   // User
   user: USER,
-  userFriends: USER_FRIENDS,
+  userFriends: idx => {
+    if (idx) {
+      return `/user/${idx}/Friends`;
+    }
+    return USER_FRIENDS;
+  },
   editProfile: EDIT_PROFILE,
   editPassword: EDIT_PASSWORD,
   // API

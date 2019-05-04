@@ -12,9 +12,10 @@ block content
                 nav.edit-userDetail__box-nav
                     //- 어디 페이지인지 분기 처리 부분 나중에 JS로 .not-active 붙이기
                     span.ir_su=pageTile
-                    a(href=`/user${routes.userFriends}`) User Friends
-                    a(href=`/user${routes.editProfile}`) Edit Profile
-                    a(href=`/user${routes.editPassword}`) Edit PassWord
+                    a(href=routes.userFriends(otherUser.idx)) User Friends
+                    if otherUser.idx === user.idx 
+                        a(href=`/user${routes.editProfile}`) Edit Profile
+                        a(href=`/user${routes.editPassword}`) Edit PassWord
                 article.edit-userDetail__box-form
                     //- Form 별로 분기 처리
                     if pageTile === "User Friends"

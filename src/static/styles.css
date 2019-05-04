@@ -1504,10 +1504,10 @@ input {
           align-items: center;
   min-height: 100px; }
   .feed-search__users--isNotFound > img {
-    width: 25px;
-    height: 25px; }
+    width: 23px;
+    height: 23px; }
   .feed-search__users--isNotFound > span {
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 10px; }
 
 .feed-main__gridLayout-aside > span,
