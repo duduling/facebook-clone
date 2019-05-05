@@ -12,7 +12,10 @@ block content
                         span=otherUser.name
                         if user.idx !== otherUser.idx
                             button#jsAddFriend
-                                i.fas.fa-user-plus  Add Friend
+                                if waitFriend
+                                    i.fas.fa-user-plus#jsAddFriendText  Wait response
+                                else
+                                    i.fas.fa-user-plus#jsAddFriendText  Add Friend
                 nav.feed-user__info-subNav
                     h4=`${otherUser.name}님의 타임라인`
                     if user.idx === otherUser.idx

@@ -29,31 +29,41 @@ export const getFeedMain = (req, res) => {
 
 export const getFeedUser = (req, res) => {
   const {
-    params: { idx }
+    params: { idx: otherIdx }
   } = req;
   try {
     const $loggedUserSelect = db.format(
       "SELECT * FROM Users where `idx`=?;",
-      idx
+      otherIdx
     );
     const $feedSelect = db.format(
       "SELECT * FROM Feeds where `writer_idx`=?;",
-      idx
+      otherIdx
     );
+    const $areYouMyFriend = `select * from WaitFriendList where (senderIdx = "${
+      req.user.idx
+    }" and recipientIdx = "${otherIdx}") or (senderIdx = "${otherIdx}" and recipientIdx = "${
+      req.user.idx
+    }");`;
     const $adSelect = "select * from Ad order by rand() limit 3;";
 
-    db.query($loggedUserSelect + $feedSelect + $adSelect, (_, rows) => {
-      const otherUser = rows[0][0];
-      const feeds = rows[1];
-      const asideAd = rows[2];
+    db.query(
+      $loggedUserSelect + $feedSelect + $areYouMyFriend + $adSelect,
+      (_, rows) => {
+        const otherUser = rows[0][0];
+        const feeds = rows[1];
+        const waitFriend = rows[2].length !== 0;
+        const asideAd = rows[3];
 
-      res.render("feedUser", {
-        pageTile: "Feed User",
-        otherUser,
-        feeds,
-        asideAd
-      });
-    });
+        res.render("feedUser", {
+          pageTile: "Feed User",
+          otherUser,
+          feeds,
+          waitFriend,
+          asideAd
+        });
+      }
+    );
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
