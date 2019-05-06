@@ -18,6 +18,8 @@ block content
                                     i.fas.fa-user-plus#jsAddFriendText  Wait response
                                 else
                                     i.fas.fa-user-plus#jsAddFriendText  Add Friend
+                        else
+                            button#jsAddFriend(style="visibility: hidden")
                 nav.feed-user__info-subNav
                     h4=`${otherUser.name}님의 타임라인`
                     if user.idx === otherUser.idx

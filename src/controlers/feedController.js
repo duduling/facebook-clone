@@ -95,7 +95,7 @@ export const getFeedUser = (req, res) => {
     );
   } catch (error) {
     console.log(error);
-    res.redirect(routes.home);
+    res.redirect(routes.feedsMain);
   }
 };
 
