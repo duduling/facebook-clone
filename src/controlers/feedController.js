@@ -57,6 +57,9 @@ export const getFeedUser = (req, res) => {
     const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
       req.user.idx
     }";`;
+    const $myfriendBoolean = `select idx from FriendList where myIdx = "${
+      req.user.idx
+    }" and friendIdx = "${otherIdx}";`;
     const $adSelect = "select * from Ad order by rand() limit 3;";
 
     db.query(
@@ -65,6 +68,7 @@ export const getFeedUser = (req, res) => {
         $areYouMyFriend +
         $friendListJoinUsers +
         $waitMyFriend +
+        $myfriendBoolean +
         $adSelect,
       (_, rows) => {
         const otherUser = rows[0][0];
@@ -73,7 +77,8 @@ export const getFeedUser = (req, res) => {
         const friendList = rows[3].slice(0, 9);
         const friendNumber = rows[3].length;
         const waitMyFriendList = rows[4];
-        const asideAd = rows[5];
+        const friendBoolean = rows[5].length !== 0;
+        const asideAd = rows[6];
 
         res.render("feedUser", {
           pageTile: "Feed User",
@@ -83,6 +88,7 @@ export const getFeedUser = (req, res) => {
           friendList,
           friendNumber,
           waitMyFriendList,
+          friendBoolean,
           asideAd
         });
       }

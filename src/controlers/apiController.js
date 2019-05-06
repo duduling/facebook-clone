@@ -62,23 +62,13 @@ export const postChaeckChangePw = async (req, res) => {
 
 export const postAddFriend = (req, res) => {
   const {
-    body: { userIdx, whatDo }
+    body: { targetIdx }
   } = req;
-  let $FriendInOut;
-  let $dataObj;
-  if (whatDo) {
-    $FriendInOut = "INSERT INTO WaitFriendList set ? ;";
-    $dataObj = {
-      senderIdx: req.user.idx,
-      recipientIdx: userIdx
-    };
-  } else {
-    $FriendInOut = `DELETE FROM WaitFriendList where (senderIdx = "${
-      req.user.idx
-    }" and recipientIdx = "${userIdx}") or (senderIdx = "${userIdx}" and recipientIdx = "${
-      req.user.idx
-    }") ;`;
-  }
+  const $FriendInOut = "INSERT INTO WaitFriendList set ? ;";
+  const $dataObj = {
+    senderIdx: req.user.idx,
+    recipientIdx: targetIdx
+  };
   try {
     db.query($FriendInOut, $dataObj, err => {
       if (err) throw err;
@@ -91,7 +81,26 @@ export const postAddFriend = (req, res) => {
   }
 };
 
-export const postAcceptFriend = (req, res) => {
+export const postDeleteFriend = (req, res) => {
+  const {
+    body: { targetIdx }
+  } = req;
+  const $deleteFriendList = `delete from FriendList where myIdx = "${targetIdx}" and friendIdx = "${
+    req.user.idx
+  }" or myIdx = "${req.user.idx}" and friendIdx = "${targetIdx}";`;
+  try {
+    db.query($deleteFriendList, err => {
+      if (err) throw err;
+      res.status(200);
+    });
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postConfirmFriend = (req, res) => {
   const {
     body: { targetIdx }
   } = req;
@@ -103,6 +112,25 @@ export const postAcceptFriend = (req, res) => {
   }", "${targetIdx}"), ("${targetIdx}", "${req.user.idx}");`;
   try {
     db.query($deleteWaitFriendList + $insertFriendList, err => {
+      if (err) throw err;
+      res.status(200);
+    });
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postCancelFriend = (req, res) => {
+  const {
+    body: { targetIdx }
+  } = req;
+  const $deleteWaitFriendList = `delete from WaitFriendList where senderIdx = "${targetIdx}" and recipientIdx = "${
+    req.user.idx
+  }" or senderIdx = "${req.user.idx}" and recipientIdx = "${targetIdx}";`;
+  try {
+    db.query($deleteWaitFriendList, err => {
       if (err) throw err;
       res.status(200);
     });

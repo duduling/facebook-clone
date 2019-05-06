@@ -12,7 +12,9 @@ block content
                         span=otherUser.name
                         if user.idx !== otherUser.idx
                             button#jsAddFriend
-                                if waitFriend
+                                if friendBoolean
+                                    i.fas.fa-check#jsAddFriendText  My friend
+                                else if waitFriend
                                     i.fas.fa-user-plus#jsAddFriendText  Wait response
                                 else
                                     i.fas.fa-user-plus#jsAddFriendText  Add Friend

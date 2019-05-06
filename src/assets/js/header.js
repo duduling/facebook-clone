@@ -6,18 +6,34 @@ let doubleClick = false;
 
 const handleConfirmFriend = async event => {
   if (!doubleClick) {
-    doubleClick = true;
-    const targetIdx = event.target.parentElement.id.split("jsConfirmBtn")[1];
-    const response = await axios({
-      url: "/api/acceptFriend",
-      method: "POST",
-      data: {
-        targetIdx
+    if (event.target.textContent === " Confirm") {
+      doubleClick = true;
+      const targetIdx = event.target.parentElement.id.split("jsConfirmBtn")[1];
+      const response = await axios({
+        url: "/api/confirmFriend",
+        method: "POST",
+        data: {
+          targetIdx
+        }
+      });
+      if (response.status === 200) {
+        document.getElementById(`waitFriendBlock${targetIdx}`).remove();
+        doubleClick = false;
       }
-    });
-    if (response.status === 200) {
-      document.getElementById(`waitFriendBlock${targetIdx}`).remove();
-      doubleClick = false;
+    } else if (event.target.textContent === " Reject") {
+      doubleClick = true;
+      const targetIdx = event.target.parentElement.id.split("jsDeleteBtn")[1];
+      const response = await axios({
+        url: "/api/cancelFriend",
+        method: "POST",
+        data: {
+          targetIdx
+        }
+      });
+      if (response.status === 200) {
+        document.getElementById(`waitFriendBlock${targetIdx}`).remove();
+        doubleClick = false;
+      }
     }
   }
 };
@@ -40,11 +56,6 @@ const init = () => {
   jsHeaderFriend.style.visibility = "collapse";
   jsHeaderFriend.addEventListener("click", handleConfirmFriend);
   jsHeaderFriendBtn.addEventListener("click", ViewWaitFriendList);
-  // jsHeaderFriendBtn.style.color = "white";
-  // jsHeaderFriend.style.visibility = "visible";
-  // jsHeaderFriend.style.top = "50px";
-  // jsHeaderFriend.style.left = `${jsHeaderFriendBtn.offsetLeft -
-  //   (jsHeaderFriend.clientWidth / 2 - 14)}px`;
 };
 
 if (jsHeaderFriendBtn) {

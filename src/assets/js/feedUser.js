@@ -3,29 +3,46 @@ import axios from "axios";
 const jsAddFriend = document.getElementById("jsAddFriend");
 const jsAddFriendText = document.getElementById("jsAddFriendText");
 
-const handleAddFriend = async () => {
-  const userIdx = window.location.href.split("/feeds/")[1];
-  const whatDo = jsAddFriendText.innerText === " Add Friend";
-
-  const response = await axios({
-    url: `/api/addFriend`,
-    method: "POST",
-    data: {
-      userIdx,
-      whatDo
-    }
-  });
-  if (response.status === 200) {
-    if (whatDo) {
+const handleFriend = async () => {
+  const targetIdx = window.location.href.split("/feeds/")[1];
+  if (jsAddFriendText.innerText === " Add Friend") {
+    const response = await axios({
+      url: `/api/addFriend`,
+      method: "POST",
+      data: {
+        targetIdx
+      }
+    });
+    if (response.status === 200) {
       jsAddFriendText.innerText = " Wait response";
-    } else {
+    }
+  } else if (jsAddFriendText.innerText === " Wait response") {
+    const response = await axios({
+      url: "/api/cancelFriend",
+      method: "POST",
+      data: {
+        targetIdx
+      }
+    });
+    if (response.status === 200) {
+      jsAddFriendText.innerText = " Add Friend";
+    }
+  } else if (jsAddFriendText.innerText === " My friend") {
+    const response = await axios({
+      url: "/api/deleteFriend",
+      method: "POST",
+      data: {
+        targetIdx
+      }
+    });
+    if (response.status === 200) {
       jsAddFriendText.innerText = " Add Friend";
     }
   }
 };
 
 const init = () => {
-  jsAddFriend.addEventListener("click", handleAddFriend);
+  jsAddFriend.addEventListener("click", handleFriend);
 };
 
 if (jsAddFriend) {
