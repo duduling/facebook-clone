@@ -1,5 +1,4 @@
 // Feed Controller.js
-
 import crypto from "crypto";
 import db from "../db";
 
@@ -82,6 +81,28 @@ export const postAddFriend = (req, res) => {
   }
   try {
     db.query($FriendInOut, $dataObj, err => {
+      if (err) throw err;
+      res.status(200);
+    });
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postAcceptFriend = (req, res) => {
+  const {
+    body: { targetIdx }
+  } = req;
+  const $deleteWaitFriendList = `delete from WaitFriendList where senderIdx = "${targetIdx}" and recipientIdx = "${
+    req.user.idx
+  }";`;
+  const $insertFriendList = `insert into FriendList (myIdx, friendIdx) values ("${
+    req.user.idx
+  }", "${targetIdx}"), ("${targetIdx}", "${req.user.idx}");`;
+  try {
+    db.query($deleteWaitFriendList + $insertFriendList, err => {
       if (err) throw err;
       res.status(200);
     });

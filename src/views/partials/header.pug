@@ -24,6 +24,8 @@ include ../mixins/waitFriendBlock
                 span=user.name
         include ./dropMenu
         #jsHeaderFriend
+            if waitMyFriendList.length === 0
+                include ./notFound
             each item in waitMyFriendList
                 +waitFriendBlock({
                     idx: item.idx,

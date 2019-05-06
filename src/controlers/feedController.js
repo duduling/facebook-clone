@@ -54,6 +54,9 @@ export const getFeedUser = (req, res) => {
       req.user.idx
     }");`;
     const $friendListJoinUsers = `select Users.idx, name, profile from FriendList join Users on FriendList.friendIdx = Users.idx where FriendList.myIdx = "${otherIdx}";`;
+    const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
+      req.user.idx
+    }";`;
     const $adSelect = "select * from Ad order by rand() limit 3;";
 
     db.query(
@@ -61,6 +64,7 @@ export const getFeedUser = (req, res) => {
         $feedSelect +
         $areYouMyFriend +
         $friendListJoinUsers +
+        $waitMyFriend +
         $adSelect,
       (_, rows) => {
         const otherUser = rows[0][0];
@@ -68,7 +72,8 @@ export const getFeedUser = (req, res) => {
         const waitFriend = rows[2].length !== 0;
         const friendList = rows[3].slice(0, 9);
         const friendNumber = rows[3].length;
-        const asideAd = rows[4];
+        const waitMyFriendList = rows[4];
+        const asideAd = rows[5];
 
         res.render("feedUser", {
           pageTile: "Feed User",
@@ -77,6 +82,7 @@ export const getFeedUser = (req, res) => {
           waitFriend,
           friendList,
           friendNumber,
+          waitMyFriendList,
           asideAd
         });
       }
@@ -121,22 +127,31 @@ export const getFeedSearch = (req, res) => {
   const $randomUsersSelect = `select * from Users where not idx = ${
     req.user.idx
   } order by rand() limit 4;`;
+  const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
+    req.user.idx
+  }";`;
   const $adSelect = "select * from Ad order by rand() limit 3;";
 
   try {
     db.query(
-      $feedJoinUser + $userSearchSelect + $randomUsersSelect + $adSelect,
+      $feedJoinUser +
+        $userSearchSelect +
+        $randomUsersSelect +
+        $waitMyFriend +
+        $adSelect,
       (_, rows) => {
         const searchFeeds = rows[0];
         const searchUsers = rows[1];
         const ramdomUsers = rows[2];
-        const asideAd = rows[3];
+        const waitMyFriendList = rows[3];
+        const asideAd = rows[4];
 
         res.render("feedSearch", {
           pageTile: "Feed Search",
           feeds: searchFeeds,
           searchUsers,
           ramdomUsers,
+          waitMyFriendList,
           asideAd
         });
       }
