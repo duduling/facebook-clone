@@ -8,20 +8,28 @@ export const getFeedMain = (req, res) => {
   const $randomUsersSelect = `select * from Users where not idx = ${
     req.user.idx
   } order by rand() limit 4;`;
+  const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
+    req.user.idx
+  }";`;
   const $adSelect = "select * from Ad order by rand() limit 3;";
   try {
-    db.query($feedJoinUser + $randomUsersSelect + $adSelect, (_, rows) => {
-      const feeds = rows[0];
-      const ramdomUsers = rows[1];
-      const asideAd = rows[2];
+    db.query(
+      $feedJoinUser + $randomUsersSelect + $waitMyFriend + $adSelect,
+      (_, rows) => {
+        const feeds = rows[0];
+        const ramdomUsers = rows[1];
+        const waitMyFriendList = rows[2];
+        const asideAd = rows[3];
 
-      res.render("feedMain", {
-        pageTile: "Feed Main",
-        feeds,
-        ramdomUsers,
-        asideAd
-      });
-    });
+        res.render("feedMain", {
+          pageTile: "Feed Main",
+          feeds,
+          ramdomUsers,
+          waitMyFriendList,
+          asideAd
+        });
+      }
+    );
   } catch (error) {
     res.render("feedMain", { pageTile: "Feed Main", feeds: [] });
   }

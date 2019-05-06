@@ -3909,6 +3909,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 
 /***/ }),
 
+/***/ "./src/assets/js/header.js":
+/*!*********************************!*\
+  !*** ./src/assets/js/header.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("var jsHeaderFriendBtn = document.getElementById(\"jsHeaderFriendBtn\");\nvar jsHeaderFriend = document.getElementById(\"jsHeaderFriend\");\n\nvar ViewWaitFriendList = function ViewWaitFriendList() {\n  if (jsHeaderFriend.style.visibility === \"collapse\") {\n    jsHeaderFriendBtn.style.color = \"white\";\n    jsHeaderFriend.style.visibility = \"visible\";\n    jsHeaderFriend.style.top = \"50px\";\n    jsHeaderFriend.style.left = \"\".concat(jsHeaderFriendBtn.offsetLeft - 35, \"px\");\n  } else {\n    jsHeaderFriendBtn.style.color = \"\";\n    jsHeaderFriend.style.visibility = \"collapse\";\n  }\n};\n\nvar init = function init() {\n  // 초기화\n  // jsHeaderFriend.style.visibility = \"collapse\";\n  // jsHeaderFriendBtn.addEventListener(\"click\", ViewWaitFriendList);\n  jsHeaderFriendBtn.style.color = \"white\";\n  jsHeaderFriend.style.visibility = \"visible\";\n  jsHeaderFriend.style.top = \"50px\";\n  jsHeaderFriend.style.left = \"\".concat(jsHeaderFriendBtn.offsetLeft - (jsHeaderFriend.clientWidth / 2 - 14), \"px\");\n};\n\nif (jsHeaderFriendBtn) {\n  init();\n}\n\n//# sourceURL=webpack:///./src/assets/js/header.js?");
+
+/***/ }),
+
 /***/ "./src/assets/js/home.js":
 /*!*******************************!*\
   !*** ./src/assets/js/home.js ***!
@@ -3929,7 +3940,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./src/assets/js/home.js\");\n/* harmony import */ var _feedUpload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./feedUpload */ \"./src/assets/js/feedUpload.js\");\n/* harmony import */ var _feedUpload__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_feedUpload__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _feedUser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./feedUser */ \"./src/assets/js/feedUser.js\");\n/* harmony import */ var _editPassword__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editPassword */ \"./src/assets/js/editPassword.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/assets/scss/style.scss\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_4__);\n// JS\n\n\n\n // SCSS\n\n\n\n//# sourceURL=webpack:///./src/assets/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./src/assets/js/home.js\");\n/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ \"./src/assets/js/header.js\");\n/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_header__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _feedUpload__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./feedUpload */ \"./src/assets/js/feedUpload.js\");\n/* harmony import */ var _feedUpload__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_feedUpload__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _feedUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./feedUser */ \"./src/assets/js/feedUser.js\");\n/* harmony import */ var _editPassword__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editPassword */ \"./src/assets/js/editPassword.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/assets/scss/style.scss\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_5__);\n// JS\n\n\n\n\n // SCSS\n\n\n\n//# sourceURL=webpack:///./src/assets/js/main.js?");
 
 /***/ }),
 
