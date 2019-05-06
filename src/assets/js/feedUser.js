@@ -7,17 +7,19 @@ const jsResizeImg = document.getElementById("jsResizeImg");
 let widthHeight;
 
 const textareaResponsiveImg = () => {
-  if (matchMedia("screen and (min-width: 960px)").matches) {
-    widthHeight = (jsResizeTarget.clientWidth - 30) / 3;
-  } else if (matchMedia("screen and (min-width: 768px)").matches) {
-    widthHeight = (jsResizeTarget.clientWidth - 15) / 2;
-  } else if (matchMedia("screen and (min-width: 480px)").matches) {
-    widthHeight = (jsResizeTarget.clientWidth - 40) / 5;
-  } else {
-    widthHeight = (jsResizeTarget.clientWidth - 35) / 4;
+  if (jsResizeImg) {
+    if (matchMedia("screen and (min-width: 960px)").matches) {
+      widthHeight = (jsResizeTarget.clientWidth - 30) / 3;
+    } else if (matchMedia("screen and (min-width: 768px)").matches) {
+      widthHeight = (jsResizeTarget.clientWidth - 15) / 2;
+    } else if (matchMedia("screen and (min-width: 480px)").matches) {
+      widthHeight = (jsResizeTarget.clientWidth - 40) / 5;
+    } else {
+      widthHeight = (jsResizeTarget.clientWidth - 35) / 4;
+    }
+    jsResizeImg.style.width = `${widthHeight}px`;
+    jsResizeImg.style.height = `${widthHeight}px`;
   }
-  jsResizeImg.style.width = `${widthHeight}px`;
-  jsResizeImg.style.height = `${widthHeight}px`;
 };
 
 const handleFriend = async () => {

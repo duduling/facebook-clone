@@ -60,9 +60,9 @@ export const postChaeckChangePw = async (req, res) => {
   }
 };
 
-export const postAddFriend = (req, res) => {
+export const postAddFriend = async (req, res) => {
   const {
-    body: { targetIdx }
+    body: { targetIdx, whatDo }
   } = req;
   const $FriendInOut = "INSERT INTO WaitFriendList set ? ;";
   const $dataObj = {
@@ -70,13 +70,31 @@ export const postAddFriend = (req, res) => {
     recipientIdx: targetIdx
   };
   try {
-    db.query($FriendInOut, $dataObj, err => {
-      if (err) throw err;
-      res.status(200);
-    });
+    if (whatDo === "addRandomFriend") {
+      const $selectAddRandomFriend = `select idx, name, profile from Users where not idx = "${
+        req.user.idx
+      }" order by rand() limit 1;`;
+      await db.query(
+        $FriendInOut + $selectAddRandomFriend,
+        $dataObj,
+        (err, rows) => {
+          if (err) throw err;
+          console.log(rows[1]);
+          if (rows[1].length !== 0) {
+            res.status(200).json({ rows: rows[1][0] });
+            res.end();
+          }
+        }
+      );
+    } else {
+      db.query($FriendInOut, $dataObj, err => {
+        if (err) throw err;
+        res.status(200);
+        res.end();
+      });
+    }
   } catch (error) {
     res.status(400);
-  } finally {
     res.end();
   }
 };
