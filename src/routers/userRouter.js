@@ -12,7 +12,7 @@ import {
 
 const userRouter = express.Router();
 
-userRouter.get(routes.userFriends, onlyPrivate, getuserFriends);
+userRouter.get(routes.userFriends(), onlyPrivate, getuserFriends);
 userRouter.post(
   routes.editProfile,
   onlyPrivate,

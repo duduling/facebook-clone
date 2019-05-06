@@ -4,7 +4,7 @@
   top: 50px;
   .feed-main__wrapper {
     background-color: $feedBGC;
-    width: 980px;
+    width: 900px;
     margin: 0 auto;
     padding-top: 10px;
     min-height: 100vh;
@@ -14,8 +14,6 @@
       grid-gap: 10px;
       .feed-main__gridLayout-feed {
         background-color: $feedBGC;
-      }
-      .feed-main__gridLayout-aside {
       }
     }
   }

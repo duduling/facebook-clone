@@ -4,12 +4,13 @@
   top: 50px;
   .feed-user__wrapper {
     background-color: $feedBGC;
-    width: 980px;
+    width: 900px;
     margin: 0 auto;
     .feed-user__info {
       .feed-user__info--backgroud-img {
         background: no-repeat center/cover;
         .feed-user__info--backgroud-effect {
+          position: relative;
           background: linear-gradient(
             rgba(0, 0, 0, 0) 65%,
             rgba(0, 0, 0, 0.53)
@@ -34,6 +35,18 @@
             font-size: 25px;
             font-weight: bold;
             transition: 0.3s;
+          }
+          & > button {
+            position: absolute;
+            right: 40px;
+            bottom: 25px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            border: none;
+            background-color: $lightGrayColor;
+            &:hover {
+              background-color: $grayLine;
+            }
           }
         }
       }
@@ -121,6 +134,12 @@
             & > span {
               font-size: 20px;
             }
+            & > button {
+              right: 20px;
+              bottom: 20px;
+              padding: 4px 9px;
+              font-size: 11px;
+            }
           }
         }
       }
@@ -148,6 +167,12 @@
             }
             & > span {
               font-size: 17px;
+            }
+            & > button {
+              right: 15px;
+              bottom: 15px;
+              padding: 4px 7px;
+              font-size: 10px;
             }
           }
         }

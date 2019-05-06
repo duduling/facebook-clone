@@ -60,3 +60,34 @@ export const postChaeckChangePw = async (req, res) => {
     res.status(400);
   }
 };
+
+export const postAddFriend = (req, res) => {
+  const {
+    body: { userIdx, whatDo }
+  } = req;
+  let $FriendInOut;
+  let $dataObj;
+  if (whatDo) {
+    $FriendInOut = "INSERT INTO WaitFriendList set ? ;";
+    $dataObj = {
+      senderIdx: req.user.idx,
+      recipientIdx: userIdx
+    };
+  } else {
+    $FriendInOut = `DELETE FROM WaitFriendList where (senderIdx = "${
+      req.user.idx
+    }" and recipientIdx = "${userIdx}") or (senderIdx = "${userIdx}" and recipientIdx = "${
+      req.user.idx
+    }") ;`;
+  }
+  try {
+    db.query($FriendInOut, $dataObj, err => {
+      if (err) throw err;
+      res.status(200);
+    });
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};

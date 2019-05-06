@@ -21,10 +21,11 @@ export const postEditProfile = async (req, res) => {
 
   try {
     // 가입 정보 넣기
-    const sql = "UPDATE Users SET `profile` = ?, `cover` = ? where `id`= ?";
-    const data = [userProfileUrl, userCoverUrl, req.user.id];
+    const $userProfileUpdate =
+      "UPDATE Users SET `profile` = ?, `cover` = ? where `id`= ?";
+    const $data = [userProfileUrl, userCoverUrl, req.user.id];
 
-    await db.query(sql, data, (error, _, __) => {
+    await db.query($userProfileUpdate, $data, (error, _, __) => {
       if (error) {
         console.log(error);
       }
@@ -64,10 +65,11 @@ export const postEditPassword = (req, res) => {
           userPwSalt = buf.toString("base64");
 
           // 수정된 정보 넣기
-          const sql = "UPDATE Users SET `pw` = ?, `pw_salt` = ? where `id`= ?";
-          const data = [newPassword, userPwSalt, req.user.id];
+          const $userPwUpdate =
+            "UPDATE Users SET `pw` = ?, `pw_salt` = ? where `id`= ?";
+          const $data = [newPassword, userPwSalt, req.user.id];
 
-          db.query(sql, data, (error, _, __) => {
+          db.query($userPwUpdate, $data, (error, _, __) => {
             if (error) {
               console.log(error);
             }
@@ -82,8 +84,25 @@ export const postEditPassword = (req, res) => {
 };
 
 export const getuserFriends = (req, res) => {
-  res.render("editUserDetail", {
-    pageTile: "User Friends",
-    otherUser: req.user
-  });
+  const {
+    params: { idx }
+  } = req;
+
+  const $friendListJoinUsers = `select Users.idx, name, profile from FriendList join Users on FriendList.friendIdx = Users.idx where FriendList.myIdx = "${idx}";`;
+  const $selectNowUser = `select idx, profile, cover, name, id, sex from Users where idx = "${idx}";`;
+  try {
+    db.query($friendListJoinUsers + $selectNowUser, (error, rows) => {
+      const myFriends = rows[0];
+      const otherUser = rows[1][0];
+
+      res.render("editUserDetail", {
+        pageTile: "User Friends",
+        myFriends,
+        otherUser
+      });
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  }
 };

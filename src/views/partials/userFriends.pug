@@ -8,10 +8,13 @@ include ../mixins/friendPageBlock
             form.userFriends__header--search
                 input(type="text", aria="user friend search")
                 input(type="submit", id="userFriendSearchSubmit", value="　")
-        .userFriends__body-grid
-            each item in [0, 0]
-                +friendPageBlock({
-                    idx: item.idx,
-                    profile: item.profile,
-                    name: item.name
-                })
+        if myFriends.length === 0
+            include ./notFound
+        else    
+            .userFriends__body-grid
+                each item in myFriends
+                    +friendPageBlock({
+                        idx: item.idx,
+                        profile: item.profile,
+                        name: item.name
+                    })

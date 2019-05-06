@@ -1,0 +1,14 @@
+.feed-search__users--isNotFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  & > img {
+    width: 23px;
+    height: 23px;
+  }
+  & > span {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+}

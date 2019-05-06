@@ -16,14 +16,21 @@ block content
                     h3.ir_su feed search
                     article.feed-search__users
                         h5 Search Users
-                        each item in [0,0,0]
+                        if searchUsers.length === 0
+                            include ./partials/notFound
+                        each item in searchUsers
                             +searchUsersBlock({
                                 idx: item.idx,
+                                id: item.id,
+                                name: item.name,
+                                sex: item.sex,
                                 profile: item.profile,
-                                name: item.name
+                                birth: item.birth
                             })
                     article.feed-search__feeds
                         h5 Search Feeds
+                        if feeds.length === 0
+                            include ./partials/notFound
                         each item in feeds
                             +feedBlock({
                                 idx: item.idx,

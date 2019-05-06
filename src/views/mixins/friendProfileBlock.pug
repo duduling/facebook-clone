@@ -1,7 +1,7 @@
 mixin friendProfileBlock(friend = {})
     articl.friend-block
-        a.friend-block__link(href="#")
+        a.friend-block__link(href=routes.feedsUser(friend.idx))
             h5.ir_su friend profile
-            img(src="/img/profile_male.png", alt="")
+            img(src=friend.profile, alt="")
             .friend-profile__box--effect
-                span 김두현
+                spanfriend=friend.name

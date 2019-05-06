@@ -188,7 +188,7 @@ input {
   background: linear-gradient(white, #d3d8e8);
   padding-bottom: 20px; }
   .homePage__background .homePage__container {
-    width: 980px;
+    width: 900px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr); }
@@ -318,7 +318,7 @@ input {
   top: 50px; }
   .feed-main .feed-main__wrapper {
     background-color: #e9ebee;
-    width: 980px;
+    width: 900px;
     margin: 0 auto;
     padding-top: 10px;
     min-height: 100vh; }
@@ -355,11 +355,12 @@ input {
   top: 50px; }
   .feed-user .feed-user__wrapper {
     background-color: #e9ebee;
-    width: 980px;
+    width: 900px;
     margin: 0 auto; }
     .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img {
       background: no-repeat center/cover; }
       .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect {
+        position: relative;
         background: -webkit-gradient(linear, left top, left bottom, color-stop(65%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.53)));
         background: -webkit-linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
         background: -moz-linear-gradient(rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.53));
@@ -394,6 +395,18 @@ input {
           -o-transition: 0.3s;
           -moz-transition: 0.3s;
           transition: 0.3s; }
+        .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > button {
+          position: absolute;
+          right: 40px;
+          bottom: 25px;
+          -webkit-border-radius: 5px;
+             -moz-border-radius: 5px;
+                  border-radius: 5px;
+          padding: 5px 10px;
+          border: none;
+          background-color: #f5f6f7; }
+          .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > button:hover {
+            background-color: #c9c9c9; }
     .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav {
       background-color: #fff;
       overflow: hidden;
@@ -445,6 +458,11 @@ input {
     height: 100px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
     font-size: 20px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > button {
+    right: 20px;
+    bottom: 20px;
+    padding: 4px 9px;
+    font-size: 11px; }
   .feed-user .feed-user__wrapper .feed-user__grid-layout {
     grid-template-columns: 1fr; }
     .feed-user .feed-user__wrapper .feed-user__grid-layout .feed-user__gridLayout-aside > span {
@@ -456,6 +474,11 @@ input {
     height: 70px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > span {
     font-size: 17px; }
+  .feed-user .feed-user__wrapper .feed-user__info .feed-user__info--backgroud-img .feed-user__info--backgroud-effect > button {
+    right: 15px;
+    bottom: 15px;
+    padding: 4px 7px;
+    font-size: 10px; }
   .feed-user .feed-user__wrapper .feed-user__info .feed-user__info-subNav > h4 {
     font-size: 15px;
     padding: 6px; }
@@ -470,7 +493,7 @@ input {
   min-height: 100vh; }
   .edit-userDetail .edit-userDetail__wrapper {
     background-color: #e9ebee;
-    width: 980px;
+    width: 900px;
     margin: 0 auto; }
     .edit-userDetail .edit-userDetail__wrapper .edit-userDetail__box .edit-userDetail__box-nav {
       background-color: #fff;
@@ -556,10 +579,11 @@ input {
   background-color: #e9ebee;
   position: relative;
   padding-top: 10px;
-  top: 50px; }
+  top: 50px;
+  min-height: 100vh; }
   .feed-search .feed-search__wrapper {
     background-color: #e9ebee;
-    width: 980px;
+    width: 900px;
     margin: 0 auto; }
     .feed-search .feed-search__wrapper .feed-search__gridLayout {
       display: grid;
@@ -570,7 +594,7 @@ input {
         .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__users {
           background-color: white;
           margin-bottom: 15px;
-          padding: 15px;
+          padding: 12px;
           -webkit-border-radius: 7px;
              -moz-border-radius: 7px;
                   border-radius: 7px; }
@@ -582,8 +606,6 @@ input {
              -moz-border-radius: 7px;
                   border-radius: 7px;
           background-color: white; }
-          .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__feeds > .feedBlock {
-            border: none; }
 
 @media (max-width: 1024px) {
   .feed-search .feed-search__wrapper {
@@ -612,7 +634,7 @@ input {
   z-index: 1;
   padding: 5px 0 20px; }
   .header-loginPage .header-loginPage__wrapper {
-    width: 980px;
+    width: 900px;
     margin: 0 auto;
     overflow: hidden;
     height: 100%; }
@@ -741,7 +763,7 @@ input {
                   align-self: center; } }
 
 .footer-loginPage {
-  width: 980px;
+  width: 900px;
   margin: 0 auto;
   padding: 30px; }
   .footer-loginPage .footer-loginPage__wrapper .footer-loginPage__language {
@@ -801,7 +823,7 @@ input {
   position: fixed;
   width: 100%; }
   .header .header__wrapper {
-    width: 980px;
+    width: 900px;
     height: 50px;
     margin: 0 auto; }
     .header .header__wrapper .header__logo {
@@ -837,7 +859,7 @@ input {
         margin-left: 30px; }
         .header .header__wrapper .header__search-bar > form #header__searchBar {
           min-width: 150px;
-          width: 550px;
+          width: 480px;
           font-size: 16px;
           padding: 5px 10px;
           -webkit-border-radius: 5px 0 0 5px;
@@ -847,7 +869,7 @@ input {
           width: 50px;
           position: relative;
           top: 0;
-          padding: 6px 10px;
+          padding: 6.5px 10px;
           -webkit-border-radius: 0 2px 2px 0;
              -moz-border-radius: 0 2px 2px 0;
                   border-radius: 0 2px 2px 0;
@@ -934,7 +956,7 @@ input {
 
 @media (max-width: 960px) {
   .header .header__wrapper .header__profile {
-    width: auto; } }
+    width: 13%; } }
 
 @media (max-width: 768px) {
   .header .header__wrapper .header__search-bar {
@@ -1129,7 +1151,7 @@ input {
   border: #c9c9c9 solid 1px;
   margin-top: 20px; }
   .userFriends .userFriends__wrapper {
-    width: 980px;
+    width: 900px;
     margin: 0 auto; }
     .userFriends .userFriends__wrapper .userFriends__header {
       overflow: hidden;
@@ -1464,6 +1486,30 @@ input {
       font-size: 10px;
       padding: 5px 15px; } }
 
+.feed-search__users--isNotFound {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100px; }
+  .feed-search__users--isNotFound > img {
+    width: 23px;
+    height: 23px; }
+  .feed-search__users--isNotFound > span {
+    font-size: 18px;
+    margin-left: 10px; }
+
 .feed-main__gridLayout-aside > span,
 .feed-user__gridLayout-aside > span,
 .feed-search__gridLayout-aside > span {
@@ -1524,7 +1570,7 @@ input {
     padding: 5px;
     background-color: white;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr); }
+    grid-template-rows: auto; }
 
 @media (max-width: 960px) {
   .feed-main__aside-friend .feed-main__aside-friend-grid {
@@ -1598,8 +1644,8 @@ input {
     display: block;
     padding: 10px; }
   .feedBlock .feedBlock__body .feedBlock__body-img > img {
-    width: 650px;
-    height: 650px; }
+    width: 580px;
+    height: 580px; }
   .feedBlock .feedBlock__footer {
     padding-top: 15px; }
     .feedBlock .feedBlock__footer .feedBlock__footer-top {
@@ -1669,12 +1715,16 @@ input {
   grid-template-columns: 1fr 4fr;
   padding: 5px;
   margin-top: 10px; }
-  .feed-main__aside-users--block > img {
+  .feed-main__aside-users--block > a > img {
     width: 50px;
     height: 50px;
     -webkit-border-radius: 100%;
        -moz-border-radius: 100%;
-            border-radius: 100%; }
+            border-radius: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top; }
   .feed-main__aside-users--block .feed-main__aside-users--block-link {
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -1819,7 +1869,7 @@ input {
         -ms-flex-pack: center;
             justify-content: center;
     padding: 10px; }
-    .search-users--block .search-users--block-profile > img {
+    .search-users--block .search-users--block-profile > a > img {
       width: 100px;
       height: 100px;
       -webkit-border-radius: 100%;

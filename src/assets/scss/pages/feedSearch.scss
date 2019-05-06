@@ -3,9 +3,10 @@
   position: relative;
   padding-top: 10px;
   top: 50px;
+  min-height: 100vh;
   .feed-search__wrapper {
     background-color: $feedBGC;
-    width: 980px;
+    width: 900px;
     margin: 0 auto;
     .feed-search__gridLayout {
       display: grid;
@@ -16,7 +17,7 @@
         .feed-search__users {
           background-color: white;
           margin-bottom: 15px;
-          padding: 15px;
+          padding: 12px;
           border-radius: 7px;
           & > h5 {
             margin-bottom: 20px;
@@ -26,9 +27,6 @@
           padding: 12px;
           border-radius: 7px;
           background-color: white;
-          & > .feedBlock {
-            border: none;
-          }
         }
       }
     }
