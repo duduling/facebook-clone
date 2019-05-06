@@ -109,6 +109,15 @@
         }
       }
     }
+    #jsHeaderFriend {
+      width: 250px;
+      position: absolute;
+      background-color: white;
+      border: #c9c9c9 solid 1px;
+      border-radius: 3px;
+      height: 300px;
+      visibility: collapse;
+    }
   }
 }
 

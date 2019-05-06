@@ -25,14 +25,12 @@ passport.use(
       passwordField: "password"
     },
     (username, password, done) => {
-      db.query("SELECT * FROM Users WHERE `id`=?", [username], (err, rows) => {
+      db.query(`SELECT * FROM Users WHERE id = "${username}";`, (err, rows) => {
         // Error
-        if (err) {
-          done(err);
-        }
+        if (err) done(err);
 
         // Not User
-        if (rows == undefined) {
+        if (rows.length === 0) {
           done(null, false, { message: "Incorrect username." });
         } else {
           const user = rows[0];

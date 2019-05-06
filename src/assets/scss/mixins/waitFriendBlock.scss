@@ -1,8 +1,9 @@
-.feed-main__aside-users--block {
+.header__waitFriendList {
   display: grid;
   grid-template-columns: 1fr 4fr;
   padding: 5px;
   margin-top: 10px;
+  border-bottom: $grayLine solid 1px;
   & > a > img {
     width: 50px;
     height: 50px;
@@ -10,37 +11,25 @@
     object-fit: cover;
     object-position: top;
   }
-  .feed-main__aside-users--block-link {
+  .header__waitFriendList-link {
     display: grid;
     grid-template-rows: 1fr 1fr;
     margin-left: 5px;
     & > a {
+      font-size: 14px;
       align-self: center;
     }
-    .feed-main__aside-users--block-link-btn {
+    .header__waitFriendList-link-btn {
       margin-left: 2px;
-      align-self: self-end;
+      align-self: auto;
       & > button {
-        padding: 1px 13px;
-        font-size: 12px;
+        padding: 1px 15px;
+        font-size: 10px;
         color: $darkGray;
-        transition: 0.3s;
       }
       & > button:nth-child(2) {
+        padding: 1px 21px;
         margin-left: 5px;
-      }
-    }
-  }
-}
-
-@media (max-width: 960px) {
-  .feed-main__aside-users--block {
-    .feed-main__aside-users--block-link {
-      .feed-main__aside-users--block-link-btn {
-        & > button {
-          padding: 1px 5px;
-          font-size: 11px;
-        }
       }
     }
   }

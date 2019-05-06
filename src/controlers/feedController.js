@@ -8,20 +8,28 @@ export const getFeedMain = (req, res) => {
   const $randomUsersSelect = `select * from Users where not idx = ${
     req.user.idx
   } order by rand() limit 4;`;
+  const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
+    req.user.idx
+  }";`;
   const $adSelect = "select * from Ad order by rand() limit 3;";
   try {
-    db.query($feedJoinUser + $randomUsersSelect + $adSelect, (_, rows) => {
-      const feeds = rows[0];
-      const ramdomUsers = rows[1];
-      const asideAd = rows[2];
+    db.query(
+      $feedJoinUser + $randomUsersSelect + $waitMyFriend + $adSelect,
+      (_, rows) => {
+        const feeds = rows[0];
+        const ramdomUsers = rows[1];
+        const waitMyFriendList = rows[2];
+        const asideAd = rows[3];
 
-      res.render("feedMain", {
-        pageTile: "Feed Main",
-        feeds,
-        ramdomUsers,
-        asideAd
-      });
-    });
+        res.render("feedMain", {
+          pageTile: "Feed Main",
+          feeds,
+          ramdomUsers,
+          waitMyFriendList,
+          asideAd
+        });
+      }
+    );
   } catch (error) {
     res.render("feedMain", { pageTile: "Feed Main", feeds: [] });
   }
@@ -46,6 +54,12 @@ export const getFeedUser = (req, res) => {
       req.user.idx
     }");`;
     const $friendListJoinUsers = `select Users.idx, name, profile from FriendList join Users on FriendList.friendIdx = Users.idx where FriendList.myIdx = "${otherIdx}";`;
+    const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
+      req.user.idx
+    }";`;
+    const $myfriendBoolean = `select idx from FriendList where myIdx = "${
+      req.user.idx
+    }" and friendIdx = "${otherIdx}";`;
     const $adSelect = "select * from Ad order by rand() limit 3;";
 
     db.query(
@@ -53,6 +67,8 @@ export const getFeedUser = (req, res) => {
         $feedSelect +
         $areYouMyFriend +
         $friendListJoinUsers +
+        $waitMyFriend +
+        $myfriendBoolean +
         $adSelect,
       (_, rows) => {
         const otherUser = rows[0][0];
@@ -60,7 +76,9 @@ export const getFeedUser = (req, res) => {
         const waitFriend = rows[2].length !== 0;
         const friendList = rows[3].slice(0, 9);
         const friendNumber = rows[3].length;
-        const asideAd = rows[4];
+        const waitMyFriendList = rows[4];
+        const friendBoolean = rows[5].length !== 0;
+        const asideAd = rows[6];
 
         res.render("feedUser", {
           pageTile: "Feed User",
@@ -69,13 +87,15 @@ export const getFeedUser = (req, res) => {
           waitFriend,
           friendList,
           friendNumber,
+          waitMyFriendList,
+          friendBoolean,
           asideAd
         });
       }
     );
   } catch (error) {
     console.log(error);
-    res.redirect(routes.home);
+    res.redirect(routes.feedsMain);
   }
 };
 
@@ -113,22 +133,31 @@ export const getFeedSearch = (req, res) => {
   const $randomUsersSelect = `select * from Users where not idx = ${
     req.user.idx
   } order by rand() limit 4;`;
+  const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
+    req.user.idx
+  }";`;
   const $adSelect = "select * from Ad order by rand() limit 3;";
 
   try {
     db.query(
-      $feedJoinUser + $userSearchSelect + $randomUsersSelect + $adSelect,
+      $feedJoinUser +
+        $userSearchSelect +
+        $randomUsersSelect +
+        $waitMyFriend +
+        $adSelect,
       (_, rows) => {
         const searchFeeds = rows[0];
         const searchUsers = rows[1];
         const ramdomUsers = rows[2];
-        const asideAd = rows[3];
+        const waitMyFriendList = rows[3];
+        const asideAd = rows[4];
 
         res.render("feedSearch", {
           pageTile: "Feed Search",
           feeds: searchFeeds,
           searchUsers,
           ramdomUsers,
+          waitMyFriendList,
           asideAd
         });
       }

@@ -26,6 +26,9 @@ const API = "/api";
 const CHECK_ID = "/checkId";
 const CHECK_CHANGE_PW = "/checkChangePw";
 const ADD_FRIEND = "/addFriend";
+const DELETE_FRIEND = "/deleteFriend";
+const CONFIRM_FRIEND = "/confirmFriend";
+const CANCEL_FRIEND = "/cancelFriend";
 
 const routes = {
   // Global
@@ -60,7 +63,10 @@ const routes = {
   api: API,
   checkId: CHECK_ID,
   chaeckChangePw: CHECK_CHANGE_PW,
-  addFriend: ADD_FRIEND
+  addFriend: ADD_FRIEND,
+  deleteFriend: DELETE_FRIEND,
+  confirmFriend: CONFIRM_FRIEND,
+  cancelFriend: CANCEL_FRIEND
 };
 
 export default routes;

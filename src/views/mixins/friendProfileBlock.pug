@@ -2,6 +2,6 @@ mixin friendProfileBlock(friend = {})
     articl.friend-block
         a.friend-block__link(href=routes.feedsUser(friend.idx))
             h5.ir_su friend profile
-            img(src=friend.profile, alt="")
+            img#jsResizeImg(src=friend.profile, alt="Friend Profile")
             .friend-profile__box--effect
                 spanfriend=friend.name

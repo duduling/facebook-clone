@@ -947,6 +947,16 @@ input {
             color: white; }
           .header .header__wrapper .header__subMenu > ul .fas .header__subMenu-friend {
             margin-left: 0; }
+    .header .header__wrapper #jsHeaderFriend {
+      width: 250px;
+      position: absolute;
+      background-color: white;
+      border: #c9c9c9 solid 1px;
+      -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+              border-radius: 3px;
+      height: 300px;
+      visibility: collapse; }
 
 @media (max-width: 1024px) {
   .header .header__wrapper {
@@ -1502,7 +1512,8 @@ input {
      -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-height: 100px; }
+  min-height: 100px;
+  height: 100%; }
   .feed-search__users--isNotFound > img {
     width: 23px;
     height: 23px; }
@@ -1710,6 +1721,44 @@ input {
     width: 100%;
     height: 100%; } }
 
+.header__waitFriendList {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 5px;
+  margin-top: 10px;
+  border-bottom: #c9c9c9 solid 1px; }
+  .header__waitFriendList > a > img {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 100%;
+       -moz-border-radius: 100%;
+            border-radius: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top; }
+  .header__waitFriendList .header__waitFriendList-link {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-left: 5px; }
+    .header__waitFriendList .header__waitFriendList-link > a {
+      font-size: 14px;
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center; }
+    .header__waitFriendList .header__waitFriendList-link .header__waitFriendList-link-btn {
+      margin-left: 2px;
+      -webkit-align-self: auto;
+          -ms-flex-item-align: auto;
+              align-self: auto; }
+      .header__waitFriendList .header__waitFriendList-link .header__waitFriendList-link-btn > button {
+        padding: 1px 15px;
+        font-size: 10px;
+        color: #4b4f56; }
+      .header__waitFriendList .header__waitFriendList-link .header__waitFriendList-link-btn > button:nth-child(2) {
+        padding: 1px 21px;
+        margin-left: 5px; }
+
 .feed-main__aside-users--block {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -1739,7 +1788,7 @@ input {
           -ms-flex-item-align: self-end;
               align-self: self-end; }
       .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button {
-        padding: 1px 17px;
+        padding: 1px 13px;
         font-size: 12px;
         color: #4b4f56;
         -webkit-transition: 0.3s;
@@ -1749,21 +1798,20 @@ input {
       .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button:nth-child(2) {
         margin-left: 5px; }
 
-@media (max-width: 1024px) {
-  .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button {
-    padding: 1px 15px;
-    font-size: 12px; } }
-
 @media (max-width: 960px) {
   .feed-main__aside-users--block .feed-main__aside-users--block-link .feed-main__aside-users--block-link-btn > button {
-    padding: 1px 6px;
+    padding: 1px 5px;
     font-size: 11px; } }
 
 .friend-block {
   position: relative; }
-  .friend-block .friend-block__link > img {
+  .friend-block .friend-block__link #jsResizeImg {
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top; }
   .friend-block .friend-block__link .friend-profile__box--effect {
     background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.7)));
     background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.7));
@@ -1782,7 +1830,10 @@ input {
   .friend-block:nth-child(9),
   .friend-block:nth-child(8),
   .friend-block:nth-child(7) {
-    display: none; } }
+    display: none; }
+  .friend-block .friend-block__link > img {
+    width: 125px;
+    height: 125px; } }
 
 @media (max-width: 768px) {
   .friend-block:nth-child(6) {
@@ -1874,7 +1925,11 @@ input {
       height: 100px;
       -webkit-border-radius: 100%;
          -moz-border-radius: 100%;
-              border-radius: 100%; }
+              border-radius: 100%;
+      -o-object-fit: cover;
+         object-fit: cover;
+      -o-object-position: top;
+         object-position: top; }
   .search-users--block .search-users--block-link {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

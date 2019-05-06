@@ -1,5 +1,4 @@
 // Feed Controller.js
-
 import crypto from "crypto";
 import db from "../db";
 
@@ -61,27 +60,95 @@ export const postChaeckChangePw = async (req, res) => {
   }
 };
 
-export const postAddFriend = (req, res) => {
+export const postAddFriend = async (req, res) => {
   const {
-    body: { userIdx, whatDo }
+    body: { targetIdx, whatDo }
   } = req;
-  let $FriendInOut;
-  let $dataObj;
-  if (whatDo) {
-    $FriendInOut = "INSERT INTO WaitFriendList set ? ;";
-    $dataObj = {
-      senderIdx: req.user.idx,
-      recipientIdx: userIdx
-    };
-  } else {
-    $FriendInOut = `DELETE FROM WaitFriendList where (senderIdx = "${
-      req.user.idx
-    }" and recipientIdx = "${userIdx}") or (senderIdx = "${userIdx}" and recipientIdx = "${
-      req.user.idx
-    }") ;`;
-  }
+  const $FriendInOut = "INSERT INTO WaitFriendList set ? ;";
+  const $dataObj = {
+    senderIdx: req.user.idx,
+    recipientIdx: targetIdx
+  };
   try {
-    db.query($FriendInOut, $dataObj, err => {
+    if (whatDo === "addRandomFriend") {
+      const $selectAddRandomFriend = `select idx, name, profile from Users where not idx = "${
+        req.user.idx
+      }" order by rand() limit 1;`;
+      await db.query(
+        $FriendInOut + $selectAddRandomFriend,
+        $dataObj,
+        (err, rows) => {
+          if (err) throw err;
+          console.log(rows[1]);
+          if (rows[1].length !== 0) {
+            res.status(200).json({ rows: rows[1][0] });
+            res.end();
+          }
+        }
+      );
+    } else {
+      db.query($FriendInOut, $dataObj, err => {
+        if (err) throw err;
+        res.status(200);
+        res.end();
+      });
+    }
+  } catch (error) {
+    res.status(400);
+    res.end();
+  }
+};
+
+export const postDeleteFriend = (req, res) => {
+  const {
+    body: { targetIdx }
+  } = req;
+  const $deleteFriendList = `delete from FriendList where myIdx = "${targetIdx}" and friendIdx = "${
+    req.user.idx
+  }" or myIdx = "${req.user.idx}" and friendIdx = "${targetIdx}";`;
+  try {
+    db.query($deleteFriendList, err => {
+      if (err) throw err;
+      res.status(200);
+    });
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postConfirmFriend = (req, res) => {
+  const {
+    body: { targetIdx }
+  } = req;
+  const $deleteWaitFriendList = `delete from WaitFriendList where senderIdx = "${targetIdx}" and recipientIdx = "${
+    req.user.idx
+  }";`;
+  const $insertFriendList = `insert into FriendList (myIdx, friendIdx) values ("${
+    req.user.idx
+  }", "${targetIdx}"), ("${targetIdx}", "${req.user.idx}");`;
+  try {
+    db.query($deleteWaitFriendList + $insertFriendList, err => {
+      if (err) throw err;
+      res.status(200);
+    });
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postCancelFriend = (req, res) => {
+  const {
+    body: { targetIdx }
+  } = req;
+  const $deleteWaitFriendList = `delete from WaitFriendList where senderIdx = "${targetIdx}" and recipientIdx = "${
+    req.user.idx
+  }" or senderIdx = "${req.user.idx}" and recipientIdx = "${targetIdx}";`;
+  try {
+    db.query($deleteWaitFriendList, err => {
       if (err) throw err;
       res.status(200);
     });

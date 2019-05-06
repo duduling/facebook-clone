@@ -4,10 +4,29 @@ import db from "../db";
 import routes from "../routes";
 
 export const getEditProfile = (req, res) => {
-  res.render("editUserDetail", {
-    pageTile: "Edit Profile",
-    otherUser: req.user
-  });
+  const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
+    req.user.idx
+  }";`;
+  try {
+    db.query($waitMyFriend, (err, rows) => {
+      if (err) throw err;
+      console.log(rows);
+      const waitMyFriendList = rows;
+
+      res.render("editUserDetail", {
+        pageTile: "Edit Profile",
+        otherUser: req.user,
+        waitMyFriendList
+      });
+    });
+  } catch (error) {
+    console.log(error);
+    res.render("editUserDetail", {
+      pageTile: "Edit Profile",
+      otherUser: req.user,
+      waitMyFriendList: []
+    });
+  }
 };
 
 export const postEditProfile = async (req, res) => {
@@ -37,10 +56,29 @@ export const postEditProfile = async (req, res) => {
 };
 
 export const getEditPassword = (req, res) => {
-  res.render("editUserDetail", {
-    pageTile: "Edit Password",
-    otherUser: req.user
-  });
+  const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
+    req.user.idx
+  }";`;
+  try {
+    db.query($waitMyFriend, (err, rows) => {
+      if (err) throw err;
+      console.log(rows);
+      const waitMyFriendList = rows;
+
+      res.render("editUserDetail", {
+        pageTile: "Edit Password",
+        otherUser: req.user,
+        waitMyFriendList
+      });
+    });
+  } catch (error) {
+    console.log(error);
+    res.render("editUserDetail", {
+      pageTile: "Edit Password",
+      otherUser: req.user,
+      waitMyFriendList: []
+    });
+  }
 };
 
 export const postEditPassword = (req, res) => {
@@ -90,17 +128,25 @@ export const getuserFriends = (req, res) => {
 
   const $friendListJoinUsers = `select Users.idx, name, profile from FriendList join Users on FriendList.friendIdx = Users.idx where FriendList.myIdx = "${idx}";`;
   const $selectNowUser = `select idx, profile, cover, name, id, sex from Users where idx = "${idx}";`;
+  const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
+    req.user.idx
+  }";`;
   try {
-    db.query($friendListJoinUsers + $selectNowUser, (error, rows) => {
-      const myFriends = rows[0];
-      const otherUser = rows[1][0];
+    db.query(
+      $friendListJoinUsers + $selectNowUser + $waitMyFriend,
+      (error, rows) => {
+        const myFriends = rows[0];
+        const otherUser = rows[1][0];
+        const waitMyFriendList = rows[2];
 
-      res.render("editUserDetail", {
-        pageTile: "User Friends",
-        myFriends,
-        otherUser
-      });
-    });
+        res.render("editUserDetail", {
+          pageTile: "User Friends",
+          myFriends,
+          otherUser,
+          waitMyFriendList
+        });
+      }
+    );
   } catch (error) {
     console.log(error);
     res.status(400);

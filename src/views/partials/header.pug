@@ -1,3 +1,5 @@
+include ../mixins/waitFriendBlock
+
 .header
     .header__wrapper
         .header__logo
@@ -10,11 +12,9 @@
                 input(type="submit", value="　")#header__searchBar-btn
         .header__subMenu
             ul.header__subMenu-friend
-                a(href="#", title="My friends")
-                    i.fas.fa-user-friends
+                i.fas.fa-user-friends#jsHeaderFriendBtn
             ul.header__subMenu-notice
-                a(href="#", title="My notices")
-                    i.fas.fa-bell
+                i.fas.fa-bell
             ul.header__subMenu-logout
                 a(href=routes.logout, title="Log Out")
                     i.fas.fa-sign-out-alt
@@ -23,4 +23,12 @@
                 img(src=user.profile, alt="userProfile")
                 span=user.name
         include ./dropMenu
-        
+        #jsHeaderFriend
+            if waitMyFriendList.length === 0
+                include ./notFound
+            each item in waitMyFriendList
+                +waitFriendBlock({
+                    idx: item.idx,
+                    name: item.name,
+                    profile: item.profile
+                })

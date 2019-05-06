@@ -1,0 +1,11 @@
+mixin waitFriendBlock(waitFriend = {})
+    .header__waitFriendList(id=`waitFriendBlock${waitFriend.idx}`)
+        a(href=routes.feedsUser(waitFriend.idx))
+            img(src=waitFriend.profile, alt="user profile")
+        .header__waitFriendList-link
+            a(href=`/feeds/${waitFriend.idx}`)=waitFriend.name
+            .header__waitFriendList-link-btn
+                button(id=`jsConfirmBtn${waitFriend.idx}`)
+                    i.fas.fa-check  Confirm
+                button(id=`jsDeleteBtn${waitFriend.idx}`)
+                    i.fas.fa-ban  Reject
