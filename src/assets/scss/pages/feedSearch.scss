@@ -14,20 +14,6 @@
       grid-gap: 10px;
       .feed-search__gridLayout-feed {
         background-color: $feedBGC;
-        .feed-search__users {
-          background-color: white;
-          margin-bottom: 15px;
-          padding: 12px;
-          border-radius: 7px;
-          & > h5 {
-            margin-bottom: 20px;
-          }
-        }
-        .feed-search__feeds {
-          padding: 12px;
-          border-radius: 7px;
-          background-color: white;
-        }
       }
     }
   }

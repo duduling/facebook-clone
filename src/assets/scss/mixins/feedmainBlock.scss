@@ -45,7 +45,7 @@
     .feedBlock__body-img {
       & > img {
         width: 580px;
-        height: 580px;
+        max-height: 580px;
       }
     }
   }

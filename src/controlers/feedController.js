@@ -108,11 +108,12 @@ export const postFeedsUpload = (req, res) => {
     const $feedInsert = "INSERT INTO Feeds set ?;";
     const $dataObj = {
       writer: req.user.name,
+      writer_id: req.user.id,
       writer_idx: req.user.idx,
       fileUrl: file ? `/${file.path}` : null,
       description: uploadText
     };
-    db.query($feedInsert, $dataObj, (err, rows, fields) => {
+    db.query($feedInsert, $dataObj, err => {
       if (err) {
         throw err;
       } else {

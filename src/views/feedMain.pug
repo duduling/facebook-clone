@@ -1,5 +1,4 @@
 extends ./layouts/main
-include ./mixins/feedMainBlock
 
 block content
     .bgc
@@ -15,17 +14,7 @@ block content
                     section.feed-main__gridLayout-feed
                         h3.ir_su feed
                         section.feed-main__upload
-                            include ./partials/feedUpload.pug
-                        section.feed-main__feeds
-                            each item in feeds
-                                +feedBlock({
-                                    idx: item.idx,
-                                    writer: item.writer,
-                                    writerIdx: item.writer_idx,
-                                    writerProfile: item.profile,
-                                    createdAt: item.createdAt,
-                                    fileUrl: item.fileUrl,
-                                    description: item.description,
-                                    likes: item.likes,
-                                    comments: item.comments
-                                })
+                            include ./partials/feedUpload
+                        section.feed-section
+                            include ./partials/feedSection
+                        

@@ -1,0 +1,15 @@
+include ../mixins/searchUsers
+
+section.feed-search__users
+    h5 Search Users
+    if searchUsers.length === 0
+        include ../partials/notFound
+    each item in searchUsers
+        +searchUsersBlock({
+            idx: item.idx,
+            id: item.id,
+            name: item.name,
+            sex: item.sex,
+            profile: item.profile,
+            birth: item.birth
+        })
