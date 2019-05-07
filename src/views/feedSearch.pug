@@ -1,6 +1,4 @@
 extends ./layouts/main.pug
-include ./mixins/searchUsers
-include ./mixins/feedMainBlock
 
 block content
     .feed-search
@@ -14,31 +12,7 @@ block content
                     span Facebook &copy; #{new Date().getFullYear()}
                 section.feed-search__gridLayout-feed
                     h3.ir_su feed search
-                    article.feed-search__users
-                        h5 Search Users
-                        if searchUsers.length === 0
-                            include ./partials/notFound
-                        each item in searchUsers
-                            +searchUsersBlock({
-                                idx: item.idx,
-                                id: item.id,
-                                name: item.name,
-                                sex: item.sex,
-                                profile: item.profile,
-                                birth: item.birth
-                            })
-                    article.feed-search__feeds
-                        h5 Search Feeds
-                        if feeds.length === 0
-                            include ./partials/notFound
-                        each item in feeds
-                            +feedBlock({
-                                idx: item.idx,
-                                writer: item.writer,
-                                writerIdx: item.writer_idx,
-                                writerProfile: item.profile,
-                                createdAt: item.createdAt,
-                                fileUrl: item.fileUrl,
-                                description: item.description,
-                                likes: item.likes
-                            })
+                    article.feed-search__article-users
+                        include ./partials/feedSearchUsers
+                    article.feed-search__article-feeds
+                        include ./partials/feedSearchInFeed

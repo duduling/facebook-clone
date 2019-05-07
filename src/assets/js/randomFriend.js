@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const jsRandomUsers = document.getElementById("jsRandomUsers");
+let nowViewListId;
 
 const addRandomFriendHtml = randUser => {
   const addHtml = `
@@ -25,10 +26,22 @@ const addRandomFriendHtml = randUser => {
   jsRandomUsers.insertAdjacentHTML("beforeend", addHtml);
 };
 
+const catchId = () => {
+  // 초기화
+  nowViewListId = [];
+
+  for (let i = 1; i < jsRandomUsers.children.length; i++) {
+    nowViewListId.push(
+      jsRandomUsers.children[i].id.split("jsRandomFriendBlock")[1]
+    );
+  }
+};
+
 const handleRandomblock = async event => {
-  let whatDo;
+  await catchId();
+
   if (event.target.textContent === " Add") {
-    whatDo = "addRandomFriend";
+    const whatDo = "addRandomFriend";
     const targetIdx = event.target.parentElement.id.split(
       "jsRandomFriendAdd"
     )[1];
@@ -37,15 +50,29 @@ const handleRandomblock = async event => {
       method: "POST",
       data: {
         targetIdx,
-        whatDo
+        whatDo,
+        nowViewListId
       }
     });
     document.getElementById(`jsRandomFriendBlock${targetIdx}`).remove();
-    if (response.status === 200) {
+    if (response.status === 200 && response.data.rows !== null) {
       addRandomFriendHtml(response.data.rows);
     }
   } else if (event.target.textContent === " Remove") {
-    console.log(event.target.parentElement.id.split("jsRandomFriendRemove")[1]);
+    const targetIdx = event.target.parentElement.id.split(
+      "jsRandomFriendRemove"
+    )[1];
+    const response = await axios({
+      url: "/api/randomFriendRemove",
+      method: "POST",
+      data: {
+        nowViewListId
+      }
+    });
+    document.getElementById(`jsRandomFriendBlock${targetIdx}`).remove();
+    if (response.status === 200 && response.data.rows !== null) {
+      addRandomFriendHtml(response.data.rows);
+    }
   }
 };
 

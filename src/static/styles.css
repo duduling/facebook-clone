@@ -591,21 +591,6 @@ input {
       grid-gap: 10px; }
       .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed {
         background-color: #e9ebee; }
-        .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__users {
-          background-color: white;
-          margin-bottom: 15px;
-          padding: 12px;
-          -webkit-border-radius: 7px;
-             -moz-border-radius: 7px;
-                  border-radius: 7px; }
-          .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__users > h5 {
-            margin-bottom: 20px; }
-        .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed .feed-search__feeds {
-          padding: 12px;
-          -webkit-border-radius: 7px;
-             -moz-border-radius: 7px;
-                  border-radius: 7px;
-          background-color: white; }
 
 @media (max-width: 1024px) {
   .feed-search .feed-search__wrapper {
@@ -1209,6 +1194,23 @@ input {
   .userFriends .userFriends__wrapper .userFriends__body-grid {
     grid-template-columns: 1fr; } }
 
+.feed-search__users {
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 12px;
+  -webkit-border-radius: 7px;
+     -moz-border-radius: 7px;
+          border-radius: 7px; }
+  .feed-search__users > h5 {
+    margin-bottom: 20px; }
+
+.feed-search__feeds {
+  padding: 12px;
+  -webkit-border-radius: 7px;
+     -moz-border-radius: 7px;
+          border-radius: 7px;
+  background-color: white; }
+
 .editProfile .editProfile__wrapper .editProfile__header {
   margin-top: 20px;
   background-color: #f5f6f7;
@@ -1641,7 +1643,12 @@ input {
       height: 100%;
       display: grid;
       grid-template-rows: 1fr 1fr; }
-      .feedBlock .feedBlock__header .feedBlock__header-grid span {
+      .feedBlock .feedBlock__header .feedBlock__header-grid > span {
+        margin-left: 10px;
+        line-height: 30px;
+        font-size: 12px;
+        color: #616770; }
+      .feedBlock .feedBlock__header .feedBlock__header-grid #feedBolck-name > a > span {
         margin-left: 10px;
         line-height: 30px; }
     .feedBlock .feedBlock__header #feedBolck-btn > i {
@@ -1656,7 +1663,7 @@ input {
     padding: 10px; }
   .feedBlock .feedBlock__body .feedBlock__body-img > img {
     width: 580px;
-    height: 580px; }
+    max-height: 580px; }
   .feedBlock .feedBlock__footer {
     padding-top: 15px; }
     .feedBlock .feedBlock__footer .feedBlock__footer-top {

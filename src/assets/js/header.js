@@ -51,11 +51,26 @@ const ViewWaitFriendList = () => {
   }
 };
 
+const checkVisiblity = event => {
+  if (jsHeaderFriend.style.visibility === "visible") {
+    if (
+      event.path[0].id !== "jsHeaderFriend" &&
+      event.path[1].id !== "jsHeaderFriend" &&
+      event.path[2].id !== "jsHeaderFriend"
+    ) {
+      jsHeaderFriendBtn.style.color = "";
+      jsHeaderFriend.style.visibility = "collapse";
+    }
+  } else if (event.target.id == "jsHeaderFriendBtn") {
+    ViewWaitFriendList(event);
+  }
+};
+
 const init = () => {
   // 초기화
   jsHeaderFriend.style.visibility = "collapse";
   jsHeaderFriend.addEventListener("click", handleConfirmFriend);
-  jsHeaderFriendBtn.addEventListener("click", ViewWaitFriendList);
+  window.addEventListener("click", checkVisiblity);
 };
 
 if (jsHeaderFriendBtn) {

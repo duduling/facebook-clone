@@ -5,9 +5,9 @@ import routes from "../routes";
 export const getFeedMain = (req, res) => {
   const $feedJoinUser =
     "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
-  const $randomUsersSelect = `select * from Users where not idx = ${
+  const $randomUsersSelect = `SELECT idx, name, profile from Users WHERE not idx = any(SELECT friendIdx FROM FriendList WHERE myIdx = "${
     req.user.idx
-  } order by rand() limit 4;`;
+  }") AND idx NOT IN ("${req.user.idx}") order by rand() limit 4;`;
   const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
     req.user.idx
   }";`;
@@ -108,11 +108,12 @@ export const postFeedsUpload = (req, res) => {
     const $feedInsert = "INSERT INTO Feeds set ?;";
     const $dataObj = {
       writer: req.user.name,
+      writer_id: req.user.id,
       writer_idx: req.user.idx,
       fileUrl: file ? `/${file.path}` : null,
       description: uploadText
     };
-    db.query($feedInsert, $dataObj, (err, rows, fields) => {
+    db.query($feedInsert, $dataObj, err => {
       if (err) {
         throw err;
       } else {
@@ -130,9 +131,9 @@ export const getFeedSearch = (req, res) => {
   } = req;
   const $feedJoinUser = `select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx where Feeds.writer like "%${searchWord}%" or Feeds.description like "%${searchWord}%";`;
   const $userSearchSelect = `select idx, id, name, sex, profile, birth from Users where Users.name like "%${searchWord}%" or Users.id like "%${searchWord}%";`;
-  const $randomUsersSelect = `select * from Users where not idx = ${
+  const $randomUsersSelect = `SELECT idx, name, profile from Users WHERE not idx = any(SELECT friendIdx FROM FriendList WHERE myIdx = "${
     req.user.idx
-  } order by rand() limit 4;`;
+  }") AND idx NOT IN ("${req.user.idx}") order by rand() limit 4;`;
   const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
     req.user.idx
   }";`;
