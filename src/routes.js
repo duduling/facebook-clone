@@ -25,6 +25,7 @@ const EDIT_PASSWORD = "/editPassword";
 const API = "/api";
 const CHECK_ID = "/checkId";
 const CHECK_CHANGE_PW = "/checkChangePw";
+const RANDOM_FRIEND_REMOVE = "/randomFriendRemove";
 const ADD_FRIEND = "/addFriend";
 const DELETE_FRIEND = "/deleteFriend";
 const CONFIRM_FRIEND = "/confirmFriend";
@@ -63,6 +64,7 @@ const routes = {
   api: API,
   checkId: CHECK_ID,
   chaeckChangePw: CHECK_CHANGE_PW,
+  randomFriendRemove: RANDOM_FRIEND_REMOVE,
   addFriend: ADD_FRIEND,
   deleteFriend: DELETE_FRIEND,
   confirmFriend: CONFIRM_FRIEND,

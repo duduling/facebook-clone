@@ -60,9 +60,36 @@ export const postChaeckChangePw = async (req, res) => {
   }
 };
 
+export const postRandomFriendRemove = async (req, res) => {
+  const {
+    body: { nowViewListId }
+  } = req;
+  try {
+    const $selectAddRandomFriend = `SELECT idx, name, profile from Users WHERE not idx = any(SELECT friendIdx FROM FriendList WHERE myIdx = "${
+      req.user.idx
+    }") AND idx NOT IN ("${req.user.idx}", "${nowViewListId[0]}", "${
+      nowViewListId[1]
+    }", "${nowViewListId[2]}" ,"${nowViewListId[3]}") order by rand() limit 1;`;
+    await db.query($selectAddRandomFriend, (err, rows) => {
+      if (err) throw err;
+      if (rows.length !== 0) {
+        res.status(200).json({ rows: rows[0] });
+        res.end();
+      } else {
+        res.status(200).json({ rows: null });
+        res.end();
+      }
+    });
+  } catch (error) {
+    res.status(400);
+    res.end();
+  }
+};
+
+// Random Add Friend 같이 씀
 export const postAddFriend = async (req, res) => {
   const {
-    body: { targetIdx, whatDo }
+    body: { targetIdx, whatDo, nowViewListId }
   } = req;
   const $FriendInOut = "INSERT INTO WaitFriendList set ? ;";
   const $dataObj = {
@@ -71,17 +98,23 @@ export const postAddFriend = async (req, res) => {
   };
   try {
     if (whatDo === "addRandomFriend") {
-      const $selectAddRandomFriend = `select idx, name, profile from Users where not idx = "${
+      const $selectAddRandomFriend = `SELECT idx, name, profile from Users WHERE not idx = any(SELECT friendIdx FROM FriendList WHERE myIdx = "${
         req.user.idx
-      }" order by rand() limit 1;`;
+      }") AND idx NOT IN ("${req.user.idx}", "${nowViewListId[0]}", "${
+        nowViewListId[1]
+      }", "${nowViewListId[2]}" ,"${
+        nowViewListId[3]
+      }") order by rand() limit 1;`;
       await db.query(
         $FriendInOut + $selectAddRandomFriend,
         $dataObj,
         (err, rows) => {
           if (err) throw err;
-          console.log(rows[1]);
           if (rows[1].length !== 0) {
             res.status(200).json({ rows: rows[1][0] });
+            res.end();
+          } else {
+            res.status(200).json({ rows: null });
             res.end();
           }
         }

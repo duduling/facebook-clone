@@ -7,13 +7,15 @@ import {
   postAddFriend,
   postConfirmFriend,
   postCancelFriend,
-  postDeleteFriend
+  postDeleteFriend,
+  postRandomFriendRemove
 } from "../controlers/apiController";
 
 const apiRouter = express.Router();
 
 apiRouter.post(routes.checkId, postCheckId);
 apiRouter.post(routes.chaeckChangePw, postChaeckChangePw);
+apiRouter.post(routes.randomFriendRemove, postRandomFriendRemove);
 apiRouter.post(routes.addFriend, postAddFriend);
 apiRouter.post(routes.deleteFriend, postDeleteFriend);
 apiRouter.post(routes.confirmFriend, postConfirmFriend);

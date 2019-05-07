@@ -5,9 +5,9 @@ import routes from "../routes";
 export const getFeedMain = (req, res) => {
   const $feedJoinUser =
     "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
-  const $randomUsersSelect = `select * from Users where not idx = ${
+  const $randomUsersSelect = `SELECT idx, name, profile from Users WHERE not idx = any(SELECT friendIdx FROM FriendList WHERE myIdx = "${
     req.user.idx
-  } order by rand() limit 4;`;
+  }") AND idx NOT IN ("${req.user.idx}") order by rand() limit 4;`;
   const $waitMyFriend = `select * from WaitFriendList left join Users on Users.idx = WaitFriendList.senderIdx where recipientIdx = "${
     req.user.idx
   }";`;
