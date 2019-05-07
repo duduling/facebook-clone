@@ -56,6 +56,7 @@ const handleFriend = async () => {
     });
     if (response.status === 200) {
       jsAddFriendText.innerText = " Add Friend";
+      jsAddFriendText.className = "fas fa-user-plus";
     }
   }
 };

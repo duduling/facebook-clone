@@ -16,5 +16,6 @@ include ../mixins/friendPageBlock
                     +friendPageBlock({
                         idx: item.idx,
                         profile: item.profile,
-                        name: item.name
+                        name: item.name,
+                        check: user.idx === otherUser.idx ? true : false
                     })

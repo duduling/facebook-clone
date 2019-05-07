@@ -5,4 +5,5 @@ mixin friendPageBlock(friend = {})
         .userFriends__body-friendBlock--border
             a(href=`/feeds/${friend.idx}`)
                 span=friend.name
-        button Remove
+        if friend.check
+            button Remove
