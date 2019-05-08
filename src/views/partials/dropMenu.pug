@@ -1,7 +1,7 @@
 .header__dropMenu
     li.header__dropMenu--list
-        img.header__dropMenu--icon(src="/img/menu.png", alt="menu icon")
-        ul.header__dropMenu--open-list
+        img.header__dropMenu--icon(src="/img/menu.png", alt="menu icon", id="jsDropMenuBtn")
+        ul.header__dropMenu-list.header__dropMenu-list--close#jsDropMenuAnimation
             li.header__dropMenu-link.menuUserFeed
                 a(href=routes.feedsUser(user.idx), title="My feed")
                     img(src=user.profile, alt="user profile")

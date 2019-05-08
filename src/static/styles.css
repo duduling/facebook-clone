@@ -984,25 +984,13 @@ input {
   .header__dropMenu > li {
     float: right;
     list-style: none; }
-    .header__dropMenu > li:hover .header__dropMenu--open-list {
-      visibility: visible;
-      opacity: 1;
-      -webkit-transform: translateY(0%);
-         -moz-transform: translateY(0%);
-          -ms-transform: translateY(0%);
-           -o-transform: translateY(0%);
-              transform: translateY(0%);
-      -webkit-transition-delay: 0s, 0s, 0.3s;
-         -moz-transition-delay: 0s, 0s, 0.3s;
-           -o-transition-delay: 0s, 0s, 0.3s;
-              transition-delay: 0s, 0s, 0.3s; }
     .header__dropMenu > li .header__dropMenu--icon {
       width: 30px;
       height: 30px;
       margin-top: 10px;
       margin-bottom: 9px;
       cursor: pointer; }
-    .header__dropMenu > li .header__dropMenu--open-list {
+    .header__dropMenu > li .header__dropMenu-list {
       width: 140px;
       position: absolute;
       right: -10px;
@@ -1017,23 +1005,23 @@ input {
       -o-transition: all 0.3s ease-in-out 0s;
       -moz-transition: all 0.3s ease-in-out 0s;
       transition: all 0.3s ease-in-out 0s; }
-      .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link,
-      .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div {
+      .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link,
+      .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div {
         background: #3b5898; }
-        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a,
-        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link div,
-        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div > a,
-        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div div {
+        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a,
+        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link div,
+        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div > a,
+        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div div {
           color: #cccccc;
           display: block;
           font-weight: 300;
           line-height: 45px;
           padding: 0 15px;
           cursor: pointer; }
-          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a > img,
-          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link div > img,
-          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div > a > img,
-          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div div > img {
+          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a > img,
+          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link div > img,
+          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div > a > img,
+          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div div > img {
             width: 30px;
             height: 30px;
             position: relative;
@@ -1051,24 +1039,36 @@ input {
             -o-object-position: top;
                object-position: top;
             border: rgba(0, 0, 0, 0.1) solid 1px; }
-      .header__dropMenu > li .header__dropMenu--open-list .menuUserFeed {
+      .header__dropMenu > li .header__dropMenu-list .menuUserFeed {
         padding-left: 7px; }
-        .header__dropMenu > li .header__dropMenu--open-list .menuUserFeed > a > span {
+        .header__dropMenu > li .header__dropMenu-list .menuUserFeed > a > span {
           margin-left: 3px; }
-      .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend {
+      .header__dropMenu > li .header__dropMenu-list .menuUserFriend {
         padding-left: 10px; }
-        .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > div > i {
+        .header__dropMenu > li .header__dropMenu-list .menuUserFriend > div > i {
           margin-left: -3px; }
-        .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > div > span {
+        .header__dropMenu > li .header__dropMenu-list .menuUserFriend > div > span {
           margin-left: 12px; }
-      .header__dropMenu > li .header__dropMenu--open-list .menuUserNotice {
+      .header__dropMenu > li .header__dropMenu-list .menuUserNotice {
         padding-left: 10px; }
-        .header__dropMenu > li .header__dropMenu--open-list .menuUserNotice > div > span {
+        .header__dropMenu > li .header__dropMenu-list .menuUserNotice > div > span {
           margin-left: 15px; }
-      .header__dropMenu > li .header__dropMenu--open-list .menuUserLogout {
+      .header__dropMenu > li .header__dropMenu-list .menuUserLogout {
         padding-left: 10px; }
-        .header__dropMenu > li .header__dropMenu--open-list .menuUserLogout > a > span {
+        .header__dropMenu > li .header__dropMenu-list .menuUserLogout > a > span {
           margin-left: 13px; }
+    .header__dropMenu > li .header__dropMenu-list--open {
+      visibility: visible !important;
+      opacity: 1 !important;
+      -webkit-transform: translateY(0%) !important;
+         -moz-transform: translateY(0%) !important;
+          -ms-transform: translateY(0%) !important;
+           -o-transform: translateY(0%) !important;
+              transform: translateY(0%) !important;
+      -webkit-transition-delay: 0s, 0s, 0.3s !important;
+         -moz-transition-delay: 0s, 0s, 0.3s !important;
+           -o-transition-delay: 0s, 0s, 0.3s !important;
+              transition-delay: 0s, 0s, 0.3s !important; }
 
 @media (max-width: 768px) {
   .header__dropMenu {
