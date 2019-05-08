@@ -6,12 +6,12 @@
                 a(href=routes.feedsUser(user.idx), title="My feed")
                     img(src=user.profile, alt="user profile")
                     span=user.name
-            li.header__dropMenu-link.menuUserFriend
-                a(href="#", title="My friends")
+            li.header__dropMenu-div.menuUserFriend
+                #jsWaitFriendDiv
                     i.fas.fa-user-friends
                     span Friend
-            li.header__dropMenu-link.menuUserNotice
-                a(href="#", title="My notices")
+            li.header__dropMenu-div.menuUserNotice
+                #jsWaitNoticeDiv
                     i.fas.fa-bell
                     span Notice
             li.header__dropMenu-link.menuUserLogout

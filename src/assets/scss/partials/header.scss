@@ -116,7 +116,17 @@
       border: #c9c9c9 solid 1px;
       border-radius: 3px;
       height: 300px;
-      visibility: collapse;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      & > span {
+        display: block;
+        padding: 10px;
+        font-size: 14px;
+        background-color: $lightGrayColor;
+        border-bottom: 1px solid #dddfe2;
+      }
     }
   }
 }
@@ -151,6 +161,16 @@
       .header__profile,
       .header__subMenu {
         display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    .header__wrapper {
+      .header__search-bar {
+        width: 75%;
       }
     }
   }

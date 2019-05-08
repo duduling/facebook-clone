@@ -941,7 +941,15 @@ input {
          -moz-border-radius: 3px;
               border-radius: 3px;
       height: 300px;
-      visibility: collapse; }
+      overflow: auto; }
+      .header .header__wrapper #jsHeaderFriend::-webkit-scrollbar {
+        display: none; }
+      .header .header__wrapper #jsHeaderFriend > span {
+        display: block;
+        padding: 10px;
+        font-size: 14px;
+        background-color: #f5f6f7;
+        border-bottom: 1px solid #dddfe2; }
 
 @media (max-width: 1024px) {
   .header .header__wrapper {
@@ -959,6 +967,10 @@ input {
   .header .header__wrapper .header__profile,
   .header .header__wrapper .header__subMenu {
     display: none; } }
+
+@media (max-width: 480px) {
+  .header .header__wrapper .header__search-bar {
+    width: 75%; } }
 
 .header__dropMenu {
   display: none;
@@ -999,15 +1011,23 @@ input {
       -o-transition: all 0.3s ease-in-out 0s;
       -moz-transition: all 0.3s ease-in-out 0s;
       transition: all 0.3s ease-in-out 0s; }
-      .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link {
+      .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link,
+      .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div {
         background: #3b5898; }
-        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a {
+        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a,
+        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link div,
+        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div > a,
+        .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div div {
           color: #cccccc;
           display: block;
           font-weight: 300;
           line-height: 45px;
-          padding: 0 15px; }
-          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a > img {
+          padding: 0 15px;
+          cursor: pointer; }
+          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link > a > img,
+          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-link div > img,
+          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div > a > img,
+          .header__dropMenu > li .header__dropMenu--open-list .header__dropMenu-div div > img {
             width: 30px;
             height: 30px;
             position: relative;
@@ -1031,13 +1051,13 @@ input {
           margin-left: 3px; }
       .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend {
         padding-left: 10px; }
-        .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > a > i {
+        .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > div > i {
           margin-left: -3px; }
-        .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > a > span {
+        .header__dropMenu > li .header__dropMenu--open-list .menuUserFriend > div > span {
           margin-left: 12px; }
       .header__dropMenu > li .header__dropMenu--open-list .menuUserNotice {
         padding-left: 10px; }
-        .header__dropMenu > li .header__dropMenu--open-list .menuUserNotice > a > span {
+        .header__dropMenu > li .header__dropMenu--open-list .menuUserNotice > div > span {
           margin-left: 15px; }
       .header__dropMenu > li .header__dropMenu--open-list .menuUserLogout {
         padding-left: 10px; }

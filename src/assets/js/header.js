@@ -2,7 +2,20 @@ import axios from "axios";
 
 const jsHeaderFriend = document.getElementById("jsHeaderFriend");
 const jsHeaderFriendBtn = document.getElementById("jsHeaderFriendBtn");
+const jsWaitFriendDiv = document.getElementById("jsWaitFriendDiv");
 let doubleClick = false;
+
+const responsiveFriendBox = () => {
+  if (jsHeaderFriend.style.visibility === "visible") {
+    if (matchMedia("screen and (min-width: 768px)").matches) {
+      jsHeaderFriend.style.left = `${jsHeaderFriendBtn.offsetLeft -
+        (jsHeaderFriend.clientWidth / 2 - 14)}px`;
+    } else {
+      jsHeaderFriendBtn.style.color = "";
+      jsHeaderFriend.style.visibility = "collapse";
+    }
+  }
+};
 
 const handleConfirmFriend = async event => {
   if (!doubleClick) {
@@ -51,7 +64,18 @@ const ViewWaitFriendList = () => {
   }
 };
 
+const ViewWatirFriendListResponsive = () => {
+  if (jsHeaderFriend.style.visibility === "collapse") {
+    jsHeaderFriend.style.visibility = "visible";
+    jsHeaderFriend.style.top = "calc(50vh - 100px)";
+    jsHeaderFriend.style.left = "calc(50vh - 180px)";
+  } else {
+    jsHeaderFriend.style.visibility = "collapse";
+  }
+};
+
 const checkVisiblity = event => {
+  console.log(event);
   if (jsHeaderFriend.style.visibility === "visible") {
     if (
       event.path[0].id !== "jsHeaderFriend" &&
@@ -61,7 +85,7 @@ const checkVisiblity = event => {
       jsHeaderFriendBtn.style.color = "";
       jsHeaderFriend.style.visibility = "collapse";
     }
-  } else if (event.target.id == "jsHeaderFriendBtn") {
+  } else if (event.target.id === "jsHeaderFriendBtn") {
     ViewWaitFriendList(event);
   }
 };
@@ -70,6 +94,8 @@ const init = () => {
   // 초기화
   jsHeaderFriend.style.visibility = "collapse";
   jsHeaderFriend.addEventListener("click", handleConfirmFriend);
+  jsWaitFriendDiv.addEventListener("click", ViewWatirFriendListResponsive);
+  window.addEventListener("resize", responsiveFriendBox);
   window.addEventListener("click", checkVisiblity);
 };
 

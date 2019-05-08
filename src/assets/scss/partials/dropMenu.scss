@@ -36,14 +36,17 @@
       transform: translateY(-2em);
       // 효과 설정
       transition: all 0.3s ease-in-out 0s;
-      .header__dropMenu-link {
+      .header__dropMenu-link,
+      .header__dropMenu-div {
         background: #3b5898;
-        & > a {
+        & > a,
+        div {
           color: #cccccc;
           display: block;
           font-weight: 300;
           line-height: 45px;
           padding: 0 15px;
+          cursor: pointer;
           & > img {
             width: 30px;
             height: 30px;
@@ -66,16 +69,16 @@
       }
       .menuUserFriend {
         padding-left: 10px;
-        & > a > i {
+        & > div > i {
           margin-left: -3px;
         }
-        & > a > span {
+        & > div > span {
           margin-left: 12px;
         }
       }
       .menuUserNotice {
         padding-left: 10px;
-        & > a > span {
+        & > div > span {
           margin-left: 15px;
         }
       }
