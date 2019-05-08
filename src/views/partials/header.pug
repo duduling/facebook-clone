@@ -23,12 +23,14 @@ include ../mixins/waitFriendBlock
                 img(src=user.profile, alt="userProfile")
                 span=user.name
         include ./dropMenu
-        #jsHeaderFriend
-            if waitMyFriendList.length === 0
-                include ./notFound
-            each item in waitMyFriendList
-                +waitFriendBlock({
-                    idx: item.idx,
-                    name: item.name,
-                    profile: item.profile
-                })
+        #jsHeaderFriendBgc
+            #jsHeaderFriend
+                span Wait Friends
+                if waitMyFriendList.length === 0
+                    include ./notFound
+                each item in waitMyFriendList
+                    +waitFriendBlock({
+                        idx: item.idx,
+                        name: item.name,
+                        profile: item.profile
+                    })
