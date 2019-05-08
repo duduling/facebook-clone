@@ -1,5 +1,4 @@
 extends ./layouts/main.pug
-include ./mixins/feedMainBlock
 
 block content
     .feed-user
@@ -33,16 +32,6 @@ block content
                     span Facebook &copy; #{new Date().getFullYear()}
                 section.feed-user__feed
                     article.feed-user__upload
-                        include ./partials/feedUpload.pug
+                        include ./partials/feedUpload
                     section.feed-user__content
-                        each item in feeds
-                            +feedBlock({
-                                idx: item.idx,
-                                writer: item.writer,
-                                writerIdx: item.writer_idx,
-                                writerProfile: otherUser.profile,
-                                createdAt: item.createdAt,
-                                fileUrl: item.fileUrl,
-                                description: item.description,
-                                likes: item.likes
-                            })
+                        include ./partials/feedSection

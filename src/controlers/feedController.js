@@ -44,10 +44,7 @@ export const getFeedUser = (req, res) => {
       "SELECT * FROM Users where `idx`=?;",
       otherIdx
     );
-    const $feedSelect = db.format(
-      "SELECT * FROM Feeds where `writer_idx`=?;",
-      otherIdx
-    );
+    const $feedJoinUser = `select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx WHERE Users.idx = "${otherIdx}" ORDER BY Feeds.createdAt DESC;`;
     const $areYouMyFriend = `select * from WaitFriendList where (senderIdx = "${
       req.user.idx
     }" and recipientIdx = "${otherIdx}") or (senderIdx = "${otherIdx}" and recipientIdx = "${
@@ -64,7 +61,7 @@ export const getFeedUser = (req, res) => {
 
     db.query(
       $loggedUserSelect +
-        $feedSelect +
+        $feedJoinUser +
         $areYouMyFriend +
         $friendListJoinUsers +
         $waitMyFriend +

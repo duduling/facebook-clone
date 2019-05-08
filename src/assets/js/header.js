@@ -3,6 +3,8 @@ import axios from "axios";
 const jsHeaderFriend = document.getElementById("jsHeaderFriend");
 const jsHeaderFriendBtn = document.getElementById("jsHeaderFriendBtn");
 const jsWaitFriendDiv = document.getElementById("jsWaitFriendDiv");
+const jsHeaderFriendBgc = document.getElementById("jsHeaderFriendBgc");
+
 let doubleClick = false;
 
 const responsiveFriendBox = () => {
@@ -13,6 +15,7 @@ const responsiveFriendBox = () => {
     } else {
       jsHeaderFriendBtn.style.color = "";
       jsHeaderFriend.style.visibility = "collapse";
+      jsHeaderFriendBgc.style.visibility = "collapse";
     }
   }
 };
@@ -66,27 +69,43 @@ const ViewWaitFriendList = () => {
 
 const ViewWatirFriendListResponsive = () => {
   if (jsHeaderFriend.style.visibility === "collapse") {
-    jsHeaderFriend.style.visibility = "visible";
     jsHeaderFriend.style.top = "calc(50vh - 100px)";
-    jsHeaderFriend.style.left = "calc(50vh - 180px)";
+    jsHeaderFriend.style.left = "calc(50% - 125px)";
+    jsHeaderFriend.style.visibility = "visible";
+    jsHeaderFriendBgc.style.visibility = "visible";
   } else {
     jsHeaderFriend.style.visibility = "collapse";
+    jsHeaderFriendBgc.style.visibility = "collapse";
   }
 };
 
 const checkVisiblity = event => {
-  console.log(event);
-  if (jsHeaderFriend.style.visibility === "visible") {
-    if (
-      event.path[0].id !== "jsHeaderFriend" &&
-      event.path[1].id !== "jsHeaderFriend" &&
-      event.path[2].id !== "jsHeaderFriend"
-    ) {
-      jsHeaderFriendBtn.style.color = "";
-      jsHeaderFriend.style.visibility = "collapse";
+  if (matchMedia("screen and (min-width: 768px)").matches) {
+    if (jsHeaderFriend.style.visibility === "visible") {
+      if (
+        event.path[0].id !== "jsHeaderFriend" &&
+        event.path[1].id !== "jsHeaderFriend" &&
+        event.path[2].id !== "jsHeaderFriend"
+      ) {
+        jsHeaderFriendBtn.style.color = "";
+        jsHeaderFriend.style.visibility = "collapse";
+      }
+    } else if (event.target.id === "jsHeaderFriendBtn") {
+      ViewWaitFriendList();
     }
-  } else if (event.target.id === "jsHeaderFriendBtn") {
-    ViewWaitFriendList(event);
+  } else if (matchMedia("screen and (max-width: 768px)").matches) {
+    if (jsHeaderFriend.style.visibility === "visible") {
+      if (
+        event.path[0].id !== "jsHeaderFriend" &&
+        event.path[1].id !== "jsHeaderFriend" &&
+        event.path[2].id !== "jsHeaderFriend"
+      ) {
+        jsHeaderFriend.style.visibility = "collapse";
+        jsHeaderFriendBgc.style.visibility = "collapse";
+      }
+    } else if (event.path[1].id === "jsWaitFriendDiv") {
+      ViewWatirFriendListResponsive();
+    }
   }
 };
 
@@ -94,7 +113,7 @@ const init = () => {
   // 초기화
   jsHeaderFriend.style.visibility = "collapse";
   jsHeaderFriend.addEventListener("click", handleConfirmFriend);
-  jsWaitFriendDiv.addEventListener("click", ViewWatirFriendListResponsive);
+  // jsWaitFriendDiv.addEventListener("click", ViewWatirFriendListResponsive);
   window.addEventListener("resize", responsiveFriendBox);
   window.addEventListener("click", checkVisiblity);
 };
