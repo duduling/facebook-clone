@@ -76,17 +76,14 @@
           margin-left: 13px;
         }
       }
-    }
-    // Drop Menu Open Animation
-    .header__dropMenu-list--open {
-      // 조건 부합하면 비추기
-      visibility: visible !important;
-      // 흩날리는 효과
-      opacity: 1 !important;
-      // 날라오는 효과
-      transform: translateY(0%) !important;
-      // 효과 딜레이
-      transition-delay: 0s, 0s, 0.3s !important;
+      .menuUserFeed,
+      .menuUserFriend,
+      .menuUserNotice,
+      .menuUserLogout {
+        &:hover > * {
+          color: white;
+        }
+      }
     }
   }
 }
@@ -95,4 +92,16 @@
   .header__dropMenu {
     display: inline;
   }
+}
+
+// Drop Menu Open Animation
+.header__dropMenu-list--open {
+  // 조건 부합하면 비추기
+  visibility: visible !important;
+  // 흩날리는 효과
+  opacity: 1 !important;
+  // 날라오는 효과
+  transform: translateY(0%) !important;
+  // 효과 딜레이
+  transition-delay: 0s, 0s, 0.3s !important;
 }
