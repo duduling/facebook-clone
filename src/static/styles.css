@@ -1854,28 +1854,29 @@ input {
           background-color: #e9ebee8a; }
   .feedBlock #jsFeedBlockSubMenu {
     position: absolute;
+    display: grid;
     top: 20px;
     right: 20px;
     font-size: 14px;
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
        -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
-    .feedBlock #jsFeedBlockSubMenu > ul {
-      background-color: #f5f6f7;
-      border: #c9c9c9 solid 1px; }
-      .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockEdit,
-      .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockDelete {
-        padding: 10px;
-        cursor: pointer; }
-        .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockEdit:hover,
-        .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockDelete:hover {
-          background-color: #e9ebee; }
-      .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockEdit {
-        border-bottom: #c9c9c9 solid 1px; }
-        .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockEdit > i > span {
-          margin-left: 5px; }
-      .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockDelete > i > span {
-        margin-left: 9px; }
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: #c9c9c9 solid 1px; }
+    .feedBlock #jsFeedBlockSubMenu #jsFeedBlockEdit,
+    .feedBlock #jsFeedBlockSubMenu #jsFeedBlockDelete {
+      padding: 8px;
+      cursor: pointer;
+      border: none;
+      background-color: #f5f6f7; }
+      .feedBlock #jsFeedBlockSubMenu #jsFeedBlockEdit:hover,
+      .feedBlock #jsFeedBlockSubMenu #jsFeedBlockDelete:hover {
+        background-color: #e9ebee; }
+    .feedBlock #jsFeedBlockSubMenu #jsFeedBlockEdit {
+      border-bottom: #c9c9c9 solid 1px; }
+      .feedBlock #jsFeedBlockSubMenu #jsFeedBlockEdit > i > span {
+        margin-left: 5px; }
+    .feedBlock #jsFeedBlockSubMenu #jsFeedBlockDelete > i > span {
+      margin-left: 9px; }
 
 @media (max-width: 1024px) {
   .feedBlock .feedBlock__body .feedBlock__body-img > img {

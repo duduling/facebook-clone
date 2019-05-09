@@ -62,10 +62,9 @@ mixin feedBlock(feed = {})
                     span Comment
         //- #jsFeedBlockSubMenu(style="display: none")
         #jsFeedBlockSubMenu
-            ul
-                li#jsFeedBlockEdit
-                    i.far.fa-edit
-                        span 수정하기
-                li#jsFeedBlockDelete
-                    i.far.fa-trash-alt
-                        span 삭제하기
+            button(id="jsFeedBlockEdit", value=feed.idx)
+                i.far.fa-edit
+                    span 수정하기
+            button(id="jsFeedBlockDelete", value=feed.idx)
+                i.far.fa-trash-alt
+                    span 삭제하기

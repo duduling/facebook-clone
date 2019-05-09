@@ -49,7 +49,12 @@ const routes = {
   feedsSearch: FEEDS_SEARCH,
   feedsUpload: FEEDS_UPLOAD,
   feedsEdit: FEEDS_EDIT,
-  feedsDelete: FEEDS_DELETE,
+  feedsDelete: idx => {
+    if (idx) {
+      return `/feeds/${idx}/delete`;
+    }
+    return FEEDS_DELETE;
+  },
   // User
   user: USER,
   userFriends: idx => {

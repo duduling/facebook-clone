@@ -123,31 +123,31 @@
   }
   #jsFeedBlockSubMenu {
     position: absolute;
+    display: grid;
     top: 20px;
     right: 20px;
     font-size: 14px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    & > ul {
+    border: $grayLine solid 1px;
+    #jsFeedBlockEdit,
+    #jsFeedBlockDelete {
+      padding: 8px;
+      cursor: pointer;
+      border: none;
       background-color: $lightGrayColor;
-      border: $grayLine solid 1px;
-      #jsFeedBlockEdit,
-      #jsFeedBlockDelete {
-        padding: 10px;
-        cursor: pointer;
-        &:hover {
-          background-color: $feedBGC;
-        }
+      &:hover {
+        background-color: $feedBGC;
       }
-      #jsFeedBlockEdit {
-        border-bottom: $grayLine solid 1px;
-        & > i > span {
-          margin-left: 5px;
-        }
+    }
+    #jsFeedBlockEdit {
+      border-bottom: $grayLine solid 1px;
+      & > i > span {
+        margin-left: 5px;
       }
-      #jsFeedBlockDelete {
-        & > i > span {
-          margin-left: 9px;
-        }
+    }
+    #jsFeedBlockDelete {
+      & > i > span {
+        margin-left: 9px;
       }
     }
   }
