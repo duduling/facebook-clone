@@ -1135,8 +1135,7 @@ input {
     grid-template-rows: 4fr 1fr; }
     .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-description {
       display: grid;
-      grid-template-columns: 1fr 9fr;
-      border-bottom: 1px solid #dddfe2; }
+      grid-template-columns: 1fr 9fr; }
       .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-description > img {
         width: 50px;
         height: 50px;
@@ -1160,6 +1159,47 @@ input {
         padding: 15px 25px 15px 15px;
         border: none;
         resize: none; }
+    .feed-main__upload-wrapper .feed-main__upload-form #JsUploadpreviewBox {
+      display: none;
+      position: relative; }
+      .feed-main__upload-wrapper .feed-main__upload-form #JsUploadpreviewBox > img {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        margin-left: 5px;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: top;
+           object-position: top;
+        -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+           -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); }
+      .feed-main__upload-wrapper .feed-main__upload-form #JsUploadpreviewBox .uploadPreview--hover-effect {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        width: 80px;
+        height: 80px;
+        background-color: transparent; }
+        .feed-main__upload-wrapper .feed-main__upload-form #JsUploadpreviewBox .uploadPreview--hover-effect > i {
+          visibility: collapse; }
+        .feed-main__upload-wrapper .feed-main__upload-form #JsUploadpreviewBox .uploadPreview--hover-effect:hover {
+          background: rgba(0, 0, 0, 0.2); }
+          .feed-main__upload-wrapper .feed-main__upload-form #JsUploadpreviewBox .uploadPreview--hover-effect:hover > i {
+            visibility: visible;
+            margin: 3px;
+            width: 15px;
+            height: 15px;
+            float: right;
+            color: gray;
+            text-align: center;
+            -webkit-border-radius: 100%;
+               -moz-border-radius: 100%;
+                    border-radius: 100%;
+            cursor: pointer; }
+            .feed-main__upload-wrapper .feed-main__upload-form #JsUploadpreviewBox .uploadPreview--hover-effect:hover > i:hover {
+              color: white; }
     .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file {
       display: grid;
       grid-template-columns: 9fr 1fr;
@@ -1177,11 +1217,35 @@ input {
       -webkit-justify-content: space-between;
          -moz-box-pack: justify;
           -ms-flex-pack: justify;
-              justify-content: space-between; }
+              justify-content: space-between;
+      border-top: 1px solid #dddfe2; }
       .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(1) {
+        height: 30px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+           -moz-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         margin-left: 10px;
-        width: 100%; }
+        -webkit-border-radius: 15px;
+           -moz-border-radius: 15px;
+                border-radius: 15px;
+        padding: 5px 20px 5px 35px;
+        background: #f5f6f7 url(/img/photo-upload.png) 5px no-repeat;
+        -webkit-background-size: 25px 25px;
+           -moz-background-size: 25px 25px;
+                background-size: 25px 25px;
+        cursor: pointer; }
+        .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(1):hover {
+          background-color: #eee; }
       .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(2) {
+        display: none; }
+      .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(3) {
         margin-right: 10px;
         font-size: 14px;
         padding: 7px 25px;
@@ -1194,7 +1258,7 @@ input {
         -o-transition: 0.2s;
         -moz-transition: 0.2s;
         transition: 0.2s; }
-      .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(2):hover {
+      .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-file :nth-child(3):hover {
         background: #c7c7c785; }
 
 .footer-loginPage {
@@ -1636,7 +1700,10 @@ input {
        -moz-border-radius: 3px;
             border-radius: 3px;
     height: 300px;
-    overflow: auto; }
+    overflow: auto;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
     #jsHeaderFriendBgc #jsHeaderFriend::-webkit-scrollbar {
       display: none; }
     #jsHeaderFriendBgc #jsHeaderFriend > span {

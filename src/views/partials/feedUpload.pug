@@ -6,6 +6,11 @@ article.feed-main__upload-wrapper
             img(src=user.profile, alt="profile")
             //- window.innerWidth 이거로 길이 가져와서 rows 크기 맞춰 주기
             textarea(name="uploadText", id="jsUploadTextarea", cols="30", rows="7", placeholder="What's on your mind?")
+        #JsUploadpreviewBox
+            img(alt="upload file preview", id="jsUploadPreview")
+            .uploadPreview--hover-effect
+                i.fas.fa-times#jsImgDeleteBtn
         .feed-main__upload-form-file
-            input(type="file", name="uploadFeed", accept="video/*, image/*")
+            label(for="jsFeedUpload") Photo
+            input(type="file", id="jsFeedUpload", name="uploadFeed", accept="image/*")
             input(type="submit", value="Share")
