@@ -122,6 +122,23 @@ export const postFeedsUpload = (req, res) => {
   }
 };
 
+export const postFeedDelete = (req, res) => {
+  const {
+    params: { idx }
+  } = req;
+  try {
+    const feedDelte = `DELETE FROM Feeds WHERE idx = "${idx}";`;
+    db.query(feedDelte, err => {
+      if (err) throw err;
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.redirect(`/feeds${routes.feedsMain}`);
+  }
+};
+
 export const getFeedSearch = (req, res) => {
   const {
     query: { searchWord }

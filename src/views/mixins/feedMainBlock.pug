@@ -14,10 +14,13 @@
 -   }
 - 
 -   if (nowTime.getHours() !== targetDate.getHours()) {
+-     if (nowTime.getHours() - targetDate.getHours() === 1 && nowTime.getMinutes() - targetDate.getMinutes() < 0) {
+-       return `${nowTime.getMinutes() - targetDate.getMinutes() + 60} min`;
+-     }
 -     return `${nowTime.getHours() - targetDate.getHours()} hr`;
 -   }
 - 
--   if (nowTime.getHours() !== targetDate.getHours()) {
+-   if (nowTime.getMinutes() !== targetDate.getMinutes()) {
 -     return `${nowTime.getMinutes() - targetDate.getMinutes()} min`;
 -   }
 - 
@@ -34,7 +37,7 @@ mixin feedBlock(feed = {})
                     a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
                 span #{whatTimeIsIt(feed.createdAt)}
-            #feedBolck-btn
+            #jsFeedBolckBtn
                 i.fas.fa-ellipsis-h
         .feedBlock__body
             span=feed.description
@@ -57,3 +60,11 @@ mixin feedBlock(feed = {})
                 button
                     img(src="/img/comment_off.png", alt="like img").feedBlock__footer-btn--comment
                     span Comment
+        //- #jsFeedBlockSubMenu(style="display: none")
+        #jsFeedBlockSubMenu
+            button(id="jsFeedBlockEdit", value=feed.idx)
+                i.far.fa-edit
+                    span 수정하기
+            button(id="jsFeedBlockDelete", value=feed.idx)
+                i.far.fa-trash-alt
+                    span 삭제하기

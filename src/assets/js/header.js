@@ -4,6 +4,7 @@ const jsDropMenuAnimation = document.getElementById("jsDropMenuAnimation");
 const jsHeaderFriend = document.getElementById("jsHeaderFriend");
 const jsHeaderFriendBtn = document.getElementById("jsHeaderFriendBtn");
 const jsHeaderFriendBgc = document.getElementById("jsHeaderFriendBgc");
+const jsFeedBolckBtn = document.getElementById("jsFeedBolckBtn");
 
 let doubleClick = false;
 
@@ -143,8 +144,6 @@ const checkVisiblity = event => {
 };
 
 const init = () => {
-  // 초기화
-  jsHeaderFriend.style.visibility = "collapse";
   jsHeaderFriend.addEventListener("click", handleConfirmFriend);
   window.addEventListener("resize", responsiveFriendBox);
   window.addEventListener("click", checkVisiblity);
