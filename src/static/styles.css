@@ -1164,10 +1164,10 @@ input {
       position: relative; }
       .feed-main__upload-wrapper .feed-main__upload-form #JsUploadpreviewBox > img {
         position: relative;
-        width: 100px;
-        height: 100px;
-        padding: 10px;
-        margin-left: 5px;
+        left: 10px;
+        bottom: -5px;
+        width: 80px;
+        height: 80px;
         -o-object-fit: cover;
            object-fit: cover;
         -o-object-position: top;
@@ -1177,8 +1177,8 @@ input {
                 box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); }
       .feed-main__upload-wrapper .feed-main__upload-form #JsUploadpreviewBox .uploadPreview--hover-effect {
         position: absolute;
-        top: 10px;
-        left: 15px;
+        top: 5px;
+        left: 10px;
         width: 80px;
         height: 80px;
         background-color: transparent; }
@@ -1743,6 +1743,7 @@ input {
     display: none; } }
 
 .feedBlock {
+  position: relative;
   border: #ddd solid 1px;
   -webkit-border-radius: 7px;
      -moz-border-radius: 7px;
@@ -1780,12 +1781,12 @@ input {
       .feedBlock .feedBlock__header .feedBlock__header-grid #feedBolck-name > a > span {
         margin-left: 10px;
         line-height: 30px; }
-    .feedBlock .feedBlock__header #feedBolck-btn > i {
+    .feedBlock .feedBlock__header #jsFeedBolckBtn > i {
       float: right;
       font-size: 20px;
       cursor: pointer;
       color: #000000a1; }
-    .feedBlock .feedBlock__header #feedBolck-btn :hover {
+    .feedBlock .feedBlock__header #jsFeedBolckBtn :hover {
       color: black; }
   .feedBlock .feedBlock__body > span {
     display: block;
@@ -1851,6 +1852,30 @@ input {
           margin-left: 5px; }
         .feedBlock .feedBlock__footer .feedBlock__footer-btn > button:hover {
           background-color: #e9ebee8a; }
+  .feedBlock #jsFeedBlockSubMenu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+    .feedBlock #jsFeedBlockSubMenu > ul {
+      background-color: #f5f6f7;
+      border: #c9c9c9 solid 1px; }
+      .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockEdit,
+      .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockDelete {
+        padding: 10px;
+        cursor: pointer; }
+        .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockEdit:hover,
+        .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockDelete:hover {
+          background-color: #e9ebee; }
+      .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockEdit {
+        border-bottom: #c9c9c9 solid 1px; }
+        .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockEdit > i > span {
+          margin-left: 5px; }
+      .feedBlock #jsFeedBlockSubMenu > ul #jsFeedBlockDelete > i > span {
+        margin-left: 9px; }
 
 @media (max-width: 1024px) {
   .feedBlock .feedBlock__body .feedBlock__body-img > img {

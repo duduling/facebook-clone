@@ -30,6 +30,7 @@ const fileOffCss = () => {
   JsUploadpreviewBox.style.display = "none";
   jsUploadTextarea.setAttribute("rows", "7");
   jsUploadPreview.setAttribute("src", "");
+  jsFeedUpload.value = "";
 };
 
 // Function
