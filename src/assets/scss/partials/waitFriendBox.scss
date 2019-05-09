@@ -1,0 +1,26 @@
+#jsHeaderFriendBgc {
+  width: 100vh;
+  height: 100vh;
+  margin-left: -40px;
+  background-color: rgba(0, 0, 0, 0.7);
+  visibility: collapse;
+  #jsHeaderFriend {
+    width: 250px;
+    position: absolute;
+    background-color: white;
+    border: #c9c9c9 solid 1px;
+    border-radius: 3px;
+    height: 300px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    & > span {
+      display: block;
+      padding: 10px;
+      font-size: 14px;
+      background-color: $lightGrayColor;
+      border-bottom: 1px solid #dddfe2;
+    }
+  }
+}

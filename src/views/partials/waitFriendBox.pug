@@ -1,0 +1,14 @@
+include ../mixins/waitFriendBlock
+
+#jsHeaderFriendBgc
+    #jsHeaderFriend
+        span Wait Friends
+        if waitMyFriendList.length === 0
+            include ./notFound
+        each item in waitMyFriendList
+            +waitFriendBlock({
+                idx: item.idx,
+                name: item.name,
+                profile: item.profile
+            })
+            
