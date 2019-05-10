@@ -1,3 +1,5 @@
+import axios from "axios";
+
 // const jsFeedBolckBtn = document.getElementById("jsFeedBolckBtn");
 // const jsFeedBlockSubMenu = document.getElementById("jsFeedBlockSubMenu");
 const feedSection = document.getElementById("feedSection");
@@ -6,6 +8,42 @@ const jsFeedBlockEdit = document.getElementById("jsFeedBlockEdit");
 const postForm = document.createElement("form");
 
 let tempSubMenuDocument;
+
+const handleLikeCount = async targetIdx => {
+  const LikeBtnDocument = document.getElementById(`LikeBtnIdx${targetIdx}`);
+  let response;
+
+  if (LikeBtnDocument.style.fontWeight === "400") {
+    LikeBtnDocument.style.fontWeight = "600";
+    LikeBtnDocument.style.color = "rgb(32, 120, 244)";
+
+    response = await axios({
+      url: "/api/likeCount",
+      method: "POST",
+      data: {
+        targetIdx,
+        action: true
+      }
+    });
+  } else {
+    LikeBtnDocument.style.fontWeight = "400";
+    LikeBtnDocument.style.color = "black";
+
+    response = await axios({
+      url: "/api/likeCount",
+      method: "POST",
+      data: {
+        targetIdx,
+        action: false
+      }
+    });
+  }
+
+  if (response.status === 200) {
+    document.getElementById(`jsLikeCountNumberIdx${targetIdx}`).innerText =
+      response.data.likeCount;
+  }
+};
 
 const handleFeedEdit = event => {
   const targetIdx = event.path.filter(e => {
@@ -28,28 +66,6 @@ const handleFeedDelte = event => {
   //   postForm.submit();
 };
 
-// const checkEvent = async event => {
-//   const result = await event.path.filter(e => {
-//     if (e.id === "jsFeedBlockSubMenu") {
-//       return e.id === "jsFeedBlockSubMenu";
-//     }
-
-//     if (e.id === "jsFeedBlockDelete") {
-//       return e.id === "jsFeedBlockDelete";
-//     }
-
-//     if (e.id === "jsFeedBlockEdit") {
-//       return e.id === "jsFeedBlockEdit";
-//     }
-//   });
-
-//   console.log(result);
-
-//   //   if (result) {
-//   //     handleFeedDelte(result.value);
-//   //   }
-// };
-
 // SubMenu Toggle Function
 const offTheSubMenu = () => {
   tempSubMenuDocument.style.display = "none";
@@ -57,7 +73,7 @@ const offTheSubMenu = () => {
 };
 
 const feedSubMenuToggle = event => {
-  const subMenuBtnIdx = event.path[1].attributes.value.value;
+  const subMenuBtnIdx = event.srcElement.offsetParent.attributes.value.value;
   const subMenuDocument = document.getElementById(
     `jsFeedBlockSubMenuIdx${subMenuBtnIdx}`
   );
@@ -78,12 +94,14 @@ const feedSubMenuToggle = event => {
 };
 
 const subMenuClickEvent = event => {
+  // Click Event SubMenu
   if (event.path[1].id === "jsFeedBolckBtnIdx") {
     feedSubMenuToggle(event);
   } else if (tempSubMenuDocument) {
     offTheSubMenu();
   }
 
+  //   Click Event Feed Delete
   if (
     event.path[0].id === "jsFeedBlockDelete" ||
     event.path[1].id === "jsFeedBlockDelete" ||
@@ -92,12 +110,13 @@ const subMenuClickEvent = event => {
     handleFeedDelte(event);
   }
 
-  //   console.log(event);
-  //   checkEvent(event, "jsFeedBlockDelete");
+  //  Click Event LikeBtn
+  if (event.path[0].id === "jsLikeBtn" || event.path[1].id === "jsLikeBtn") {
+    handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
+  }
 };
 
 const init = () => {
-  //   jsFeedBolckBtn.addEventListener("click", feedSubMenuToggle);
   jsFeedBlockEdit.addEventListener("click", handleFeedEdit);
   window.addEventListener("click", subMenuClickEvent);
 };

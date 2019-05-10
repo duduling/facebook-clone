@@ -191,3 +191,31 @@ export const postCancelFriend = (req, res) => {
     res.end();
   }
 };
+
+export const postLikeCount = async (req, res) => {
+  const {
+    body: { targetIdx, action }
+  } = req;
+  let $updateLike;
+  const $selectFeedLike = `select likes from Feeds where idx = "${targetIdx}"`;
+  if (action) {
+    $updateLike = `UPDATE Feeds SET LIKES = LIKES + 1 WHERE idx="${targetIdx}";`;
+  } else {
+    $updateLike = `UPDATE Feeds SET LIKES = LIKES - 1 WHERE idx="${targetIdx}";`;
+  }
+  try {
+    await db.query($updateLike, err => {
+      if (err) throw err;
+    });
+
+    await db.query($selectFeedLike, (err, rows) => {
+      if (err) throw err;
+
+      res.status(200).json({ likeCount: rows[0].likes });
+      res.end();
+    });
+  } catch (error) {
+    res.status(400);
+    res.end();
+  }
+};

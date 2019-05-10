@@ -28,7 +28,7 @@
 - };
 
 mixin feedBlock(feed = {})
-    article.feedBlock(id=`feedBlockIdx${feed.idx}`)
+    article.feedBlock(id=`feedBlockIdx${feed.idx}`, value=feed.idx)
         .feedBlock__header
             a(href=routes.feedsUser(feed.writerIdx))#feedBolck-url
                 img(src=feed.writerProfile, alt="userProfile")#feedBolck-url-img
@@ -37,7 +37,7 @@ mixin feedBlock(feed = {})
                     a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
                 span #{whatTimeIsIt(feed.createdAt)}
-            .feedBlock__header-subMenuBtn(id=`jsFeedBolckBtnIdx`, value=feed.idx)
+            .feedBlock__header-subMenuBtn(id=`jsFeedBolckBtnIdx`)
                 i.fas.fa-ellipsis-h
         .feedBlock__body
             span=feed.description
@@ -48,18 +48,19 @@ mixin feedBlock(feed = {})
             .feedBlock__footer-top
                 .feedBlock__footer-like
                     img(src="/img/like_on.png", alt="like img")
-                    span=feed.likes
+                    span(id=`jsLikeCountNumberIdx${feed.idx}`)=feed.likes
                 .feedBlock__footer-comment
                     img(src="/img/comment_on.png", alt="comment img")
                     span=feed.comments
             .feedBlock__designLine
             .feedBlock__footer-btn
-                button
-                    img(src="/img/like_off.png", alt="like img").feedBlock__footer-btn--like
-                    span Like
-                button
-                    img(src="/img/comment_off.png", alt="like img").feedBlock__footer-btn--comment
-                    span Comment
+                button#jsLikeBtn
+                    if true
+                        i.far.fa-thumbs-up(id=`LikeBtnIdx${feed.idx}`, style="font-weight: 600; color: rgb(32, 120, 244)")  Like
+                    else 
+                        i.far.fa-thumbs-up(id=`LikeBtnIdx${feed.idx}`, style="font-weight: 400")  Like
+                button#jdCommentBtn
+                    i.far.fa-comment-alt(id=`CommentBtnIdx${feed.idx}`)  Comment
         .feedBlock__subMenu(id=`jsFeedBlockSubMenuIdx${feed.idx}`, style="display: none")
             button(id="jsFeedBlockEdit", value=feed.idx)
                 i.far.fa-edit

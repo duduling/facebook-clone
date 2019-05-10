@@ -1837,19 +1837,8 @@ input {
         -webkit-transition: 0.2s;
         -o-transition: 0.2s;
         -moz-transition: 0.2s;
-        transition: 0.2s; }
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--like,
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--comment {
-          width: 20px;
-          height: 20px;
-          position: relative; }
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--like {
-          top: 2px; }
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--comment {
-          top: 4px; }
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button > span {
-          font-size: 16px;
-          margin-left: 5px; }
+        transition: 0.2s;
+        font-size: 14px; }
         .feedBlock .feedBlock__footer .feedBlock__footer-btn > button:hover {
           background-color: #e9ebee8a; }
   .feedBlock .feedBlock__subMenu {
