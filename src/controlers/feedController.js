@@ -5,6 +5,9 @@ import routes from "../routes";
 export const getFeedMain = (req, res) => {
   const $feedJoinUser =
     "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
+  const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
+    req.user.idx
+  }";`;
   const $randomUsersSelect = `SELECT idx, name, profile from Users WHERE not idx = any(SELECT friendIdx FROM FriendList WHERE myIdx = "${
     req.user.idx
   }") AND idx NOT IN ("${req.user.idx}") order by rand() limit 4;`;
@@ -14,16 +17,26 @@ export const getFeedMain = (req, res) => {
   const $adSelect = "select * from Ad order by rand() limit 3;";
   try {
     db.query(
-      $feedJoinUser + $randomUsersSelect + $waitMyFriend + $adSelect,
+      $feedJoinUser +
+        $likeListSelect +
+        $randomUsersSelect +
+        $waitMyFriend +
+        $adSelect,
       (_, rows) => {
         const feeds = rows[0];
-        const ramdomUsers = rows[1];
-        const waitMyFriendList = rows[2];
-        const asideAd = rows[3];
+        const likeList = [];
+        const ramdomUsers = rows[2];
+        const waitMyFriendList = rows[3];
+        const asideAd = rows[4];
+
+        for (let i = 0; i < rows[1].length; i++) {
+          likeList.push(rows[1][i].feedIdx);
+        }
 
         res.render("feedMain", {
           pageTile: "Feed Main",
           feeds,
+          likeList,
           ramdomUsers,
           waitMyFriendList,
           asideAd
@@ -45,6 +58,9 @@ export const getFeedUser = (req, res) => {
       otherIdx
     );
     const $feedJoinUser = `select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx WHERE Users.idx = "${otherIdx}" ORDER BY Feeds.createdAt DESC;`;
+    const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
+      req.user.idx
+    }"`;
     const $areYouMyFriend = `select * from WaitFriendList where (senderIdx = "${
       req.user.idx
     }" and recipientIdx = "${otherIdx}") or (senderIdx = "${otherIdx}" and recipientIdx = "${
@@ -62,6 +78,7 @@ export const getFeedUser = (req, res) => {
     db.query(
       $loggedUserSelect +
         $feedJoinUser +
+        $likeListSelect +
         $areYouMyFriend +
         $friendListJoinUsers +
         $waitMyFriend +
@@ -71,17 +88,19 @@ export const getFeedUser = (req, res) => {
         const otherUser = rows[0][0];
         const feeds = rows[1];
         const waitFriend = rows[2].length !== 0;
-        const friendList = rows[3].slice(0, 9);
-        const friendNumber = rows[3].length;
-        const waitMyFriendList = rows[4];
-        const friendBoolean = rows[5].length !== 0;
-        const asideAd = rows[6];
+        const likeList = rows[3];
+        const friendList = rows[4].slice(0, 9);
+        const friendNumber = rows[4].length;
+        const waitMyFriendList = rows[5];
+        const friendBoolean = rows[6].length !== 0;
+        const asideAd = rows[7];
 
         res.render("feedUser", {
           pageTile: "Feed User",
           otherUser,
           feeds,
           waitFriend,
+          likeList,
           friendList,
           friendNumber,
           waitMyFriendList,

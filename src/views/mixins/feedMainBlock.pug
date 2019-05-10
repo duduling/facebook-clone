@@ -55,7 +55,7 @@ mixin feedBlock(feed = {})
             .feedBlock__designLine
             .feedBlock__footer-btn
                 button#jsLikeBtn
-                    if true
+                    if likeList.indexOf(feed.idx) !== -1
                         i.far.fa-thumbs-up(id=`LikeBtnIdx${feed.idx}`, style="font-weight: 600; color: rgb(32, 120, 244)")  Like
                     else 
                         i.far.fa-thumbs-up(id=`LikeBtnIdx${feed.idx}`, style="font-weight: 400")  Like
