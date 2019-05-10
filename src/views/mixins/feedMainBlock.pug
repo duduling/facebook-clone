@@ -37,8 +37,9 @@ mixin feedBlock(feed = {})
                     a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
                 span #{whatTimeIsIt(feed.createdAt)}
-            .feedBlock__header-subMenuBtn(id=`jsFeedBolckBtnIdx`)
-                i.fas.fa-ellipsis-h
+            if feed.writerIdx === user.idx
+                .feedBlock__header-subMenuBtn(id=`jsFeedBolckBtnIdx`)
+                    i.fas.fa-ellipsis-h
         .feedBlock__body
             span=feed.description
             .feedBlock__body-img

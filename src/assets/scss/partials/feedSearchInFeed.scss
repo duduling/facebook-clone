@@ -1,5 +1,7 @@
 .feed-search__feeds {
-  padding: 12px;
-  border-radius: 7px;
-  background-color: white;
+  .feed-search__feeds--notFound {
+    border-radius: 7px;
+    background-color: white;
+    padding: 10px;
+  }
 }

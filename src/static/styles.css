@@ -1087,12 +1087,12 @@ input {
       font-size: 10px;
       padding: 5px 15px; } }
 
-.feed-search__feeds {
-  padding: 12px;
+.feed-search__feeds .feed-search__feeds--notFound {
   -webkit-border-radius: 7px;
      -moz-border-radius: 7px;
           border-radius: 7px;
-  background-color: white; }
+  background-color: white;
+  padding: 10px; }
 
 .feed-search__users {
   background-color: white;
