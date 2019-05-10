@@ -8,7 +8,8 @@ import {
   postConfirmFriend,
   postCancelFriend,
   postDeleteFriend,
-  postRandomFriendRemove
+  postRandomFriendRemove,
+  postLikeCount
 } from "../controlers/apiController";
 
 const apiRouter = express.Router();
@@ -20,5 +21,6 @@ apiRouter.post(routes.addFriend, postAddFriend);
 apiRouter.post(routes.deleteFriend, postDeleteFriend);
 apiRouter.post(routes.confirmFriend, postConfirmFriend);
 apiRouter.post(routes.cancelFriend, postCancelFriend);
+apiRouter.post(routes.likeCount, postLikeCount);
 
 export default apiRouter;

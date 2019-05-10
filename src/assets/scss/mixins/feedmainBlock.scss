@@ -32,7 +32,7 @@
         line-height: 30px;
       }
     }
-    #jsFeedBolckBtn {
+    .feedBlock__header-subMenuBtn {
       & > i {
         float: right;
         font-size: 20px;
@@ -99,29 +99,14 @@
         padding: 5px;
         cursor: pointer;
         transition: 0.2s;
-        .feedBlock__footer-btn--like,
-        .feedBlock__footer-btn--comment {
-          width: 20px;
-          height: 20px;
-          position: relative;
-        }
-        .feedBlock__footer-btn--like {
-          top: 2px;
-        }
-        .feedBlock__footer-btn--comment {
-          top: 4px;
-        }
-        & > span {
-          font-size: 16px;
-          margin-left: 5px;
-        }
+        font-size: 14px;
         &:hover {
           background-color: #e9ebee8a;
         }
       }
     }
   }
-  #jsFeedBlockSubMenu {
+  .feedBlock__subMenu {
     position: absolute;
     display: grid;
     top: 20px;
@@ -129,8 +114,7 @@
     font-size: 14px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border: $grayLine solid 1px;
-    #jsFeedBlockEdit,
-    #jsFeedBlockDelete {
+    & > button {
       padding: 8px;
       cursor: pointer;
       border: none;
@@ -139,13 +123,13 @@
         background-color: $feedBGC;
       }
     }
-    #jsFeedBlockEdit {
+    & > button:first-child {
       border-bottom: $grayLine solid 1px;
       & > i > span {
         margin-left: 5px;
       }
     }
-    #jsFeedBlockDelete {
+    & > button:last-child {
       & > i > span {
         margin-left: 9px;
       }

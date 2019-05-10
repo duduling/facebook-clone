@@ -1087,12 +1087,12 @@ input {
       font-size: 10px;
       padding: 5px 15px; } }
 
-.feed-search__feeds {
-  padding: 12px;
+.feed-search__feeds .feed-search__feeds--notFound {
   -webkit-border-radius: 7px;
      -moz-border-radius: 7px;
           border-radius: 7px;
-  background-color: white; }
+  background-color: white;
+  padding: 10px; }
 
 .feed-search__users {
   background-color: white;
@@ -1624,7 +1624,7 @@ input {
       -ms-flex-align: center;
           align-items: center;
   min-height: 100px;
-  height: 100%; }
+  height: 80%; }
   .feed-search__users--isNotFound > img {
     width: 23px;
     height: 23px; }
@@ -1781,12 +1781,12 @@ input {
       .feedBlock .feedBlock__header .feedBlock__header-grid #feedBolck-name > a > span {
         margin-left: 10px;
         line-height: 30px; }
-    .feedBlock .feedBlock__header #jsFeedBolckBtn > i {
+    .feedBlock .feedBlock__header .feedBlock__header-subMenuBtn > i {
       float: right;
       font-size: 20px;
       cursor: pointer;
       color: #000000a1; }
-    .feedBlock .feedBlock__header #jsFeedBolckBtn :hover {
+    .feedBlock .feedBlock__header .feedBlock__header-subMenuBtn :hover {
       color: black; }
   .feedBlock .feedBlock__body > span {
     display: block;
@@ -1837,22 +1837,11 @@ input {
         -webkit-transition: 0.2s;
         -o-transition: 0.2s;
         -moz-transition: 0.2s;
-        transition: 0.2s; }
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--like,
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--comment {
-          width: 20px;
-          height: 20px;
-          position: relative; }
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--like {
-          top: 2px; }
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button .feedBlock__footer-btn--comment {
-          top: 4px; }
-        .feedBlock .feedBlock__footer .feedBlock__footer-btn > button > span {
-          font-size: 16px;
-          margin-left: 5px; }
+        transition: 0.2s;
+        font-size: 14px; }
         .feedBlock .feedBlock__footer .feedBlock__footer-btn > button:hover {
           background-color: #e9ebee8a; }
-  .feedBlock #jsFeedBlockSubMenu {
+  .feedBlock .feedBlock__subMenu {
     position: absolute;
     display: grid;
     top: 20px;
@@ -1862,20 +1851,18 @@ input {
        -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border: #c9c9c9 solid 1px; }
-    .feedBlock #jsFeedBlockSubMenu #jsFeedBlockEdit,
-    .feedBlock #jsFeedBlockSubMenu #jsFeedBlockDelete {
+    .feedBlock .feedBlock__subMenu > button {
       padding: 8px;
       cursor: pointer;
       border: none;
       background-color: #f5f6f7; }
-      .feedBlock #jsFeedBlockSubMenu #jsFeedBlockEdit:hover,
-      .feedBlock #jsFeedBlockSubMenu #jsFeedBlockDelete:hover {
+      .feedBlock .feedBlock__subMenu > button:hover {
         background-color: #e9ebee; }
-    .feedBlock #jsFeedBlockSubMenu #jsFeedBlockEdit {
+    .feedBlock .feedBlock__subMenu > button:first-child {
       border-bottom: #c9c9c9 solid 1px; }
-      .feedBlock #jsFeedBlockSubMenu #jsFeedBlockEdit > i > span {
+      .feedBlock .feedBlock__subMenu > button:first-child > i > span {
         margin-left: 5px; }
-    .feedBlock #jsFeedBlockSubMenu #jsFeedBlockDelete > i > span {
+    .feedBlock .feedBlock__subMenu > button:last-child > i > span {
       margin-left: 9px; }
 
 @media (max-width: 1024px) {

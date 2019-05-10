@@ -31,7 +31,8 @@ block content
                     include ./partials/asideAd
                     span Facebook &copy; #{new Date().getFullYear()}
                 section.feed-user__feed
-                    article.feed-user__upload
+                    h3.ir_su feed
+                    section.feed-main__upload
                         include ./partials/feedUpload
-                    section.feed-user__content
+                    section#feedSection
                         include ./partials/feedSection

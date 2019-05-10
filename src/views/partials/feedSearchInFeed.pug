@@ -1,17 +1,20 @@
 include ../mixins/feedMainBlock
 
 section.feed-search__feeds
-    h5 Search Feeds
     if feeds.length === 0
-        include ../partials/notFound
-    each item in feeds
-        +feedBlock({
-            idx: item.idx,
-            writer: item.writer,
-            writerIdx: item.writer_idx,
-            writerProfile: item.profile,
-            createdAt: item.createdAt,
-            fileUrl: item.fileUrl,
-            description: item.description,
-            likes: item.likes
-        })
+        .feed-search__feeds--notFound
+            h5 Search Feeds
+            include ../partials/notFound
+    else
+        h5.ir_su Search Feeds
+        each item in feeds
+            +feedBlock({
+                idx: item.idx,
+                writer: item.writer,
+                writerIdx: item.writer_idx,
+                writerProfile: item.profile,
+                createdAt: item.createdAt,
+                fileUrl: item.fileUrl,
+                description: item.description,
+                likes: item.likes
+            })

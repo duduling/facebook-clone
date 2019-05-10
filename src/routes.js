@@ -30,6 +30,7 @@ const ADD_FRIEND = "/addFriend";
 const DELETE_FRIEND = "/deleteFriend";
 const CONFIRM_FRIEND = "/confirmFriend";
 const CANCEL_FRIEND = "/cancelFriend";
+const LIKE_COUNT = "/likeCount";
 
 const routes = {
   // Global
@@ -73,7 +74,8 @@ const routes = {
   addFriend: ADD_FRIEND,
   deleteFriend: DELETE_FRIEND,
   confirmFriend: CONFIRM_FRIEND,
-  cancelFriend: CANCEL_FRIEND
+  cancelFriend: CANCEL_FRIEND,
+  likeCount: LIKE_COUNT
 };
 
 export default routes;
