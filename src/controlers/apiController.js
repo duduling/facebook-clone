@@ -211,16 +211,15 @@ export const postLikeCount = async (req, res) => {
     }" and feedIdx = "${targetIdx}";`;
   }
   try {
-    await db.query($updateLike + $likeListQuery, err => {
-      if (err) throw err;
-    });
+    await db.query(
+      $updateLike + $likeListQuery + $selectFeedLike,
+      (err, rows) => {
+        if (err) throw err;
 
-    await db.query($selectFeedLike, (err, rows) => {
-      if (err) throw err;
-
-      res.status(200).json({ likeCount: rows[0].likes });
-      res.end();
-    });
+        res.status(200).json({ likeCount: rows[2][0].likes });
+        res.end();
+      }
+    );
   } catch (error) {
     res.status(400);
     res.end();

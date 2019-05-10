@@ -9,24 +9,28 @@ const jsFeedBolckBtn = document.getElementById("jsFeedBolckBtn");
 let doubleClick = false;
 
 const toggleDropMenu = event => {
+  const eventPath = event.composedPath();
+
   // Drop Menu Btn Click Event -> Toggle
-  if (event.path[0].id === "jsDropMenuBtn") {
+  if (eventPath[0].id === "jsDropMenuBtn") {
     jsDropMenuAnimation.classList.toggle("header__dropMenu-list--open");
   } else if (
     // wait friend box 이외에 영역 클릭시 hidden
-    event.path[1].id !== "jsDropMenuAnimation" &&
-    event.path[2].id !== "jsDropMenuAnimation"
+    eventPath[1].id !== "jsDropMenuAnimation" &&
+    eventPath[2].id !== "jsDropMenuAnimation"
   ) {
     jsDropMenuAnimation.classList.remove("header__dropMenu-list--open");
   }
 };
 
 const jsHeaderFriendExceptClick = event => {
+  const eventPath = event.composedPath();
+
   // wait friend box 이외의 것을 클릭중인지 확인
   if (
-    event.path[0].id !== "jsHeaderFriend" &&
-    event.path[1].id !== "jsHeaderFriend" &&
-    event.path[2].id !== "jsHeaderFriend"
+    eventPath[0].id !== "jsHeaderFriend" &&
+    eventPath[1].id !== "jsHeaderFriend" &&
+    eventPath[2].id !== "jsHeaderFriend"
   ) {
     // Media Qurey 768px 이상 (wait friend box가 화면에 보이는 경우)
     if (matchMedia("screen and (min-width: 768px)").matches) {
@@ -131,7 +135,7 @@ const checkVisiblity = event => {
   } else if (event.target.id === "jsHeaderFriendBtn") {
     // collraps -> visible
     ViewWaitFriendList();
-  } else if (event.path[1].id === "jsWaitFriendDiv") {
+  } else if (event.composedPath()[1].id === "jsWaitFriendDiv") {
     // collraps -> visible
     ViewWatirFriendListResponsive();
   } else if (

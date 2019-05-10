@@ -46,7 +46,7 @@ const handleLikeCount = async targetIdx => {
 };
 
 const handleFeedEdit = event => {
-  const targetIdx = event.path.filter(e => {
+  const targetIdx = event.composedPath().filter(e => {
     return e.id === "jsFeedBlockEdit";
   })[0].value;
 
@@ -54,7 +54,7 @@ const handleFeedEdit = event => {
 };
 
 const handleFeedDelte = event => {
-  const deleteFeedIdx = event.path.filter(e => {
+  const deleteFeedIdx = event.composedPath().filter(e => {
     return e.id === "jsFeedBlockDelete";
   })[0].value;
   console.log(deleteFeedIdx);
@@ -94,8 +94,10 @@ const feedSubMenuToggle = event => {
 };
 
 const subMenuClickEvent = event => {
+  const eventPath = event.composedPath();
+
   // Click Event SubMenu
-  if (event.path[1].id === "jsFeedBolckBtnIdx") {
+  if (eventPath[1].id === "jsFeedBolckBtnIdx") {
     feedSubMenuToggle(event);
   } else if (tempSubMenuDocument) {
     offTheSubMenu();
@@ -103,15 +105,15 @@ const subMenuClickEvent = event => {
 
   //   Click Event Feed Delete
   if (
-    event.path[0].id === "jsFeedBlockDelete" ||
-    event.path[1].id === "jsFeedBlockDelete" ||
-    event.path[2].id === "jsFeedBlockDelete"
+    eventPath[0].id === "jsFeedBlockDelete" ||
+    eventPath[1].id === "jsFeedBlockDelete" ||
+    eventPath[2].id === "jsFeedBlockDelete"
   ) {
     handleFeedDelte(event);
   }
 
   //  Click Event LikeBtn
-  if (event.path[0].id === "jsLikeBtn" || event.path[1].id === "jsLikeBtn") {
+  if (eventPath[0].id === "jsLikeBtn" || eventPath[1].id === "jsLikeBtn") {
     handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
   }
 };

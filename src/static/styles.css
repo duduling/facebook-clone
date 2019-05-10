@@ -1624,7 +1624,7 @@ input {
       -ms-flex-align: center;
           align-items: center;
   min-height: 100px;
-  height: 100%; }
+  height: 80%; }
   .feed-search__users--isNotFound > img {
     width: 23px;
     height: 23px; }
