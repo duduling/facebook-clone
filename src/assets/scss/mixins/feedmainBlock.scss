@@ -32,7 +32,7 @@
         line-height: 30px;
       }
     }
-    #jsFeedBolckBtn {
+    .feedBlock__header-subMenuBtn {
       & > i {
         float: right;
         font-size: 20px;
@@ -121,7 +121,7 @@
       }
     }
   }
-  #jsFeedBlockSubMenu {
+  .feedBlock__subMenu {
     position: absolute;
     display: grid;
     top: 20px;
@@ -129,8 +129,7 @@
     font-size: 14px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border: $grayLine solid 1px;
-    #jsFeedBlockEdit,
-    #jsFeedBlockDelete {
+    & > button {
       padding: 8px;
       cursor: pointer;
       border: none;
@@ -139,13 +138,13 @@
         background-color: $feedBGC;
       }
     }
-    #jsFeedBlockEdit {
+    & > button:first-child {
       border-bottom: $grayLine solid 1px;
       & > i > span {
         margin-left: 5px;
       }
     }
-    #jsFeedBlockDelete {
+    & > button:last-child {
       & > i > span {
         margin-left: 9px;
       }
