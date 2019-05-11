@@ -30,16 +30,23 @@
 mixin feedBlock(feed = {})
     article.feedBlock(id=`feedBlockIdx${feed.idx}`, value=feed.idx)
         .feedBlock__header
-            a(href=routes.feedsUser(feed.writerIdx))#feedBolck-url
-                img(src=feed.writerProfile, alt="userProfile")#feedBolck-url-img
+            a(href=routes.feedsUser(feed.writerIdx))
+                img(src=feed.writerProfile, alt="userProfile")
             .feedBlock__header-grid
-                #feedBolck-name
+                .feedBolck__header-userName
                     a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
                 span #{whatTimeIsIt(feed.createdAt)}
             if feed.writerIdx === user.idx
                 .feedBlock__header-subMenuBtn(id=`jsFeedBolckBtnIdx`)
                     i.fas.fa-ellipsis-h
+        .feedBlock__subMenu(id=`jsFeedBlockSubMenuIdx${feed.idx}`, style="display: none")
+            button(id="jsFeedBlockEdit", value=feed.idx)
+                i.far.fa-edit
+                    span 수정하기
+            button(id="jsFeedBlockDelete", value=feed.idx)
+                i.far.fa-trash-alt
+                    span 삭제하기
         .feedBlock__body
             span=feed.description
             .feedBlock__body-img
@@ -62,10 +69,10 @@ mixin feedBlock(feed = {})
                         i.far.fa-thumbs-up(id=`LikeBtnIdx${feed.idx}`, style="font-weight: 400")  Like
                 button#jdCommentBtn
                     i.far.fa-comment-alt(id=`CommentBtnIdx${feed.idx}`)  Comment
-        .feedBlock__subMenu(id=`jsFeedBlockSubMenuIdx${feed.idx}`, style="display: none")
-            button(id="jsFeedBlockEdit", value=feed.idx)
-                i.far.fa-edit
-                    span 수정하기
-            button(id="jsFeedBlockDelete", value=feed.idx)
-                i.far.fa-trash-alt
-                    span 삭제하기
+        .feedBlock__comments
+            .feedBlock__comments-write
+                form
+                    img(src=feed.writerProfile, alt="userProfile")
+                    input(type="text", textarea="commentWrite")
+                    input(type="submit", value="Add") 
+            .feedBlock__comments-commentsList

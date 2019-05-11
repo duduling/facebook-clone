@@ -1754,7 +1754,7 @@ input {
   .feedBlock .feedBlock__header {
     display: grid;
     grid-template-columns: 2fr 17fr 1fr; }
-    .feedBlock .feedBlock__header #feedBolck-url-img {
+    .feedBlock .feedBlock__header > a > img {
       width: 60px;
       height: 60px;
       -webkit-border-radius: 100%;
@@ -1778,7 +1778,7 @@ input {
         line-height: 30px;
         font-size: 12px;
         color: #616770; }
-      .feedBlock .feedBlock__header .feedBlock__header-grid #feedBolck-name > a > span {
+      .feedBlock .feedBlock__header .feedBlock__header-grid .feedBolck__header-userName > a > span {
         margin-left: 10px;
         line-height: 30px; }
     .feedBlock .feedBlock__header .feedBlock__header-subMenuBtn > i {
@@ -1788,6 +1788,29 @@ input {
       color: #000000a1; }
     .feedBlock .feedBlock__header .feedBlock__header-subMenuBtn :hover {
       color: black; }
+  .feedBlock .feedBlock__subMenu {
+    position: absolute;
+    display: grid;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: #c9c9c9 solid 1px; }
+    .feedBlock .feedBlock__subMenu > button {
+      padding: 8px;
+      cursor: pointer;
+      border: none;
+      background-color: #f5f6f7; }
+      .feedBlock .feedBlock__subMenu > button:hover {
+        background-color: #e9ebee; }
+    .feedBlock .feedBlock__subMenu > button:first-child {
+      border-bottom: #c9c9c9 solid 1px; }
+      .feedBlock .feedBlock__subMenu > button:first-child > i > span {
+        margin-left: 5px; }
+    .feedBlock .feedBlock__subMenu > button:last-child > i > span {
+      margin-left: 9px; }
   .feedBlock .feedBlock__body > span {
     display: block;
     padding: 10px; }
@@ -1841,29 +1864,39 @@ input {
         font-size: 14px; }
         .feedBlock .feedBlock__footer .feedBlock__footer-btn > button:hover {
           background-color: #e9ebee8a; }
-  .feedBlock .feedBlock__subMenu {
-    position: absolute;
-    display: grid;
-    top: 20px;
-    right: 20px;
-    font-size: 14px;
-    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-       -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border: #c9c9c9 solid 1px; }
-    .feedBlock .feedBlock__subMenu > button {
-      padding: 8px;
-      cursor: pointer;
-      border: none;
-      background-color: #f5f6f7; }
-      .feedBlock .feedBlock__subMenu > button:hover {
-        background-color: #e9ebee; }
-    .feedBlock .feedBlock__subMenu > button:first-child {
-      border-bottom: #c9c9c9 solid 1px; }
-      .feedBlock .feedBlock__subMenu > button:first-child > i > span {
-        margin-left: 5px; }
-    .feedBlock .feedBlock__subMenu > button:last-child > i > span {
-      margin-left: 9px; }
+  .feedBlock .feedBlock__comments input:first-child {
+    background-color: #eee;
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px; }
+  .feedBlock .feedBlock__comments .feedBlock__comments-write {
+    margin-top: 10px; }
+    .feedBlock .feedBlock__comments .feedBlock__comments-write > form {
+      display: grid;
+      grid-template-columns: 1fr 9fr 1fr; }
+      .feedBlock .feedBlock__comments .feedBlock__comments-write > form > img {
+        width: 40px;
+        height: 40px;
+        margin-left: 3px;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: top;
+           object-position: top; }
+      .feedBlock .feedBlock__comments .feedBlock__comments-write > form > input:nth-child(2) {
+        margin: 5px;
+        padding: 0 10px;
+        background-color: #eee;
+        -webkit-border-radius: 15px;
+           -moz-border-radius: 15px;
+                border-radius: 15px; }
+      .feedBlock .feedBlock__comments .feedBlock__comments-write > form > input:nth-child(3) {
+        cursor: pointer;
+        margin: 5px 0;
+        background-color: transparent;
+        border: #eee solid 1px;
+        -webkit-border-radius: 10px;
+           -moz-border-radius: 10px;
+                border-radius: 10px; }
 
 @media (max-width: 1024px) {
   .feedBlock .feedBlock__body .feedBlock__body-img > img {

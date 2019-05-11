@@ -8,7 +8,7 @@
   .feedBlock__header {
     display: grid;
     grid-template-columns: 2fr 17fr 1fr;
-    #feedBolck-url-img {
+    & > a > img {
       width: 60px;
       height: 60px;
       border-radius: 100%;
@@ -27,9 +27,11 @@
         font-size: 12px;
         color: #616770;
       }
-      #feedBolck-name > a > span {
-        margin-left: 10px;
-        line-height: 30px;
+      .feedBolck__header-userName {
+        & > a > span {
+          margin-left: 10px;
+          line-height: 30px;
+        }
       }
     }
     .feedBlock__header-subMenuBtn {
@@ -41,6 +43,35 @@
       }
       & :hover {
         color: black;
+      }
+    }
+  }
+  .feedBlock__subMenu {
+    position: absolute;
+    display: grid;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: $grayLine solid 1px;
+    & > button {
+      padding: 8px;
+      cursor: pointer;
+      border: none;
+      background-color: $lightGrayColor;
+      &:hover {
+        background-color: $feedBGC;
+      }
+    }
+    & > button:first-child {
+      border-bottom: $grayLine solid 1px;
+      & > i > span {
+        margin-left: 5px;
+      }
+    }
+    & > button:last-child {
+      & > i > span {
+        margin-left: 9px;
       }
     }
   }
@@ -106,33 +137,41 @@
       }
     }
   }
-  .feedBlock__subMenu {
-    position: absolute;
-    display: grid;
-    top: 20px;
-    right: 20px;
-    font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border: $grayLine solid 1px;
-    & > button {
-      padding: 8px;
-      cursor: pointer;
-      border: none;
-      background-color: $lightGrayColor;
-      &:hover {
-        background-color: $feedBGC;
+  .feedBlock__comments {
+    input:first-child {
+      background-color: #eee;
+      border-radius: 10px;
+    }
+    .feedBlock__comments-write {
+      margin-top: 10px;
+      & > form {
+        display: grid;
+        grid-template-columns: 1fr 9fr 1fr;
+        & > img {
+          width: 40px;
+          height: 40px;
+          margin-left: 3px;
+          object-fit: cover;
+          object-position: top;
+        }
+        & > input {
+          &:nth-child(2) {
+            margin: 5px;
+            padding: 0 10px;
+            background-color: #eee;
+            border-radius: 15px;
+          }
+          &:nth-child(3) {
+            cursor: pointer;
+            margin: 5px 0;
+            background-color: transparent;
+            border: #eee solid 1px;
+            border-radius: 10px;
+          }
+        }
       }
     }
-    & > button:first-child {
-      border-bottom: $grayLine solid 1px;
-      & > i > span {
-        margin-left: 5px;
-      }
-    }
-    & > button:last-child {
-      & > i > span {
-        margin-left: 9px;
-      }
+    .feedBlock__comments-commentsList {
     }
   }
 }
