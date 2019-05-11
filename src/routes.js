@@ -12,7 +12,7 @@ const FEEDS_MAIN = "/main";
 const FEEDS_USER = "/:idx";
 const FEEDS_SEARCH = "/search";
 const FEEDS_UPLOAD = "/upload";
-const FEEDS_EDIT = "/:idx/edit";
+const FEEDS_EDIT = "/edit";
 const FEEDS_DELETE = "/:idx/delete";
 
 // User

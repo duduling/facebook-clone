@@ -4,7 +4,7 @@ import routes from "../routes";
 
 export const getFeedMain = (req, res) => {
   const $feedJoinUser =
-    "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
+    "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile, edited from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
   const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
     req.user.idx
   }";`;
@@ -134,6 +134,31 @@ export const postFeedsUpload = (req, res) => {
       description: uploadText
     };
     db.query($feedInsert, $dataObj, err => {
+      if (err) {
+        throw err;
+      } else {
+        res.redirect(`/feeds${routes.feedsMain}`);
+      }
+    });
+  } catch (error) {
+    res.status(400);
+  }
+};
+
+export const postFeedsEdit = (req, res) => {
+  const {
+    body: { uploadText, feedInputIdx },
+    file
+  } = req;
+  try {
+    const $feedUpdate = `update Feeds set ? where idx = "${feedInputIdx}";`;
+    const $dataObj = {
+      fileUrl: file ? `/${file.path}` : null,
+      description: uploadText,
+      createdAt: new Date(),
+      edited: 1
+    };
+    db.query($feedUpdate, $dataObj, err => {
       if (err) {
         throw err;
       } else {

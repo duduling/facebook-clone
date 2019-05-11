@@ -1104,6 +1104,192 @@ input {
   .feed-search__users > h5 {
     margin-bottom: 20px; }
 
+#jsFeedBlockEditCover {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: -webkit-calc(100% + 50px);
+  height: -moz-calc(100% + 50px);
+  height: calc(100% + 50px);
+  position: absolute;
+  top: -50px;
+  left: 0;
+  z-index: 1; }
+  #jsFeedBlockEditCover .feedBlock-edit-wrapper {
+    width: 45%;
+    position: fixed;
+    margin-top: 250px;
+    margin-left: 30%;
+    -webkit-border-radius: 7px;
+       -moz-border-radius: 7px;
+            border-radius: 7px;
+    display: grid;
+    grid-template-rows: 1fr 7fr;
+    background-color: white;
+    border: 1px solid #dddfe2; }
+    #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-title {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      padding-left: 10px;
+      background-color: #f5f6f7;
+      -webkit-border-radius: 7px 7px 0 0;
+         -moz-border-radius: 7px 7px 0 0;
+              border-radius: 7px 7px 0 0;
+      border-bottom: 1px solid #dddfe2; }
+    #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form {
+      display: grid;
+      grid-template-rows: 4fr 1fr; }
+      #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form .feedBlock-edit__upload-form-description {
+        display: grid;
+        grid-template-columns: 1fr 9fr; }
+        #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form .feedBlock-edit__upload-form-description > img {
+          width: 50px;
+          height: 50px;
+          margin-top: 8px;
+          margin-left: 8px;
+          -webkit-border-radius: 100%;
+             -moz-border-radius: 100%;
+                  border-radius: 100%;
+          -webkit-transition: 0.3s;
+          -o-transition: 0.3s;
+          -moz-transition: 0.3s;
+          transition: 0.3s;
+          -o-object-fit: cover;
+             object-fit: cover;
+          -o-object-position: top;
+             object-position: top;
+          border: rgba(0, 0, 0, 0.1) solid 1px; }
+        #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form .feedBlock-edit__upload-form-description > textarea {
+          font-family: "Noto Sans KR", sans-serif;
+          font-size: 14px;
+          padding: 15px 25px 15px 15px;
+          border: none;
+          resize: none; }
+      #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form #JsEditUploadpreviewBox {
+        display: none;
+        position: relative; }
+        #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form #JsEditUploadpreviewBox > img {
+          position: relative;
+          left: 10px;
+          bottom: -15px;
+          width: 80px;
+          height: 80px;
+          -o-object-fit: cover;
+             object-fit: cover;
+          -o-object-position: top;
+             object-position: top;
+          -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+             -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+                  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); }
+        #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form #JsEditUploadpreviewBox .uploadPreview--hover-effect {
+          position: absolute;
+          top: 15px;
+          left: 10px;
+          width: 80px;
+          height: 80px;
+          background-color: transparent; }
+          #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form #JsEditUploadpreviewBox .uploadPreview--hover-effect > i {
+            visibility: collapse; }
+          #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form #JsEditUploadpreviewBox .uploadPreview--hover-effect:hover {
+            background: rgba(0, 0, 0, 0.2); }
+            #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form #JsEditUploadpreviewBox .uploadPreview--hover-effect:hover > i {
+              visibility: visible;
+              margin: 3px;
+              width: 15px;
+              height: 15px;
+              float: right;
+              color: gray;
+              text-align: center;
+              -webkit-border-radius: 100%;
+                 -moz-border-radius: 100%;
+                      border-radius: 100%;
+              cursor: pointer; }
+              #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form #JsEditUploadpreviewBox .uploadPreview--hover-effect:hover > i:hover {
+                color: white; }
+      #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form .feedBlock-edit__upload-form-file {
+        display: grid;
+        grid-template-columns: 9fr 1fr;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+           -moz-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+           -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        border-top: 1px solid #dddfe2; }
+        #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form .feedBlock-edit__upload-form-file :nth-child(1) {
+          height: 30px;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+             -moz-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          margin-left: 10px;
+          -webkit-border-radius: 15px;
+             -moz-border-radius: 15px;
+                  border-radius: 15px;
+          padding: 5px 20px 5px 35px;
+          background: #f5f6f7 url(/img/photo-upload.png) 5px no-repeat;
+          -webkit-background-size: 25px 25px;
+             -moz-background-size: 25px 25px;
+                  background-size: 25px 25px;
+          cursor: pointer; }
+          #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form .feedBlock-edit__upload-form-file :nth-child(1):hover {
+            background-color: #eee; }
+        #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form .feedBlock-edit__upload-form-file :nth-child(2) {
+          display: none; }
+        #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form .feedBlock-edit__upload-form-file :nth-child(3) {
+          margin-right: 10px;
+          font-size: 14px;
+          padding: 7px 25px;
+          -webkit-border-radius: 5px;
+             -moz-border-radius: 5px;
+                  border-radius: 5px;
+          cursor: pointer;
+          background: #f5f6f7;
+          -webkit-transition: 0.2s;
+          -o-transition: 0.2s;
+          -moz-transition: 0.2s;
+          transition: 0.2s; }
+        #jsFeedBlockEditCover .feedBlock-edit-wrapper .feedBlock-edit__upload-form .feedBlock-edit__upload-form-file :nth-child(3):hover {
+          background: #c7c7c785; }
+
+@media (max-width: 1220px) {
+  #jsFeedBlockEditCover .feedBlock-edit-wrapper {
+    margin-left: 25%;
+    width: 50%; } }
+
+@media (max-width: 1024px) {
+  #jsFeedBlockEditCover .feedBlock-edit-wrapper {
+    margin-left: 20%;
+    width: 60%; } }
+
+@media (max-width: 768px) {
+  #jsFeedBlockEditCover .feedBlock-edit-wrapper {
+    margin-left: 10%;
+    width: 80%; } }
+
 .feed-main__upload-wrapper {
   width: 100%;
   -webkit-border-radius: 7px;

@@ -1,5 +1,23 @@
 include ../mixins/feedMainBlock
 
+#jsFeedBlockEditCover
+    article.feedBlock-edit-wrapper
+        .feedBlock-edit__upload-title
+            h5 Edit Post
+        form.feedBlock-edit__upload-form(action=`/feeds${routes.feedsEdit}`, method="post", enctype="multipart/form-data")
+            .feedBlock-edit__upload-form-description
+                img(src=user.profile, alt="profile")
+                //- window.innerWidth 이거로 길이 가져와서 rows 크기 맞춰 주기
+                textarea(name="uploadText", id="jsEditUploadTextarea", cols="30", rows="8", placeholder="What's on your mind?", required)
+                input(type="hidden", id="jsFeedInputIdx", name="feedInputIdx" value="")
+            #JsEditUploadpreviewBox
+                img(alt="upload file preview", id="jsEditUploadPreview")
+                .uploadPreview--hover-effect
+                    i.fas.fa-times#jsEditImgDeleteBtn
+            .feedBlock-edit__upload-form-file
+                label(for="jsEditFeedUpload") Photo
+                input(type="file", id="jsEditFeedUpload", name="uploadFeed", accept="image/*")
+                input(type="submit", value="Edit Post")
 each item in feeds
     +feedBlock({
         idx: item.idx,
@@ -10,5 +28,6 @@ each item in feeds
         fileUrl: item.fileUrl,
         description: item.description,
         likes: item.likes,
-        comments: item.comments
+        comments: item.comments,
+        edited: item.edited
     })
