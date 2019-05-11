@@ -138,6 +138,8 @@
     }
   }
   .feedBlock__comments {
+    border-top: #ccc solid 1px;
+    margin-top: 10px;
     input:first-child {
       background-color: #eee;
       border-radius: 10px;
@@ -172,6 +174,184 @@
       }
     }
     .feedBlock__comments-commentsList {
+      .feedBlock__comments-single {
+        display: grid;
+        grid-template-columns: 1fr 9fr 1fr;
+        margin-top: 15px;
+        & > a > img {
+          width: 40px;
+          height: 40px;
+          margin-left: 3px;
+          object-fit: cover;
+          object-position: top;
+        }
+        .feedBlock__comment-block {
+          .feedBlock__comment-block--description {
+            background-color: #eee;
+            border-radius: 15px;
+            padding: 10px;
+            margin-left: 5px;
+            & > a {
+              display: inline-block;
+              color: #385898;
+              font-size: 14px;
+              font-weight: 500;
+              margin-right: 5px;
+            }
+            & > span {
+              display: inline;
+              font-size: 13px;
+              line-height: 20px;
+            }
+          }
+          .feedBlock__comment-block--fuction {
+            margin-left: 5px;
+            & > a {
+              color: #385898;
+              margin-left: 5px;
+              font-size: 12px;
+            }
+            & > span {
+              margin-left: 5px;
+              font-size: 12px;
+            }
+          }
+        }
+        .feedBlock__comment-subMenu {
+          display: flex;
+          align-items: center;
+          margin-left: 10px;
+          & > i {
+            transition: 0.3s;
+            cursor: pointer;
+            color: #eee;
+            position: relative;
+            &:hover {
+              color: #000000a1;
+            }
+            .feedBlock__comment-subMenuBox {
+              width: 90px;
+              // display: grid;
+              display: none;
+              position: absolute;
+              top: 7px;
+              right: 7px;
+              font-size: 14px;
+              border: $grayLine solid 1px;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+              & > button {
+                padding: 8px;
+                cursor: pointer;
+                border: none;
+                background-color: $lightGrayColor;
+                &:hover {
+                  background-color: $feedBGC;
+                }
+              }
+              & > button:first-child {
+                border-bottom: $grayLine solid 1px;
+                & > i > span {
+                  margin-left: 5px;
+                }
+              }
+              & > button:last-child {
+                & > i > span {
+                  margin-left: 9px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .feedBlock__comments-Re {
+        display: grid;
+        grid-template-columns: 1fr 1fr 8fr 1fr;
+        margin-top: 15px;
+        & > a > img {
+          width: 40px;
+          height: 40px;
+          margin-left: 3px;
+          object-fit: cover;
+          object-position: top;
+        }
+        .feedBlock__comment-Re {
+          .feedBlock__comment-Re--description {
+            background-color: #eee;
+            border-radius: 15px;
+            padding: 10px;
+            margin-left: 5px;
+            & > a {
+              display: inline-block;
+              color: #385898;
+              font-size: 14px;
+              font-weight: 500;
+              margin-right: 5px;
+            }
+            & > span {
+              display: inline;
+              font-size: 13px;
+              line-height: 20px;
+            }
+          }
+          .feedBlock__comment-Re--fuction {
+            margin-left: 5px;
+            & > a {
+              color: #385898;
+              margin-left: 5px;
+              font-size: 12px;
+            }
+            & > span {
+              margin-left: 5px;
+              font-size: 12px;
+            }
+          }
+        }
+        .feedBlock__comment-Re-subMenu {
+          display: flex;
+          align-items: center;
+          margin-left: 10px;
+          & > i {
+            position: relative;
+            transition: 0.3s;
+            cursor: pointer;
+            color: #eee;
+            &:hover {
+              color: #000000a1;
+            }
+            .feedBlock__comment-Re-subMenuBox {
+              width: 90px;
+              // display: grid;
+              display: none;
+              position: absolute;
+              top: 7px;
+              right: 7px;
+              font-size: 14px;
+              border: $grayLine solid 1px;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+              & > button {
+                padding: 8px;
+                cursor: pointer;
+                border: none;
+                background-color: $lightGrayColor;
+                &:hover {
+                  background-color: $feedBGC;
+                }
+              }
+              & > button:first-child {
+                border-bottom: $grayLine solid 1px;
+                & > i > span {
+                  margin-left: 5px;
+                }
+              }
+              & > button:last-child {
+                & > i > span {
+                  margin-left: 9px;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -145,13 +145,12 @@ const handleFeedDelte = event => {
   const deleteFeedIdx = event.composedPath().filter(e => {
     return e.id === "jsFeedBlockDelete";
   })[0].value;
-  console.log(deleteFeedIdx);
-  //   postForm.setAttribute("charset", "UTF-8");
-  //   postForm.setAttribute("method", "Post");
-  //   postForm.setAttribute("action", `/feeds/${deleteFeedIdx}/delete`);
+  postForm.setAttribute("charset", "UTF-8");
+  postForm.setAttribute("method", "Post");
+  postForm.setAttribute("action", `/feeds/${deleteFeedIdx}/delete`);
 
-  //   document.body.appendChild(postForm);
-  //   postForm.submit();
+  document.body.appendChild(postForm);
+  postForm.submit();
 };
 
 // SubMenu Toggle Process---------------------------------------------------------------

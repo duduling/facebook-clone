@@ -72,10 +72,49 @@ mixin feedBlock(feed = {})
                         i.far.fa-thumbs-up(id=`LikeBtnIdx${feed.idx}`, style="font-weight: 400")  Like
                 button#jdCommentBtn
                     i.far.fa-comment-alt(id=`CommentBtnIdx${feed.idx}`)  Comment
-        .feedBlock__comments
+        .feedBlock__comments(id=`commentIdx${feed.idx}`, value=feed.idx)
             .feedBlock__comments-write
-                form
+                form(onsubmit="return false;")
                     img(src=feed.writerProfile, alt="userProfile")
                     input(type="text", textarea="commentWrite")
-                    input(type="submit", value="Add") 
+                    input(type="button", value="Add" )
             .feedBlock__comments-commentsList
+                .feedBlock__comments-single
+                    a(href="#")
+                        img(src=feed.writerProfile, alt="userProfile")
+                    .feedBlock__comment-block
+                        .feedBlock__comment-block--description
+                            a(href="") 김두현
+                            span 이렇게 간다.ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+                        .feedBlock__comment-block--fuction
+                            a(role="button") 답글 달기
+                            span  · 
+                            span Now
+                    .feedBlock__comment-subMenu
+                        i.fas.fa-ellipsis-h
+                            .feedBlock__comment-subMenuBox
+                                button
+                                    i.far.fa-edit
+                                        span 수정하기
+                                button
+                                    i.far.fa-trash-alt
+                                        span 삭제하기
+                .feedBlock__comments-Re
+                    .dsa
+                    a(href="#")
+                        img(src=feed.writerProfile, alt="userProfile")
+                    .feedBlock__comment-Re
+                        .feedBlock__comment-Re--description
+                            a(href="#") 김두현
+                            span 이렇게 간다.ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+                        .feedBlock__comment-Re--fuction
+                            span Now
+                    .feedBlock__comment-Re-subMenu
+                        i.fas.fa-ellipsis-h
+                            .feedBlock__comment-Re-subMenuBox
+                                button
+                                    i.far.fa-edit
+                                        span 수정하기
+                                button
+                                    i.far.fa-trash-alt
+                                        span 삭제하기
