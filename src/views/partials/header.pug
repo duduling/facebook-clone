@@ -18,7 +18,7 @@
                     i.fas.fa-sign-out-alt
         .header__profile
             a(href=routes.feedsUser(user.idx), title="My feed")
-                img(src=user.profile, alt="userProfile")
-                span=user.name
+                img#jsUserProfile(src=user.profile, alt="userProfile")
+                span#jsUserName=user.name
         include ./dropMenu
         include ./waitFriendBox

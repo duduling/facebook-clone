@@ -27,6 +27,8 @@
 -   return "Now";
 - };
 
+include ./feedCommentBlock
+
 mixin feedBlock(feed = {})
     article.feedBlock(id=`feedBlockIdx${feed.idx}`, value=feed.idx)
         .feedBlock__header
@@ -79,34 +81,45 @@ mixin feedBlock(feed = {})
                     input(type="text", textarea="commentWrite", id=`commentInputIdx${feed.idx}`)
                     input(type="submit", value="Add")
                     input(type="hidden",name="targetIdx" value=feed.idx)
-            .feedBlock__comments-commentsList
-                .feedBlock__comments-single
-                    a(href="#")
-                        img(src=feed.writerProfile, alt="userProfile")
-                    .feedBlock__comments-single--body
-                        .feedBlock__comment-block
-                            .feedBlock__comment-block--description
-                                a(href="") 김두현
-                                span 이렇게 간다.ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
-                            .feedBlock__comment-subMenu
-                                i.fas.fa-ellipsis-h
-                                    .feedBlock__comment-subMenuBox
-                                        button
-                                            i.far.fa-edit
-                                                span 수정하기
-                                        button
-                                            i.far.fa-trash-alt
-                                                span 삭제하기
-                        .feedBlock__comment-block--fuction
-                            a(role="button") 답글 달기
-                            span  · 
-                            span Now
-                .feedBlock__comments-single--edit
-                    form(onsubmit="return false;")
-                        img(src=user.profile, alt="userProfile")
-                        input(type="text", textarea="commentWrite")
-                        input(type="submit", value="Edit")
-                        input(type="hidden",name="targetIdx" value=feed.idx)
+            .feedBlock__comments-commentsList(id=`jsCommetListIdx${feed.idx}`)
+                //- each item in comments
+                //-     +feedCommentBlock({
+                //-         idx: item.idx,
+                //-         writerIdx: item.writerIdx,
+                //-         writerProfile: item.profile,
+                //-         name: item.name,
+                //-         description: item.description,
+                //-         createdAt: item.createdAt,
+                //-         feedIdx: item.feedIdx
+
+                //-     })
+                //- .feedBlock__comments-single
+                //-     a(href="#")
+                //-         img(src=feed.writerProfile, alt="userProfile")
+                //-     .feedBlock__comments-single--body
+                //-         .feedBlock__comment-block
+                //-             .feedBlock__comment-block--description
+                //-                 a(href="") 김두현
+                //-                 span 이렇게
+                //-             .feedBlock__comment-subMenu
+                //-                 i.fas.fa-ellipsis-h
+                //-                     .feedBlock__comment-subMenuBox
+                //-                         button
+                //-                             i.far.fa-edit
+                //-                                 span 수정하기
+                //-                         button
+                //-                             i.far.fa-trash-alt
+                //-                                 span 삭제하기
+                //-         .feedBlock__comment-block--fuction
+                //-             a(role="button") 답글 달기
+                //-             span  · 
+                //-             span Now
+                //- .feedBlock__comments-single--edit
+                //-     form(onsubmit="return false;")
+                //-         img(src=user.profile, alt="userProfile")
+                //-         input(type="text", textarea="commentWrite")
+                //-         input(type="submit", value="Edit")
+                //-         input(type="hidden",name="targetIdx" value=feed.idx)
                 //- .feedBlock__comments-Re
                 //-     .dsa
                 //-     a(href="#")

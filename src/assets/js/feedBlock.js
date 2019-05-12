@@ -1,4 +1,5 @@
 import axios from "axios";
+import { handleAddCommentDocu } from "./feedComment";
 
 // const jsFeedBolckBtn = document.getElementById("jsFeedBolckBtn");
 // const jsFeedBlockSubMenu = document.getElementById("jsFeedBlockSubMenu");
@@ -63,8 +64,37 @@ const handleLikeCount = async targetIdx => {
 // Comment Process-------------------------------------------------------------------------
 const handleCommentToggle = async targetIdx => {
   const targetDocument = document.getElementById(`commentIdx${targetIdx}`);
-  if (targetDocument.style.display === "none") {
+  const targetCommentDocument = document.getElementById(
+    `jsCommetListIdx${targetIdx}`
+  );
+
+  if (
+    targetCommentDocument.value === true &&
+    targetDocument.style.display === "none"
+  ) {
     targetDocument.style.display = "block";
+  } else if (
+    targetCommentDocument.value !== true &&
+    targetDocument.style.display === "none"
+  ) {
+    const commentData = await axios({
+      url: "/api/selectComment",
+      method: "POST",
+      data: {
+        targetIdx
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+
+    if (commentData.status === 200) {
+      const returnCommentList = commentData.data.commentList;
+      for (let i = 0; i < returnCommentList.length; i++) {
+        handleAddCommentDocu(returnCommentList[i]);
+      }
+      targetCommentDocument.value = true;
+      targetDocument.style.display = "block";
+    }
   } else {
     targetDocument.style.display = "none";
   }

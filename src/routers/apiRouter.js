@@ -12,7 +12,8 @@ import {
   postLikeCount,
   postAddComment,
   postEditComment,
-  postDeleteComment
+  postDeleteComment,
+  postSelectComment
 } from "../controlers/apiController";
 
 const apiRouter = express.Router();
@@ -25,6 +26,7 @@ apiRouter.post(routes.deleteFriend, postDeleteFriend);
 apiRouter.post(routes.confirmFriend, postConfirmFriend);
 apiRouter.post(routes.cancelFriend, postCancelFriend);
 apiRouter.post(routes.likeCount, postLikeCount);
+apiRouter.post(routes.selectComment, postSelectComment);
 apiRouter.post(routes.addComment, postAddComment);
 apiRouter.post(routes.editComment, postEditComment);
 apiRouter.post(routes.deleteComment, postDeleteComment);

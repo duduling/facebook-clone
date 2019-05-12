@@ -226,6 +226,26 @@ export const postLikeCount = async (req, res) => {
   }
 };
 
+export const postSelectComment = async (req, res) => {
+  const {
+    body: { targetIdx }
+  } = req;
+
+  const $commentJoinUser = `select CommentList.idx, feedIdx, writerIdx, createdAt, description, profile, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx where feedIdx = "${targetIdx}" ORDER BY CommentList.createdAt DESC;`;
+
+  try {
+    await db.query($commentJoinUser, (err, rows) => {
+      if (err) throw err;
+      res.status(200).json({ commentList: rows });
+      res.end();
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+    res.end();
+  }
+};
+
 export const postAddComment = async (req, res) => {
   const {
     body: { feedIdx, description }

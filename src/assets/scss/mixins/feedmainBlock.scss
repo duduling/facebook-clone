@@ -174,6 +174,7 @@
       .feedBlock__comments-single {
         display: grid;
         grid-template-columns: 1fr 9fr;
+        margin-top: 12px;
         & > a > img {
           width: 40px;
           height: 40px;
@@ -183,11 +184,12 @@
         }
         .feedBlock__comments-single--body {
           .feedBlock__comment-block {
+            width: 100%;
             display: inline-block;
             position: relative;
             .feedBlock__comment-block--description {
               display: inline-block;
-              width: 89%;
+              max-width: 89%;
               padding: 6px 10px;
               border-radius: 15px;
               background-color: #eee;

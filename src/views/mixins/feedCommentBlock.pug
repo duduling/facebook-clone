@@ -1,0 +1,29 @@
+mixin feedCommentBlock(comment = {})
+    if feed.idx === comment.feedIdx
+        .feedBlock__comments-single
+            a(href=`/feeds/${comment.writerIdx}`)
+                img(src=comment.writerProfile, alt="userProfile")
+            .feedBlock__comments-single--body
+                .feedBlock__comment-block
+                    .feedBlock__comment-block--description
+                        a(href=`feeds/${comment.writerIdx}`)=comment.writerName
+                        span=comment.description
+                    .feedBlock__comment-subMenu
+                        i.fas.fa-ellipsis-h
+                            .feedBlock__comment-subMenuBox
+                                button
+                                    i.far.fa-edit
+                                        span 수정하기
+                                button
+                                    i.far.fa-trash-alt
+                                        span 삭제하기
+                .feedBlock__comment-block--fuction
+                    a(role="button") 답글 달기
+                    span  · 
+                    span #{whatTimeIsIt(comment.createdAt)}
+        .feedBlock__comments-single--edit
+            form(onsubmit="return false;")
+                img(src=user.profile, alt="userProfile")
+                input(type="text", textarea="commentWrite")
+                input(type="submit", value="Edit")
+                input(type="hidden",name="targetIdx" value=comment.idx)
