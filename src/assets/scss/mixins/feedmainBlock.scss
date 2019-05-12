@@ -173,7 +173,7 @@
     .feedBlock__comments-commentsList {
       .feedBlock__comments-single {
         display: grid;
-        grid-template-columns: 1fr 9fr 1fr;
+        grid-template-columns: 1fr 9fr;
         & > a > img {
           width: 40px;
           height: 40px;
@@ -181,23 +181,74 @@
           object-fit: cover;
           object-position: top;
         }
-        .feedBlock__comment-block {
-          .feedBlock__comment-block--description {
-            background-color: #eee;
-            border-radius: 15px;
-            padding: 10px;
-            margin-left: 5px;
-            & > a {
+        .feedBlock__comments-single--body {
+          .feedBlock__comment-block {
+            display: inline-block;
+            position: relative;
+            .feedBlock__comment-block--description {
               display: inline-block;
-              color: #385898;
-              font-size: 14px;
-              font-weight: 500;
-              margin-right: 5px;
+              width: 89%;
+              padding: 6px 10px;
+              border-radius: 15px;
+              background-color: #eee;
+              & > a {
+                display: inline-block;
+                color: #385898;
+                font-size: 14px;
+                font-weight: 500;
+                margin-right: 5px;
+              }
+              & > span {
+                display: inline;
+                font-size: 13px;
+                line-height: 20px;
+              }
             }
-            & > span {
-              display: inline;
-              font-size: 13px;
-              line-height: 20px;
+            .feedBlock__comment-subMenu {
+              display: inline-block;
+              position: absolute;
+              top: calc(50% - 8px);
+              margin-left: 15px;
+              & > i {
+                transition: 0.3s;
+                cursor: pointer;
+                color: #eee;
+                position: relative;
+                &:hover {
+                  color: #000000a1;
+                }
+                .feedBlock__comment-subMenuBox {
+                  width: 90px;
+                  // display: grid;
+                  display: none;
+                  position: absolute;
+                  top: 7px;
+                  right: 7px;
+                  font-size: 14px;
+                  border: $grayLine solid 1px;
+                  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                  & > button {
+                    padding: 8px;
+                    cursor: pointer;
+                    border: none;
+                    background-color: $lightGrayColor;
+                    &:hover {
+                      background-color: $feedBGC;
+                    }
+                  }
+                  & > button:first-child {
+                    border-bottom: $grayLine solid 1px;
+                    & > i > span {
+                      margin-left: 5px;
+                    }
+                  }
+                  & > button:last-child {
+                    & > i > span {
+                      margin-left: 9px;
+                    }
+                  }
+                }
+              }
             }
           }
           .feedBlock__comment-block--fuction {
@@ -213,54 +264,9 @@
             }
           }
         }
-        .feedBlock__comment-subMenu {
-          display: flex;
-          align-items: center;
-          margin-left: 10px;
-          margin-bottom: 16px;
-          & > i {
-            transition: 0.3s;
-            cursor: pointer;
-            color: #eee;
-            position: relative;
-            &:hover {
-              color: #000000a1;
-            }
-            .feedBlock__comment-subMenuBox {
-              width: 90px;
-              // display: grid;
-              display: none;
-              position: absolute;
-              top: 7px;
-              right: 7px;
-              font-size: 14px;
-              border: $grayLine solid 1px;
-              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-              & > button {
-                padding: 8px;
-                cursor: pointer;
-                border: none;
-                background-color: $lightGrayColor;
-                &:hover {
-                  background-color: $feedBGC;
-                }
-              }
-              & > button:first-child {
-                border-bottom: $grayLine solid 1px;
-                & > i > span {
-                  margin-left: 5px;
-                }
-              }
-              & > button:last-child {
-                & > i > span {
-                  margin-left: 9px;
-                }
-              }
-            }
-          }
-        }
       }
       .feedBlock__comments-single--edit {
+        display: none;
         & > form {
           display: grid;
           grid-template-columns: 1fr 9fr 1fr;

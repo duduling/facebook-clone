@@ -83,23 +83,24 @@ mixin feedBlock(feed = {})
                 .feedBlock__comments-single
                     a(href="#")
                         img(src=feed.writerProfile, alt="userProfile")
-                    .feedBlock__comment-block
-                        .feedBlock__comment-block--description
-                            a(href="") 김두현
-                            span 이렇게 간다.ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+                    .feedBlock__comments-single--body
+                        .feedBlock__comment-block
+                            .feedBlock__comment-block--description
+                                a(href="") 김두현
+                                span 이렇게 간다.ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+                            .feedBlock__comment-subMenu
+                                i.fas.fa-ellipsis-h
+                                    .feedBlock__comment-subMenuBox
+                                        button
+                                            i.far.fa-edit
+                                                span 수정하기
+                                        button
+                                            i.far.fa-trash-alt
+                                                span 삭제하기
                         .feedBlock__comment-block--fuction
                             a(role="button") 답글 달기
                             span  · 
                             span Now
-                    .feedBlock__comment-subMenu
-                        i.fas.fa-ellipsis-h
-                            .feedBlock__comment-subMenuBox
-                                button
-                                    i.far.fa-edit
-                                        span 수정하기
-                                button
-                                    i.far.fa-trash-alt
-                                        span 삭제하기
                 .feedBlock__comments-single--edit
                     form(onsubmit="return false;")
                         img(src=user.profile, alt="userProfile")
