@@ -4,6 +4,41 @@ const feedSection = document.getElementById("feedSection");
 const jsUserProfile = document.getElementById("jsUserProfile").src;
 const jsUserName = document.getElementById("jsUserName").innerText;
 
+const whatTimeIsIt = targetDate => {
+  if (targetDate !== false) {
+    const nowTime = new Date();
+    const targetDateObj = new Date(targetDate);
+
+    if (nowTime.getFullYear() !== targetDateObj.getFullYear()) {
+      return `${nowTime.getFullYear() - targetDateObj.getFullYear()} year`;
+    }
+
+    if (nowTime.getMonth() !== targetDateObj.getMonth()) {
+      return `${nowTime.getMonth() - targetDateObj.getMonth()} mon`;
+    }
+
+    if (nowTime.getDate() !== targetDateObj.getDate()) {
+      return `${nowTime.getDate() - targetDateObj.getDate()} day`;
+    }
+
+    if (nowTime.getHours() !== targetDateObj.getHours()) {
+      if (
+        nowTime.getHours() - targetDateObj.getHours() === 1 &&
+        nowTime.getMinutes() - targetDateObj.getMinutes() < 0
+      ) {
+        return `${nowTime.getMinutes() - targetDateObj.getMinutes() + 60} min`;
+      }
+      return `${nowTime.getHours() - targetDateObj.getHours()} hr`;
+    }
+
+    if (nowTime.getMinutes() !== targetDateObj.getMinutes()) {
+      return `${nowTime.getMinutes() - targetDateObj.getMinutes()} min`;
+    }
+  }
+
+  return "Now";
+};
+
 // HTML
 export const handleAddCommentDocu = comment => {
   const addCommentHTML = `
@@ -39,7 +74,7 @@ export const handleAddCommentDocu = comment => {
     <div class="feedBlock__comment-block--fuction">
       <a role="button">답글 달기</a>
       <span>·</span>
-      <span>Now</span>
+      <span>${whatTimeIsIt(comment.createdAt)}</span>
     </div>
   </div>
 </div>
@@ -81,7 +116,8 @@ const handleEventAddComment = async event => {
       feedIdx,
       description,
       profile: jsUserProfile,
-      name: jsUserName
+      name: jsUserName,
+      createdAt: false
     };
     handleAddCommentDocu(comment);
   }

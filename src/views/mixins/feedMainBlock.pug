@@ -78,7 +78,7 @@ mixin feedBlock(feed = {})
             .feedBlock__comments-write
                 form(onsubmit="return false;")
                     img(src=feed.writerProfile, alt="userProfile")
-                    input(type="text", textarea="commentWrite", id=`commentInputIdx${feed.idx}`)
+                    input(type="text", textarea="commentWrite", id=`commentInputIdx${feed.idx}`, autocomplete="off", required)
                     input(type="submit", value="Add")
                     input(type="hidden",name="targetIdx" value=feed.idx)
             .feedBlock__comments-commentsList(id=`jsCommetListIdx${feed.idx}`)

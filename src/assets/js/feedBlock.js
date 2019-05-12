@@ -20,6 +20,8 @@ const postForm = document.createElement("form");
 
 let tempSubMenuDocument;
 
+const nowTime = new Date();
+
 // Like Process-------------------------------------------------------------------------
 const handleLikeCount = async targetIdx => {
   const LikeBtnDocument = document.getElementById(`LikeBtnIdx${targetIdx}`);
