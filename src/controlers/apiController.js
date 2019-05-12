@@ -225,3 +225,31 @@ export const postLikeCount = async (req, res) => {
     res.end();
   }
 };
+
+export const postAddComment = async (req, res) => {
+  const {
+    body: { feedIdx, description }
+  } = req;
+
+  const $insetComment = `insert into CommentList set ? ;`;
+  const $commentDate = {
+    feedIdx,
+    description,
+    writerIdx: req.user.idx
+  };
+  try {
+    await db.query($insetComment, $commentDate, err => {
+      if (err) throw err;
+    });
+    res.status(200);
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postEditComment = (req, res) => {};
+
+export const postDeleteComment = (req, res) => {};

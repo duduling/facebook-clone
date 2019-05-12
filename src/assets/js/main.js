@@ -1,6 +1,7 @@
 // JS
 import "./editPassword";
 import "./feedBlock";
+import "./feedComment";
 import "./feedUpload";
 import "./feedUser";
 import "./home";

@@ -31,6 +31,8 @@ const handleFriend = async () => {
       data: {
         targetIdx
       }
+    }).catch(error => {
+      console.log(error);
     });
     if (response.status === 200) {
       jsAddFriendText.innerText = " Wait response";
@@ -42,6 +44,8 @@ const handleFriend = async () => {
       data: {
         targetIdx
       }
+    }).catch(error => {
+      console.log(error);
     });
     if (response.status === 200) {
       jsAddFriendText.innerText = " Add Friend";
@@ -53,6 +57,8 @@ const handleFriend = async () => {
       data: {
         targetIdx
       }
+    }).catch(error => {
+      console.log(error);
     });
     if (response.status === 200) {
       jsAddFriendText.innerText = " Add Friend";

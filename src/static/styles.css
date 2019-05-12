@@ -2053,13 +2053,9 @@ input {
   .feedBlock .feedBlock__comments {
     border-top: #ccc solid 1px;
     margin-top: 10px; }
-    .feedBlock .feedBlock__comments input:first-child {
-      background-color: #eee;
-      -webkit-border-radius: 10px;
-         -moz-border-radius: 10px;
-              border-radius: 10px; }
     .feedBlock .feedBlock__comments .feedBlock__comments-write {
-      margin-top: 10px; }
+      margin-top: 10px;
+      margin-bottom: 15px; }
       .feedBlock .feedBlock__comments .feedBlock__comments-write > form {
         display: grid;
         grid-template-columns: 1fr 9fr 1fr; }
@@ -2088,8 +2084,7 @@ input {
                   border-radius: 10px; }
     .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-single {
       display: grid;
-      grid-template-columns: 1fr 9fr 1fr;
-      margin-top: 15px; }
+      grid-template-columns: 1fr 9fr 1fr; }
       .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-single > a > img {
         width: 40px;
         height: 40px;
@@ -2135,7 +2130,8 @@ input {
            -moz-box-align: center;
             -ms-flex-align: center;
                 align-items: center;
-        margin-left: 10px; }
+        margin-left: 10px;
+        margin-bottom: 16px; }
         .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-single .feedBlock__comment-subMenu > i {
           -webkit-transition: 0.3s;
           -o-transition: 0.3s;
@@ -2170,6 +2166,32 @@ input {
                 margin-left: 5px; }
             .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-single .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox > button:last-child > i > span {
               margin-left: 9px; }
+    .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-single--edit > form {
+      display: grid;
+      grid-template-columns: 1fr 9fr 1fr; }
+      .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-single--edit > form > img {
+        width: 40px;
+        height: 40px;
+        margin-left: 3px;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: top;
+           object-position: top; }
+      .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-single--edit > form > input:nth-child(2) {
+        margin: 5px;
+        padding: 0 10px;
+        background-color: #eee;
+        -webkit-border-radius: 15px;
+           -moz-border-radius: 15px;
+                border-radius: 15px; }
+      .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-single--edit > form > input:nth-child(3) {
+        cursor: pointer;
+        margin: 5px 0;
+        background-color: transparent;
+        border: #eee solid 1px;
+        -webkit-border-radius: 10px;
+           -moz-border-radius: 10px;
+                border-radius: 10px; }
     .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re {
       display: grid;
       grid-template-columns: 1fr 1fr 8fr 1fr;

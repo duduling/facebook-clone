@@ -35,6 +35,8 @@ const handleLikeCount = async targetIdx => {
         targetIdx,
         action: true
       }
+    }).catch(error => {
+      console.log(error);
     });
   } else {
     LikeBtnDocument.style.fontWeight = "400";
@@ -47,12 +49,24 @@ const handleLikeCount = async targetIdx => {
         targetIdx,
         action: false
       }
+    }).catch(error => {
+      console.log(error);
     });
   }
 
   if (response.status === 200) {
     document.getElementById(`jsLikeCountNumberIdx${targetIdx}`).innerText =
       response.data.likeCount;
+  }
+};
+
+// Comment Process-------------------------------------------------------------------------
+const handleCommentToggle = async targetIdx => {
+  const targetDocument = document.getElementById(`commentIdx${targetIdx}`);
+  if (targetDocument.style.display === "none") {
+    targetDocument.style.display = "block";
+  } else {
+    targetDocument.style.display = "none";
   }
 };
 
@@ -213,6 +227,14 @@ const subMenuClickEvent = event => {
   //  Click Event LikeBtn
   if (eventPath[0].id === "jsLikeBtn" || eventPath[1].id === "jsLikeBtn") {
     handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
+  }
+
+  //  Click Event CommentBtn
+  if (
+    eventPath[0].id === "jdCommentBtn" ||
+    eventPath[1].id === "jdCommentBtn"
+  ) {
+    handleCommentToggle(event.srcElement.offsetParent.attributes.value.value);
   }
 };
 
