@@ -231,7 +231,7 @@ export const postSelectComment = async (req, res) => {
     body: { targetIdx }
   } = req;
 
-  const $commentJoinUser = `select CommentList.idx, feedIdx, writerIdx, createdAt, description, profile, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx where feedIdx = "${targetIdx}" ORDER BY CommentList.createdAt DESC;`;
+  const $commentJoinUser = `select CommentList.idx, feedIdx, writerIdx, createdAt, description, profile, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx where feedIdx = "${targetIdx}";`;
 
   try {
     await db.query($commentJoinUser, (err, rows) => {
@@ -258,10 +258,10 @@ export const postAddComment = async (req, res) => {
     writerIdx: req.user.idx
   };
   try {
-    await db.query($insetComment, $commentDate, err => {
+    await db.query($insetComment, $commentDate, (err, rows) => {
       if (err) throw err;
+      res.status(200).json({ insertId: rows.insertId });
     });
-    res.status(200);
   } catch (error) {
     console.log(error);
     res.status(400);

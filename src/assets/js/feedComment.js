@@ -4,6 +4,8 @@ const feedSection = document.getElementById("feedSection");
 const jsUserProfile = document.getElementById("jsUserProfile").src;
 const jsUserName = document.getElementById("jsUserName").innerText;
 
+let tempCommentSubMenuDocument;
+
 const whatTimeIsIt = targetDate => {
   if (targetDate !== false) {
     const nowTime = new Date();
@@ -55,8 +57,8 @@ export const handleAddCommentDocu = comment => {
         </span>
       </div>
       <div class="feedBlock__comment-subMenu">
-        <i class="fas fa-ellipsis-h">
-          <div class="feedBlock__comment-subMenuBox">
+        <i class="fas fa-ellipsis-h", id="commentSubMenuBtn">
+          <div class="feedBlock__comment-subMenuBox", style="display: none">
             <button>
               <i class="far fa-edit">
                 <span>수정하기</span>
@@ -83,14 +85,14 @@ export const handleAddCommentDocu = comment => {
     <img src="${comment.profile}" alt="userProfile" />
     <input type="text" textarea="commentWrite" />
     <input type="submit" value="Edit" />
-    <input type="hidden" name="targetIdx" value="${comment.feedIdx}" />
+    <input type="hidden" name="targetIdx" value="${comment.Idx}" />
   </form>
 </div>
 `;
 
   document
     .getElementById(`jsCommetListIdx${comment.feedIdx}`)
-    .insertAdjacentHTML("beforeend", addCommentHTML);
+    .insertAdjacentHTML("afterbegin", addCommentHTML);
 };
 
 // Add Comment Fucntion
@@ -113,6 +115,7 @@ const handleEventAddComment = async event => {
     document.getElementById(`commentInputIdx${event.target[2].value}`).value =
       "";
     const comment = {
+      idx: response.data.insertId,
       feedIdx,
       description,
       profile: jsUserProfile,
@@ -123,8 +126,44 @@ const handleEventAddComment = async event => {
   }
 };
 
+// SubMenu Toggle Process---------------------------------------------------------------
+const offTheSubMenu = () => {
+  tempCommentSubMenuDocument.style.display = "none";
+  tempCommentSubMenuDocument = null;
+};
+
+const commentSubMenuToggle = targetDocu => {
+  const commentSubMenuDocument = targetDocu;
+
+  if (
+    commentSubMenuDocument.style.display === "none" &&
+    tempCommentSubMenuDocument !== commentSubMenuDocument
+  ) {
+    if (tempCommentSubMenuDocument) {
+      offTheSubMenu();
+    }
+    commentSubMenuDocument.style.display = "grid";
+    tempCommentSubMenuDocument = commentSubMenuDocument;
+  } else {
+    commentSubMenuDocument.style.display = "none";
+    tempCommentSubMenuDocument = null;
+  }
+};
+
+// Window Event Click
+const handleClickEvent = event => {
+  const targetPath = event.composedPath();
+
+  if (targetPath[0].id === "commentSubMenuBtn") {
+    commentSubMenuToggle(targetPath[0].childNodes[1]);
+  } else if (tempCommentSubMenuDocument) {
+    offTheSubMenu();
+  }
+};
+
 const init = () => {
   window.addEventListener("submit", handleEventAddComment);
+  window.addEventListener("click", handleClickEvent);
 };
 
 if (feedSection) {
