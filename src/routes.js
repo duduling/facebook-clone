@@ -12,7 +12,7 @@ const FEEDS_MAIN = "/main";
 const FEEDS_USER = "/:idx";
 const FEEDS_SEARCH = "/search";
 const FEEDS_UPLOAD = "/upload";
-const FEEDS_EDIT = "/:idx/edit";
+const FEEDS_EDIT = "/edit";
 const FEEDS_DELETE = "/:idx/delete";
 
 // User
@@ -31,6 +31,10 @@ const DELETE_FRIEND = "/deleteFriend";
 const CONFIRM_FRIEND = "/confirmFriend";
 const CANCEL_FRIEND = "/cancelFriend";
 const LIKE_COUNT = "/likeCount";
+const SELECT_COMMENT = "/selectComment";
+const ADD_COMMENT = "/addComment";
+const EDIT_COMMENT = "/editComment";
+const DELETE_COMMENT = "/deleteComment";
 
 const routes = {
   // Global
@@ -75,7 +79,11 @@ const routes = {
   deleteFriend: DELETE_FRIEND,
   confirmFriend: CONFIRM_FRIEND,
   cancelFriend: CANCEL_FRIEND,
-  likeCount: LIKE_COUNT
+  likeCount: LIKE_COUNT,
+  selectComment: SELECT_COMMENT,
+  addComment: ADD_COMMENT,
+  editComment: EDIT_COMMENT,
+  deleteComment: DELETE_COMMENT
 };
 
 export default routes;

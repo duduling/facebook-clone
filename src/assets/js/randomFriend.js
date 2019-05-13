@@ -53,7 +53,10 @@ const handleRandomblock = async event => {
         whatDo,
         nowViewListId
       }
+    }).catch(error => {
+      console.log(error);
     });
+
     document.getElementById(`jsRandomFriendBlock${targetIdx}`).remove();
     if (response.status === 200 && response.data.rows !== null) {
       addRandomFriendHtml(response.data.rows);
@@ -68,7 +71,10 @@ const handleRandomblock = async event => {
       data: {
         nowViewListId
       }
+    }).catch(error => {
+      console.log(error);
     });
+
     document.getElementById(`jsRandomFriendBlock${targetIdx}`).remove();
     if (response.status === 200 && response.data.rows !== null) {
       addRandomFriendHtml(response.data.rows);

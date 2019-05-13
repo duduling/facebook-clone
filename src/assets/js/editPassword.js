@@ -31,6 +31,8 @@ const handleOldPwCheck = async () => {
     data: {
       checkChangePw
     }
+  }).catch(error => {
+    console.log(error);
   });
   if (response.data) {
     changePwOld.style.borderColor = "#c9cacd";

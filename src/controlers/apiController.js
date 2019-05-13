@@ -225,3 +225,90 @@ export const postLikeCount = async (req, res) => {
     res.end();
   }
 };
+
+export const postSelectComment = async (req, res) => {
+  const {
+    body: { targetIdx }
+  } = req;
+
+  const $commentJoinUser = `select CommentList.idx, feedIdx, writerIdx, createdAt, description, profile, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx where feedIdx = "${targetIdx}";`;
+  const $cocommentJoinUser = `select CocommentList.idx, feedIdx, commentIdx, writerIdx, createdAt, description, profile, name FROM CocommentList left join Users on CocommentList.writerIdx = Users.idx WHERE feedIdx = "${targetIdx}";`;
+
+  try {
+    await db.query($commentJoinUser + $cocommentJoinUser, (err, rows) => {
+      if (err) throw err;
+      res.status(200).json({ commentList: rows[0], cocommentList: rows[1] });
+      res.end();
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+    res.end();
+  }
+};
+
+export const postAddComment = async (req, res) => {
+  const {
+    body: { feedIdx, description }
+  } = req;
+
+  const $insetComment = `insert into CommentList set ? ;`;
+  const $commentDate = {
+    feedIdx,
+    description,
+    writerIdx: req.user.idx
+  };
+  try {
+    await db.query($insetComment, $commentDate, (err, rows) => {
+      if (err) throw err;
+      res.status(200).json({ insertId: rows.insertId });
+      res.end();
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+    res.end();
+  }
+};
+
+export const postEditComment = async (req, res) => {
+  const {
+    body: { idx, description }
+  } = req;
+
+  const $insetComment = `update CommentList set ? where idx = "${idx}";`;
+  const $data = {
+    description,
+    edited: 1
+  };
+  try {
+    await db.query($insetComment, $data, err => {
+      if (err) throw err;
+      res.status(200);
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postDeleteComment = async (req, res) => {
+  const {
+    body: { commentIdx }
+  } = req;
+
+  const $insetComment = `delete from CommentList where idx = "${commentIdx}" ;`;
+  try {
+    await db.query($insetComment, err => {
+      if (err) throw err;
+      res.status(200);
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};

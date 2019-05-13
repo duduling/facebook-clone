@@ -53,6 +53,8 @@ const handleEmailCheck = async () => {
     data: {
       checkWord
     }
+  }).catch(error => {
+    console.log(error);
   });
 
   // 중복시 테투리 빨간색으로

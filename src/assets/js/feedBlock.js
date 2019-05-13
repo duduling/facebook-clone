@@ -1,14 +1,26 @@
 import axios from "axios";
+import { handleAddCommentDocu } from "./feedComment";
 
 // const jsFeedBolckBtn = document.getElementById("jsFeedBolckBtn");
 // const jsFeedBlockSubMenu = document.getElementById("jsFeedBlockSubMenu");
 const feedSection = document.getElementById("feedSection");
-const jsFeedBlockEdit = document.getElementById("jsFeedBlockEdit");
+
+// Edit Variables
+const jsEditUploadTextarea = document.getElementById("jsEditUploadTextarea");
+const jsEditFeedUpload = document.getElementById("jsEditFeedUpload");
+const JsEditUploadpreviewBox = document.getElementById(
+  "JsEditUploadpreviewBox"
+);
+const jsEditUploadPreview = document.getElementById("jsEditUploadPreview");
+const jsEditImgDeleteBtn = document.getElementById("jsEditImgDeleteBtn");
+const jsFeedBlockEditCover = document.getElementById("jsFeedBlockEditCover");
+const jsFeedInputIdx = document.getElementById("jsFeedInputIdx");
 
 const postForm = document.createElement("form");
 
 let tempSubMenuDocument;
 
+// Like Process-------------------------------------------------------------------------
 const handleLikeCount = async targetIdx => {
   const LikeBtnDocument = document.getElementById(`LikeBtnIdx${targetIdx}`);
   let response;
@@ -24,6 +36,8 @@ const handleLikeCount = async targetIdx => {
         targetIdx,
         action: true
       }
+    }).catch(error => {
+      console.log(error);
     });
   } else {
     LikeBtnDocument.style.fontWeight = "400";
@@ -36,6 +50,8 @@ const handleLikeCount = async targetIdx => {
         targetIdx,
         action: false
       }
+    }).catch(error => {
+      console.log(error);
     });
   }
 
@@ -45,28 +61,150 @@ const handleLikeCount = async targetIdx => {
   }
 };
 
+// Comment Process-------------------------------------------------------------------------
+const handleCommentToggle = async targetIdx => {
+  const targetDocument = document.getElementById(`commentIdx${targetIdx}`);
+  const targetCommentDocument = document.getElementById(
+    `jsCommetListIdx${targetIdx}`
+  );
+
+  if (
+    targetCommentDocument.value === true &&
+    targetDocument.style.display === "none"
+  ) {
+    targetDocument.style.display = "block";
+  } else if (
+    targetCommentDocument.value !== true &&
+    targetDocument.style.display === "none"
+  ) {
+    const commentData = await axios({
+      url: "/api/selectComment",
+      method: "POST",
+      data: {
+        targetIdx
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+
+    if (commentData.status === 200) {
+      const returnCommentList = commentData.data.commentList;
+      const returnCocommentList = commentData.data.cocommentList;
+
+      for (let i = 0; i < returnCommentList.length; i++) {
+        handleAddCommentDocu(returnCommentList[i]);
+        for (let j = 0; j < returnCocommentList.length; j++) {
+          if (returnCommentList[i].idx === returnCocommentList[j].commentIdx) {
+            console.log(returnCocommentList[j]);
+          }
+        }
+      }
+      targetCommentDocument.value = true;
+      targetDocument.style.display = "block";
+    }
+  } else {
+    targetDocument.style.display = "none";
+  }
+};
+
+// Edit Proess--------------------------------------------------------------------------
+
+// Img 처리하는 동안 Progress 띄우기 and Image section display: none -> block
+const editFileOnCss = () => {
+  document.getElementsByClassName(
+    "feedBlock-edit-wrapper"
+  )[0].style.gridTemplateRows = "1fr 10fr";
+  document.getElementsByClassName(
+    "feedBlock-edit__upload-form"
+  )[0].style.gridTemplateRows = "2fr 2fr 1fr";
+  JsEditUploadpreviewBox.style.display = "block";
+  jsEditUploadTextarea.setAttribute("rows", "4");
+  jsEditUploadPreview.setAttribute("src", "/img/progress.gif");
+};
+
+// Image section display: block -> none
+const editFileOffCss = () => {
+  document.getElementsByClassName(
+    "feedBlock-edit-wrapper"
+  )[0].style.gridTemplateRows = "1fr 7fr";
+  document.getElementsByClassName(
+    "feedBlock-edit__upload-form"
+  )[0].style.gridTemplateRows = "4fr 1fr";
+  JsEditUploadpreviewBox.style.display = "none";
+  jsEditUploadTextarea.setAttribute("rows", "8");
+  jsEditUploadPreview.setAttribute("src", "");
+  jsEditFeedUpload.value = "";
+};
+
+const inputEditFileChange = inputFile => {
+  if (inputFile.target.files && inputFile.target.files[0]) {
+    const file = inputFile.target.files[0];
+    const reader = new FileReader();
+
+    editFileOnCss();
+
+    reader.onload = e => {
+      jsEditUploadPreview.setAttribute("src", e.target.result);
+    };
+    reader.readAsDataURL(file);
+  } else {
+    editFileOffCss();
+  }
+};
+
+const editUploadImgDelete = () => {
+  jsEditUploadPreview.setAttribute("src", "");
+  editFileOffCss();
+};
+
 const handleFeedEdit = event => {
   const targetIdx = event.composedPath().filter(e => {
     return e.id === "jsFeedBlockEdit";
   })[0].value;
 
-  console.log(`Edit ${targetIdx}`);
+  const editImageElement = document.getElementById(
+    `feedBlockImgIdx${targetIdx}`
+  );
+
+  if (editImageElement) {
+    editFileOnCss();
+    jsEditUploadPreview.setAttribute(
+      "src",
+      editImageElement.getAttribute("src")
+    );
+  } else {
+    editFileOffCss();
+  }
+
+  jsEditUploadTextarea.innerText = document.getElementById(
+    `feedBlockDescriptionIdx${targetIdx}`
+  ).innerText;
+
+  jsFeedInputIdx.setAttribute("value", targetIdx);
+
+  jsFeedBlockEditCover.style.display = "block";
 };
 
+const checkEditExit = () => {
+  if (confirm("수정을 종료하시겠습니까?")) {
+    jsFeedBlockEditCover.style.display = "none";
+  }
+};
+
+// Delete Process ----------------------------------------------------------------------
 const handleFeedDelte = event => {
   const deleteFeedIdx = event.composedPath().filter(e => {
     return e.id === "jsFeedBlockDelete";
   })[0].value;
-  console.log(deleteFeedIdx);
-  //   postForm.setAttribute("charset", "UTF-8");
-  //   postForm.setAttribute("method", "Post");
-  //   postForm.setAttribute("action", `/feeds/${deleteFeedIdx}/delete`);
+  postForm.setAttribute("charset", "UTF-8");
+  postForm.setAttribute("method", "Post");
+  postForm.setAttribute("action", `/feeds/${deleteFeedIdx}/delete`);
 
-  //   document.body.appendChild(postForm);
-  //   postForm.submit();
+  document.body.appendChild(postForm);
+  postForm.submit();
 };
 
-// SubMenu Toggle Function
+// SubMenu Toggle Process---------------------------------------------------------------
 const offTheSubMenu = () => {
   tempSubMenuDocument.style.display = "none";
   tempSubMenuDocument = null;
@@ -103,6 +241,17 @@ const subMenuClickEvent = event => {
     offTheSubMenu();
   }
 
+  //   Click Event Feed Edit
+  if (
+    eventPath[0].id === "jsFeedBlockEdit" ||
+    eventPath[1].id === "jsFeedBlockEdit" ||
+    eventPath[2].id === "jsFeedBlockEdit"
+  ) {
+    handleFeedEdit(event);
+  } else if (event.target.id === "jsFeedBlockEditCover") {
+    checkEditExit();
+  }
+
   //   Click Event Feed Delete
   if (
     eventPath[0].id === "jsFeedBlockDelete" ||
@@ -116,10 +265,19 @@ const subMenuClickEvent = event => {
   if (eventPath[0].id === "jsLikeBtn" || eventPath[1].id === "jsLikeBtn") {
     handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
   }
+
+  //  Click Event CommentBtn
+  if (
+    eventPath[0].id === "jdCommentBtn" ||
+    eventPath[1].id === "jdCommentBtn"
+  ) {
+    handleCommentToggle(event.srcElement.offsetParent.attributes.value.value);
+  }
 };
 
 const init = () => {
-  jsFeedBlockEdit.addEventListener("click", handleFeedEdit);
+  jsEditFeedUpload.addEventListener("change", inputEditFileChange);
+  jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
   window.addEventListener("click", subMenuClickEvent);
 };
 

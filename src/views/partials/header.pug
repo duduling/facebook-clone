@@ -6,7 +6,7 @@
                 i.fab.fa-facebook
         .header__search-bar
             form(action=`/feeds${routes.feedsSearch}`, method="get")
-                input(type="text", name="searchWord", placeholder="Searching", autocomplete="off", required)#header__searchBar
+                input(type="text", name="searchWord", placeholder="Searching",id="header__searchBar", autocomplete="off", required)
                 input(type="submit", value="　")#header__searchBar-btn
         .header__subMenu
             ul.header__subMenu-friend
@@ -18,7 +18,7 @@
                     i.fas.fa-sign-out-alt
         .header__profile
             a(href=routes.feedsUser(user.idx), title="My feed")
-                img(src=user.profile, alt="userProfile")
-                span=user.name
+                img#jsUserProfile(src=user.profile, alt="userProfile")
+                span#jsUserName=user.name
         include ./dropMenu
         include ./waitFriendBox

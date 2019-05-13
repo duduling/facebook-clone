@@ -27,24 +27,36 @@
 -   return "Now";
 - };
 
+include ./feedCommentBlock
+
 mixin feedBlock(feed = {})
     article.feedBlock(id=`feedBlockIdx${feed.idx}`, value=feed.idx)
         .feedBlock__header
-            a(href=routes.feedsUser(feed.writerIdx))#feedBolck-url
-                img(src=feed.writerProfile, alt="userProfile")#feedBolck-url-img
+            a(href=routes.feedsUser(feed.writerIdx))
+                img(src=feed.writerProfile, alt="userProfile")
             .feedBlock__header-grid
-                #feedBolck-name
+                .feedBolck__header-userName
                     a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
-                span #{whatTimeIsIt(feed.createdAt)}
+                if feed.edited === 1
+                    span #{whatTimeIsIt(feed.createdAt)} | edited
+                else
+                    span #{whatTimeIsIt(feed.createdAt)}
             if feed.writerIdx === user.idx
                 .feedBlock__header-subMenuBtn(id=`jsFeedBolckBtnIdx`)
                     i.fas.fa-ellipsis-h
+        .feedBlock__subMenu(id=`jsFeedBlockSubMenuIdx${feed.idx}`, style="display: none")
+            button(id="jsFeedBlockEdit", value=feed.idx)
+                i.far.fa-edit
+                    span 수정하기
+            button(id="jsFeedBlockDelete", value=feed.idx)
+                i.far.fa-trash-alt
+                    span 삭제하기
         .feedBlock__body
-            span=feed.description
+            span(id=`feedBlockDescriptionIdx${feed.idx}`)=feed.description
             .feedBlock__body-img
                 if feed.fileUrl !== null
-                    img(src=feed.fileUrl, alt="content img")
+                    img(src=feed.fileUrl, alt="content img", id=`feedBlockImgIdx${feed.idx}`)
         .feedBlock__footer
             .feedBlock__footer-top
                 .feedBlock__footer-like
@@ -62,10 +74,11 @@ mixin feedBlock(feed = {})
                         i.far.fa-thumbs-up(id=`LikeBtnIdx${feed.idx}`, style="font-weight: 400")  Like
                 button#jdCommentBtn
                     i.far.fa-comment-alt(id=`CommentBtnIdx${feed.idx}`)  Comment
-        .feedBlock__subMenu(id=`jsFeedBlockSubMenuIdx${feed.idx}`, style="display: none")
-            button(id="jsFeedBlockEdit", value=feed.idx)
-                i.far.fa-edit
-                    span 수정하기
-            button(id="jsFeedBlockDelete", value=feed.idx)
-                i.far.fa-trash-alt
-                    span 삭제하기
+        .feedBlock__comments(id=`commentIdx${feed.idx}`, value=feed.idx, style="display: none;")
+            .feedBlock__comments-write
+                form(onsubmit="return false;")
+                    img(src=feed.writerProfile, alt="userProfile")
+                    input(type="text", textarea="commentWrite", id=`commentInputIdx${feed.idx}`, autocomplete="off", required)
+                    input(type="submit", value="Add")
+                    input(type="hidden",name="targetIdx" value=feed.idx)
+            .feedBlock__comments-commentsList(id=`jsCommetListIdx${feed.idx}`)

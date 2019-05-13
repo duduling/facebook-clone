@@ -28,7 +28,7 @@ const fileOffCss = () => {
     "feed-main__upload-form"
   )[0].style.gridTemplateRows = "4fr 1fr";
   JsUploadpreviewBox.style.display = "none";
-  jsUploadTextarea.setAttribute("rows", "7");
+  jsUploadTextarea.setAttribute("rows", "6");
   jsUploadPreview.setAttribute("src", "");
   jsFeedUpload.value = "";
 };
@@ -50,17 +50,25 @@ const inputFileChange = inputFile => {
   }
 };
 
-const textareaResponsiveRows = () => {
-  if (jsUploadPreview.getAttribute("src") === "") {
-    if (matchMedia("screen and (max-width: 480px)").matches) {
-      jsUploadTextarea.setAttribute("rows", "5");
-    } else if (matchMedia("screen and (max-width: 600px)").matches) {
-      jsUploadTextarea.setAttribute("rows", "6");
-    } else {
-      jsUploadTextarea.setAttribute("rows", "7");
-    }
-  }
-};
+// const textareaResponsiveRows = () => {
+//   console.log(jsUploadPreview.getAttribute("src"));
+//   if (jsUploadPreview.getAttribute("src") === "") {
+//     console.log("0");
+//     if (matchMedia("screen and (max-width: 480px)").matches) {
+//       console.log("1");
+
+//       jsUploadTextarea.setAttribute("rows", "5");
+//     } else if (matchMedia("screen and (max-width: 600px)").matches) {
+//       console.log("2");
+
+//       jsUploadTextarea.setAttribute("rows", "6");
+//     } else {
+//       console.log("3");
+
+//       jsUploadTextarea.setAttribute("rows", "7");
+//     }
+//   }
+// };
 
 const uploadImgDelete = () => {
   jsUploadPreview.setAttribute("src", "");
@@ -68,7 +76,7 @@ const uploadImgDelete = () => {
 };
 
 const init = () => {
-  window.addEventListener("resize", textareaResponsiveRows);
+  // window.addEventListener("resize", textareaResponsiveRows);
   jsFeedUpload.addEventListener("change", inputFileChange);
   jsImgDeleteBtn.addEventListener("click", uploadImgDelete);
 };

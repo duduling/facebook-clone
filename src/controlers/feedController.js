@@ -4,7 +4,9 @@ import routes from "../routes";
 
 export const getFeedMain = (req, res) => {
   const $feedJoinUser =
-    "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
+    "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile, edited from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
+  const $commentJoinUser =
+    "select CommentList.idx, feedIdx, writerIdx, createdAt, description, profile, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx ORDER BY CommentList.createdAt DESC;";
   const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
     req.user.idx
   }";`;
@@ -18,24 +20,27 @@ export const getFeedMain = (req, res) => {
   try {
     db.query(
       $feedJoinUser +
+        $commentJoinUser +
         $likeListSelect +
         $randomUsersSelect +
         $waitMyFriend +
         $adSelect,
       (_, rows) => {
         const feeds = rows[0];
+        const comments = rows[1];
         const likeList = [];
-        const ramdomUsers = rows[2];
-        const waitMyFriendList = rows[3];
-        const asideAd = rows[4];
+        const ramdomUsers = rows[3];
+        const waitMyFriendList = rows[4];
+        const asideAd = rows[5];
 
-        for (let i = 0; i < rows[1].length; i++) {
-          likeList.push(rows[1][i].feedIdx);
+        for (let i = 0; i < rows[2].length; i++) {
+          likeList.push(rows[2][i].feedIdx);
         }
 
         res.render("feedMain", {
           pageTile: "Feed Main",
           feeds,
+          comments,
           likeList,
           ramdomUsers,
           waitMyFriendList,
@@ -134,6 +139,31 @@ export const postFeedsUpload = (req, res) => {
       description: uploadText
     };
     db.query($feedInsert, $dataObj, err => {
+      if (err) {
+        throw err;
+      } else {
+        res.redirect(`/feeds${routes.feedsMain}`);
+      }
+    });
+  } catch (error) {
+    res.status(400);
+  }
+};
+
+export const postFeedsEdit = (req, res) => {
+  const {
+    body: { uploadText, feedInputIdx },
+    file
+  } = req;
+  try {
+    const $feedUpdate = `update Feeds set ? where idx = "${feedInputIdx}";`;
+    const $dataObj = {
+      fileUrl: file ? `/${file.path}` : null,
+      description: uploadText,
+      createdAt: new Date(),
+      edited: 1
+    };
+    db.query($feedUpdate, $dataObj, err => {
       if (err) {
         throw err;
       } else {

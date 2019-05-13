@@ -4,7 +4,6 @@ const jsDropMenuAnimation = document.getElementById("jsDropMenuAnimation");
 const jsHeaderFriend = document.getElementById("jsHeaderFriend");
 const jsHeaderFriendBtn = document.getElementById("jsHeaderFriendBtn");
 const jsHeaderFriendBgc = document.getElementById("jsHeaderFriendBgc");
-const jsFeedBolckBtn = document.getElementById("jsFeedBolckBtn");
 
 let doubleClick = false;
 
@@ -74,6 +73,8 @@ const handleConfirmFriend = async event => {
         data: {
           targetIdx
         }
+      }).catch(error => {
+        console.log(error);
       });
       if (response.status === 200) {
         document.getElementById(`waitFriendBlock${targetIdx}`).remove();
@@ -88,6 +89,8 @@ const handleConfirmFriend = async event => {
         data: {
           targetIdx
         }
+      }).catch(error => {
+        console.log(error);
       });
       if (response.status === 200) {
         document.getElementById(`waitFriendBlock${targetIdx}`).remove();
