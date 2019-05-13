@@ -270,7 +270,28 @@ export const postAddComment = async (req, res) => {
   }
 };
 
-export const postEditComment = (req, res) => {};
+export const postEditComment = async (req, res) => {
+  const {
+    body: { idx, description }
+  } = req;
+
+  const $insetComment = `update CommentList set ? where idx = "${idx}";`;
+  const $data = {
+    description,
+    edited: 1
+  };
+  try {
+    await db.query($insetComment, $data, err => {
+      if (err) throw err;
+      res.status(200);
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
 
 export const postDeleteComment = async (req, res) => {
   const {

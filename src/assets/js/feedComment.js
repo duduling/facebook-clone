@@ -5,6 +5,7 @@ const jsUserProfile = document.getElementById("jsUserProfile").src;
 const jsUserName = document.getElementById("jsUserName").innerText;
 
 let tempCommentSubMenuDocument;
+let tempCommentEditDocument;
 
 const whatTimeIsIt = targetDate => {
   if (targetDate !== false) {
@@ -79,13 +80,14 @@ export const handleAddCommentDocu = comment => {
       </div>
     </div>
   </div>
-  <div class="feedBlock__comments-single--edit">
+  <div class="feedBlock__comments-single--edit", style="display: none">
     <form onsubmit="return false;">
       <img src="${comment.profile}" alt="userProfile" />
       <input type="text" textarea="commentWrite" />
       <input type="submit" value="Edit" />
-      <input type="hidden" name="targetIdx" value="${comment.Idx}" />
+      <input type="hidden" name="targetIdx" value="${comment.idx}" />
     </form>
+    <span>취소하려면 Esc를 눌러주세요.</span>
   </div>
 </div>
 `;
@@ -151,17 +153,73 @@ const commentSubMenuToggle = targetDocu => {
 };
 
 // Comment Edit Process---------------------------------------------------------------
+const handleEditCommentOn = commentToggleDocu => {
+  const targetDocu = commentToggleDocu;
+  const CommentInnerText =
+    targetDocu[0].lastElementChild.firstElementChild.firstElementChild
+      .lastElementChild.innerText;
+
+  // Edit Input에 기존 Text 넣어주기
+  targetDocu[1].children[0][0].value = CommentInnerText;
+
+  targetDocu[0].style.display = "none";
+  targetDocu[1].style.display = "block";
+};
+
+const handleEditCommentOff = commentToggleDocu => {
+  const targetDocu = commentToggleDocu;
+
+  targetDocu[0].style.display = "grid";
+  targetDocu[1].style.display = "none";
+};
 
 const handleCommentEdit = eventPath => {
   const targetIdx = eventPath.filter(e => {
     return e.id === "jsCommentEditBtn";
   })[0].value;
 
-  console.log(targetIdx);
+  const targetDocuChild = document.getElementById(
+    `jsCommentBlockIdx${targetIdx}`
+  ).children;
+
+  if (tempCommentEditDocument) {
+    handleEditCommentOff(tempCommentEditDocument, null);
+  }
+
+  if (targetDocuChild[1].style.display === "none") {
+    tempCommentEditDocument = targetDocuChild;
+    handleEditCommentOn(targetDocuChild);
+  } else {
+    tempCommentEditDocument = false;
+    handleEditCommentOff(targetDocuChild, null);
+  }
+};
+
+const handleEditComment = async event => {
+  const description = event.srcElement[0].value;
+  const idx = event.srcElement[2].value;
+
+  const response = await axios({
+    url: "/api/editComment",
+    method: "POST",
+    data: {
+      idx,
+      description
+    }
+  }).catch(err => {
+    console.log(err);
+  });
+
+  if (response.status === 200) {
+    const targetDocuChild = document.getElementById(`jsCommentBlockIdx${idx}`)
+      .children;
+
+    targetDocuChild[0].lastElementChild.children[0].firstElementChild.lastElementChild.innerText = description;
+    handleEditCommentOff(targetDocuChild);
+  }
 };
 
 // Comment Delete Process---------------------------------------------------------------
-
 const handleCommentDelete = async eventPath => {
   const commentIdx = eventPath.filter(e => {
     return e.id === "jsCommentDeleteBtn";
@@ -181,6 +239,20 @@ const handleCommentDelete = async eventPath => {
     document.getElementById(`jsCommentBlockIdx${commentIdx}`).remove();
   }
 };
+
+// Window Event Click
+const handleSubmitEvent = event => {
+  const eventPath = event.composedPath();
+
+  if (eventPath[4].id === "feedSection") {
+    handleEventAddComment(event);
+  }
+
+  if (eventPath[6].id === "feedSection") {
+    handleEditComment(event);
+  }
+};
+
 // Window Event Click
 const handleClickEvent = event => {
   const eventPath = event.composedPath();
@@ -210,9 +282,17 @@ const handleClickEvent = event => {
   }
 };
 
+// Window Key Up Event
+const handleKeyUpEvent = event => {
+  if (event.code === "Escape" && tempCommentEditDocument) {
+    handleEditCommentOff(tempCommentEditDocument, null);
+  }
+};
+
 const init = () => {
-  window.addEventListener("submit", handleEventAddComment);
+  window.addEventListener("submit", handleSubmitEvent);
   window.addEventListener("click", handleClickEvent);
+  window.addEventListener("keyup", handleKeyUpEvent);
 };
 
 if (feedSection) {

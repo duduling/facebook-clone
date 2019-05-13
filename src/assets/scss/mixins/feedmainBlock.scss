@@ -1,273 +1,151 @@
-.feedBlock {
-  position: relative;
-  border: #ddd solid 1px;
-  border-radius: 7px;
-  margin-top: 15px;
-  background-color: #fff;
-  padding: 10px;
-  .feedBlock__header {
-    display: grid;
-    grid-template-columns: 2fr 17fr 1fr;
-    & > a > img {
-      width: 60px;
-      height: 60px;
-      border-radius: 100%;
-      transition: 0.3s;
-      object-fit: cover;
-      object-position: top;
-      border: rgba(0, 0, 0, 0.1) solid 1px;
-    }
-    .feedBlock__header-grid {
-      height: 100%;
+#feedSection {
+  margin-bottom: 10%;
+
+  .feedBlock {
+    position: relative;
+    border: #ddd solid 1px;
+    border-radius: 7px;
+    margin-top: 15px;
+    background-color: #fff;
+    padding: 10px;
+    .feedBlock__header {
       display: grid;
-      grid-template-rows: 1fr 1fr;
-      & > span {
-        margin-left: 10px;
-        line-height: 30px;
-        font-size: 12px;
-        color: #616770;
+      grid-template-columns: 2fr 17fr 1fr;
+      & > a > img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        transition: 0.3s;
+        object-fit: cover;
+        object-position: top;
+        border: rgba(0, 0, 0, 0.1) solid 1px;
       }
-      .feedBolck__header-userName {
-        & > a > span {
+      .feedBlock__header-grid {
+        height: 100%;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        & > span {
           margin-left: 10px;
           line-height: 30px;
+          font-size: 12px;
+          color: #616770;
+        }
+        .feedBolck__header-userName {
+          & > a > span {
+            margin-left: 10px;
+            line-height: 30px;
+          }
+        }
+      }
+      .feedBlock__header-subMenuBtn {
+        & > i {
+          float: right;
+          font-size: 20px;
+          cursor: pointer;
+          color: #000000a1;
+        }
+        & :hover {
+          color: black;
         }
       }
     }
-    .feedBlock__header-subMenuBtn {
-      & > i {
-        float: right;
-        font-size: 20px;
-        cursor: pointer;
-        color: #000000a1;
-      }
-      & :hover {
-        color: black;
-      }
-    }
-  }
-  .feedBlock__subMenu {
-    position: absolute;
-    display: grid;
-    top: 20px;
-    right: 20px;
-    font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border: $grayLine solid 1px;
-    & > button {
-      padding: 8px;
-      cursor: pointer;
-      border: none;
-      background-color: $lightGrayColor;
-      &:hover {
-        background-color: $feedBGC;
-      }
-    }
-    & > button:first-child {
-      border-bottom: $grayLine solid 1px;
-      & > i > span {
-        margin-left: 5px;
-      }
-    }
-    & > button:last-child {
-      & > i > span {
-        margin-left: 9px;
-      }
-    }
-  }
-  .feedBlock__body {
-    & > span {
-      display: block;
-      padding: 10px;
-    }
-    .feedBlock__body-img {
-      & > img {
-        width: 580px;
-        max-height: 580px;
-      }
-    }
-  }
-  .feedBlock__footer {
-    padding-top: 15px;
-    .feedBlock__footer-top {
-      display: flex;
-      justify-content: space-between;
-      .feedBlock__footer-like {
-        & > img {
-          width: 16px;
-          height: 16px;
-          margin-left: 7px;
-        }
-        & > span {
-          margin-left: 7px;
-        }
-      }
-      .feedBlock__footer-comment {
-        & > img {
-          position: relative;
-          top: 3px;
-          width: 16px;
-          height: 16px;
-          margin-right: 7px;
-        }
-        & > span {
-          margin-right: 7px;
-        }
-      }
-    }
-    .feedBlock__designLine {
-      margin: 10px 0;
-      width: 100%;
-      height: 1px;
-      background-color: #ccc;
-    }
-    .feedBlock__footer-btn {
+    .feedBlock__subMenu {
+      position: absolute;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      border: $grayLine solid 1px;
       & > button {
-        background-color: transparent;
-        border: none;
-        padding: 5px;
+        padding: 8px;
         cursor: pointer;
-        transition: 0.2s;
-        font-size: 14px;
+        border: none;
+        background-color: $lightGrayColor;
         &:hover {
-          background-color: #e9ebee8a;
+          background-color: $feedBGC;
+        }
+      }
+      & > button:first-child {
+        border-bottom: $grayLine solid 1px;
+        & > i > span {
+          margin-left: 5px;
+        }
+      }
+      & > button:last-child {
+        & > i > span {
+          margin-left: 9px;
         }
       }
     }
-  }
-  .feedBlock__comments {
-    border-top: #ccc solid 1px;
-    margin-top: 10px;
-    .feedBlock__comments-write {
-      margin-top: 10px;
-      margin-bottom: 15px;
-      & > form {
-        display: grid;
-        grid-template-columns: 1fr 9fr 1fr;
+    .feedBlock__body {
+      & > span {
+        display: block;
+        padding: 10px;
+      }
+      .feedBlock__body-img {
         & > img {
-          width: 40px;
-          height: 40px;
-          margin-left: 3px;
-          object-fit: cover;
-          object-position: top;
+          width: 580px;
+          max-height: 580px;
         }
-        & > input {
-          &:nth-child(2) {
-            margin: 5px;
-            padding: 0 10px;
-            background-color: #eee;
-            border-radius: 15px;
+      }
+    }
+    .feedBlock__footer {
+      padding-top: 15px;
+      .feedBlock__footer-top {
+        display: flex;
+        justify-content: space-between;
+        .feedBlock__footer-like {
+          & > img {
+            width: 16px;
+            height: 16px;
+            margin-left: 7px;
           }
-          &:nth-child(3) {
-            cursor: pointer;
-            margin: 5px 0;
-            background-color: transparent;
-            border: #eee solid 1px;
-            border-radius: 10px;
+          & > span {
+            margin-left: 7px;
+          }
+        }
+        .feedBlock__footer-comment {
+          & > img {
+            position: relative;
+            top: 3px;
+            width: 16px;
+            height: 16px;
+            margin-right: 7px;
+          }
+          & > span {
+            margin-right: 7px;
+          }
+        }
+      }
+      .feedBlock__designLine {
+        margin: 10px 0;
+        width: 100%;
+        height: 1px;
+        background-color: #ccc;
+      }
+      .feedBlock__footer-btn {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        & > button {
+          background-color: transparent;
+          border: none;
+          padding: 5px;
+          cursor: pointer;
+          transition: 0.2s;
+          font-size: 14px;
+          &:hover {
+            background-color: #e9ebee8a;
           }
         }
       }
     }
-    .feedBlock__comments-commentsList {
-      .feedBlock__comments-single {
-        display: grid;
-        grid-template-columns: 1fr 9fr;
-        margin-top: 12px;
-        & > a > img {
-          width: 40px;
-          height: 40px;
-          margin-left: 3px;
-          object-fit: cover;
-          object-position: top;
-        }
-        .feedBlock__comments-single--body {
-          .feedBlock__comment-block {
-            width: 100%;
-            display: inline-block;
-            position: relative;
-            .feedBlock__comment-block--description {
-              display: inline-block;
-              max-width: 89%;
-              padding: 6px 10px;
-              border-radius: 15px;
-              background-color: #eee;
-              & > a {
-                display: inline-block;
-                color: #385898;
-                font-size: 14px;
-                font-weight: 500;
-                margin-right: 5px;
-              }
-              & > span {
-                display: inline;
-                font-size: 13px;
-                line-height: 20px;
-              }
-            }
-            .feedBlock__comment-subMenu {
-              display: inline-block;
-              position: absolute;
-              top: calc(50% - 8px);
-              margin-left: 15px;
-              & > i {
-                transition: 0.3s;
-                cursor: pointer;
-                color: #eee;
-                position: relative;
-                &:hover {
-                  color: #000000a1;
-                }
-                .feedBlock__comment-subMenuBox {
-                  position: absolute;
-                  z-index: 1;
-                  width: 95px;
-                  top: 7px;
-                  right: 7px;
-                  font-size: 14px;
-                  border: $grayLine solid 1px;
-                  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-                  & > button {
-                    padding: 8px;
-                    cursor: pointer;
-                    border: none;
-                    background-color: $lightGrayColor;
-                    &:hover {
-                      background-color: $feedBGC;
-                    }
-                  }
-                  & > button:first-child {
-                    border-bottom: $grayLine solid 1px;
-                    & > i > span {
-                      margin-left: 5px;
-                    }
-                  }
-                  & > button:last-child {
-                    & > i > span {
-                      margin-left: 9px;
-                    }
-                  }
-                }
-              }
-            }
-          }
-          .feedBlock__comment-block--fuction {
-            margin-left: 5px;
-            & > a {
-              color: #385898;
-              margin-left: 5px;
-              font-size: 12px;
-            }
-            & > span {
-              margin-left: 5px;
-              font-size: 12px;
-            }
-          }
-        }
-      }
-      .feedBlock__comments-single--edit {
-        display: none;
+    .feedBlock__comments {
+      border-top: #ccc solid 1px;
+      margin-top: 10px;
+      .feedBlock__comments-write {
+        margin-top: 10px;
+        margin-bottom: 15px;
         & > form {
           display: grid;
           grid-template-columns: 1fr 9fr 1fr;
@@ -295,90 +173,221 @@
           }
         }
       }
-      .feedBlock__comments-Re {
-        display: grid;
-        grid-template-columns: 1fr 1fr 8fr 1fr;
-        margin-top: 15px;
-        & > a > img {
-          width: 40px;
-          height: 40px;
-          margin-left: 3px;
-          object-fit: cover;
-          object-position: top;
-        }
-        .feedBlock__comment-Re {
-          .feedBlock__comment-Re--description {
-            background-color: #eee;
-            border-radius: 15px;
-            padding: 10px;
-            margin-left: 5px;
-            & > a {
+      .feedBlock__comments-commentsList {
+        .feedBlock__comments-single {
+          display: grid;
+          grid-template-columns: 1fr 9fr;
+          margin-top: 12px;
+          & > a > img {
+            width: 40px;
+            height: 40px;
+            margin-left: 3px;
+            object-fit: cover;
+            object-position: top;
+          }
+          .feedBlock__comments-single--body {
+            .feedBlock__comment-block {
+              width: 100%;
               display: inline-block;
-              color: #385898;
-              font-size: 14px;
-              font-weight: 500;
-              margin-right: 5px;
+              position: relative;
+              .feedBlock__comment-block--description {
+                display: inline-block;
+                max-width: 89%;
+                padding: 6px 10px;
+                border-radius: 15px;
+                background-color: #eee;
+                & > a {
+                  display: inline-block;
+                  color: #385898;
+                  font-size: 14px;
+                  font-weight: 500;
+                  margin-right: 5px;
+                }
+                & > span {
+                  display: inline;
+                  font-size: 13px;
+                  line-height: 20px;
+                }
+              }
+              .feedBlock__comment-subMenu {
+                display: inline-block;
+                position: absolute;
+                top: calc(50% - 8px);
+                margin-left: 15px;
+                & > i {
+                  transition: 0.3s;
+                  cursor: pointer;
+                  color: #eee;
+                  position: relative;
+                  &:hover {
+                    color: #000000a1;
+                  }
+                  .feedBlock__comment-subMenuBox {
+                    position: absolute;
+                    z-index: 1;
+                    width: 95px;
+                    top: 7px;
+                    right: 7px;
+                    font-size: 14px;
+                    border: $grayLine solid 1px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                    & > button {
+                      padding: 8px;
+                      cursor: pointer;
+                      border: none;
+                      background-color: $lightGrayColor;
+                      &:hover {
+                        background-color: $feedBGC;
+                      }
+                    }
+                    & > button:first-child {
+                      border-bottom: $grayLine solid 1px;
+                      & > i > span {
+                        margin-left: 5px;
+                      }
+                    }
+                    & > button:last-child {
+                      & > i > span {
+                        margin-left: 9px;
+                      }
+                    }
+                  }
+                }
+              }
             }
-            & > span {
-              display: inline;
-              font-size: 13px;
-              line-height: 20px;
-            }
-          }
-          .feedBlock__comment-Re--fuction {
-            margin-left: 5px;
-            & > a {
-              color: #385898;
+            .feedBlock__comment-block--fuction {
               margin-left: 5px;
-              font-size: 12px;
-            }
-            & > span {
-              margin-left: 5px;
-              font-size: 12px;
+              & > a {
+                color: #385898;
+                margin-left: 5px;
+                font-size: 12px;
+              }
+              & > span {
+                margin-left: 5px;
+                font-size: 12px;
+              }
             }
           }
         }
-        .feedBlock__comment-Re-subMenu {
-          display: flex;
-          align-items: center;
-          margin-left: 10px;
-          & > i {
-            position: relative;
-            transition: 0.3s;
-            cursor: pointer;
-            color: #eee;
-            &:hover {
-              color: #000000a1;
+        .feedBlock__comments-single--edit {
+          display: none;
+          & > form {
+            display: grid;
+            grid-template-columns: 1fr 9fr 1fr;
+            & > img {
+              width: 40px;
+              height: 40px;
+              margin-left: 3px;
+              object-fit: cover;
+              object-position: top;
             }
-            .feedBlock__comment-Re-subMenuBox {
-              width: 95px;
-              // display: grid;
-              display: none;
-              z-index: 1;
-              position: absolute;
-              top: 7px;
-              right: 7px;
-              font-size: 14px;
-              border: $grayLine solid 1px;
-              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-              & > button {
-                padding: 8px;
+            & > input {
+              &:nth-child(2) {
+                margin: 5px;
+                padding: 0 10px;
+                background-color: #eee;
+                border-radius: 15px;
+              }
+              &:nth-child(3) {
                 cursor: pointer;
-                border: none;
-                background-color: $lightGrayColor;
-                &:hover {
-                  background-color: $feedBGC;
-                }
+                margin: 5px 0;
+                background-color: transparent;
+                border: #eee solid 1px;
+                border-radius: 10px;
               }
-              & > button:first-child {
-                border-bottom: $grayLine solid 1px;
-                & > i > span {
-                  margin-left: 5px;
-                }
+            }
+          }
+          & > span {
+            font-size: 9px;
+            margin-left: 10%;
+            color: gray;
+          }
+        }
+        .feedBlock__comments-Re {
+          display: grid;
+          grid-template-columns: 1fr 1fr 8fr 1fr;
+          margin-top: 15px;
+          & > a > img {
+            width: 40px;
+            height: 40px;
+            margin-left: 3px;
+            object-fit: cover;
+            object-position: top;
+          }
+          .feedBlock__comment-Re {
+            .feedBlock__comment-Re--description {
+              background-color: #eee;
+              border-radius: 15px;
+              padding: 10px;
+              margin-left: 5px;
+              & > a {
+                display: inline-block;
+                color: #385898;
+                font-size: 14px;
+                font-weight: 500;
+                margin-right: 5px;
               }
-              & > button:last-child {
-                & > i > span {
-                  margin-left: 9px;
+              & > span {
+                display: inline;
+                font-size: 13px;
+                line-height: 20px;
+              }
+            }
+            .feedBlock__comment-Re--fuction {
+              margin-left: 5px;
+              & > a {
+                color: #385898;
+                margin-left: 5px;
+                font-size: 12px;
+              }
+              & > span {
+                margin-left: 5px;
+                font-size: 12px;
+              }
+            }
+          }
+          .feedBlock__comment-Re-subMenu {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            & > i {
+              position: relative;
+              transition: 0.3s;
+              cursor: pointer;
+              color: #eee;
+              &:hover {
+                color: #000000a1;
+              }
+              .feedBlock__comment-Re-subMenuBox {
+                width: 95px;
+                // display: grid;
+                display: none;
+                z-index: 1;
+                position: absolute;
+                top: 7px;
+                right: 7px;
+                font-size: 14px;
+                border: $grayLine solid 1px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                & > button {
+                  padding: 8px;
+                  cursor: pointer;
+                  border: none;
+                  background-color: $lightGrayColor;
+                  &:hover {
+                    background-color: $feedBGC;
+                  }
+                }
+                & > button:first-child {
+                  border-bottom: $grayLine solid 1px;
+                  & > i > span {
+                    margin-left: 5px;
+                  }
+                }
+                & > button:last-child {
+                  & > i > span {
+                    margin-left: 9px;
+                  }
                 }
               }
             }
