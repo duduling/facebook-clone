@@ -232,11 +232,12 @@ export const postSelectComment = async (req, res) => {
   } = req;
 
   const $commentJoinUser = `select CommentList.idx, feedIdx, writerIdx, createdAt, description, profile, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx where feedIdx = "${targetIdx}";`;
+  const $cocommentJoinUser = `select CocommentList.idx, feedIdx, commentIdx, writerIdx, createdAt, description, profile, name FROM CocommentList left join Users on CocommentList.writerIdx = Users.idx WHERE feedIdx = "${targetIdx}";`;
 
   try {
-    await db.query($commentJoinUser, (err, rows) => {
+    await db.query($commentJoinUser + $cocommentJoinUser, (err, rows) => {
       if (err) throw err;
-      res.status(200).json({ commentList: rows });
+      res.status(200).json({ commentList: rows[0], cocommentList: rows[1] });
       res.end();
     });
   } catch (error) {
