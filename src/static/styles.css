@@ -1919,7 +1919,7 @@ input {
     overflow: hidden;
     -o-text-overflow: ellipsis;
        text-overflow: ellipsis;
-    line-height: 14px;
+    line-height: 16px;
     word-wrap: break-word; }
 
 @media (max-width: 768px) {

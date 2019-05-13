@@ -261,6 +261,27 @@ export const postAddComment = async (req, res) => {
     await db.query($insetComment, $commentDate, (err, rows) => {
       if (err) throw err;
       res.status(200).json({ insertId: rows.insertId });
+      res.end();
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+    res.end();
+  }
+};
+
+export const postEditComment = (req, res) => {};
+
+export const postDeleteComment = async (req, res) => {
+  const {
+    body: { commentIdx }
+  } = req;
+
+  const $insetComment = `delete from CommentList where idx = "${commentIdx}" ;`;
+  try {
+    await db.query($insetComment, err => {
+      if (err) throw err;
+      res.status(200);
     });
   } catch (error) {
     console.log(error);
@@ -269,7 +290,3 @@ export const postAddComment = async (req, res) => {
     res.end();
   }
 };
-
-export const postEditComment = (req, res) => {};
-
-export const postDeleteComment = (req, res) => {};

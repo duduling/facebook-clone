@@ -1,0 +1,44 @@
+<div>
+  <div class="feedBlock__comments-single">
+    <a href="#">
+      <img src="${comment.profile}" , alt="userProfile" />
+    </a>
+    <div class="feedBlock__comments-single--body">
+      <div class="feedBlock__comment-block">
+        <div class="feedBlock__comment-block--description">
+          <a href="">${comment.name}</a>
+          <span>${comment.description} </span>
+        </div>
+        <div class="feedBlock__comment-subMenu">
+          <i class="fas fa-ellipsis-h" , id="commentSubMenuBtn">
+            <div class="feedBlock__comment-subMenuBox" , style="display: none">
+              <button id="jsCommentEditBtn" , value="${comment.idx}">
+                <i class="far fa-edit">
+                  <span>수정하기</span>
+                </i>
+              </button>
+              <button id="jsCommentDeleteBtn" , value="${comment.idx}">
+                <i class="far fa-trash-alt">
+                  <span>삭제하기</span>
+                </i>
+              </button>
+            </div>
+          </i>
+        </div>
+      </div>
+      <div class="feedBlock__comment-block--fuction">
+        <a role="button">답글 달기</a>
+        <span>·</span>
+        <span>${whatTimeIsIt(comment.createdAt)}</span>
+      </div>
+    </div>
+  </div>
+  <div class="feedBlock__comments-single--edit">
+    <form onsubmit="return false;">
+      <img src="${comment.profile}" alt="userProfile" />
+      <input type="text" textarea="commentWrite" />
+      <input type="submit" value="Edit" />
+      <input type="hidden" name="targetIdx" value="${comment.Idx}" />
+    </form>
+  </div>
+</div>
