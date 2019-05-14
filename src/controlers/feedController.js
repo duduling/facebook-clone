@@ -160,7 +160,6 @@ export const postFeedsEdit = (req, res) => {
     const $dataObj = {
       fileUrl: file ? `/${file.path}` : null,
       description: uploadText,
-      createdAt: new Date(),
       edited: 1
     };
     db.query($feedUpdate, $dataObj, err => {

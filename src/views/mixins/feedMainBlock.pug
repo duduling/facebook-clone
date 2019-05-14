@@ -39,7 +39,7 @@ mixin feedBlock(feed = {})
                     a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
                 if feed.edited === 1
-                    span #{whatTimeIsIt(feed.createdAt)} | edited
+                    span #{whatTimeIsIt(feed.createdAt)} · Edited
                 else
                     span #{whatTimeIsIt(feed.createdAt)}
             if feed.writerIdx === user.idx

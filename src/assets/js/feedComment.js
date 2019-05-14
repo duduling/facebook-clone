@@ -6,7 +6,6 @@ const jsUserName = document.getElementById("jsUserName").innerText;
 
 let tempCommentSubMenuDocument;
 let tempCommentEditDocument;
-let tempCommentCocomentDocument;
 
 const whatTimeIsIt = targetDate => {
   if (targetDate !== false) {
@@ -97,6 +96,7 @@ export const handleAddCommentDocu = comment => {
             <a role="button", value="true">답글 달기</a>
             <span>·</span>
             <span>${whatTimeIsIt(comment.createdAt)}</span>
+            <span>${comment.edited}</span>
           </div>
           ${htmlBlock}
         </div>
@@ -168,6 +168,7 @@ export const handleAddCocommentDocu = cocomment => {
             <a role="button", value="false">답글 달기</a>
             <span>·</span>
             <span>${whatTimeIsIt(cocomment.createdAt)}</span>
+            <span>${cocomment.edited}</span>
           </div> 
         </div>
       </div>
