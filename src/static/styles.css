@@ -2294,7 +2294,7 @@ input {
                 position: relative; }
                 #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i:hover {
                   color: #000000a1; }
-                #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox {
+                #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox-Re {
                   position: absolute;
                   z-index: 1;
                   width: 95px;
@@ -2305,18 +2305,18 @@ input {
                   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
                      -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
                           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
-                  #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox > button {
+                  #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox-Re > button {
                     padding: 8px;
                     cursor: pointer;
                     border: none;
                     background-color: #f5f6f7; }
-                    #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox > button:hover {
+                    #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox-Re > button:hover {
                       background-color: #e9ebee; }
-                  #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox > button:first-child {
+                  #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox-Re > button:first-child {
                     border-bottom: #c9c9c9 solid 1px; }
-                    #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox > button:first-child > i > span {
+                    #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox-Re > button:first-child > i > span {
                       margin-left: 5px; }
-                  #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox > button:last-child > i > span {
+                  #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block .feedBlock__comment-subMenu > i .feedBlock__comment-subMenuBox-Re > button:last-child > i > span {
                     margin-left: 9px; }
           #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block--fuction {
             margin-left: 5px; }
@@ -2327,27 +2327,29 @@ input {
             #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block--fuction > span {
               margin-left: 5px;
               font-size: 11px; }
-        #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit {
-          display: none; }
-          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit > form {
+        #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit-Re {
+          display: none;
+          margin-top: 12px; }
+          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit-Re > form {
             display: grid;
             grid-template-columns: 1fr 9fr 1fr; }
-            #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit > form > img {
+            #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit-Re > form > img {
               width: 40px;
               height: 40px;
-              margin-left: 3px;
+              padding: 5px;
+              margin-left: 2px;
               -o-object-fit: cover;
                  object-fit: cover;
               -o-object-position: top;
                  object-position: top; }
-            #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit > form > input:nth-child(2) {
+            #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit-Re > form > input:nth-child(2) {
               margin: 5px;
               padding: 0 10px;
               background-color: #eee;
               -webkit-border-radius: 15px;
                  -moz-border-radius: 15px;
                       border-radius: 15px; }
-            #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit > form > input:nth-child(3) {
+            #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit-Re > form > input:nth-child(3) {
               cursor: pointer;
               margin: 5px 0;
               background-color: transparent;
@@ -2355,7 +2357,7 @@ input {
               -webkit-border-radius: 10px;
                  -moz-border-radius: 10px;
                       border-radius: 10px; }
-          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit > span {
+          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit-Re > span {
             font-size: 9px;
             margin-left: 10%;
             color: gray; }

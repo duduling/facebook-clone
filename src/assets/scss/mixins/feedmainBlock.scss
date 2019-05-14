@@ -407,7 +407,7 @@
                     &:hover {
                       color: #000000a1;
                     }
-                    .feedBlock__comment-subMenuBox {
+                    .feedBlock__comment-subMenuBox-Re {
                       position: absolute;
                       z-index: 1;
                       width: 95px;
@@ -454,15 +454,17 @@
               }
             }
           }
-          .feedBlock__comments-single--edit {
+          .feedBlock__comments-single--edit-Re {
             display: none;
+            margin-top: 12px;
             & > form {
               display: grid;
               grid-template-columns: 1fr 9fr 1fr;
               & > img {
                 width: 40px;
                 height: 40px;
-                margin-left: 3px;
+                padding: 5px;
+                margin-left: 2px;
                 object-fit: cover;
                 object-position: top;
               }
