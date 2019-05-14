@@ -13,7 +13,11 @@ import {
   postAddComment,
   postEditComment,
   postDeleteComment,
-  postSelectComment
+  postSelectComment,
+  postSelectCocomment,
+  postAddCocomment,
+  postEditCocomment,
+  postDeleteCocomment
 } from "../controlers/apiController";
 
 const apiRouter = express.Router();
@@ -30,5 +34,9 @@ apiRouter.post(routes.selectComment, postSelectComment);
 apiRouter.post(routes.addComment, postAddComment);
 apiRouter.post(routes.editComment, postEditComment);
 apiRouter.post(routes.deleteComment, postDeleteComment);
+apiRouter.post(routes.selectCocomment, postSelectCocomment);
+apiRouter.post(routes.addCocomment, postAddCocomment);
+apiRouter.post(routes.editCocomment, postEditCocomment);
+apiRouter.post(routes.deleteCocomment, postDeleteCocomment);
 
 export default apiRouter;

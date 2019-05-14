@@ -6,7 +6,6 @@ const jsUserName = document.getElementById("jsUserName").innerText;
 
 let tempCommentSubMenuDocument;
 let tempCommentEditDocument;
-let tempCommentCocomentDocument;
 
 const whatTimeIsIt = targetDate => {
   if (targetDate !== false) {
@@ -45,62 +44,86 @@ const whatTimeIsIt = targetDate => {
 
 // Comment HTML
 export const handleAddCommentDocu = comment => {
-  const addCommentHTML = `
-<div id="jsCommentBlockIdx${comment.idx}">
-  <div class="feedBlock__comment-non-Re">
-    <div class="feedBlock__comments-single">
-      <a href="#">
-        <img src="${comment.profile}" , alt="userProfile" />
+  let htmlBlock = "";
+
+  // cocoment가 있는지 없는지 확인 후 htmlBlock 생성
+  if (comment.commentCount > 0) {
+    htmlBlock = `
+    <div class="feedBlock__comment-block--cocomment", value="true">
+      <a role="button", value="false">
+        <img src="/img/cocomment_arrow.png" alt="cocomment_arrow">
+        <span id="cocomentBtn">답글 보기 ${comment.commentCount}개</span>
       </a>
-      <div class="feedBlock__comments-single--body">
-        <div class="feedBlock__comment-block">
-          <div class="feedBlock__comment-block--description">
-            <a href="">${comment.name}</a>
-            <span>${comment.description} </span>
+    </div>
+    `;
+  } else {
+    htmlBlock = `
+    <div class="feedBlock__comment-block--cocomment",  value="true", style="display: none"></div>
+    `;
+  }
+
+  const addCommentHTML = `
+  <div id="jsCommentBlockIdx${comment.idx}">
+    <div class="feedBlock__comment-non-Re">
+      <div class="feedBlock__comments-single">
+        <a href="#">
+          <img src="${comment.profile}" , alt="userProfile" />
+        </a>
+        <div class="feedBlock__comments-single--body">
+          <div class="feedBlock__comment-block">
+            <div class="feedBlock__comment-block--description">
+              <a href="">${comment.name}</a>
+              <span>${comment.description} </span>
+            </div>
+            <div class="feedBlock__comment-subMenu">
+              <i class="fas fa-ellipsis-h" , id="commentSubMenuBtn">
+                <div class="feedBlock__comment-subMenuBox" , style="display: none">
+                  <button id="jsCommentEditBtn" , value="${comment.idx}">
+                    <i class="far fa-edit">
+                      <span>수정하기</span>
+                    </i>
+                  </button>
+                  <button id="jsCommentDeleteBtn" , value="${comment.idx}">
+                    <i class="far fa-trash-alt">
+                      <span>삭제하기</span>
+                    </i>
+                  </button>
+                </div>
+              </i>
+            </div>
           </div>
-          <div class="feedBlock__comment-subMenu">
-            <i class="fas fa-ellipsis-h" , id="commentSubMenuBtn">
-              <div class="feedBlock__comment-subMenuBox" , style="display: none">
-                <button id="jsCommentEditBtn" , value="${comment.idx}">
-                  <i class="far fa-edit">
-                    <span>수정하기</span>
-                  </i>
-                </button>
-                <button id="jsCommentDeleteBtn" , value="${comment.idx}">
-                  <i class="far fa-trash-alt">
-                    <span>삭제하기</span>
-                  </i>
-                </button>
-              </div>
-            </i>
+          <div class="feedBlock__comment-block--fuction">
+            <a role="button", value="true">답글 달기</a>
+            <span>·</span>
+            <span>${whatTimeIsIt(comment.createdAt)}</span>
+            <span>${comment.edited}</span>
           </div>
-        </div>
-        <div class="feedBlock__comment-block--fuction">
-          <a role="button">답글 달기</a>
-          <span>·</span>
-          <span>${whatTimeIsIt(comment.createdAt)}</span>
+          ${htmlBlock}
         </div>
       </div>
+      <div class="feedBlock__comments-single--edit", style="display: none">
+        <form onsubmit="return false;">
+          <img src="${comment.profile}" alt="userProfile" />
+          <input type="text" textarea="commentWrite", required/>
+          <input type="submit" value="Edit" />
+          <input type="hidden" name="targetIdx" value="${comment.idx}" />
+        </form>
+        <span>취소하려면 Esc를 눌러주세요.</span>
+      </div>
     </div>
-    <div class="feedBlock__comments-single--edit", style="display: none">
+    <div class="feedBlock__comments-Re-write", id="jsCocommentWriteIdx${
+      comment.idx
+    }", style="display: none">
       <form onsubmit="return false;">
         <img src="${comment.profile}" alt="userProfile" />
-        <input type="text" textarea="commentWrite" />
-        <input type="submit" value="Edit" />
-        <input type="hidden" name="targetIdx" value="${comment.idx}" />
-      </form>
-      <span>취소하려면 Esc를 눌러주세요.</span>
-    </div>
-    <div class="feedBlock__comments-Re-write", style="display: none">
-      <form onsubmit="return false;">
-        <img src="${comment.profile}" alt="userProfile" />
-        <input type="text" textarea="commentWrite" />
-        <input type="submit" value="Edit" />
+        <input type="text" textarea="commentWrite", id="cocommentInputIdx${
+          comment.idx
+        }", autocomplete="off", required/>
+        <input type="submit" value="Add" />
         <input type="hidden" name="targetIdx" value="${comment.idx}" />
       </form>
     </div>
   </div>
-</div>
 `;
 
   document
@@ -110,9 +133,10 @@ export const handleAddCommentDocu = comment => {
 
 // Cocoment HTML
 export const handleAddCocommentDocu = cocomment => {
-  const addCommentHTML = `
-  <div id="jsCommentBlockIdx${cocomment.idx}">
-    <div class="feedBlock__comment-non-Re">
+  const addCocommentHTML = `
+    <div class="feedBlock__comments-Re", id="jsCocommentBlockIdx${
+      cocomment.idx
+    }">
       <div class="feedBlock__comments-single">
         <a href="#">
           <img src="${cocomment.profile}" , alt="userProfile" />
@@ -125,13 +149,13 @@ export const handleAddCocommentDocu = cocomment => {
             </div>
             <div class="feedBlock__comment-subMenu">
               <i class="fas fa-ellipsis-h" , id="commentSubMenuBtn">
-                <div class="feedBlock__comment-subMenuBox" , style="display: none">
-                  <button id="jsCommentEditBtn" , value="${cocomment.idx}">
+                <div class="feedBlock__comment-subMenuBox-Re" , style="display: none">
+                  <button id="jsCocommentEditBtn" , value="${cocomment.idx}">
                     <i class="far fa-edit">
                       <span>수정하기</span>
                     </i>
                   </button>
-                  <button id="jsCommentDeleteBtn" , value="${cocomment.idx}">
+                  <button id="jsCocommentDeleteBtn" , value="${cocomment.idx}">
                     <i class="far fa-trash-alt">
                       <span>삭제하기</span>
                     </i>
@@ -141,36 +165,28 @@ export const handleAddCocommentDocu = cocomment => {
             </div>
           </div>
           <div class="feedBlock__comment-block--fuction">
-            <a role="button">답글 달기</a>
+            <a role="button", value="false">답글 달기</a>
             <span>·</span>
             <span>${whatTimeIsIt(cocomment.createdAt)}</span>
-          </div>
+            <span>${cocomment.edited}</span>
+          </div> 
         </div>
       </div>
-      <div class="feedBlock__comments-single--edit", style="display: none">
+      <div class="feedBlock__comments-single--edit-Re", style="display: none">
         <form onsubmit="return false;">
           <img src="${cocomment.profile}" alt="userProfile" />
-          <input type="text" textarea="commentWrite" />
+          <input type="text" textarea="commentWrite", autocomplete="off", required/>
           <input type="submit" value="Edit" />
           <input type="hidden" name="targetIdx" value="${cocomment.idx}" />
         </form>
         <span>취소하려면 Esc를 눌러주세요.</span>
       </div>
-      <div class="feedBlock__comments-Re-write", style="display: none">
-        <form onsubmit="return false;">
-          <img src="${cocomment.profile}" alt="userProfile" />
-          <input type="text" textarea="commentWrite" />
-          <input type="submit" value="Edit" />
-          <input type="hidden" name="targetIdx" value="${cocomment.idx}" />
-        </form>
-      </div>
     </div>
-  </div>
 `;
 
   document
-    .getElementById(`jsCommentBlockIdx${cocomment.feedIdx}`)
-    .insertAdjacentHTML("beforeend", addCommentHTML);
+    .getElementById(`jsCocommentWriteIdx${cocomment.commentIdx}`)
+    .insertAdjacentHTML("beforebegin", addCocommentHTML);
 };
 
 // Add Comment Fucntion
@@ -190,8 +206,7 @@ const handleEventAddComment = async event => {
   });
 
   if (response.status === 200) {
-    document.getElementById(`commentInputIdx${event.target[2].value}`).value =
-      "";
+    document.getElementById(`commentInputIdx${feedIdx}`).value = "";
     const comment = {
       idx: response.data.insertId,
       feedIdx,
@@ -204,7 +219,7 @@ const handleEventAddComment = async event => {
   }
 };
 
-// SubMenu Toggle Process---------------------------------------------------------------
+// Comment SubMenu Toggle Process---------------------------------------------------------------
 const offTheSubMenu = () => {
   tempCommentSubMenuDocument.style.display = "none";
   tempCommentSubMenuDocument = null;
@@ -229,7 +244,7 @@ const commentSubMenuToggle = targetDocu => {
 };
 
 // Comment Edit Process---------------------------------------------------------------
-const handleEditCommentOn = commentToggleDocu => {
+const handleEditInputOn = commentToggleDocu => {
   const targetDocu = commentToggleDocu;
   const CommentInnerText =
     targetDocu[0].lastElementChild.firstElementChild.firstElementChild
@@ -242,14 +257,14 @@ const handleEditCommentOn = commentToggleDocu => {
   targetDocu[1].style.display = "block";
 };
 
-const handleEditCommentOff = commentToggleDocu => {
+const handleEditInputOff = commentToggleDocu => {
   const targetDocu = commentToggleDocu;
 
   targetDocu[0].style.display = "grid";
   targetDocu[1].style.display = "none";
 };
 
-const handleCommentEdit = eventPath => {
+const handleEditCommentToggle = eventPath => {
   const targetIdx = eventPath.filter(e => {
     return e.id === "jsCommentEditBtn";
   })[0].value;
@@ -259,19 +274,19 @@ const handleCommentEdit = eventPath => {
   ).children[0].children;
 
   if (tempCommentEditDocument) {
-    handleEditCommentOff(tempCommentEditDocument, null);
+    handleEditInputOff(tempCommentEditDocument);
   }
 
   if (targetDocuChild[1].style.display === "none") {
     tempCommentEditDocument = targetDocuChild;
-    handleEditCommentOn(targetDocuChild);
+    handleEditInputOn(targetDocuChild);
   } else {
     tempCommentEditDocument = false;
-    handleEditCommentOff(targetDocuChild, null);
+    handleEditInputOff(targetDocuChild);
   }
 };
 
-const handleEditComment = async event => {
+const handlePostEditComment = async event => {
   const description = event.srcElement[0].value;
   const idx = event.srcElement[2].value;
 
@@ -288,10 +303,12 @@ const handleEditComment = async event => {
 
   if (response.status === 200) {
     const targetDocuChild = document.getElementById(`jsCommentBlockIdx${idx}`)
-      .children;
+      .children[0];
 
-    targetDocuChild[0].lastElementChild.children[0].firstElementChild.lastElementChild.innerText = description;
-    handleEditCommentOff(targetDocuChild);
+    console.log(targetDocuChild);
+
+    targetDocuChild.firstElementChild.lastElementChild.firstElementChild.firstElementChild.lastElementChild.innerText = description;
+    handleEditInputOff(targetDocuChild.children);
   }
 };
 
@@ -317,44 +334,203 @@ const handleCommentDelete = async eventPath => {
 };
 
 // Cocomment Toggle Process---------------------------------------------------------------
-const handleCocomentToggle = async eventPath => {
-  const cocomentWriteDocu = eventPath[4].lastElementChild;
+const handleCocomentToggle = async (eventPath, number) => {
+  let commentIdx;
+  let cocommentBtn;
+  let cocommentBtnBoolean;
+  let cocommentInput;
 
-  if (cocomentWriteDocu.style.display === "none") {
-    cocomentWriteDocu.style.display = "block";
-    if (tempCommentCocomentDocument) {
-      tempCommentCocomentDocument.style.display = "none";
+  const catchEventPath = eventPath;
+
+  if (number === 0) {
+    [cocommentInput] = [
+      catchEventPath[5].lastElementChild.lastElementChild.children[1]
+    ];
+  } else if (number === 9) {
+    [commentIdx, cocommentBtn, cocommentBtnBoolean, cocommentInput] = [
+      catchEventPath[5].id.split("jsCommentBlockIdx")[1],
+      catchEventPath[2].children[2],
+      catchEventPath[2].children[2].attributes[2].value,
+      catchEventPath[5].lastElementChild.lastElementChild.children[1]
+    ];
+    catchEventPath[2].children[2].attributes[2].value = false;
+  } else if (number === 10) {
+    [commentIdx, cocommentBtn, cocommentBtnBoolean, cocommentInput] = [
+      catchEventPath[6].id.split("jsCommentBlockIdx")[1],
+      catchEventPath[2],
+      catchEventPath[2].attributes[2].value,
+      catchEventPath[6].lastElementChild.lastElementChild.children[1]
+    ];
+    catchEventPath[2].attributes[2].value = false;
+  }
+
+  // 댓글 대댓글 답글 달기 input 포커스
+  if (
+    eventPath[4].className !== "feedBlock__comments-Re" &&
+    cocommentBtnBoolean === "true" &&
+    number !== 0
+  ) {
+    const response = await axios({
+      url: "/api/selectCocomment",
+      method: "POST",
+      data: {
+        commentIdx
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+
+    if (response.status === 200) {
+      const returnCocommentList = response.data.cocommentList;
+
+      cocommentBtn.style.display = "none";
+
+      for (let i = 0; i < returnCocommentList.length; i++) {
+        handleAddCocommentDocu(returnCocommentList[i]);
+      }
+
+      document.getElementById(
+        `jsCocommentWriteIdx${commentIdx}`
+      ).style.display = "block";
     }
-    tempCommentCocomentDocument = cocomentWriteDocu;
   } else {
-    cocomentWriteDocu.style.display = "none";
-    tempCommentCocomentDocument = false;
+    cocommentInput.focus();
   }
 };
 
 // Cocomment Add Process---------------------------------------------------------------
-const handleCocomentAdd = event => {
-  console.log(event.srcElement);
+const handleCocommentAdd = async event => {
+  const commentIdx = event.target[2].value;
+  const description = event.target[0].value;
+
+  const response = await axios({
+    url: "/api/addCocomment",
+    method: "POST",
+    data: {
+      commentIdx,
+      description
+    }
+  }).catch(error => {
+    console.log(error);
+  });
+
+  if (response.status === 200) {
+    document.getElementById(`cocommentInputIdx${commentIdx}`).value = "";
+    const cocomment = {
+      idx: response.data.insertIdx,
+      commentIdx,
+      description,
+      profile: jsUserProfile,
+      name: jsUserName,
+      createdAt: false
+    };
+    handleAddCocommentDocu(cocomment);
+  }
 };
 
 // Cocomment Edit Process---------------------------------------------------------------
+const handleCocommentEditToggle = eventPath => {
+  const cocommentIdx = eventPath.filter(e => {
+    return e.id === "jsCocommentEditBtn";
+  })[0].value;
+
+  const targetDocuChild = document.getElementById(
+    `jsCocommentBlockIdx${cocommentIdx}`
+  ).children;
+
+  if (tempCommentEditDocument) {
+    handleEditInputOff(tempCommentEditDocument);
+  }
+
+  if (targetDocuChild[1].style.display === "none") {
+    tempCommentEditDocument = targetDocuChild;
+    handleEditInputOn(targetDocuChild);
+  } else {
+    tempCommentEditDocument = false;
+    handleEditInputOff(targetDocuChild);
+  }
+};
+
+const handlePostCocommentEdit = async event => {
+  const description = event.srcElement[0].value;
+  const cocommentIdx = event.srcElement[2].value;
+
+  const response = await axios({
+    url: "/api/editCocomment",
+    method: "POST",
+    data: {
+      idx: cocommentIdx,
+      description
+    }
+  }).catch(err => {
+    console.log(err);
+  });
+
+  if (response.status === 200) {
+    const targetDocuChild = document.getElementById(
+      `jsCocommentBlockIdx${cocommentIdx}`
+    ).children;
+
+    targetDocuChild[0].lastElementChild.firstElementChild.firstElementChild.lastElementChild.innerText = description;
+    handleEditInputOff(targetDocuChild);
+  }
+};
 
 // Cocomment Delete Process---------------------------------------------------------------
+const handleCocommentDelete = async eventPath => {
+  console.log(eventPath);
 
-// Window Event Click
+  const searchCocommentDocu = eventPath.filter(e => {
+    return e.id === "jsCocommentDeleteBtn";
+  })[0];
+
+  const searchCommentDocu = eventPath.filter(e => {
+    return e.className === "feedBlock__comments-Re";
+  })[0];
+
+  const cocommentIdx = searchCocommentDocu.value;
+
+  const commentIdx = searchCommentDocu.parentElement.id.split(
+    "jsCommentBlockIdx"
+  )[1];
+
+  const response = await axios({
+    url: "/api/deleteCocomment",
+    method: "POST",
+    data: {
+      commentIdx,
+      cocommentIdx
+    }
+  }).catch(err => {
+    console.log(err);
+  });
+
+  if (response.status === 200) {
+    document.getElementById(`jsCocommentBlockIdx${cocommentIdx}`).remove();
+  }
+};
+
+// Window Event Submit
+
 const handleSubmitEvent = event => {
   const eventPath = event.composedPath();
 
-  if (eventPath[4].id === "feedSection") {
+  console.log(eventPath);
+
+  if (eventPath[1].className === "feedBlock__comments-write") {
     handleEventAddComment(event);
   }
 
-  if (eventPath[6].id === "feedSection") {
-    handleEditComment(event);
+  if (eventPath[1].className === "feedBlock__comments-single--edit") {
+    handlePostEditComment(event);
   }
 
-  if (eventPath[7].id === "feedSection") {
-    handleCocomentAdd(event);
+  if (eventPath[1].className === "feedBlock__comments-Re-write") {
+    handleCocommentAdd(event);
+  }
+
+  if (eventPath[1].className === "feedBlock__comments-single--edit-Re") {
+    handlePostCocommentEdit(event);
   }
 };
 
@@ -368,33 +544,70 @@ const handleClickEvent = event => {
     offTheSubMenu();
   }
 
-  //   Click Event Comment Edit
+  // Click Event Comment Edit
+
+  // Comment Edit
   if (
     eventPath[0].id === "jsCommentEditBtn" ||
     eventPath[1].id === "jsCommentEditBtn" ||
     eventPath[2].id === "jsCommentEditBtn"
   ) {
-    handleCommentEdit(eventPath);
+    // Cocomment Edit
+    // handleEditCommentToggle(eventPath);
+    console.log("Comment Edit");
+  } else if (
+    eventPath[0].id === "jsCocommentEditBtn" ||
+    eventPath[1].id === "jsCocommentEditBtn" ||
+    eventPath[2].id === "jsCocommentEditBtn"
+  ) {
+    handleCocommentEditToggle(eventPath);
+    console.log("Cocomment Edit");
   }
 
   //   Click Event Comment Delete
+
+  // Comment Delete
   if (
     eventPath[0].id === "jsCommentDeleteBtn" ||
     eventPath[1].id === "jsCommentDeleteBtn" ||
     eventPath[2].id === "jsCommentDeleteBtn"
   ) {
-    handleCommentDelete(eventPath);
+    // handleCommentDelete(eventPath);
+    console.log("Comment Delete");
+    // Cocomment Delete
+  } else if (
+    eventPath[0].id === "jsCocommentDeleteBtn" ||
+    eventPath[1].id === "jsCocommentDeleteBtn" ||
+    eventPath[2].id === "jsCocommentDeleteBtn"
+  ) {
+    handleCocommentDelete(eventPath);
+    console.log("Cocomment Delete");
   }
 
-  if (eventPath.length > 9 && eventPath[9].id === "feedSection") {
-    handleCocomentToggle(eventPath);
+  if (
+    eventPath[0].innerText === "답글 달기" &&
+    eventPath[0].attributes[2].value === "true"
+  ) {
+    handleCocomentToggle(eventPath, 9);
+  } else if (
+    eventPath[0].innerText === "답글 달기" &&
+    eventPath[0].attributes[2].value === "false"
+  ) {
+    handleCocomentToggle(eventPath, 0);
+  }
+
+  if (
+    eventPath[0].id !== "commentSubMenuBtn" &&
+    eventPath[0].id === "cocomentBtn"
+  ) {
+    handleCocomentToggle(eventPath, 10);
   }
 };
 
 // Window Key Up Event
 const handleKeyUpEvent = event => {
   if (event.code === "Escape" && tempCommentEditDocument) {
-    handleEditCommentOff(tempCommentEditDocument, null);
+    handleEditInputOff(tempCommentEditDocument);
   }
 };
 

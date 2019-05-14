@@ -35,6 +35,10 @@ const SELECT_COMMENT = "/selectComment";
 const ADD_COMMENT = "/addComment";
 const EDIT_COMMENT = "/editComment";
 const DELETE_COMMENT = "/deleteComment";
+const SELECT_COCOMMENT = "/selectCocomment";
+const ADD_COCOMMENT = "/addCocomment";
+const EDIT_COCOMMENT = "/editCocomment";
+const DELETE_COCOMMENT = "/deleteCocomment";
 
 const routes = {
   // Global
@@ -83,7 +87,11 @@ const routes = {
   selectComment: SELECT_COMMENT,
   addComment: ADD_COMMENT,
   editComment: EDIT_COMMENT,
-  deleteComment: DELETE_COMMENT
+  deleteComment: DELETE_COMMENT,
+  selectCocomment: SELECT_COCOMMENT,
+  addCocomment: ADD_COCOMMENT,
+  editCocomment: EDIT_COCOMMENT,
+  deleteCocomment: DELETE_COCOMMENT
 };
 
 export default routes;
