@@ -2212,7 +2212,7 @@ input {
         margin-left: 10%;
         color: gray; }
       #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re-write {
-        margin-left: 10%;
+        margin-left: 7%;
         margin-top: 12px; }
         #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re-write > form {
           display: grid;
@@ -2242,7 +2242,7 @@ input {
                -moz-border-radius: 10px;
                     border-radius: 10px; }
       #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re {
-        margin-left: 10%; }
+        margin-left: 8%; }
         #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single {
           display: grid;
           grid-template-columns: 1fr 9fr;

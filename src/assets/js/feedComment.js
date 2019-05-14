@@ -118,7 +118,7 @@ export const handleAddCommentDocu = comment => {
         <img src="${comment.profile}" alt="userProfile" />
         <input type="text" textarea="commentWrite", id="cocommentInputIdx${
           comment.idx
-        }", required/>
+        }", autocomplete="off", required/>
         <input type="submit" value="Add" />
         <input type="hidden" name="targetIdx" value="${comment.idx}" />
       </form>
@@ -174,7 +174,7 @@ export const handleAddCocommentDocu = cocomment => {
       <div class="feedBlock__comments-single--edit-Re", style="display: none">
         <form onsubmit="return false;">
           <img src="${cocomment.profile}" alt="userProfile" />
-          <input type="text" textarea="commentWrite", required/>
+          <input type="text" textarea="commentWrite", autocomplete="off", required/>
           <input type="submit" value="Edit" />
           <input type="hidden" name="targetIdx" value="${cocomment.idx}" />
         </form>
@@ -479,15 +479,26 @@ const handlePostCocommentEdit = async event => {
 const handleCocommentDelete = async eventPath => {
   console.log(eventPath);
 
-  const cocommentIdx = eventPath.filter(e => {
+  const searchCocommentDocu = eventPath.filter(e => {
     return e.id === "jsCocommentDeleteBtn";
-  })[0].value;
+  })[0];
+
+  const searchCommentDocu = eventPath.filter(e => {
+    return e.className === "feedBlock__comments-Re";
+  })[0];
+
+  const cocommentIdx = searchCocommentDocu.value;
+
+  const commentIdx = searchCommentDocu.parentElement.id.split(
+    "jsCommentBlockIdx"
+  )[1];
 
   const response = await axios({
     url: "/api/deleteCocomment",
     method: "POST",
     data: {
-      commentIdx: cocommentIdx
+      commentIdx,
+      cocommentIdx
     }
   }).catch(err => {
     console.log(err);
