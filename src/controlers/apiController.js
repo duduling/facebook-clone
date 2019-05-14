@@ -257,12 +257,23 @@ export const postAddComment = async (req, res) => {
     description,
     writerIdx: req.user.idx
   };
+  const $updateCocommentCountUp = `UPDATE Feeds set comments = (SELECT SUM(commentCount) FROM CommentList WHERE feedIdx = "${feedIdx}") WHERE Feeds.idx = "${feedIdx}";`;
+  const $selectCommentCount = `select comments from Feeds where idx = "${feedIdx}";`;
+
   try {
-    await db.query($insetComment, $commentDate, (err, rows) => {
-      if (err) throw err;
-      res.status(200).json({ insertId: rows.insertId });
-      res.end();
-    });
+    await db.query(
+      $insetComment + $updateCocommentCountUp + $selectCommentCount,
+      $commentDate,
+      (err, rows) => {
+        if (err) throw err;
+
+        res.status(200).json({
+          insertIdx: rows[0].insertId,
+          feedCommentCount: rows[2][0].comments
+        });
+        res.end();
+      }
+    );
   } catch (error) {
     console.log(error);
     res.status(400);
@@ -295,20 +306,28 @@ export const postEditComment = async (req, res) => {
 
 export const postDeleteComment = async (req, res) => {
   const {
-    body: { commentIdx }
+    body: { commentIdx, feedIdx }
   } = req;
 
   const $deleteComment = `delete from CommentList where idx = "${commentIdx}" ;`;
   const $deleteCocomment = `delete from CocommentList where commentIdx = "${commentIdx}" ;`;
+  const $updateCommentCountDown = `UPDATE Feeds set comments = (SELECT SUM(commentCount) FROM CommentList WHERE feedIdx = "${feedIdx}") WHERE Feeds.idx = "${feedIdx}";`;
+  const $selectCommentCount = `select comments from Feeds where idx = "${feedIdx}";`;
   try {
-    await db.query($deleteComment + $deleteCocomment, err => {
-      if (err) throw err;
-      res.status(200);
-    });
+    await db.query(
+      $deleteComment +
+        $deleteCocomment +
+        $updateCommentCountDown +
+        $selectCommentCount,
+      (err, rows) => {
+        if (err) throw err;
+        res.status(200).json({ feedCommentCount: rows[3][0].comments });
+        res.end();
+      }
+    );
   } catch (error) {
     console.log(error);
     res.status(400);
-  } finally {
     res.end();
   }
 };
@@ -335,23 +354,32 @@ export const postSelectCocomment = async (req, res) => {
 
 export const postAddCocomment = async (req, res) => {
   const {
-    body: { commentIdx, description }
+    body: { commentIdx, description, feedIdx }
   } = req;
 
   const $insetCocomment = `insert into CocommentList set ? ;`;
-  const $updateCountUp = `update CommentList set commentCount = commentCount + 1 where idx = "${commentIdx}";`;
+  const $updateCocommentCountUp = `update CommentList set commentCount = commentCount + 1 where idx = "${commentIdx}";`;
   const $commentDate = {
     commentIdx,
     description,
     writerIdx: req.user.idx
   };
+  const $updateCommentCountUp = `UPDATE Feeds set comments = (SELECT SUM(commentCount) FROM CommentList WHERE feedIdx = "${feedIdx}") WHERE Feeds.idx = "${feedIdx}";`;
+  const $selectCommentCount = `select comments from Feeds where idx = "${feedIdx}";`;
+
   try {
     await db.query(
-      $insetCocomment + $updateCountUp,
+      $insetCocomment +
+        $updateCocommentCountUp +
+        $updateCommentCountUp +
+        $selectCommentCount,
       $commentDate,
       (err, rows) => {
         if (err) throw err;
-        res.status(200).json({ insertId: rows.insertId });
+        res.status(200).json({
+          insertIdx: rows[0].insertId,
+          feedCommentCount: rows[3][0].comments
+        });
         res.end();
       }
     );
@@ -387,21 +415,29 @@ export const postEditCocomment = async (req, res) => {
 
 export const postDeleteCocomment = async (req, res) => {
   const {
-    body: { commentIdx, cocommentIdx }
+    body: { commentIdx, cocommentIdx, feedIdx }
   } = req;
 
   const $deleteCocomment = `delete from CocommentList where idx = "${cocommentIdx}";`;
   const $updateCountDown = `update CommentList set commentCount = commentCount - 1 where idx = "${commentIdx}";`;
+  const $updateCommentCountDown = `UPDATE Feeds set comments = (SELECT SUM(commentCount) FROM CommentList WHERE feedIdx = "${feedIdx}") WHERE Feeds.idx = "${feedIdx}";`;
+  const $selectCommentCount = `select comments from Feeds where idx = "${feedIdx}";`;
 
   try {
-    await db.query($deleteCocomment + $updateCountDown, err => {
-      if (err) throw err;
-      res.status(200);
-    });
+    await db.query(
+      $deleteCocomment +
+        $updateCountDown +
+        $updateCommentCountDown +
+        $selectCommentCount,
+      (err, rows) => {
+        if (err) throw err;
+        res.status(200).json({ feedCommentCount: rows[3][0].comments });
+        res.end();
+      }
+    );
   } catch (error) {
     console.log(error);
     res.status(400);
-  } finally {
     res.end();
   }
 };

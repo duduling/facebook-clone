@@ -64,7 +64,7 @@ mixin feedBlock(feed = {})
                     span(id=`jsLikeCountNumberIdx${feed.idx}`)=feed.likes
                 .feedBlock__footer-comment
                     img(src="/img/comment_on.png", alt="comment img")
-                    span=feed.comments
+                    span(id=`jsFeedCommentCountIdx${feed.idx}`)=feed.comments
             .feedBlock__designLine
             .feedBlock__footer-btn
                 button#jsLikeBtn
