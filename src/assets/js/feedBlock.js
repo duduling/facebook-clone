@@ -1,5 +1,5 @@
 import axios from "axios";
-import { handleAddCommentDocu } from "./feedComment";
+import { handleAddCommentDocu, handleAddCocommentDocu } from "./feedComment";
 
 // const jsFeedBolckBtn = document.getElementById("jsFeedBolckBtn");
 // const jsFeedBlockSubMenu = document.getElementById("jsFeedBlockSubMenu");
@@ -89,15 +89,9 @@ const handleCommentToggle = async targetIdx => {
 
     if (commentData.status === 200) {
       const returnCommentList = commentData.data.commentList;
-      const returnCocommentList = commentData.data.cocommentList;
 
       for (let i = 0; i < returnCommentList.length; i++) {
         handleAddCommentDocu(returnCommentList[i]);
-        for (let j = 0; j < returnCocommentList.length; j++) {
-          if (returnCommentList[i].idx === returnCocommentList[j].commentIdx) {
-            console.log(returnCocommentList[j]);
-          }
-        }
       }
       targetCommentDocument.value = true;
       targetDocument.style.display = "block";

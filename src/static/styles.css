@@ -2170,6 +2170,17 @@ input {
           #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block--fuction > span {
             margin-left: 5px;
             font-size: 12px; }
+        #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block--cocomment {
+          margin: 12px 0 0 12px; }
+          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block--cocomment > a > img {
+            width: 10px;
+            height: 10px; }
+          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block--cocomment > a > span {
+            color: #385898;
+            margin-left: 5px;
+            font-size: 12px; }
+          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block--cocomment > a:hover > span {
+            text-decoration: underline; }
       #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single--edit > form {
         display: grid;
         grid-template-columns: 1fr 9fr 1fr; }
@@ -2200,13 +2211,13 @@ input {
         font-size: 9px;
         margin-left: 10%;
         color: gray; }
-      #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-Re-write {
+      #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re-write {
         margin-left: 10%;
         margin-top: 12px; }
-        #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-Re-write > form {
+        #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re-write > form {
           display: grid;
           grid-template-columns: 1fr 9fr 1fr; }
-          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-Re-write > form > img {
+          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re-write > form > img {
             width: 40px;
             height: 40px;
             padding: 5px;
@@ -2215,14 +2226,14 @@ input {
                object-fit: cover;
             -o-object-position: top;
                object-position: top; }
-          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-Re-write > form > input:nth-child(2) {
+          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re-write > form > input:nth-child(2) {
             margin: 5px;
             padding: 0 10px;
             background-color: #eee;
             -webkit-border-radius: 15px;
                -moz-border-radius: 15px;
                     border-radius: 15px; }
-          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-Re-write > form > input:nth-child(3) {
+          #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re-write > form > input:nth-child(3) {
             cursor: pointer;
             margin: 5px 0;
             background-color: transparent;

@@ -45,53 +45,71 @@ const whatTimeIsIt = targetDate => {
 
 // Comment HTML
 export const handleAddCommentDocu = comment => {
-  const addCommentHTML = `
-<div id="jsCommentBlockIdx${comment.idx}">
-  <div class="feedBlock__comment-non-Re">
-    <div class="feedBlock__comments-single">
-      <a href="#">
-        <img src="${comment.profile}" , alt="userProfile" />
+  let htmlBlock = "";
+
+  // cocoment가 있는지 없는지 확인 후 htmlBlock 생성
+  if (comment.commentCount !== 0) {
+    htmlBlock = `
+    <div class="feedBlock__comment-block--cocomment">
+      <a role="button">
+        <img src="/img/cocomment_arrow.png" alt="cocomment_arrow">
+        <span>답글 보기 ${comment.commentCount}개</span>
       </a>
-      <div class="feedBlock__comments-single--body">
-        <div class="feedBlock__comment-block">
-          <div class="feedBlock__comment-block--description">
-            <a href="">${comment.name}</a>
-            <span>${comment.description} </span>
+    </div>
+    `;
+  }
+
+  const addCommentHTML = `
+  <div id="jsCommentBlockIdx${comment.idx}">
+    <div class="feedBlock__comment-non-Re">
+      <div class="feedBlock__comments-single">
+        <a href="#">
+          <img src="${comment.profile}" , alt="userProfile" />
+        </a>
+        <div class="feedBlock__comments-single--body">
+          <div class="feedBlock__comment-block">
+            <div class="feedBlock__comment-block--description">
+              <a href="">${comment.name}</a>
+              <span>${comment.description} </span>
+            </div>
+            <div class="feedBlock__comment-subMenu">
+              <i class="fas fa-ellipsis-h" , id="commentSubMenuBtn">
+                <div class="feedBlock__comment-subMenuBox" , style="display: none">
+                  <button id="jsCommentEditBtn" , value="${comment.idx}">
+                    <i class="far fa-edit">
+                      <span>수정하기</span>
+                    </i>
+                  </button>
+                  <button id="jsCommentDeleteBtn" , value="${comment.idx}">
+                    <i class="far fa-trash-alt">
+                      <span>삭제하기</span>
+                    </i>
+                  </button>
+                </div>
+              </i>
+            </div>
           </div>
-          <div class="feedBlock__comment-subMenu">
-            <i class="fas fa-ellipsis-h" , id="commentSubMenuBtn">
-              <div class="feedBlock__comment-subMenuBox" , style="display: none">
-                <button id="jsCommentEditBtn" , value="${comment.idx}">
-                  <i class="far fa-edit">
-                    <span>수정하기</span>
-                  </i>
-                </button>
-                <button id="jsCommentDeleteBtn" , value="${comment.idx}">
-                  <i class="far fa-trash-alt">
-                    <span>삭제하기</span>
-                  </i>
-                </button>
-              </div>
-            </i>
+          <div class="feedBlock__comment-block--fuction">
+            <a role="button">답글 달기</a>
+            <span>·</span>
+            <span>${whatTimeIsIt(comment.createdAt)}</span>
           </div>
-        </div>
-        <div class="feedBlock__comment-block--fuction">
-          <a role="button">답글 달기</a>
-          <span>·</span>
-          <span>${whatTimeIsIt(comment.createdAt)}</span>
+          ${htmlBlock}
         </div>
       </div>
+      <div class="feedBlock__comments-single--edit", style="display: none">
+        <form onsubmit="return false;">
+          <img src="${comment.profile}" alt="userProfile" />
+          <input type="text" textarea="commentWrite" />
+          <input type="submit" value="Edit" />
+          <input type="hidden" name="targetIdx" value="${comment.idx}" />
+        </form>
+        <span>취소하려면 Esc를 눌러주세요.</span>
+      </div>
     </div>
-    <div class="feedBlock__comments-single--edit", style="display: none">
-      <form onsubmit="return false;">
-        <img src="${comment.profile}" alt="userProfile" />
-        <input type="text" textarea="commentWrite" />
-        <input type="submit" value="Edit" />
-        <input type="hidden" name="targetIdx" value="${comment.idx}" />
-      </form>
-      <span>취소하려면 Esc를 눌러주세요.</span>
-    </div>
-    <div class="feedBlock__comments-Re-write", style="display: none">
+    <div class="feedBlock__comments-Re-write", id="jsCocommentWriteIdx${
+      comment.idx
+    }", style="display: none">
       <form onsubmit="return false;">
         <img src="${comment.profile}" alt="userProfile" />
         <input type="text" textarea="commentWrite" />
@@ -100,7 +118,6 @@ export const handleAddCommentDocu = comment => {
       </form>
     </div>
   </div>
-</div>
 `;
 
   document
@@ -110,9 +127,8 @@ export const handleAddCommentDocu = comment => {
 
 // Cocoment HTML
 export const handleAddCocommentDocu = cocomment => {
-  const addCommentHTML = `
-  <div id="jsCommentBlockIdx${cocomment.idx}">
-    <div class="feedBlock__comment-non-Re">
+  const addCocommentHTML = `
+    <div class="feedBlock__comments-Re", id="jsCommentBlockIdx${cocomment.idx}">
       <div class="feedBlock__comments-single">
         <a href="#">
           <img src="${cocomment.profile}" , alt="userProfile" />
@@ -141,10 +157,10 @@ export const handleAddCocommentDocu = cocomment => {
             </div>
           </div>
           <div class="feedBlock__comment-block--fuction">
-            <a role="button">답글 달기</a>
-            <span>·</span>
-            <span>${whatTimeIsIt(cocomment.createdAt)}</span>
-          </div>
+          <a role="button">답글 달기</a>
+          <span>·</span>
+          <span>${whatTimeIsIt(cocomment.createdAt)}</span>
+          </div> 
         </div>
       </div>
       <div class="feedBlock__comments-single--edit", style="display: none">
@@ -156,21 +172,12 @@ export const handleAddCocommentDocu = cocomment => {
         </form>
         <span>취소하려면 Esc를 눌러주세요.</span>
       </div>
-      <div class="feedBlock__comments-Re-write", style="display: none">
-        <form onsubmit="return false;">
-          <img src="${cocomment.profile}" alt="userProfile" />
-          <input type="text" textarea="commentWrite" />
-          <input type="submit" value="Edit" />
-          <input type="hidden" name="targetIdx" value="${cocomment.idx}" />
-        </form>
-      </div>
     </div>
-  </div>
 `;
 
   document
-    .getElementById(`jsCommentBlockIdx${cocomment.feedIdx}`)
-    .insertAdjacentHTML("beforeend", addCommentHTML);
+    .getElementById(`jsCocommentWriteIdx${cocomment.commentIdx}`)
+    .insertAdjacentHTML("beforebegin", addCocommentHTML);
 };
 
 // Add Comment Fucntion
@@ -332,6 +339,56 @@ const handleCocomentToggle = async eventPath => {
   }
 };
 
+const handleCocomentToggleReal = async (eventPath, number) => {
+  let commentIdx;
+  let cocommentBtn;
+  let cocommentInput;
+  const catchEventPath = eventPath;
+
+  console.log(eventPath);
+
+  if (number === 9) {
+    [commentIdx, cocommentBtn, cocommentInput] = [
+      catchEventPath[5].id.split("jsCommentBlockIdx")[1],
+      catchEventPath[2].children[2],
+      catchEventPath[5].lastElementChild.lastElementChild.children[1]
+    ];
+  } else {
+    [commentIdx, cocommentBtn, cocommentInput] = [
+      catchEventPath[6].id.split("jsCommentBlockIdx")[1],
+      catchEventPath[2],
+      catchEventPath[6].lastElementChild.lastElementChild.children[1]
+    ];
+  }
+  if (cocommentBtn.style.display !== "none") {
+    const response = await axios({
+      url: "/api/selectCocomment",
+      method: "POST",
+      data: {
+        commentIdx
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+
+    if (response.status === 200) {
+      const returnCocommentList = response.data.cocommentList;
+
+      cocommentBtn.style.display = "none";
+
+      for (let i = 0; i < returnCocommentList.length; i++) {
+        handleAddCocommentDocu(returnCocommentList[i]);
+      }
+
+      document.getElementById(
+        `jsCocommentWriteIdx${commentIdx}`
+      ).style.display = "block";
+    }
+  } else {
+    cocommentInput.focus();
+  }
+};
+
 // Cocomment Add Process---------------------------------------------------------------
 const handleCocomentAdd = event => {
   console.log(event.srcElement);
@@ -341,7 +398,7 @@ const handleCocomentAdd = event => {
 
 // Cocomment Delete Process---------------------------------------------------------------
 
-// Window Event Click
+// Window Event Submit
 const handleSubmitEvent = event => {
   const eventPath = event.composedPath();
 
@@ -386,8 +443,23 @@ const handleClickEvent = event => {
     handleCommentDelete(eventPath);
   }
 
-  if (eventPath.length > 9 && eventPath[9].id === "feedSection") {
-    handleCocomentToggle(eventPath);
+  if (
+    eventPath.length > 9 &&
+    eventPath[9].id === "feedSection" &&
+    eventPath[0].style.display !== "none"
+  ) {
+    console.log("9");
+    handleCocomentToggleReal(eventPath, 9);
+  }
+
+  if (
+    eventPath.length > 10 &&
+    eventPath[10].id === "feedSection" &&
+    eventPath[2].style.display !== "none"
+  ) {
+    console.log("10");
+
+    handleCocomentToggleReal(eventPath, 10);
   }
 };
 

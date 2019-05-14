@@ -271,6 +271,25 @@
                   font-size: 12px;
                 }
               }
+              .feedBlock__comment-block--cocomment {
+                margin: 12px 0 0 12px;
+                & > a {
+                  & > img {
+                    width: 10px;
+                    height: 10px;
+                  }
+                  & > span {
+                    color: #385898;
+                    margin-left: 5px;
+                    font-size: 12px;
+                  }
+                  &:hover {
+                    & > span {
+                      text-decoration: underline;
+                    }
+                  }
+                }
+              }
             }
           }
           .feedBlock__comments-single--edit {
@@ -306,34 +325,34 @@
               color: gray;
             }
           }
-          .feedBlock__comments-Re-write {
-            margin-left: 10%;
-            margin-top: 12px;
-            & > form {
-              display: grid;
-              grid-template-columns: 1fr 9fr 1fr;
-              & > img {
-                width: 40px;
-                height: 40px;
-                padding: 5px;
-                margin-left: 7px;
-                object-fit: cover;
-                object-position: top;
+        }
+        .feedBlock__comments-Re-write {
+          margin-left: 10%;
+          margin-top: 12px;
+          & > form {
+            display: grid;
+            grid-template-columns: 1fr 9fr 1fr;
+            & > img {
+              width: 40px;
+              height: 40px;
+              padding: 5px;
+              margin-left: 7px;
+              object-fit: cover;
+              object-position: top;
+            }
+            & > input {
+              &:nth-child(2) {
+                margin: 5px;
+                padding: 0 10px;
+                background-color: #eee;
+                border-radius: 15px;
               }
-              & > input {
-                &:nth-child(2) {
-                  margin: 5px;
-                  padding: 0 10px;
-                  background-color: #eee;
-                  border-radius: 15px;
-                }
-                &:nth-child(3) {
-                  cursor: pointer;
-                  margin: 5px 0;
-                  background-color: transparent;
-                  border: #eee solid 1px;
-                  border-radius: 10px;
-                }
+              &:nth-child(3) {
+                cursor: pointer;
+                margin: 5px 0;
+                background-color: transparent;
+                border: #eee solid 1px;
+                border-radius: 10px;
               }
             }
           }
