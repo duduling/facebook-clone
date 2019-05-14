@@ -1,5 +1,5 @@
 import axios from "axios";
-import { handleAddCommentDocu, handleAddCocommentDocu } from "./feedComment";
+import { handleAddCommentDocu } from "./feedComment";
 
 // const jsFeedBolckBtn = document.getElementById("jsFeedBolckBtn");
 // const jsFeedBlockSubMenu = document.getElementById("jsFeedBlockSubMenu");

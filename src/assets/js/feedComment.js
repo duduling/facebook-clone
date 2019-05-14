@@ -48,14 +48,18 @@ export const handleAddCommentDocu = comment => {
   let htmlBlock = "";
 
   // cocoment가 있는지 없는지 확인 후 htmlBlock 생성
-  if (comment.commentCount !== 0) {
+  if (comment.commentCount > 0) {
     htmlBlock = `
-    <div class="feedBlock__comment-block--cocomment">
-      <a role="button">
+    <div class="feedBlock__comment-block--cocomment", value="true">
+      <a role="button", value="false">
         <img src="/img/cocomment_arrow.png" alt="cocomment_arrow">
-        <span>답글 보기 ${comment.commentCount}개</span>
+        <span id="cocomentBtn">답글 보기 ${comment.commentCount}개</span>
       </a>
     </div>
+    `;
+  } else {
+    htmlBlock = `
+    <div class="feedBlock__comment-block--cocomment",  value="true", style="display: none"></div>
     `;
   }
 
@@ -90,7 +94,7 @@ export const handleAddCommentDocu = comment => {
             </div>
           </div>
           <div class="feedBlock__comment-block--fuction">
-            <a role="button">답글 달기</a>
+            <a role="button", value="true">답글 달기</a>
             <span>·</span>
             <span>${whatTimeIsIt(comment.createdAt)}</span>
           </div>
@@ -113,7 +117,7 @@ export const handleAddCommentDocu = comment => {
       <form onsubmit="return false;">
         <img src="${comment.profile}" alt="userProfile" />
         <input type="text" textarea="commentWrite" />
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Add" />
         <input type="hidden" name="targetIdx" value="${comment.idx}" />
       </form>
     </div>
@@ -157,7 +161,7 @@ export const handleAddCocommentDocu = cocomment => {
             </div>
           </div>
           <div class="feedBlock__comment-block--fuction">
-          <a role="button">답글 달기</a>
+          <a role="button", value="false">답글 달기</a>
           <span>·</span>
           <span>${whatTimeIsIt(cocomment.createdAt)}</span>
           </div> 
@@ -211,7 +215,7 @@ const handleEventAddComment = async event => {
   }
 };
 
-// SubMenu Toggle Process---------------------------------------------------------------
+// Comment SubMenu Toggle Process---------------------------------------------------------------
 const offTheSubMenu = () => {
   tempCommentSubMenuDocument.style.display = "none";
   tempCommentSubMenuDocument = null;
@@ -295,10 +299,12 @@ const handleEditComment = async event => {
 
   if (response.status === 200) {
     const targetDocuChild = document.getElementById(`jsCommentBlockIdx${idx}`)
-      .children;
+      .children[0];
 
-    targetDocuChild[0].lastElementChild.children[0].firstElementChild.lastElementChild.innerText = description;
-    handleEditCommentOff(targetDocuChild);
+    console.log(targetDocuChild);
+
+    targetDocuChild.firstElementChild.lastElementChild.firstElementChild.firstElementChild.lastElementChild.innerText = description;
+    handleEditCommentOff(targetDocuChild.children);
   }
 };
 
@@ -324,43 +330,42 @@ const handleCommentDelete = async eventPath => {
 };
 
 // Cocomment Toggle Process---------------------------------------------------------------
-const handleCocomentToggle = async eventPath => {
-  const cocomentWriteDocu = eventPath[4].lastElementChild;
-
-  if (cocomentWriteDocu.style.display === "none") {
-    cocomentWriteDocu.style.display = "block";
-    if (tempCommentCocomentDocument) {
-      tempCommentCocomentDocument.style.display = "none";
-    }
-    tempCommentCocomentDocument = cocomentWriteDocu;
-  } else {
-    cocomentWriteDocu.style.display = "none";
-    tempCommentCocomentDocument = false;
-  }
-};
-
-const handleCocomentToggleReal = async (eventPath, number) => {
+const handleCocomentToggle = async (eventPath, number) => {
   let commentIdx;
   let cocommentBtn;
+  let cocommentBtnBoolean;
   let cocommentInput;
+
   const catchEventPath = eventPath;
 
-  console.log(eventPath);
-
-  if (number === 9) {
-    [commentIdx, cocommentBtn, cocommentInput] = [
-      catchEventPath[5].id.split("jsCommentBlockIdx")[1],
-      catchEventPath[2].children[2],
+  if (number === 0) {
+    [cocommentInput] = [
       catchEventPath[5].lastElementChild.lastElementChild.children[1]
     ];
-  } else {
-    [commentIdx, cocommentBtn, cocommentInput] = [
+  } else if (number === 9) {
+    [commentIdx, cocommentBtn, cocommentBtnBoolean, cocommentInput] = [
+      catchEventPath[5].id.split("jsCommentBlockIdx")[1],
+      catchEventPath[2].children[2],
+      catchEventPath[2].children[2].attributes[2].value,
+      catchEventPath[5].lastElementChild.lastElementChild.children[1]
+    ];
+    catchEventPath[2].children[2].attributes[2].value = false;
+  } else if (number === 10) {
+    [commentIdx, cocommentBtn, cocommentBtnBoolean, cocommentInput] = [
       catchEventPath[6].id.split("jsCommentBlockIdx")[1],
       catchEventPath[2],
+      catchEventPath[2].attributes[2].value,
       catchEventPath[6].lastElementChild.lastElementChild.children[1]
     ];
+    catchEventPath[2].attributes[2].value = false;
   }
-  if (cocommentBtn.style.display !== "none") {
+
+  // 댓글 대댓글 답글 달기 input 포커스
+  if (
+    eventPath[4].className !== "feedBlock__comments-Re" &&
+    cocommentBtnBoolean === "true" &&
+    number !== 0
+  ) {
     const response = await axios({
       url: "/api/selectCocomment",
       method: "POST",
@@ -402,22 +407,26 @@ const handleCocomentAdd = event => {
 const handleSubmitEvent = event => {
   const eventPath = event.composedPath();
 
-  if (eventPath[4].id === "feedSection") {
+  console.log(eventPath);
+
+  if (eventPath[1].className === "feedBlock__comments-write") {
     handleEventAddComment(event);
   }
 
-  if (eventPath[6].id === "feedSection") {
+  if (eventPath[1].className === "feedBlock__comments-single--edit") {
     handleEditComment(event);
   }
 
-  if (eventPath[7].id === "feedSection") {
-    handleCocomentAdd(event);
-  }
+  // if (eventPath[7].id === "feedSection") {
+  //   handleCocomentAdd(event);
+  // }
 };
 
 // Window Event Click
 const handleClickEvent = event => {
   const eventPath = event.composedPath();
+
+  console.log(eventPath);
 
   if (eventPath[0].id === "commentSubMenuBtn") {
     commentSubMenuToggle(eventPath[0].childNodes[1]);
@@ -425,7 +434,7 @@ const handleClickEvent = event => {
     offTheSubMenu();
   }
 
-  //   Click Event Comment Edit
+  // Click Event Comment Edit
   if (
     eventPath[0].id === "jsCommentEditBtn" ||
     eventPath[1].id === "jsCommentEditBtn" ||
@@ -444,22 +453,22 @@ const handleClickEvent = event => {
   }
 
   if (
-    eventPath.length > 9 &&
-    eventPath[9].id === "feedSection" &&
-    eventPath[0].style.display !== "none"
+    eventPath[0].innerText === "답글 달기" &&
+    eventPath[0].attributes[2].value === "true"
   ) {
-    console.log("9");
-    handleCocomentToggleReal(eventPath, 9);
+    handleCocomentToggle(eventPath, 9);
+  } else if (
+    eventPath[0].innerText === "답글 달기" &&
+    eventPath[0].attributes[2].value === "false"
+  ) {
+    handleCocomentToggle(eventPath, 0);
   }
 
   if (
-    eventPath.length > 10 &&
-    eventPath[10].id === "feedSection" &&
-    eventPath[2].style.display !== "none"
+    eventPath[0].id !== "commentSubMenuBtn" &&
+    eventPath[0].id === "cocomentBtn"
   ) {
-    console.log("10");
-
-    handleCocomentToggleReal(eventPath, 10);
+    handleCocomentToggle(eventPath, 10);
   }
 };
 
