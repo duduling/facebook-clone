@@ -321,7 +321,10 @@ export const postDeleteComment = async (req, res) => {
         $selectCommentCount,
       (err, rows) => {
         if (err) throw err;
-        res.status(200).json({ feedCommentCount: rows[3][0].comments });
+        res.status(200).json({
+          feedCommentCount:
+            rows[3][0].comments !== null ? rows[3][0].comments : 0
+        });
         res.end();
       }
     );
