@@ -16,6 +16,10 @@ const jsEditImgDeleteBtn = document.getElementById("jsEditImgDeleteBtn");
 const jsFeedBlockEditCover = document.getElementById("jsFeedBlockEditCover");
 const jsFeedInputIdx = document.getElementById("jsFeedInputIdx");
 
+const jsFeedImageZoom = document.getElementById("jsFeedImageZoom");
+const jsImageZoom = document.getElementById("jsImageZoom");
+const jsImgCloseBtn = document.getElementById("jsImgCloseBtn");
+
 const postForm = document.createElement("form");
 
 let tempSubMenuDocument;
@@ -225,8 +229,33 @@ const feedSubMenuToggle = event => {
   }
 };
 
+// Feed Image Click Event------------------------------------------------------------------
+const clickImageZoomOn = eventPath => {
+  jsImageZoom.src = eventPath[0].src;
+
+  jsFeedImageZoom.style.display = "block";
+
+  document.body.style.overflow = "hidden";
+};
+
+const clickImageZoomOff = () => {
+  jsFeedImageZoom.style.display = "none";
+
+  document.body.style.overflow = "";
+};
+
+// SubMenu Click Event------------------------------------------------------------------
 const subMenuClickEvent = event => {
   const eventPath = event.composedPath();
+
+  if (eventPath[0].className === "feedBlock-imageZoom") {
+    clickImageZoomOff();
+  }
+
+  // Image Zoom
+  if (eventPath[0].alt === "content img") {
+    clickImageZoomOn(eventPath);
+  }
 
   // Click Event SubMenu
   if (eventPath[1].id === "jsFeedBolckBtnIdx") {
@@ -272,6 +301,7 @@ const subMenuClickEvent = event => {
 const init = () => {
   jsEditFeedUpload.addEventListener("change", inputEditFileChange);
   jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
+  jsImgCloseBtn.addEventListener("click", clickImageZoomOff);
   window.addEventListener("click", subMenuClickEvent);
 };
 
