@@ -1104,6 +1104,75 @@ input {
   .feed-search__users > h5 {
     margin-bottom: 20px; }
 
+#jsFeedImageZoom {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: -webkit-calc(100% + 50px);
+  height: -moz-calc(100% + 50px);
+  height: calc(100% + 50px);
+  position: fixed;
+  top: -50px;
+  left: 0;
+  z-index: 1; }
+  #jsFeedImageZoom .feedBlock-imageZoom {
+    top: 50px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+    height: 100vh; }
+    #jsFeedImageZoom .feedBlock-imageZoom > article {
+      position: relative;
+      width: 80%;
+      height: 80%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+         -moz-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5); }
+      #jsFeedImageZoom .feedBlock-imageZoom > article > img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: contain;
+           object-fit: contain; }
+      #jsFeedImageZoom .feedBlock-imageZoom > article > i {
+        display: none;
+        top: 7px;
+        right: 10px;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        position: absolute; }
+        #jsFeedImageZoom .feedBlock-imageZoom > article > i:hover {
+          color: gray; }
+      #jsFeedImageZoom .feedBlock-imageZoom > article:hover > i {
+        display: block; }
+
 #jsFeedBlockEditCover {
   display: none;
   background-color: rgba(0, 0, 0, 0.4);
@@ -1554,7 +1623,7 @@ input {
           width: 50px;
           position: relative;
           top: 0;
-          padding: 6.5px 10px;
+          padding: 6px 10px;
           -webkit-border-radius: 0 2px 2px 0;
              -moz-border-radius: 0 2px 2px 0;
                   border-radius: 0 2px 2px 0;
@@ -1969,6 +2038,14 @@ input {
         #feedSection .feedBlock .feedBlock__header .feedBlock__header-grid .feedBolck__header-userName > a > span {
           margin-left: 10px;
           line-height: 30px; }
+        #feedSection .feedBlock .feedBlock__header .feedBlock__header-grid .feedBolck__header-userName .feedBolck__header-from-userName {
+          display: inline-block; }
+          #feedSection .feedBlock .feedBlock__header .feedBlock__header-grid .feedBolck__header-userName .feedBolck__header-from-userName > span {
+            line-height: 30px;
+            margin-left: 10px; }
+            #feedSection .feedBlock .feedBlock__header .feedBlock__header-grid .feedBolck__header-userName .feedBolck__header-from-userName > span:first-child {
+              position: relative;
+              top: -3px; }
       #feedSection .feedBlock .feedBlock__header .feedBlock__header-subMenuBtn > i {
         float: right;
         font-size: 20px;
@@ -2004,7 +2081,12 @@ input {
       padding: 10px; }
     #feedSection .feedBlock .feedBlock__body .feedBlock__body-img > img {
       width: 580px;
-      max-height: 580px; }
+      max-height: 580px;
+      -o-object-fit: contain;
+         object-fit: contain;
+      background-color: rgba(0, 0, 0, 0.8); }
+      #feedSection .feedBlock .feedBlock__body .feedBlock__body-img > img:hover {
+        cursor: pointer; }
     #feedSection .feedBlock .feedBlock__footer {
       padding-top: 15px; }
       #feedSection .feedBlock .feedBlock__footer .feedBlock__footer-top {
@@ -2084,6 +2166,10 @@ input {
             -webkit-border-radius: 10px;
                -moz-border-radius: 10px;
                     border-radius: 10px; }
+      #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-pagingBtn > a {
+        display: inline-block;
+        margin: 15px 0 0 10px;
+        font-size: 12px; }
       #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single {
         display: grid;
         grid-template-columns: 1fr 9fr;
@@ -2363,7 +2449,7 @@ input {
             color: gray; }
 
 @media (max-width: 1024px) {
-  .feedBlock .feedBlock__body .feedBlock__body-img > img {
+  #feedSection .feedBlock .feedBlock__body .feedBlock__body-img > img {
     width: 100%;
     height: 100%; } }
 

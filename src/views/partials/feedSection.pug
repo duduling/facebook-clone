@@ -1,5 +1,10 @@
 include ../mixins/feedMainBlock
 
+#jsFeedImageZoom
+    section.feedBlock-imageZoom
+        article
+            img(src="/img/background_img.jpg", alt="feed click image zoom", id="jsImageZoom")
+            i.fas.fa-times#jsImgCloseBtn
 #jsFeedBlockEditCover
     article.feedBlock-edit-wrapper
         .feedBlock-edit__upload-title
@@ -29,5 +34,6 @@ each item in feeds
         description: item.description,
         likes: item.likes,
         comments: item.comments,
-        edited: item.edited
+        edited: item.edited,
+        otherName: item.writer !== item.fromName ? item.fromName : null
     })

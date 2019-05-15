@@ -1,6 +1,5 @@
 #feedSection {
   margin-bottom: 10%;
-
   .feedBlock {
     position: relative;
     border: #ddd solid 1px;
@@ -34,6 +33,17 @@
           & > a > span {
             margin-left: 10px;
             line-height: 30px;
+          }
+          .feedBolck__header-from-userName {
+            display: inline-block;
+            & > span {
+              line-height: 30px;
+              margin-left: 10px;
+              &:first-child {
+                position: relative;
+                top: -3px;
+              }
+            }
           }
         }
       }
@@ -87,6 +97,11 @@
         & > img {
           width: 580px;
           max-height: 580px;
+          object-fit: contain;
+          background-color: rgba(0, 0, 0, 0.8);
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -171,6 +186,13 @@
               border-radius: 10px;
             }
           }
+        }
+      }
+      .feedBlock__comments-pagingBtn {
+        & > a {
+          display: inline-block;
+          margin: 15px 0 0 10px;
+          font-size: 12px;
         }
       }
       .feedBlock__comments-commentsList {
@@ -497,12 +519,14 @@
 }
 
 @media (max-width: 1024px) {
-  .feedBlock {
-    .feedBlock__body {
-      .feedBlock__body-img {
-        & > img {
-          width: 100%;
-          height: 100%;
+  #feedSection {
+    .feedBlock {
+      .feedBlock__body {
+        .feedBlock__body-img {
+          & > img {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
     }

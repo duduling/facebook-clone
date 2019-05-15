@@ -4,7 +4,7 @@ import routes from "../routes";
 
 export const getFeedMain = (req, res) => {
   const $feedJoinUser =
-    "select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile, edited from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
+    "select Feeds.idx, writer, writer_idx, fromIdx, fromName, createdAt, fileUrl, description, likes, comments, profile, edited from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
   const $commentJoinUser =
     "select CommentList.idx, feedIdx, writerIdx, createdAt, description, profile, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx ORDER BY CommentList.createdAt DESC;";
   const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
@@ -62,7 +62,7 @@ export const getFeedUser = async (req, res) => {
       "SELECT * FROM Users where `idx`=?;",
       otherIdx
     );
-    const $feedJoinUser = `select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx WHERE Users.idx = "${otherIdx}" ORDER BY Feeds.createdAt DESC;`;
+    const $feedJoinUser = `select Feeds.idx, writer, fromIdx, fromName, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx WHERE Feeds.fromIdx = "${otherIdx}" ORDER BY Feeds.createdAt DESC;`;
     const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
       req.user.idx
     }";`;
@@ -126,15 +126,20 @@ export const getFeedUser = async (req, res) => {
 
 export const postFeedsUpload = (req, res) => {
   const {
-    body: { uploadText },
+    headers: { referer },
+    body: { uploadText, fromName },
     file
   } = req;
+
+  const fromIdx = referer.split("http://localhost:3000/feeds/")[1];
+
   try {
     const $feedInsert = "INSERT INTO Feeds set ?;";
     const $dataObj = {
       writer: req.user.name,
-      writer_id: req.user.id,
       writer_idx: req.user.idx,
+      fromIdx: fromIdx !== "main" ? fromIdx : req.user.idx,
+      fromName,
       fileUrl: file ? `/${file.path}` : null,
       description: uploadText
     };
@@ -142,7 +147,7 @@ export const postFeedsUpload = (req, res) => {
       if (err) {
         throw err;
       } else {
-        res.redirect(`/feeds${routes.feedsMain}`);
+        res.redirect(referer);
       }
     });
   } catch (error) {
@@ -152,6 +157,7 @@ export const postFeedsUpload = (req, res) => {
 
 export const postFeedsEdit = (req, res) => {
   const {
+    headers: { referer },
     body: { uploadText, feedInputIdx },
     file
   } = req;
@@ -166,7 +172,7 @@ export const postFeedsEdit = (req, res) => {
       if (err) {
         throw err;
       } else {
-        res.redirect(`/feeds${routes.feedsMain}`);
+        res.redirect(referer);
       }
     });
   } catch (error) {
@@ -176,6 +182,7 @@ export const postFeedsEdit = (req, res) => {
 
 export const postFeedDelete = (req, res) => {
   const {
+    headers: { referer },
     params: { idx }
   } = req;
   try {
@@ -187,7 +194,7 @@ export const postFeedDelete = (req, res) => {
     console.log(error);
     res.status(400);
   } finally {
-    res.redirect(`/feeds${routes.feedsMain}`);
+    res.redirect(referer);
   }
 };
 

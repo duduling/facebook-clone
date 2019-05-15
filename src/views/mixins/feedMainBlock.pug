@@ -38,6 +38,10 @@ mixin feedBlock(feed = {})
                 .feedBolck__header-userName
                     a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
+                    if feed.otherName && feed.otherName !== feed.writer
+                        .feedBolck__header-from-userName
+                            span 👉🏻
+                            span=feed.otherName
                 if feed.edited === 1
                     span #{whatTimeIsIt(feed.createdAt)} · Edited
                 else
@@ -64,7 +68,10 @@ mixin feedBlock(feed = {})
                     span(id=`jsLikeCountNumberIdx${feed.idx}`)=feed.likes
                 .feedBlock__footer-comment
                     img(src="/img/comment_on.png", alt="comment img")
-                    span=feed.comments
+                    if feed.comments === null
+                        span(id=`jsFeedCommentCountIdx${feed.idx}`) 0
+                    else
+                        span(id=`jsFeedCommentCountIdx${feed.idx}`)=feed.comments
             .feedBlock__designLine
             .feedBlock__footer-btn
                 button#jsLikeBtn
@@ -81,4 +88,6 @@ mixin feedBlock(feed = {})
                     input(type="text", textarea="commentWrite", id=`commentInputIdx${feed.idx}`, autocomplete="off", required)
                     input(type="submit", value="Add")
                     input(type="hidden",name="targetIdx" value=feed.idx)
-            .feedBlock__comments-commentsList(id=`jsCommetListIdx${feed.idx}`)
+            .feedBlock__comments-commentsList(id=`jsCommetListIdx${feed.idx}`, value=0)
+            .feedBlock__comments-pagingBtn(value=feed.idx)
+                a(role="button") 댓글 더보기

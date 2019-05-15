@@ -3,6 +3,7 @@ import axios from "axios";
 const feedSection = document.getElementById("feedSection");
 const jsUserProfile = document.getElementById("jsUserProfile").src;
 const jsUserName = document.getElementById("jsUserName").innerText;
+const jsCommentListMore = document.getElementById("jsCommentListMore");
 
 let tempCommentSubMenuDocument;
 let tempCommentEditDocument;
@@ -43,16 +44,17 @@ const whatTimeIsIt = targetDate => {
 };
 
 // Comment HTML
-export const handleAddCommentDocu = comment => {
+export const handleAddCommentDocu = (comment, type) => {
   let htmlBlock = "";
+  let editBlock = "";
 
   // cocoment가 있는지 없는지 확인 후 htmlBlock 생성
-  if (comment.commentCount > 0) {
+  if (comment.commentCount > 1) {
     htmlBlock = `
     <div class="feedBlock__comment-block--cocomment", value="true">
       <a role="button", value="false">
         <img src="/img/cocomment_arrow.png" alt="cocomment_arrow">
-        <span id="cocomentBtn">답글 보기 ${comment.commentCount}개</span>
+        <span id="cocomentBtn">답글 보기 ${comment.commentCount - 1}개</span>
       </a>
     </div>
     `;
@@ -60,6 +62,9 @@ export const handleAddCommentDocu = comment => {
     htmlBlock = `
     <div class="feedBlock__comment-block--cocomment",  value="true", style="display: none"></div>
     `;
+  }
+  if (comment.edited === " ·　Edited") {
+    editBlock = `<span>${comment.edited}</span>`;
   }
 
   const addCommentHTML = `
@@ -96,7 +101,7 @@ export const handleAddCommentDocu = comment => {
             <a role="button", value="true">답글 달기</a>
             <span>·</span>
             <span>${whatTimeIsIt(comment.createdAt)}</span>
-            <span>${comment.edited}</span>
+            ${editBlock}
           </div>
           ${htmlBlock}
         </div>
@@ -128,11 +133,17 @@ export const handleAddCommentDocu = comment => {
 
   document
     .getElementById(`jsCommetListIdx${comment.feedIdx}`)
-    .insertAdjacentHTML("afterbegin", addCommentHTML);
+    .insertAdjacentHTML(type, addCommentHTML);
 };
 
 // Cocoment HTML
 export const handleAddCocommentDocu = cocomment => {
+  let editBlock = "";
+
+  if (cocomment.edited === " ·　Edited") {
+    editBlock = `<span>${cocomment.edited}</span>`;
+  }
+
   const addCocommentHTML = `
     <div class="feedBlock__comments-Re", id="jsCocommentBlockIdx${
       cocomment.idx
@@ -168,7 +179,7 @@ export const handleAddCocommentDocu = cocomment => {
             <a role="button", value="false">답글 달기</a>
             <span>·</span>
             <span>${whatTimeIsIt(cocomment.createdAt)}</span>
-            <span>${cocomment.edited}</span>
+            ${editBlock}
           </div> 
         </div>
       </div>
@@ -189,7 +200,38 @@ export const handleAddCocommentDocu = cocomment => {
     .insertAdjacentHTML("beforebegin", addCocommentHTML);
 };
 
-// Add Comment Fucntion
+// Select Comment Fucntion--------------------------------------------------------------------------
+const selectCommentPaging = async targetIdx => {
+  const targetCommentDocument = document.getElementById(
+    `jsCommetListIdx${targetIdx}`
+  );
+  const pageNumber = targetCommentDocument.getAttribute("value");
+
+  const commentData = await axios({
+    url: "/api/selectComment",
+    method: "POST",
+    data: {
+      targetIdx,
+      pageNumber
+    }
+  }).catch(err => {
+    console.log(err);
+  });
+
+  if (commentData.status === 200) {
+    const returnCommentList = commentData.data.commentList;
+
+    for (let i = 0; i < returnCommentList.length; i++) {
+      handleAddCommentDocu(returnCommentList[i], "beforeend");
+    }
+
+    console.log(typeof pageNumber);
+
+    targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
+  }
+};
+
+// Add Comment Fucntion--------------------------------------------------------------------------
 const handleEventAddComment = async event => {
   const feedIdx = event.target[2].value;
   const description = event.target[0].value;
@@ -208,14 +250,18 @@ const handleEventAddComment = async event => {
   if (response.status === 200) {
     document.getElementById(`commentInputIdx${feedIdx}`).value = "";
     const comment = {
-      idx: response.data.insertId,
+      idx: response.data.insertIdx,
       feedIdx,
       description,
       profile: jsUserProfile,
       name: jsUserName,
       createdAt: false
     };
-    handleAddCommentDocu(comment);
+
+    document.getElementById(`jsFeedCommentCountIdx${feedIdx}`).innerText =
+      response.data.feedCommentCount;
+
+    handleAddCommentDocu(comment, "afterbegin");
   }
 };
 
@@ -318,11 +364,16 @@ const handleCommentDelete = async eventPath => {
     return e.id === "jsCommentDeleteBtn";
   })[0].value;
 
+  const feedIdx = eventPath.filter(e => {
+    return e.className === "feedBlock";
+  })[0].attributes[2].value;
+
   const response = await axios({
     url: "/api/deleteComment",
     method: "POST",
     data: {
-      commentIdx
+      commentIdx,
+      feedIdx
     }
   }).catch(err => {
     console.log(err);
@@ -330,6 +381,8 @@ const handleCommentDelete = async eventPath => {
 
   if (response.status === 200) {
     document.getElementById(`jsCommentBlockIdx${commentIdx}`).remove();
+    document.getElementById(`jsFeedCommentCountIdx${feedIdx}`).innerText =
+      response.data.feedCommentCount;
   }
 };
 
@@ -403,12 +456,19 @@ const handleCocommentAdd = async event => {
   const commentIdx = event.target[2].value;
   const description = event.target[0].value;
 
+  console.log(commentIdx);
+
+  const feedIdx = event.composedPath().filter(e => {
+    return e.className === "feedBlock";
+  })[0].attributes[2].value;
+
   const response = await axios({
     url: "/api/addCocomment",
     method: "POST",
     data: {
       commentIdx,
-      description
+      description,
+      feedIdx
     }
   }).catch(error => {
     console.log(error);
@@ -424,6 +484,10 @@ const handleCocommentAdd = async event => {
       name: jsUserName,
       createdAt: false
     };
+
+    document.getElementById(`jsFeedCommentCountIdx${feedIdx}`).innerText =
+      response.data.feedCommentCount;
+
     handleAddCocommentDocu(cocomment);
   }
 };
@@ -478,8 +542,6 @@ const handlePostCocommentEdit = async event => {
 
 // Cocomment Delete Process---------------------------------------------------------------
 const handleCocommentDelete = async eventPath => {
-  console.log(eventPath);
-
   const searchCocommentDocu = eventPath.filter(e => {
     return e.id === "jsCocommentDeleteBtn";
   })[0];
@@ -487,6 +549,10 @@ const handleCocommentDelete = async eventPath => {
   const searchCommentDocu = eventPath.filter(e => {
     return e.className === "feedBlock__comments-Re";
   })[0];
+
+  const feedIdx = eventPath.filter(e => {
+    return e.className === "feedBlock";
+  })[0].attributes[2].value;
 
   const cocommentIdx = searchCocommentDocu.value;
 
@@ -499,7 +565,8 @@ const handleCocommentDelete = async eventPath => {
     method: "POST",
     data: {
       commentIdx,
-      cocommentIdx
+      cocommentIdx,
+      feedIdx
     }
   }).catch(err => {
     console.log(err);
@@ -507,6 +574,8 @@ const handleCocommentDelete = async eventPath => {
 
   if (response.status === 200) {
     document.getElementById(`jsCocommentBlockIdx${cocommentIdx}`).remove();
+    document.getElementById(`jsFeedCommentCountIdx${feedIdx}`).innerText =
+      response.data.feedCommentCount;
   }
 };
 
@@ -514,8 +583,6 @@ const handleCocommentDelete = async eventPath => {
 
 const handleSubmitEvent = event => {
   const eventPath = event.composedPath();
-
-  console.log(eventPath);
 
   if (eventPath[1].className === "feedBlock__comments-write") {
     handleEventAddComment(event);
@@ -538,6 +605,12 @@ const handleSubmitEvent = event => {
 const handleClickEvent = event => {
   const eventPath = event.composedPath();
 
+  // More Comment Click Event
+  if (eventPath[1].className === "feedBlock__comments-pagingBtn") {
+    selectCommentPaging(eventPath[1].attributes[1].value);
+  }
+
+  // Comment SubMenu Click Event
   if (eventPath[0].id === "commentSubMenuBtn") {
     commentSubMenuToggle(eventPath[0].childNodes[1]);
   } else if (tempCommentSubMenuDocument) {
@@ -553,15 +626,13 @@ const handleClickEvent = event => {
     eventPath[2].id === "jsCommentEditBtn"
   ) {
     // Cocomment Edit
-    // handleEditCommentToggle(eventPath);
-    console.log("Comment Edit");
+    handleEditCommentToggle(eventPath);
   } else if (
     eventPath[0].id === "jsCocommentEditBtn" ||
     eventPath[1].id === "jsCocommentEditBtn" ||
     eventPath[2].id === "jsCocommentEditBtn"
   ) {
     handleCocommentEditToggle(eventPath);
-    console.log("Cocomment Edit");
   }
 
   //   Click Event Comment Delete
@@ -572,8 +643,7 @@ const handleClickEvent = event => {
     eventPath[1].id === "jsCommentDeleteBtn" ||
     eventPath[2].id === "jsCommentDeleteBtn"
   ) {
-    // handleCommentDelete(eventPath);
-    console.log("Comment Delete");
+    handleCommentDelete(eventPath);
     // Cocomment Delete
   } else if (
     eventPath[0].id === "jsCocommentDeleteBtn" ||
@@ -581,7 +651,6 @@ const handleClickEvent = event => {
     eventPath[2].id === "jsCocommentDeleteBtn"
   ) {
     handleCocommentDelete(eventPath);
-    console.log("Cocomment Delete");
   }
 
   if (

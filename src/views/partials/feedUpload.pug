@@ -4,7 +4,6 @@ article.feed-main__upload-wrapper
     form.feed-main__upload-form(action=`/feeds${routes.feedsUpload}`, method="post", enctype="multipart/form-data")
         .feed-main__upload-form-description
             img(src=user.profile, alt="profile")
-            //- window.innerWidth 이거로 길이 가져와서 rows 크기 맞춰 주기
             textarea(name="uploadText", id="jsUploadTextarea", cols="30", rows="6", placeholder="What's on your mind?", required)
         #JsUploadpreviewBox
             img(src="", alt="upload file preview", id="jsUploadPreview")
@@ -14,3 +13,4 @@ article.feed-main__upload-wrapper
             label(for="jsFeedUpload") Photo
             input(type="file", id="jsFeedUpload", name="uploadFeed", accept="image/*")
             input(type="submit", value="Share")
+            input(type="hidden", name="fromName", value=otherUser ? otherUser.name : user.name)
