@@ -3,6 +3,7 @@ import axios from "axios";
 const feedSection = document.getElementById("feedSection");
 const jsUserProfile = document.getElementById("jsUserProfile").src;
 const jsUserName = document.getElementById("jsUserName").innerText;
+const jsCommentListMore = document.getElementById("jsCommentListMore");
 
 let tempCommentSubMenuDocument;
 let tempCommentEditDocument;
@@ -43,7 +44,7 @@ const whatTimeIsIt = targetDate => {
 };
 
 // Comment HTML
-export const handleAddCommentDocu = comment => {
+export const handleAddCommentDocu = (comment, type) => {
   let htmlBlock = "";
   let editBlock = "";
 
@@ -132,7 +133,7 @@ export const handleAddCommentDocu = comment => {
 
   document
     .getElementById(`jsCommetListIdx${comment.feedIdx}`)
-    .insertAdjacentHTML("afterbegin", addCommentHTML);
+    .insertAdjacentHTML(type, addCommentHTML);
 };
 
 // Cocoment HTML
@@ -199,6 +200,37 @@ export const handleAddCocommentDocu = cocomment => {
     .insertAdjacentHTML("beforebegin", addCocommentHTML);
 };
 
+// Select Comment Fucntion--------------------------------------------------------------------------
+const selectCommentPaging = async targetIdx => {
+  const targetCommentDocument = document.getElementById(
+    `jsCommetListIdx${targetIdx}`
+  );
+  const pageNumber = targetCommentDocument.getAttribute("value");
+
+  const commentData = await axios({
+    url: "/api/selectComment",
+    method: "POST",
+    data: {
+      targetIdx,
+      pageNumber
+    }
+  }).catch(err => {
+    console.log(err);
+  });
+
+  if (commentData.status === 200) {
+    const returnCommentList = commentData.data.commentList;
+
+    for (let i = 0; i < returnCommentList.length; i++) {
+      handleAddCommentDocu(returnCommentList[i], "beforeend");
+    }
+
+    console.log(typeof pageNumber);
+
+    targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
+  }
+};
+
 // Add Comment Fucntion--------------------------------------------------------------------------
 const handleEventAddComment = async event => {
   const feedIdx = event.target[2].value;
@@ -229,7 +261,7 @@ const handleEventAddComment = async event => {
     document.getElementById(`jsFeedCommentCountIdx${feedIdx}`).innerText =
       response.data.feedCommentCount;
 
-    handleAddCommentDocu(comment);
+    handleAddCommentDocu(comment, "afterbegin");
   }
 };
 
@@ -573,6 +605,12 @@ const handleSubmitEvent = event => {
 const handleClickEvent = event => {
   const eventPath = event.composedPath();
 
+  // More Comment Click Event
+  if (eventPath[1].className === "feedBlock__comments-pagingBtn") {
+    selectCommentPaging(eventPath[1].attributes[1].value);
+  }
+
+  // Comment SubMenu Click Event
   if (eventPath[0].id === "commentSubMenuBtn") {
     commentSubMenuToggle(eventPath[0].childNodes[1]);
   } else if (tempCommentSubMenuDocument) {

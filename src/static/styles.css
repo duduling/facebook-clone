@@ -2166,6 +2166,10 @@ input {
             -webkit-border-radius: 10px;
                -moz-border-radius: 10px;
                     border-radius: 10px; }
+      #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-pagingBtn > a {
+        display: inline-block;
+        margin: 15px 0 0 10px;
+        font-size: 12px; }
       #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single {
         display: grid;
         grid-template-columns: 1fr 9fr;

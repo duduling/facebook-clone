@@ -71,6 +71,7 @@ const handleCommentToggle = async targetIdx => {
   const targetCommentDocument = document.getElementById(
     `jsCommetListIdx${targetIdx}`
   );
+  const pageNumber = targetCommentDocument.getAttribute("value");
 
   if (
     targetCommentDocument.value === true &&
@@ -85,7 +86,8 @@ const handleCommentToggle = async targetIdx => {
       url: "/api/selectComment",
       method: "POST",
       data: {
-        targetIdx
+        targetIdx,
+        pageNumber
       }
     }).catch(err => {
       console.log(err);
@@ -95,10 +97,11 @@ const handleCommentToggle = async targetIdx => {
       const returnCommentList = commentData.data.commentList;
 
       for (let i = 0; i < returnCommentList.length; i++) {
-        handleAddCommentDocu(returnCommentList[i]);
+        handleAddCommentDocu(returnCommentList[i], "beforeend");
       }
       targetCommentDocument.value = true;
       targetDocument.style.display = "block";
+      targetCommentDocument.setAttribute("value", pageNumber + 1);
     }
   } else {
     targetDocument.style.display = "none";

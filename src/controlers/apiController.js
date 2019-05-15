@@ -228,10 +228,13 @@ export const postLikeCount = async (req, res) => {
 
 export const postSelectComment = async (req, res) => {
   const {
-    body: { targetIdx }
+    body: { targetIdx, pageNumber }
   } = req;
 
-  const $commentJoinUser = `select CommentList.idx, feedIdx, writerIdx, createdAt, description, commentCount, profile, edited, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx where feedIdx = "${targetIdx}";`;
+  const pagingSet = 3;
+
+  const $commentJoinUser = `select CommentList.idx, feedIdx, writerIdx, createdAt, description, commentCount, profile, edited, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx where feedIdx = "${targetIdx}" ORDER BY idx desc LIMIT ${pageNumber *
+    pagingSet}, ${pagingSet};`;
 
   try {
     await db.query($commentJoinUser, (err, rows) => {
