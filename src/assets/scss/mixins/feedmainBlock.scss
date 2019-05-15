@@ -35,6 +35,17 @@
             margin-left: 10px;
             line-height: 30px;
           }
+          .feedBolck__header-from-userName {
+            display: inline-block;
+            & > span {
+              line-height: 30px;
+              margin-left: 10px;
+              &:first-child {
+                position: relative;
+                top: -3px;
+              }
+            }
+          }
         }
       }
       .feedBlock__header-subMenuBtn {

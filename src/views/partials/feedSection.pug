@@ -29,5 +29,6 @@ each item in feeds
         description: item.description,
         likes: item.likes,
         comments: item.comments,
-        edited: item.edited
+        edited: item.edited,
+        otherName: item.writer !== item.fromName ? item.fromName : null
     })

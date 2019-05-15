@@ -14,3 +14,4 @@ article.feed-main__upload-wrapper
             label(for="jsFeedUpload") Photo
             input(type="file", id="jsFeedUpload", name="uploadFeed", accept="image/*")
             input(type="submit", value="Share")
+            input(type="hidden", name="fromName", value=otherUser ? otherUser.name : user.name)

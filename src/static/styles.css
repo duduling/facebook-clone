@@ -1969,6 +1969,14 @@ input {
         #feedSection .feedBlock .feedBlock__header .feedBlock__header-grid .feedBolck__header-userName > a > span {
           margin-left: 10px;
           line-height: 30px; }
+        #feedSection .feedBlock .feedBlock__header .feedBlock__header-grid .feedBolck__header-userName .feedBolck__header-from-userName {
+          display: inline-block; }
+          #feedSection .feedBlock .feedBlock__header .feedBlock__header-grid .feedBolck__header-userName .feedBolck__header-from-userName > span {
+            line-height: 30px;
+            margin-left: 10px; }
+            #feedSection .feedBlock .feedBlock__header .feedBlock__header-grid .feedBolck__header-userName .feedBolck__header-from-userName > span:first-child {
+              position: relative;
+              top: -3px; }
       #feedSection .feedBlock .feedBlock__header .feedBlock__header-subMenuBtn > i {
         float: right;
         font-size: 20px;

@@ -38,6 +38,10 @@ mixin feedBlock(feed = {})
                 .feedBolck__header-userName
                     a(href=routes.feedsUser(feed.writerIdx))
                         span=feed.writer
+                    if feed.otherName && feed.otherName !== feed.writer
+                        .feedBolck__header-from-userName
+                            span 👉🏻
+                            span=feed.otherName
                 if feed.edited === 1
                     span #{whatTimeIsIt(feed.createdAt)} · Edited
                 else
