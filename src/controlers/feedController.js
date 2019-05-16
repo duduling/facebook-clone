@@ -62,7 +62,7 @@ export const getFeedUser = async (req, res) => {
       "SELECT * FROM Users where `idx`=?;",
       otherIdx
     );
-    const $feedJoinUser = `select Feeds.idx, writer, fromIdx, fromName, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx WHERE Feeds.fromIdx = "${otherIdx}" ORDER BY Feeds.createdAt DESC;`;
+    const $feedJoinUser = `select Feeds.idx, writer, fromIdx, fromName, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx WHERE Feeds.fromIdx = "${otherIdx}" ORDER BY Feeds.createdAt DESC limit 5;`;
     const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
       req.user.idx
     }";`;

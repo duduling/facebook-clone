@@ -193,12 +193,14 @@ const autoScrollEvent = async () => {
 
 const autoScrollPaging = async () => {
   const feedPagingNumber = feedSection.attributes[1].value;
+  const typeOrOtherIdx = window.location.href.split("/feeds/")[1];
 
   const response = await axios({
     url: "/api/selectFeedPaging",
     method: "POST",
     data: {
-      feedPagingNumber
+      feedPagingNumber,
+      typeOrOtherIdx
     }
   }).catch(err => {
     console.log(err);
@@ -496,11 +498,16 @@ const subMenuClickEvent = event => {
 };
 
 const init = () => {
-  jsEditFeedUpload.addEventListener("change", inputEditFileChange);
-  jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
+  if (
+    window.location.href.split("http://localhost:3000/feeds/search")[1] ===
+    undefined
+  ) {
+    window.addEventListener("scroll", autoScrollEvent);
+    jsEditFeedUpload.addEventListener("change", inputEditFileChange);
+    jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
+  }
   jsImgCloseBtn.addEventListener("click", clickImageZoomOff);
   window.addEventListener("click", subMenuClickEvent);
-  window.addEventListener("scroll", autoScrollEvent);
 };
 
 if (feedSection) {

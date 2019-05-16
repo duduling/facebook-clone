@@ -1087,23 +1087,6 @@ input {
       font-size: 10px;
       padding: 5px 15px; } }
 
-.feed-search__feeds .feed-search__feeds--notFound {
-  -webkit-border-radius: 7px;
-     -moz-border-radius: 7px;
-          border-radius: 7px;
-  background-color: white;
-  padding: 10px; }
-
-.feed-search__users {
-  background-color: white;
-  margin-bottom: 15px;
-  padding: 12px;
-  -webkit-border-radius: 7px;
-     -moz-border-radius: 7px;
-          border-radius: 7px; }
-  .feed-search__users > h5 {
-    margin-bottom: 20px; }
-
 #jsFeedImageZoom {
   display: none;
   background-color: rgba(0, 0, 0, 0.7);
@@ -1172,6 +1155,23 @@ input {
           color: gray; }
       #jsFeedImageZoom .feedBlock-imageZoom > article:hover > i {
         display: block; }
+
+.feed-search__feeds .feed-search__feeds--notFound {
+  -webkit-border-radius: 7px;
+     -moz-border-radius: 7px;
+          border-radius: 7px;
+  background-color: white;
+  padding: 10px; }
+
+.feed-search__users {
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 12px;
+  -webkit-border-radius: 7px;
+     -moz-border-radius: 7px;
+          border-radius: 7px; }
+  .feed-search__users > h5 {
+    margin-bottom: 20px; }
 
 #jsFeedBlockEditCover {
   display: none;
@@ -1409,6 +1409,7 @@ input {
            object-position: top;
         border: rgba(0, 0, 0, 0.1) solid 1px; }
       .feed-main__upload-wrapper .feed-main__upload-form .feed-main__upload-form-description > textarea {
+        width: 100%;
         font-family: "Noto Sans KR", sans-serif;
         font-size: 14px;
         padding: 15px 25px 15px 15px;
@@ -1618,12 +1619,13 @@ input {
           padding: 5px 10px;
           -webkit-border-radius: 5px 0 0 5px;
              -moz-border-radius: 5px 0 0 5px;
-                  border-radius: 5px 0 0 5px; }
+                  border-radius: 5px 0 0 5px;
+          height: 30px; }
         .header .header__wrapper .header__search-bar > form #header__searchBar-btn {
           width: 50px;
           position: relative;
           top: 0;
-          padding: 6px 10px;
+          height: 30px;
           -webkit-border-radius: 0 2px 2px 0;
              -moz-border-radius: 0 2px 2px 0;
                   border-radius: 0 2px 2px 0;

@@ -228,14 +228,22 @@ export const postLikeCount = async (req, res) => {
 
 export const postSelectFeedPaging = async (req, res) => {
   const {
-    body: { feedPagingNumber }
+    body: { feedPagingNumber, typeOrOtherIdx }
   } = req;
 
   const pagingSet = 3;
 
-  const $feedJoinUserPaging = `select Feeds.idx, writer, writer_idx, fromIdx, fromName, createdAt, fileUrl, description, likes, comments, profile, edited from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC LIMIT ${feedPagingNumber *
-    pagingSet +
-    5}, ${pagingSet};`;
+  let $feedJoinUserPaging;
+
+  if (typeOrOtherIdx === "main") {
+    $feedJoinUserPaging = `select Feeds.idx, writer, writer_idx, fromIdx, fromName, createdAt, fileUrl, description, likes, comments, profile, edited from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC LIMIT ${feedPagingNumber *
+      pagingSet +
+      5}, ${pagingSet};`;
+  } else {
+    $feedJoinUserPaging = `select Feeds.idx, writer, writer_idx, fromIdx, fromName, createdAt, fileUrl, description, likes, comments, profile, edited from Feeds left join Users on Feeds.writer_idx = Users.idx WHERE Feeds.fromIdx = "${typeOrOtherIdx}" ORDER BY Feeds.createdAt DESC LIMIT ${feedPagingNumber *
+      pagingSet +
+      5}, ${pagingSet};`;
+  }
 
   try {
     await db.query($feedJoinUserPaging, (err, rows) => {
