@@ -3,12 +3,11 @@ import axios from "axios";
 const feedSection = document.getElementById("feedSection");
 const jsUserProfile = document.getElementById("jsUserProfile").src;
 const jsUserName = document.getElementById("jsUserName").innerText;
-const jsCommentListMore = document.getElementById("jsCommentListMore");
 
 let tempCommentSubMenuDocument;
 let tempCommentEditDocument;
 
-const whatTimeIsIt = targetDate => {
+export const whatTimeIsIt = targetDate => {
   if (targetDate !== false) {
     const nowTime = new Date();
     const targetDateObj = new Date(targetDate);
