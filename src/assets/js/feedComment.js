@@ -212,7 +212,8 @@ const selectCommentPaging = async targetIdx => {
     method: "POST",
     data: {
       targetIdx,
-      pageNumber
+      pageNumber,
+      fristPaging: false
     }
   }).catch(err => {
     console.log(err);
@@ -221,13 +222,15 @@ const selectCommentPaging = async targetIdx => {
   if (commentData.status === 200) {
     const returnCommentList = commentData.data.commentList;
 
-    for (let i = 0; i < returnCommentList.length; i++) {
-      handleAddCommentDocu(returnCommentList[i], "beforeend");
+    if (returnCommentList.length !== 0) {
+      for (let i = 0; i < returnCommentList.length; i++) {
+        handleAddCommentDocu(returnCommentList[i], "beforeend");
+      }
+
+      targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
+    } else {
+      alert("마지막 댓글 입니다.");
     }
-
-    console.log(typeof pageNumber);
-
-    targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
   }
 };
 

@@ -1998,7 +1998,7 @@ input {
     display: none; } }
 
 #feedSection {
-  margin-bottom: 10%; }
+  margin-bottom: 50px; }
   #feedSection .feedBlock {
     position: relative;
     border: #ddd solid 1px;

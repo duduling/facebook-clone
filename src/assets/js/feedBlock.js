@@ -87,7 +87,8 @@ const handleCommentToggle = async targetIdx => {
       method: "POST",
       data: {
         targetIdx,
-        pageNumber
+        pageNumber,
+        fristPaging: true
       }
     }).catch(err => {
       console.log(err);
@@ -101,7 +102,7 @@ const handleCommentToggle = async targetIdx => {
       }
       targetCommentDocument.value = true;
       targetDocument.style.display = "block";
-      targetCommentDocument.setAttribute("value", pageNumber + 1);
+      targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
     }
   } else {
     targetDocument.style.display = "none";
@@ -301,11 +302,22 @@ const subMenuClickEvent = event => {
   }
 };
 
+const autoScrollEvent = event => {
+  function getCurrentScrollPercentage() {
+    return (window.scrollY + window.innerHeight) / document.body.clientHeight;
+  }
+
+  if (getCurrentScrollPercentage() > 1) {
+    console.log("업데이트");
+  }
+};
+
 const init = () => {
   jsEditFeedUpload.addEventListener("change", inputEditFileChange);
   jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
   jsImgCloseBtn.addEventListener("click", clickImageZoomOff);
   window.addEventListener("click", subMenuClickEvent);
+  window.addEventListener("scroll", autoScrollEvent);
 };
 
 if (feedSection) {
