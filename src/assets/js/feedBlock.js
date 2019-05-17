@@ -181,62 +181,60 @@ const handleAddFeedDocu = feed => {
 };
 
 // Auto Scroll Paging Process-------------------------------------------------------------------------
-const autoScrollEvent = async () => {
+const autoScrollEvent = () => {
   const scrollYPostion = window.scrollY + window.innerHeight;
   const asideBreakPoint = document.getElementsByClassName(
+    "feed-main__gridLayout-aside-wrap"
+  )[0];
+  const asideStyle = document.getElementsByClassName(
     "feed-main__gridLayout-aside"
   )[0];
-
-  const asideHeight =
-    asideBreakPoint.children[0].clientHeight +
-    asideBreakPoint.children[1].clientHeight +
-    asideBreakPoint.children[2].clientHeight +
-    150;
 
   const autoScrollPagingPostionCheck = () => {
     return scrollYPostion / document.body.clientHeight;
   };
 
   const asideFixScroll = () => {
-    return scrollYPostion / asideHeight;
+    return scrollYPostion / (asideBreakPoint.clientHeight + 70);
   };
 
   if (autoScrollPagingPostionCheck() > 1) {
     window.removeEventListener("scroll", autoScrollEvent);
     autoScrollPaging();
   }
-  if (matchMedia("screen and (min-width: 768px)").matches) {
-    if (
-      jsFakeDivBox.style.width !== "calc(30% - 3px)" &&
-      asideFixScroll() < 1
-    ) {
-      asideBreakPoint.style.bottom = "";
-      asideBreakPoint.style.position = "";
-      asideBreakPoint.style.width = "";
-      jsFakeDivBox.style.display = "none";
-    } else if (
-      jsFakeDivBox.style.width !== "calc(30% - 3px)" &&
-      asideFixScroll() > 1
-    ) {
-      asideBreakPoint.style.bottom = "20px";
-      asideBreakPoint.style.position = "fixed";
-      asideBreakPoint.style.width = "calc(30% - 3px)";
+
+  if (matchMedia("screen and (min-width: 1024px)").matches) {
+    if (asideFixScroll() > 1) {
+      asideStyle.style.position = "fixed";
+      asideStyle.style.bottom = "20px";
+      asideStyle.style.width = "296px";
       jsFakeDivBox.style.display = "block";
-    }
-  } else if (matchMedia("screen and (min-width: 1024px)").matches) {
-    if (jsFakeDivBox.style.display === "none" && asideFixScroll() > 1) {
-      asideBreakPoint.style.bottom = "20px";
-      asideBreakPoint.style.position = "fixed";
-      asideBreakPoint.style.width = "296px";
-      jsFakeDivBox.style.display = "block";
-    } else if (jsFakeDivBox.style.display !== "none" && asideFixScroll() < 1) {
-      asideBreakPoint.style.bottom = "";
-      asideBreakPoint.style.position = "";
-      asideBreakPoint.style.width = "";
+    } else if (asideFixScroll() < 1) {
+      asideStyle.style.bottom = "";
+      asideStyle.style.position = "";
+      asideStyle.style.width = "";
       jsFakeDivBox.style.display = "none";
-    } else {
-      asideBreakPoint.style.width = "296px";
     }
+  } else if (matchMedia("screen and (min-width: 768px)").matches) {
+    if (asideStyle.style.position === "fixed") {
+      asideStyle.style.width = "30%";
+    }
+    if (asideStyle.style.position !== "fixed" && asideFixScroll() > 1) {
+      asideStyle.style.position = "fixed";
+      asideStyle.style.bottom = "20px";
+      asideStyle.style.width = "30%";
+      jsFakeDivBox.style.display = "block";
+    } else if (asideStyle.style.position === "fixed" && asideFixScroll() < 1) {
+      asideStyle.style.bottom = "";
+      asideStyle.style.position = "";
+      asideStyle.style.width = "100%";
+      jsFakeDivBox.style.display = "none";
+    }
+  } else {
+    asideStyle.style.bottom = "";
+    asideStyle.style.position = "";
+    asideStyle.style.width = "";
+    jsFakeDivBox.style.display = "none";
   }
 };
 
@@ -552,6 +550,7 @@ const init = () => {
     undefined
   ) {
     window.addEventListener("scroll", autoScrollEvent);
+    window.addEventListener("resize", autoScrollEvent);
     jsEditFeedUpload.addEventListener("change", inputEditFileChange);
     jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
   }

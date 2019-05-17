@@ -8,10 +8,11 @@ block content
                 .feed-main__gridLayout
                     #jsFakeDivBox
                     aside.feed-main__gridLayout-aside
-                        h3.ir_su aside
-                        include ./partials/asideUsers
-                        include ./partials/asideAd
-                        span Facebook &copy; #{new Date().getFullYear()}
+                        .feed-main__gridLayout-aside-wrap
+                            h3.ir_su aside
+                            include ./partials/asideUsers
+                            include ./partials/asideAd
+                            span Facebook &copy; #{new Date().getFullYear()}
                     section.feed-main__gridLayout-feed
                         h3.ir_su feed
                         section.feed-main__upload
