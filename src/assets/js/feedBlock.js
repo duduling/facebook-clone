@@ -2,7 +2,6 @@ import axios from "axios";
 import { handleAddCommentDocu, whatTimeIsIt } from "./feedComment";
 
 const feedSection = document.getElementById("feedSection");
-const jsFakeDivBox = document.getElementById("jsFakeDivBox");
 
 // Edit Variables
 const jsEditUploadTextarea = document.getElementById("jsEditUploadTextarea");
@@ -181,62 +180,6 @@ const handleAddFeedDocu = feed => {
 };
 
 // Auto Scroll Paging Process-------------------------------------------------------------------------
-const autoScrollEvent = () => {
-  const scrollYPostion = window.scrollY + window.innerHeight;
-  const asideBreakPoint = document.getElementsByClassName(
-    "feed-main__gridLayout-aside-wrap"
-  )[0];
-  const asideStyle = document.getElementsByClassName(
-    "feed-main__gridLayout-aside"
-  )[0];
-
-  const autoScrollPagingPostionCheck = () => {
-    return scrollYPostion / document.body.clientHeight;
-  };
-
-  const asideFixScroll = () => {
-    return scrollYPostion / (asideBreakPoint.clientHeight + 70);
-  };
-
-  if (autoScrollPagingPostionCheck() > 1) {
-    window.removeEventListener("scroll", autoScrollEvent);
-    autoScrollPaging();
-  }
-
-  if (matchMedia("screen and (min-width: 1024px)").matches) {
-    if (asideFixScroll() > 1) {
-      asideStyle.style.position = "fixed";
-      asideStyle.style.bottom = "20px";
-      asideStyle.style.width = "296px";
-      jsFakeDivBox.style.display = "block";
-    } else if (asideFixScroll() < 1) {
-      asideStyle.style.bottom = "";
-      asideStyle.style.position = "";
-      asideStyle.style.width = "";
-      jsFakeDivBox.style.display = "none";
-    }
-  } else if (matchMedia("screen and (min-width: 768px)").matches) {
-    if (asideStyle.style.position === "fixed") {
-      asideStyle.style.width = "30%";
-    }
-    if (asideStyle.style.position !== "fixed" && asideFixScroll() > 1) {
-      asideStyle.style.position = "fixed";
-      asideStyle.style.bottom = "20px";
-      asideStyle.style.width = "30%";
-      jsFakeDivBox.style.display = "block";
-    } else if (asideStyle.style.position === "fixed" && asideFixScroll() < 1) {
-      asideStyle.style.bottom = "";
-      asideStyle.style.position = "";
-      asideStyle.style.width = "100%";
-      jsFakeDivBox.style.display = "none";
-    }
-  } else {
-    asideStyle.style.bottom = "";
-    asideStyle.style.position = "";
-    asideStyle.style.width = "";
-    jsFakeDivBox.style.display = "none";
-  }
-};
 
 const autoScrollPaging = async () => {
   const feedPagingNumber = feedSection.attributes[1].value;
@@ -263,6 +206,19 @@ const autoScrollPaging = async () => {
     feedSection.attributes[1].value = Number(feedPagingNumber) + 1;
 
     window.addEventListener("scroll", autoScrollEvent);
+  }
+};
+
+const autoScrollEvent = () => {
+  const scrollYPostion = window.scrollY + window.innerHeight;
+
+  const autoScrollPagingPostionCheck = () => {
+    return scrollYPostion / document.body.clientHeight;
+  };
+
+  if (autoScrollPagingPostionCheck() > 1) {
+    window.removeEventListener("scroll", autoScrollEvent);
+    autoScrollPaging();
   }
 };
 
@@ -550,7 +506,7 @@ const init = () => {
     undefined
   ) {
     window.addEventListener("scroll", autoScrollEvent);
-    window.addEventListener("resize", autoScrollEvent);
+    // window.addEventListener("resize", autoScrollEvent);
     jsEditFeedUpload.addEventListener("change", inputEditFileChange);
     jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
   }

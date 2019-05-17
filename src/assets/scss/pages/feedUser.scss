@@ -79,6 +79,9 @@
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px;
+      #jsFakeDivBox {
+        display: none;
+      }
     }
   }
 }

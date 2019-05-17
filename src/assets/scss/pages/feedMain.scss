@@ -26,10 +26,6 @@
   .feed-main {
     .feed-main__wrapper {
       width: 90%;
-      .feed-main__gridLayout {
-        .feed-main__gridLayout-feed {
-        }
-      }
     }
   }
 }
@@ -63,7 +59,7 @@
         .feed-main__gridLayout-aside {
           position: relative;
           width: 100%;
-          .feed-main__gridLayout-aside-wrap {
+          .feed__gridLayout-aside-wrap {
             & > span {
               display: none;
             }

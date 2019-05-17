@@ -31,11 +31,7 @@ passport.use(
             parseInt(process.env.CRYPTO_SECRET, 10),
             parseInt(process.env.CRYPTO_OPTION1, 10),
             process.env.CRYPTO_OPTION2,
-            (err, key) => {
-              if (err) {
-                done(err);
-              }
-
+            (_, key) => {
               if (key.toString("base64") === user.pw) {
                 // 로그인 성공
                 done(null, user);

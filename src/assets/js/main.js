@@ -1,4 +1,5 @@
 // JS
+import "./asideFixPosition";
 import "./editPassword";
 import "./feedBlock";
 import "./feedComment";

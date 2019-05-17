@@ -308,7 +308,7 @@ input {
       .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside {
         position: relative;
         width: 100%; }
-        .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__gridLayout-aside-wrap > span {
+        .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed__gridLayout-aside-wrap > span {
           display: none; }
         .feed-main .feed-main__wrapper .feed-main__gridLayout .feed-main__gridLayout-aside .feed-main__aside-ad-grid {
           grid-template-columns: repeat(2, 1fr); } }
@@ -327,6 +327,8 @@ input {
       display: grid;
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px; }
+      .feed-search .feed-search__wrapper .feed-search__gridLayout #jsFakeDivBox {
+        display: none; }
       .feed-search .feed-search__wrapper .feed-search__gridLayout .feed-search__gridLayout-feed {
         background-color: #e9ebee; }
 
@@ -431,6 +433,8 @@ input {
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
       padding-top: 15px; }
+      .feed-user .feed-user__wrapper .feed-user__grid-layout #jsFakeDivBox {
+        display: none; }
 
 @media (max-width: 1024px) {
   .feed-user .feed-user__wrapper {
@@ -628,9 +632,11 @@ input {
 @media (max-width: 768px) {
   .feed-main__aside-ad-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); } }
+    grid-template-columns: repeat(2, 1fr); }
+    .feed-main__aside-ad-grid .feed__gridLayout-aside-wrap .feed-main__aside-ad > span {
+      display: none; } }
 
-.feed-main__gridLayout-aside-wrap > span {
+.feed__gridLayout-aside-wrap > span {
   display: block;
   font-size: 12px;
   margin-top: 15px;
@@ -2087,8 +2093,8 @@ input {
       display: block;
       padding: 10px; }
     #feedSection .feedBlock .feedBlock__body .feedBlock__body-img > img {
-      width: 580px;
-      max-height: 580px;
+      width: 570px;
+      max-height: 570px;
       -o-object-fit: contain;
          object-fit: contain;
       background-color: rgba(0, 0, 0, 0.8); }
