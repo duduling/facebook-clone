@@ -12,6 +12,14 @@
       display: grid;
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
+      #jsFakeDivBox {
+        display: none;
+      }
+      .feed-main__gridLayout-aside {
+        // position: fixed;
+        // width: 300px;
+        transition: 0.3s;
+      }
       .feed-main__gridLayout-feed {
         background-color: $feedBGC;
       }
@@ -24,6 +32,9 @@
     .feed-main__wrapper {
       width: 90%;
       .feed-main__gridLayout {
+        .feed-main__gridLayout-aside {
+          // width: 30%;
+        }
         .feed-main__gridLayout-feed {
         }
       }
@@ -37,9 +48,6 @@
       width: 90%;
       .feed-main__gridLayout {
         .feed-main__gridLayout-aside {
-          & > span {
-            display: none;
-          }
           .feed-main__aside-ad-grid {
             // display: grid;
             // grid-template-columns: repeat(3, 1fr);
@@ -61,7 +69,15 @@
       width: 90%;
       .feed-main__gridLayout {
         grid-template-columns: 1fr;
+        #jsFakeDivBox {
+          display: none;
+        }
         .feed-main__gridLayout-aside {
+          position: relative;
+          width: 100%;
+          & > span {
+            display: none;
+          }
           .feed-main__aside-ad-grid {
             grid-template-columns: repeat(2, 1fr);
           }

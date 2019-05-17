@@ -2,6 +2,7 @@ import axios from "axios";
 import { handleAddCommentDocu, whatTimeIsIt } from "./feedComment";
 
 const feedSection = document.getElementById("feedSection");
+const jsFakeDivBox = document.getElementById("jsFakeDivBox");
 
 // Edit Variables
 const jsEditUploadTextarea = document.getElementById("jsEditUploadTextarea");
@@ -181,13 +182,61 @@ const handleAddFeedDocu = feed => {
 
 // Auto Scroll Paging Process-------------------------------------------------------------------------
 const autoScrollEvent = async () => {
-  const getCurrentScrollPercentage = () => {
-    return (window.scrollY + window.innerHeight) / document.body.clientHeight;
+  const scrollYPostion = window.scrollY + window.innerHeight;
+  const asideBreakPoint = document.getElementsByClassName(
+    "feed-main__gridLayout-aside"
+  )[0];
+
+  const asideHeight =
+    asideBreakPoint.children[0].clientHeight +
+    asideBreakPoint.children[1].clientHeight +
+    asideBreakPoint.children[2].clientHeight +
+    150;
+
+  const autoScrollPagingPostionCheck = () => {
+    return scrollYPostion / document.body.clientHeight;
   };
 
-  if (getCurrentScrollPercentage() > 1) {
+  const asideFixScroll = () => {
+    return scrollYPostion / asideHeight;
+  };
+
+  if (autoScrollPagingPostionCheck() > 1) {
     window.removeEventListener("scroll", autoScrollEvent);
     autoScrollPaging();
+  }
+  if (matchMedia("screen and (min-width: 768px)").matches) {
+    if (
+      jsFakeDivBox.style.width !== "calc(30% - 3px)" &&
+      asideFixScroll() < 1
+    ) {
+      asideBreakPoint.style.bottom = "";
+      asideBreakPoint.style.position = "";
+      asideBreakPoint.style.width = "";
+      jsFakeDivBox.style.display = "none";
+    } else if (
+      jsFakeDivBox.style.width !== "calc(30% - 3px)" &&
+      asideFixScroll() > 1
+    ) {
+      asideBreakPoint.style.bottom = "20px";
+      asideBreakPoint.style.position = "fixed";
+      asideBreakPoint.style.width = "calc(30% - 3px)";
+      jsFakeDivBox.style.display = "block";
+    }
+  } else if (matchMedia("screen and (min-width: 1024px)").matches) {
+    if (jsFakeDivBox.style.display === "none" && asideFixScroll() > 1) {
+      asideBreakPoint.style.bottom = "20px";
+      asideBreakPoint.style.position = "fixed";
+      asideBreakPoint.style.width = "296px";
+      jsFakeDivBox.style.display = "block";
+    } else if (jsFakeDivBox.style.display !== "none" && asideFixScroll() < 1) {
+      asideBreakPoint.style.bottom = "";
+      asideBreakPoint.style.position = "";
+      asideBreakPoint.style.width = "";
+      jsFakeDivBox.style.display = "none";
+    } else {
+      asideBreakPoint.style.width = "296px";
+    }
   }
 };
 

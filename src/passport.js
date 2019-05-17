@@ -5,18 +5,6 @@ import db from "./db";
 
 const LocalStrategy = require("passport-local").Strategy;
 
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.deserializeUser((id, done) => {
-  /* db 에서 id를 이용하여 user를 얻어서 done을 호출합니다 */
-  db.query("SELECT * FROM Users WHERE `id`=?", [id], (err, rows) => {
-    const user = rows[0];
-    done(err, user);
-  });
-});
-
 passport.use(
   new LocalStrategy(
     // post from name
@@ -24,8 +12,9 @@ passport.use(
       usernameField: "email",
       passwordField: "password"
     },
-    (username, password, done) => {
-      db.query(`SELECT * FROM Users WHERE id = "${username}";`, (err, rows) => {
+    async (username, password, done) => {
+      const $selectId = `SELECT * FROM Users WHERE id = "${username}";`;
+      await db.query($selectId, async (err, rows) => {
         // Error
         if (err) done(err);
 
@@ -36,7 +25,7 @@ passport.use(
           const user = rows[0];
 
           // 암호화 비밀번호 확인
-          crypto.pbkdf2(
+          await crypto.pbkdf2(
             password,
             user.pw_salt,
             parseInt(process.env.CRYPTO_SECRET, 10),
@@ -62,3 +51,18 @@ passport.use(
     }
   )
 );
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  /* db 에서 id를 이용하여 user를 얻어서 done을 호출합니다 */
+  const $selectId = `SELECT * FROM Users WHERE id="${id}";`;
+
+  await db.query($selectId, (err, rows) => {
+    if (err) throw err;
+    const user = rows[0];
+    done(err, user);
+  });
+});
