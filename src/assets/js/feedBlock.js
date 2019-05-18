@@ -139,7 +139,7 @@ const handleAddFeedDocu = feed => {
       <button id="jsLikeBtn">
         ${likeStyleCheck(feed)}
       </button>
-      <button id="jdCommentBtn">
+      <button id="jsCommentBtn">
         <i class="far fa-comment-alt" id="CommentBtnIdx${feed.idx}"> Comment</i>
       </button>
     </div>
@@ -449,23 +449,23 @@ const clickImageZoomOff = () => {
 };
 
 // SubMenu Click Event------------------------------------------------------------------
-const subMenuClickEvent = event => {
+const subMenuClickEvent = async event => {
   const eventPath = event.composedPath();
 
   if (eventPath[0].className === "feedBlock-imageZoom") {
-    clickImageZoomOff();
+    await clickImageZoomOff();
   }
 
   // Image Zoom
   if (eventPath[0].alt === "content img") {
-    clickImageZoomOn(eventPath);
+    await clickImageZoomOn(eventPath);
   }
 
   // Click Event SubMenu
   if (eventPath[1].id === "jsFeedBolckBtnIdx") {
-    feedSubMenuToggle(event);
+    await feedSubMenuToggle(event);
   } else if (tempSubMenuDocument) {
-    offTheSubMenu();
+    await offTheSubMenu();
   }
 
   //   Click Event Feed Edit
@@ -474,9 +474,9 @@ const subMenuClickEvent = event => {
     eventPath[1].id === "jsFeedBlockEdit" ||
     eventPath[2].id === "jsFeedBlockEdit"
   ) {
-    handleFeedEdit(event);
+    await handleFeedEdit(event);
   } else if (event.target.id === "jsFeedBlockEditCover") {
-    checkEditExit();
+    await checkEditExit();
   }
 
   //   Click Event Feed Delete
@@ -485,20 +485,22 @@ const subMenuClickEvent = event => {
     eventPath[1].id === "jsFeedBlockDelete" ||
     eventPath[2].id === "jsFeedBlockDelete"
   ) {
-    handleFeedDelte(event);
+    await handleFeedDelte(event);
   }
 
   //  Click Event LikeBtn
   if (eventPath[0].id === "jsLikeBtn" || eventPath[1].id === "jsLikeBtn") {
-    handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
+    await handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
   }
 
   //  Click Event CommentBtn
   if (
-    eventPath[0].id === "jdCommentBtn" ||
-    eventPath[1].id === "jdCommentBtn"
+    eventPath[0].id === "jsCommentBtn" ||
+    eventPath[1].id === "jsCommentBtn"
   ) {
-    handleCommentToggle(event.srcElement.offsetParent.attributes.value.value);
+    await handleCommentToggle(
+      event.srcElement.offsetParent.attributes.value.value
+    );
   }
 };
 

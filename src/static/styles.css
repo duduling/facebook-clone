@@ -725,6 +725,7 @@ input {
     .header__dropMenu > li .header__dropMenu-list {
       width: 140px;
       position: absolute;
+      margin-top: -1px;
       right: -10px;
       visibility: hidden;
       opacity: 0;
@@ -1149,7 +1150,7 @@ input {
          -moz-box-pack: center;
           -ms-flex-pack: center;
               justify-content: center;
-      background-color: rgba(0, 0, 0, 0.5); }
+      background-color: rgba(0, 0, 0, 0.7); }
       #jsFeedImageZoom .feedBlock-imageZoom > article > img {
         width: 100%;
         height: 100%;
@@ -1642,9 +1643,9 @@ input {
              -moz-border-radius: 0 2px 2px 0;
                   border-radius: 0 2px 2px 0;
           background: #eee url(/img/search.png) center no-repeat;
-          -webkit-background-size: 25px 25px;
-             -moz-background-size: 25px 25px;
-                  background-size: 25px 25px;
+          -webkit-background-size: 20px 20px;
+             -moz-background-size: 20px 20px;
+                  background-size: 20px 20px;
           cursor: pointer; }
           .header .header__wrapper .header__search-bar > form #header__searchBar-btn:hover {
             background-color: #ddd; }
@@ -1991,7 +1992,15 @@ input {
   .feed-main__aside-ad-block .feed-main__aside-ad-link > p {
     font-size: 14px;
     font-weight: 500;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    line-height: 16px;
+    word-wrap: break-word; }
   .feed-main__aside-ad-block .feed-main__aside-ad-link > span {
     font-size: 12px;
     margin-top: 10px;
@@ -2160,6 +2169,9 @@ input {
           #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-write > form > img {
             width: 40px;
             height: 40px;
+            -webkit-border-radius: 100%;
+               -moz-border-radius: 100%;
+                    border-radius: 100%;
             margin-left: 3px;
             -o-object-fit: cover;
                object-fit: cover;

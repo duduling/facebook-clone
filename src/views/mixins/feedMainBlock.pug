@@ -79,12 +79,12 @@ mixin feedBlock(feed = {})
                         i.far.fa-thumbs-up(id=`LikeBtnIdx${feed.idx}`, style="font-weight: 600; color: rgb(32, 120, 244)")  Like
                     else 
                         i.far.fa-thumbs-up(id=`LikeBtnIdx${feed.idx}`, style="font-weight: 400")  Like
-                button#jdCommentBtn
+                button#jsCommentBtn
                     i.far.fa-comment-alt(id=`CommentBtnIdx${feed.idx}`)  Comment
         .feedBlock__comments(id=`commentIdx${feed.idx}`, value=feed.idx, style="display: none;")
             .feedBlock__comments-write
                 form(onsubmit="return false;")
-                    img(src=feed.writerProfile, alt="userProfile")
+                    img(src=user.profile, alt="userProfile")
                     input(type="text", textarea="commentWrite", id=`commentInputIdx${feed.idx}`, autocomplete="off", required)
                     input(type="submit", value="Add")
                     input(type="hidden",name="targetIdx" value=feed.idx)
