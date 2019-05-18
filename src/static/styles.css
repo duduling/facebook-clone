@@ -2207,7 +2207,10 @@ input {
           -o-object-fit: cover;
              object-fit: cover;
           -o-object-position: top;
-             object-position: top; }
+             object-position: top;
+          -webkit-border-radius: 100%;
+             -moz-border-radius: 100%;
+                  border-radius: 100%; }
         #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block {
           width: 100%;
           display: inline-block;
@@ -2303,7 +2306,10 @@ input {
           -o-object-fit: cover;
              object-fit: cover;
           -o-object-position: top;
-             object-position: top; }
+             object-position: top;
+          -webkit-border-radius: 100%;
+             -moz-border-radius: 100%;
+                  border-radius: 100%; }
         #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comment-non-Re .feedBlock__comments-single--edit > form > input:nth-child(2) {
           margin: 5px;
           padding: 0 10px;
@@ -2337,7 +2343,10 @@ input {
             -o-object-fit: cover;
                object-fit: cover;
             -o-object-position: top;
-               object-position: top; }
+               object-position: top;
+            -webkit-border-radius: 100%;
+               -moz-border-radius: 100%;
+                    border-radius: 100%; }
           #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re-write > form > input:nth-child(2) {
             margin: 5px;
             padding: 0 10px;
@@ -2366,7 +2375,10 @@ input {
             -o-object-fit: cover;
                object-fit: cover;
             -o-object-position: top;
-               object-position: top; }
+               object-position: top;
+            -webkit-border-radius: 100%;
+               -moz-border-radius: 100%;
+                    border-radius: 100%; }
           #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single .feedBlock__comments-single--body .feedBlock__comment-block {
             width: 100%;
             display: inline-block;
@@ -2453,7 +2465,10 @@ input {
               -o-object-fit: cover;
                  object-fit: cover;
               -o-object-position: top;
-                 object-position: top; }
+                 object-position: top;
+              -webkit-border-radius: 100%;
+                 -moz-border-radius: 100%;
+                      border-radius: 100%; }
             #feedSection .feedBlock .feedBlock__comments .feedBlock__comments-commentsList .feedBlock__comments-Re .feedBlock__comments-single--edit-Re > form > input:nth-child(2) {
               margin: 5px;
               padding: 0 10px;

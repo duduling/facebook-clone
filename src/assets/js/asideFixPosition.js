@@ -11,6 +11,7 @@ const friendBoxGridBox = document.getElementsByClassName(
 
 // Auto Scroll Paging Process-------------------------------------------------------------------------
 const autoScrollEvent = () => {
+  // 스크롤의 위치 값
   const scrollYPostion =
     window.scrollY +
     window.innerHeight -
@@ -23,6 +24,7 @@ const autoScrollEvent = () => {
     );
   };
 
+  // Main and Search page aside가 window height보다 작을 경우
   if (
     !userInfoTitle &&
     asideBreakPoint.clientHeight < window.innerHeight - 60 &&
@@ -50,6 +52,7 @@ const autoScrollEvent = () => {
       jsFakeDivBox.style.display = "none";
     }
   } else if (matchMedia("screen and (min-width: 768px)").matches) {
+    // position이 fixed인 경우 Css Reset
     if (asideStyle.style.position === "fixed") {
       asideStyle.style.width = userInfoTitle ? "29.5%" : "30%";
       if (
@@ -68,10 +71,15 @@ const autoScrollEvent = () => {
         asideStyle.style.top = "60px";
       } else {
         asideStyle.style.top = "";
-        // asideStyle.style.bottom = userInfoTitle ? "50px" : "20px";
       }
     }
+
+    // position이 fixed가 아니면서 스크롤이  breakpoint를 넘었을 경우
     if (asideStyle.style.position !== "fixed" && asideFixScroll() > 1) {
+      asideStyle.style.position = "fixed";
+      asideStyle.style.width = userInfoTitle ? "29.5%" : "30%";
+      jsFakeDivBox.style.display = "block";
+
       if (
         userInfoTitle &&
         matchMedia("screen and (min-width: 960px)").matches &&
@@ -90,9 +98,7 @@ const autoScrollEvent = () => {
         asideStyle.style.top = "";
         asideStyle.style.bottom = userInfoTitle ? "50px" : "20px";
       }
-      asideStyle.style.position = "fixed";
-      asideStyle.style.width = userInfoTitle ? "29.5%" : "30%";
-      jsFakeDivBox.style.display = "block";
+      // 스크롤 위로 올라가면 초기화
     } else if (asideStyle.style.position === "fixed" && asideFixScroll() < 1) {
       asideStyle.style.top = "";
       asideStyle.style.bottom = "";
@@ -100,6 +106,7 @@ const autoScrollEvent = () => {
       asideStyle.style.width = "100%";
       jsFakeDivBox.style.display = "none";
     }
+    // Media Qurey  0 ~ 768px
   } else {
     asideStyle.style.top = "";
     asideStyle.style.bottom = "";
@@ -109,6 +116,7 @@ const autoScrollEvent = () => {
   }
 };
 
+// Friend Profile Box grid css
 const responsiveFriendBox = () => {
   if (matchMedia("screen and (min-width: 960px)").matches) {
     if (friendBox.length < 4) {

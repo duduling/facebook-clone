@@ -208,6 +208,7 @@
               margin-left: 3px;
               object-fit: cover;
               object-position: top;
+              border-radius: 100%;
             }
             .feedBlock__comments-single--body {
               .feedBlock__comment-block {
@@ -325,6 +326,7 @@
                 margin-left: 3px;
                 object-fit: cover;
                 object-position: top;
+                border-radius: 100%;
               }
               & > input {
                 &:nth-child(2) {
@@ -362,6 +364,7 @@
               margin-left: 7px;
               object-fit: cover;
               object-position: top;
+              border-radius: 100%;
             }
             & > input {
               &:nth-child(2) {
@@ -392,6 +395,7 @@
               margin-left: 7px;
               object-fit: cover;
               object-position: top;
+              border-radius: 100%;
             }
             .feedBlock__comments-single--body {
               .feedBlock__comment-block {
@@ -490,6 +494,7 @@
                 margin-left: 2px;
                 object-fit: cover;
                 object-position: top;
+                border-radius: 100%;
               }
               & > input {
                 &:nth-child(2) {
