@@ -1,12 +1,12 @@
 include ../mixins/friendProfileBlock
 
-section.feed-main__aside-friend#jsResizeTarget
-    header.feed-main__aside-friend-link--grid
+section.feed-user__aside-friend#jsResizeTarget
+    header.feed-user__aside-friend-link--grid
         a(href=routes.userFriends(otherUser.idx))
             img(src="/img/friend.png", alt="user friends icon")
             h5 Friend
             span=friendNumber
-    .feed-main__aside-friend-grid
+    .feed-user__aside-friend-grid
         each item in friendList
             +friendProfileBlock({
                 idx: item.idx,

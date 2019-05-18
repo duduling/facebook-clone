@@ -199,13 +199,15 @@ const autoScrollPaging = async () => {
   if (response.status === 200) {
     const returnFeedList = response.data.feedList;
 
-    for (let i = 0; i < returnFeedList.length; i++) {
-      handleAddFeedDocu(returnFeedList[i]);
+    if (returnFeedList.length > 0) {
+      for (let i = 0; i < returnFeedList.length; i++) {
+        handleAddFeedDocu(returnFeedList[i]);
+      }
+
+      feedSection.attributes[1].value = Number(feedPagingNumber) + 1;
+
+      window.addEventListener("scroll", autoScrollEvent);
     }
-
-    feedSection.attributes[1].value = Number(feedPagingNumber) + 1;
-
-    window.addEventListener("scroll", autoScrollEvent);
   }
 };
 

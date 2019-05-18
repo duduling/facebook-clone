@@ -1,8 +1,12 @@
 import axios from "axios";
 
 const feedSection = document.getElementById("feedSection");
-const jsUserProfile = document.getElementById("jsUserProfile").src;
-const jsUserName = document.getElementById("jsUserName").innerText;
+const jsUserProfile = document.getElementById("jsUserProfile")
+  ? document.getElementById("jsUserProfile").src
+  : null;
+const jsUserName = document.getElementById("jsUserName")
+  ? document.getElementById("jsUserName").innerText
+  : null;
 
 let tempCommentSubMenuDocument;
 let tempCommentEditDocument;
