@@ -57,6 +57,6 @@
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
     "prebuild": "rm -rf build",
     "start": "node build/init.js",
-    "prestart": "npm run build"
+    "prestart": "npm install && npm run build"
   }
 }
