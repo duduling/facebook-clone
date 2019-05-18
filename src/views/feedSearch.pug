@@ -5,11 +5,13 @@ block content
         .feed-search__wrapper
             h1.ir_su Feed-Search
             .feed-search__gridLayout
+                #jsFakeDivBox
                 aside.feed-search__gridLayout-aside
-                    h3.ir_su aside
-                    include ./partials/asideUsers
-                    include ./partials/asideAd
-                    span Facebook &copy; #{new Date().getFullYear()}
+                    .feed__gridLayout-aside-wrap
+                        h3.ir_su aside
+                        include ./partials/asideUsers
+                        include ./partials/asideAd
+                        span Facebook &copy; #{new Date().getFullYear()}
                 section.feed-search__gridLayout-feed
                     h3.ir_su feed search
                     section.feed-search__article-users

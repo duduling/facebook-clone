@@ -9,17 +9,19 @@ const db = mysql.createConnection({
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PW,
   database: process.env.MYSQL_DB,
-  connectionLimit: 50,
+  // connectionLimit: 50,
   queueLimit: 0,
   multipleStatements: true,
   waitForConnection: true
 });
 
 db.connect(err => {
-  if (!err) {
-    console.log("✅　Connect DB");
-  } else {
+  if (err) {
     console.log("❎　Don't connect DB");
+    console.log(err);
+    throw err;
+  } else {
+    console.log("✅　Connect DB");
   }
 });
 

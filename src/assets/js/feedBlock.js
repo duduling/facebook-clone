@@ -1,8 +1,6 @@
 import axios from "axios";
-import { handleAddCommentDocu } from "./feedComment";
+import { handleAddCommentDocu, whatTimeIsIt } from "./feedComment";
 
-// const jsFeedBolckBtn = document.getElementById("jsFeedBolckBtn");
-// const jsFeedBlockSubMenu = document.getElementById("jsFeedBlockSubMenu");
 const feedSection = document.getElementById("feedSection");
 
 // Edit Variables
@@ -23,6 +21,206 @@ const jsImgCloseBtn = document.getElementById("jsImgCloseBtn");
 const postForm = document.createElement("form");
 
 let tempSubMenuDocument;
+
+const handleAddFeedDocu = feed => {
+  const fromFeedCheck = () => {
+    if (feed.otherName && feed.otherName !== feed.writer) {
+      return `
+      <div class="feedBolck__header-from-userName">
+        <span> 👉🏻</span>
+        <span>${feed.otherName}</span>
+      </div>
+  `;
+    }
+    return ``;
+  };
+
+  const editFeedCheck = () => {
+    if (feed.edited === 1) {
+      return `
+      <span>${whatTimeIsIt(feed.createdAt)} · Edited</span>
+  `;
+    }
+    return `<span>${whatTimeIsIt(feed.createdAt)}</span>`;
+  };
+
+  const fileUrlCheck = () => {
+    if (feed.fileUrl !== null) {
+      return `
+      <img src="${feed.fileUrl}" alt="content img" id="feedBlockImgIdx${
+        feed.idx
+      }"/>
+  `;
+    }
+    return ``;
+  };
+
+  const commentCountCheck = () => {
+    if (feed.edited === 1) {
+      return `
+      <span id="jsFeedCommentCountIdx${feed.idx}"> 0</span>
+
+  `;
+    }
+    return `
+      <span id="jsFeedCommentCountIdx${feed.idx}">${feed.comments}</span>
+`;
+  };
+
+  const likeStyleCheck = () => {
+    if (feed.edited === 1) {
+      return `
+      <i class="far fa-thumbs-up" id="LikeBtnIdx${
+        feed.idx
+      }" style="font-weight: 600; color: rgb(32, 120, 244)"> Like</i>
+  `;
+    }
+    return `
+    <i class="far fa-thumbs-up" id="LikeBtnIdx${
+      feed.idx
+    }" style="font-weight: 400"> Like</i>
+`;
+  };
+
+  const addFeedHTML = `
+<article class="feedBlock" id="feedBlockIdx${feed.idx}" value="${feed.idx}">
+  <div class="feedBlock__header">
+    <a href="/feeds/${feed.writer_idx}">
+      <img src="${feed.profile}" alt="userProfile" />
+    </a>
+    <div class="feedBlock__header-grid">
+      <div class="feedBolck__header-userName">
+        <a href="/feeds/${feed.writer_idx}">
+          <span>${feed.writer}</span>
+        </a>
+        ${fromFeedCheck(feed)}
+      </div>
+      ${editFeedCheck(feed)}
+    </div>
+    <div class="feedBlock__header-subMenuBtn" id="jsFeedBolckBtnIdx">
+      <i class="fas fa-ellipsis-h"></i>
+    </div>
+  </div>
+  <div
+    class="feedBlock__subMenu"
+    id="jsFeedBlockSubMenuIdx${feed.idx}"
+    style="display: none"
+  >
+    <button id="jsFeedBlockEdit" value="${feed.idx}">
+      <i class="far fa-edit">
+        <span>수정하기</span>
+      </i>
+    </button>
+    <button id="jsFeedBlockDelete" value="${feed.idx}">
+      <i class="far fa-trash-alt">
+        <span>삭제하기</span>
+      </i>
+    </button>
+  </div>
+  <div class="feedBlock__body">
+    <span id="feedBlockDescriptionIdx${feed.idx}">${feed.description}</span>
+    <div class="feedBlock__body-img">
+      ${fileUrlCheck(feed)}
+    </div>
+  </div>
+  <div class="feedBlock__footer">
+    <div class="feedBlock__footer-top">
+      <div class="feedBlock__footer-like">
+        <img src="/img/like_on.png" alt="like img" />
+        <span id="jsLikeCountNumberIdx${feed.idx}">${feed.likes}</span>
+      </div>
+      <div class="feedBlock__footer-comment">
+        <img src="/img/comment_on.png" alt="comment img" />
+        ${commentCountCheck(feed)}
+      </div>
+    </div>
+    <div class="feedBlock__designLine"></div>
+    <div class="feedBlock__footer-btn">
+      <button id="jsLikeBtn">
+        ${likeStyleCheck(feed)}
+      </button>
+      <button id="jdCommentBtn">
+        <i class="far fa-comment-alt" id="CommentBtnIdx${feed.idx}"> Comment</i>
+      </button>
+    </div>
+  </div>
+  <div
+    class="feedBlock__comments"
+    id="commentIdx${feed.idx}"
+    value="${feed.idx}"
+    style="display: none;"
+  >
+    <div class="feedBlock__comments-write">
+      <form onsubmit="return false">
+        <img src="${feed.profile}" alt="userProfile" />
+        <input
+          type="text"
+          textarea="commentWrite"
+          id="commentInputIdx${feed.idx}"
+          autocomplete="off"
+          required
+        />
+        <input type="submit" value="Add" name="targetIdx" value="${feed.idx}" />
+        <input type="hidden" />
+      </form>
+    </div>
+    <div
+      class="feedBlock__comments-commentsList"
+      id="jsCommetListIdx${feed.idx}"
+      value="0"
+    ></div>
+    <div class="feedBlock__comments-pagingBtn">
+      <a role="button">댓글 더보기</a>
+    </div>
+  </div>
+</article>
+`;
+
+  feedSection.insertAdjacentHTML("beforeend", addFeedHTML);
+};
+
+// Auto Scroll Paging Process-------------------------------------------------------------------------
+
+const autoScrollPaging = async () => {
+  const feedPagingNumber = feedSection.attributes[1].value;
+  const typeOrOtherIdx = window.location.href.split("/feeds/")[1];
+
+  const response = await axios({
+    url: "/api/selectFeedPaging",
+    method: "POST",
+    data: {
+      feedPagingNumber,
+      typeOrOtherIdx
+    }
+  }).catch(err => {
+    console.log(err);
+  });
+
+  if (response.status === 200) {
+    const returnFeedList = response.data.feedList;
+
+    for (let i = 0; i < returnFeedList.length; i++) {
+      handleAddFeedDocu(returnFeedList[i]);
+    }
+
+    feedSection.attributes[1].value = Number(feedPagingNumber) + 1;
+
+    window.addEventListener("scroll", autoScrollEvent);
+  }
+};
+
+const autoScrollEvent = () => {
+  const scrollYPostion = window.scrollY + window.innerHeight;
+
+  const autoScrollPagingPostionCheck = () => {
+    return scrollYPostion / document.body.clientHeight;
+  };
+
+  if (autoScrollPagingPostionCheck() > 1) {
+    window.removeEventListener("scroll", autoScrollEvent);
+    autoScrollPaging();
+  }
+};
 
 // Like Process-------------------------------------------------------------------------
 const handleLikeCount = async targetIdx => {
@@ -87,7 +285,8 @@ const handleCommentToggle = async targetIdx => {
       method: "POST",
       data: {
         targetIdx,
-        pageNumber
+        pageNumber,
+        fristPaging: true
       }
     }).catch(err => {
       console.log(err);
@@ -101,7 +300,7 @@ const handleCommentToggle = async targetIdx => {
       }
       targetCommentDocument.value = true;
       targetDocument.style.display = "block";
-      targetCommentDocument.setAttribute("value", pageNumber + 1);
+      targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
     }
   } else {
     targetDocument.style.display = "none";
@@ -302,8 +501,15 @@ const subMenuClickEvent = event => {
 };
 
 const init = () => {
-  jsEditFeedUpload.addEventListener("change", inputEditFileChange);
-  jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
+  if (
+    window.location.href.split("http://localhost:3000/feeds/search")[1] ===
+    undefined
+  ) {
+    window.addEventListener("scroll", autoScrollEvent);
+    // window.addEventListener("resize", autoScrollEvent);
+    jsEditFeedUpload.addEventListener("change", inputEditFileChange);
+    jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
+  }
   jsImgCloseBtn.addEventListener("click", clickImageZoomOff);
   window.addEventListener("click", subMenuClickEvent);
 };

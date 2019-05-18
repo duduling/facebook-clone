@@ -12,6 +12,9 @@
       display: grid;
       grid-template-columns: 2fr 4fr;
       grid-gap: 10px;
+      #jsFakeDivBox {
+        display: none;
+      }
       .feed-search__gridLayout-feed {
         background-color: $feedBGC;
       }

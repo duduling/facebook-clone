@@ -12,5 +12,12 @@
   .feed-main__aside-ad-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    .feed__gridLayout-aside-wrap {
+      .feed-main__aside-ad {
+        & > span {
+          display: none;
+        }
+      }
+    }
   }
 }

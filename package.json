@@ -47,6 +47,8 @@
   },
   "scripts": {
     "dev:server": "nodemon --exec babel-node ./src/init.js --delay 2 --ignore '.scss' --ignore 'static'",
-    "dev:assets": "webpack --mode development -w"
+    "dev:assets": "cd src && webpack --mode development -w",
+    "build:assets": "cd src && webpack --mode production -w",
+    "bulid": "npm run build:server && npm run build:assets"
   }
 }

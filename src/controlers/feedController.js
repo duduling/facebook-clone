@@ -4,7 +4,7 @@ import routes from "../routes";
 
 export const getFeedMain = (req, res) => {
   const $feedJoinUser =
-    "select Feeds.idx, writer, writer_idx, fromIdx, fromName, createdAt, fileUrl, description, likes, comments, profile, edited from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC;";
+    "select Feeds.idx, writer, writer_idx, fromIdx, fromName, createdAt, fileUrl, description, likes, comments, profile, edited from Feeds left join Users on Feeds.writer_idx = Users.idx ORDER BY Feeds.createdAt DESC limit 5;";
   const $commentJoinUser =
     "select CommentList.idx, feedIdx, writerIdx, createdAt, description, profile, name FROM CommentList left join Users on CommentList.writerIdx = Users.idx ORDER BY CommentList.createdAt DESC;";
   const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
@@ -62,7 +62,7 @@ export const getFeedUser = async (req, res) => {
       "SELECT * FROM Users where `idx`=?;",
       otherIdx
     );
-    const $feedJoinUser = `select Feeds.idx, writer, fromIdx, fromName, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx WHERE Feeds.fromIdx = "${otherIdx}" ORDER BY Feeds.createdAt DESC;`;
+    const $feedJoinUser = `select Feeds.idx, writer, fromIdx, fromName, writer_idx, createdAt, fileUrl, description, likes, comments, profile from Feeds left join Users on Feeds.writer_idx = Users.idx WHERE Feeds.fromIdx = "${otherIdx}" ORDER BY Feeds.createdAt DESC limit 5;`;
     const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
       req.user.idx
     }";`;

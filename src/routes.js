@@ -31,6 +31,7 @@ const DELETE_FRIEND = "/deleteFriend";
 const CONFIRM_FRIEND = "/confirmFriend";
 const CANCEL_FRIEND = "/cancelFriend";
 const LIKE_COUNT = "/likeCount";
+const SELECT_FEED_PAGING = "/selectFeedPaging";
 const SELECT_COMMENT = "/selectComment";
 const ADD_COMMENT = "/addComment";
 const EDIT_COMMENT = "/editComment";
@@ -83,6 +84,7 @@ const routes = {
   deleteFriend: DELETE_FRIEND,
   confirmFriend: CONFIRM_FRIEND,
   cancelFriend: CANCEL_FRIEND,
+  selectFeedPaging: SELECT_FEED_PAGING,
   likeCount: LIKE_COUNT,
   selectComment: SELECT_COMMENT,
   addComment: ADD_COMMENT,

@@ -25,14 +25,16 @@ block content
                         a(href=`/user${routes.editPassword}`) Edit Password
                         a(href=`/user${routes.editProfile}`) Edit Profile
             section.feed-user__grid-layout
+                #jsFakeDivBox
                 aside.feed-user__gridLayout-aside
-                    h3.ir_su aside
-                    include ./partials/asideFriends
-                    include ./partials/asideAd
-                    span Facebook &copy; #{new Date().getFullYear()}
+                    .feed__gridLayout-aside-wrap
+                        h3.ir_su aside
+                        include ./partials/asideFriends
+                        include ./partials/asideAd
+                        span Facebook &copy; #{new Date().getFullYear()}
                 section.feed-user__feed
                     h3.ir_su feed
                     section.feed-main__upload
                         include ./partials/feedUpload
-                    section#feedSection
+                    section#feedSection(value=0)
                         include ./partials/feedSection

@@ -3,12 +3,11 @@ import axios from "axios";
 const feedSection = document.getElementById("feedSection");
 const jsUserProfile = document.getElementById("jsUserProfile").src;
 const jsUserName = document.getElementById("jsUserName").innerText;
-const jsCommentListMore = document.getElementById("jsCommentListMore");
 
 let tempCommentSubMenuDocument;
 let tempCommentEditDocument;
 
-const whatTimeIsIt = targetDate => {
+export const whatTimeIsIt = targetDate => {
   if (targetDate !== false) {
     const nowTime = new Date();
     const targetDateObj = new Date(targetDate);
@@ -212,7 +211,8 @@ const selectCommentPaging = async targetIdx => {
     method: "POST",
     data: {
       targetIdx,
-      pageNumber
+      pageNumber,
+      fristPaging: false
     }
   }).catch(err => {
     console.log(err);
@@ -221,13 +221,15 @@ const selectCommentPaging = async targetIdx => {
   if (commentData.status === 200) {
     const returnCommentList = commentData.data.commentList;
 
-    for (let i = 0; i < returnCommentList.length; i++) {
-      handleAddCommentDocu(returnCommentList[i], "beforeend");
+    if (returnCommentList.length !== 0) {
+      for (let i = 0; i < returnCommentList.length; i++) {
+        handleAddCommentDocu(returnCommentList[i], "beforeend");
+      }
+
+      targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
+    } else {
+      alert("마지막 댓글 입니다.");
     }
-
-    console.log(typeof pageNumber);
-
-    targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
   }
 };
 
