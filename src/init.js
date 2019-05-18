@@ -12,4 +12,11 @@ function handleListening() {
   console.log(`✅　Listening on: http://localhost:${PORT}`);
 }
 
-app.listen(PORT, handleListening);
+// app.listen(PORT, handleListening);
+app.listen(PORT || 3000, () => {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
+});
