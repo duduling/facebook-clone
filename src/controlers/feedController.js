@@ -131,7 +131,7 @@ export const postFeedsUpload = (req, res) => {
     file
   } = req;
 
-  const fromIdx = referer.split("http://localhost:3000/feeds/")[1];
+  const fromIdx = referer.split("/feeds/")[1];
 
   try {
     const $feedInsert = "INSERT INTO Feeds set ?;";

@@ -538,3 +538,9 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .feedBlock__comment-block--description {
+    margin-left: 5px;
+  }
+}

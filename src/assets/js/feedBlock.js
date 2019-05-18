@@ -453,8 +453,8 @@ const clickImageZoomOff = () => {
 };
 
 // SubMenu Click Event------------------------------------------------------------------
-const subMenuClickEvent = event => {
-  window.removeEventListener("click", subMenuClickEvent);
+const windowClickEvent = event => {
+  window.removeEventListener("click", windowClickEvent);
 
   const eventPath = event.composedPath();
 
@@ -506,21 +506,17 @@ const subMenuClickEvent = event => {
   ) {
     handleCommentToggle(event.srcElement.offsetParent.attributes.value.value);
   }
-
-  window.addEventListener("click", subMenuClickEvent);
+  window.addEventListener("click", windowClickEvent);
 };
 
-const init = () => {
-  if (
-    window.location.href.split("http://localhost:3000/feeds/search")[1] ===
-    undefined
-  ) {
+const init = async () => {
+  if (window.location.href.split("/feeds/search")[1] === undefined) {
     window.addEventListener("scroll", autoScrollEvent);
     jsEditFeedUpload.addEventListener("change", inputEditFileChange);
     jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
   }
   jsImgCloseBtn.addEventListener("click", clickImageZoomOff);
-  window.addEventListener("click", subMenuClickEvent);
+  await window.addEventListener("click", windowClickEvent);
 };
 
 if (feedSection) {
