@@ -140,7 +140,7 @@ export const postFeedsUpload = (req, res) => {
       writer_idx: req.user.idx,
       fromIdx: fromIdx !== "main" ? fromIdx : req.user.idx,
       fromName,
-      fileUrl: file ? `/${file.path}` : null,
+      fileUrl: file ? file.location : null,
       description: uploadText
     };
     db.query($feedInsert, $dataObj, err => {
@@ -164,7 +164,7 @@ export const postFeedsEdit = (req, res) => {
   try {
     const $feedUpdate = `update Feeds set ? where idx = "${feedInputIdx}";`;
     const $dataObj = {
-      fileUrl: file ? `/${file.path}` : null,
+      fileUrl: file ? file.location : null,
       description: uploadText,
       edited: 1
     };

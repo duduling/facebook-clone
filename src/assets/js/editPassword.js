@@ -12,9 +12,6 @@ let newPasswordReBoolean = false;
 
 // 조건 맞으면 Disabled False
 const handleChangePasswordBtn = () => {
-  console.log(changePwOldBoolean);
-  console.log(newPasswordBoolean);
-  console.log(newPasswordReBoolean);
   if (changePwOldBoolean && newPasswordBoolean && newPasswordReBoolean) {
     changePasswordBtn.disabled = false;
   } else {

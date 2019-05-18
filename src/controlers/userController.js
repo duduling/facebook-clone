@@ -34,9 +34,8 @@ export const postEditProfile = async (req, res) => {
     files: { profile, cover }
   } = req;
   const userProfileUrl =
-    profile === undefined ? req.user.profile : `/${profile[0].path}`;
-  const userCoverUrl =
-    cover === undefined ? req.user.cover : `/${cover[0].path}`;
+    profile === undefined ? req.user.profile : profile[0].location;
+  const userCoverUrl = cover === undefined ? req.user.cover : cover[0].location;
 
   try {
     // 가입 정보 넣기

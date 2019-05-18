@@ -357,8 +357,6 @@ const handlePostEditComment = async event => {
     const targetDocuChild = document.getElementById(`jsCommentBlockIdx${idx}`)
       .children[0];
 
-    console.log(targetDocuChild);
-
     targetDocuChild.firstElementChild.lastElementChild.firstElementChild.firstElementChild.lastElementChild.innerText = description;
     handleEditInputOff(targetDocuChild.children);
   }
@@ -461,8 +459,6 @@ const handleCocomentToggle = async (eventPath, number) => {
 const handleCocommentAdd = async event => {
   const commentIdx = event.target[2].value;
   const description = event.target[0].value;
-
-  console.log(commentIdx);
 
   const feedIdx = event.composedPath().filter(e => {
     return e.className === "feedBlock";
