@@ -6,6 +6,7 @@
   "author": "Duveloper",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.3",
     "@babel/node": "^7.2.2",
     "@babel/polyfill": "^7.4.3",
@@ -50,7 +51,12 @@
   "scripts": {
     "dev:server": "nodemon --exec babel-node ./src/init.js --delay 2 --ignore '.scss' --ignore 'static'",
     "dev:assets": "cd src && webpack --mode development -w",
-    "build:assets": "cd src && webpack --mode production -w",
-    "bulid": "npm run build:server && npm run build:assets"
+    "build:server": "babel src --out-dir build",
+    "build:assets": "cd src && webpack --mode production",
+    "copyAll": "cp -R src/static build && cp -R src/views build && cp -R src/img build",
+    "build": "npm run build:server && npm run build:assets && npm run copyAll",
+    "prebuild": "rm -rf build",
+    "start": "node build/init.js",
+    "prestart": "npm run build"
   }
 }
