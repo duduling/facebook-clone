@@ -202,7 +202,7 @@ export const getFeedSearch = (req, res) => {
   const {
     query: { searchWord }
   } = req;
-  const $feedJoinUser = `select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx where Feeds.writer like "%${searchWord}%" or Feeds.description like "%${searchWord}%" ORDER BY Feeds.createdAt DESC;`;
+  const $feedJoinUser = `select Feeds.idx, writer, writer_idx, comments, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx where Feeds.writer like "%${searchWord}%" or Feeds.description like "%${searchWord}%" ORDER BY Feeds.createdAt DESC limit 3;`;
   const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
     req.user.idx
   }";`;
@@ -242,7 +242,8 @@ export const getFeedSearch = (req, res) => {
           likeList,
           ramdomUsers,
           waitMyFriendList,
-          asideAd
+          asideAd,
+          searchWord
         });
       }
     );

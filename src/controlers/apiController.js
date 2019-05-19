@@ -245,10 +245,55 @@ export const postSelectFeedPaging = async (req, res) => {
       5}, ${pagingSet};`;
   }
 
+  const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
+    req.user.idx
+  }";`;
+
   try {
-    await db.query($feedJoinUserPaging, (err, rows) => {
+    await db.query($feedJoinUserPaging + $likeListSelect, (err, rows) => {
       if (err) throw err;
-      res.status(200).json({ feedList: rows });
+
+      const likeList = [];
+
+      for (let i = 0; i < rows[1].length; i++) {
+        likeList.push(rows[1][i].feedIdx);
+      }
+
+      res.status(200).json({ feedList: rows[0], likeList });
+      res.end();
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+    res.end();
+  }
+};
+export const postSelectSearchPaging = async (req, res) => {
+  const {
+    body: { feedPagingNumber, searchWord }
+  } = req;
+
+  const pagingSet = 3;
+
+  const $feedJoinUserPaging = `select Feeds.idx, writer, writer_idx, comments, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx where Feeds.writer like "%${searchWord}%" or Feeds.description like "%${searchWord}%" ORDER BY Feeds.createdAt DESC LIMIT ${feedPagingNumber *
+    pagingSet +
+    3}, ${pagingSet};`;
+
+  const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
+    req.user.idx
+  }";`;
+
+  try {
+    await db.query($feedJoinUserPaging + $likeListSelect, (err, rows) => {
+      if (err) throw err;
+
+      const likeList = [];
+
+      for (let i = 0; i < rows[1].length; i++) {
+        likeList.push(rows[1][i].feedIdx);
+      }
+
+      res.status(200).json({ searchList: rows[0], likeList });
       res.end();
     });
   } catch (error) {
