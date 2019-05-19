@@ -332,6 +332,8 @@ const handleCommentToggle = async targetIdx => {
       targetCommentDocument.value = true;
       targetDocument.style.display = "block";
       targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
+
+      console.log("3");
     }
   } else {
     targetDocument.style.display = "none";
@@ -478,25 +480,25 @@ const clickImageZoomOff = () => {
 };
 
 // SubMenu Click Event------------------------------------------------------------------
-const windowClickEvent = event => {
+const windowClickEvent = async event => {
   window.removeEventListener("click", windowClickEvent);
 
   const eventPath = event.composedPath();
 
   if (eventPath[0].className === "feedBlock-imageZoom") {
-    clickImageZoomOff();
+    await clickImageZoomOff();
   }
 
   // Image Zoom
   if (eventPath[0].alt === "content img") {
-    clickImageZoomOn(eventPath);
+    await clickImageZoomOn(eventPath);
   }
 
   // Click Event SubMenu
   if (eventPath[1].id === "jsFeedBolckBtnIdx") {
-    feedSubMenuToggle(event);
+    await feedSubMenuToggle(event);
   } else if (tempSubMenuDocument) {
-    offTheSubMenu();
+    await offTheSubMenu();
   }
 
   //   Click Event Feed Edit
@@ -505,9 +507,9 @@ const windowClickEvent = event => {
     eventPath[1].id === "jsFeedBlockEdit" ||
     eventPath[2].id === "jsFeedBlockEdit"
   ) {
-    handleFeedEdit(event);
+    await handleFeedEdit(event);
   } else if (event.target.id === "jsFeedBlockEditCover") {
-    checkEditExit();
+    await checkEditExit();
   }
 
   //   Click Event Feed Delete
@@ -516,12 +518,12 @@ const windowClickEvent = event => {
     eventPath[1].id === "jsFeedBlockDelete" ||
     eventPath[2].id === "jsFeedBlockDelete"
   ) {
-    handleFeedDelte(event);
+    await handleFeedDelte(event);
   }
 
   //  Click Event LikeBtn
   if (eventPath[0].id === "jsLikeBtn" || eventPath[1].id === "jsLikeBtn") {
-    handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
+    await handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
   }
 
   //  Click Event CommentBtn
@@ -529,9 +531,12 @@ const windowClickEvent = event => {
     eventPath[0].id === "jsCommentBtn" ||
     eventPath[1].id === "jsCommentBtn"
   ) {
-    handleCommentToggle(event.srcElement.offsetParent.attributes.value.value);
+    await handleCommentToggle(
+      event.srcElement.offsetParent.attributes.value.value
+    );
   }
-  window.addEventListener("click", windowClickEvent);
+
+  window.removeEventListener("click", windowClickEvent);
 };
 
 const init = async () => {
@@ -541,7 +546,7 @@ const init = async () => {
   }
   window.addEventListener("scroll", autoScrollEvent);
   jsImgCloseBtn.addEventListener("click", clickImageZoomOff);
-  await window.addEventListener("click", windowClickEvent);
+  window.addEventListener("click", windowClickEvent);
 };
 
 if (feedSection) {
