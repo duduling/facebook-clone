@@ -738,23 +738,16 @@ input {
       -o-transition: all 0.3s ease-in-out 0s;
       -moz-transition: all 0.3s ease-in-out 0s;
       transition: all 0.3s ease-in-out 0s; }
-      .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link,
-      .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div {
+      .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link {
         background: #3b5898; }
-        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a,
-        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link div,
-        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div > a,
-        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div div {
+        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a {
           color: #cccccc;
           display: block;
           font-weight: 300;
           line-height: 45px;
           padding: 0 15px;
           cursor: pointer; }
-          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a > img,
-          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link div > img,
-          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div > a > img,
-          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div div > img {
+          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a > img {
             width: 30px;
             height: 30px;
             position: relative;
@@ -772,6 +765,17 @@ input {
             -o-object-position: top;
                object-position: top;
             border: rgba(0, 0, 0, 0.1) solid 1px; }
+          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a > span {
+            color: #cccccc; }
+      .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div {
+        background: #3b5898; }
+        .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div > div {
+          color: #cccccc;
+          display: block;
+          font-weight: 300;
+          line-height: 45px;
+          padding: 0 15px;
+          cursor: pointer; }
       .header__dropMenu > li .header__dropMenu-list .menuUserFeed {
         padding-left: 7px; }
         .header__dropMenu > li .header__dropMenu-list .menuUserFeed > a > span {
@@ -790,10 +794,10 @@ input {
         padding-left: 10px; }
         .header__dropMenu > li .header__dropMenu-list .menuUserLogout > a > span {
           margin-left: 13px; }
-      .header__dropMenu > li .header__dropMenu-list .menuUserFeed:hover > *,
-      .header__dropMenu > li .header__dropMenu-list .menuUserFriend:hover > *,
-      .header__dropMenu > li .header__dropMenu-list .menuUserNotice:hover > *,
-      .header__dropMenu > li .header__dropMenu-list .menuUserLogout:hover > * {
+      .header__dropMenu > li .header__dropMenu-list .menuUserFeed:hover *,
+      .header__dropMenu > li .header__dropMenu-list .menuUserFriend:hover *,
+      .header__dropMenu > li .header__dropMenu-list .menuUserNotice:hover *,
+      .header__dropMenu > li .header__dropMenu-list .menuUserLogout:hover * {
         color: white; }
 
 @media (max-width: 768px) {
@@ -2578,9 +2582,10 @@ input {
     right: 0;
     bottom: 0;
     left: 0;
-    color: #fff;
-    padding: 5px;
-    font-size: 12px; }
+    padding: 5px; }
+    .friend-block .friend-block__link .friend-profile__box--effect > span {
+      color: #fff;
+      font-size: 12px; }
 
 @media (max-width: 960px) {
   .friend-block:nth-child(9),

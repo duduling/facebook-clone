@@ -332,8 +332,6 @@ const handleCommentToggle = async targetIdx => {
       targetCommentDocument.value = true;
       targetDocument.style.display = "block";
       targetCommentDocument.setAttribute("value", Number(pageNumber) + 1);
-
-      console.log("3");
     }
   } else {
     targetDocument.style.display = "none";

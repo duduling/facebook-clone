@@ -10,7 +10,6 @@ export const getEditProfile = (req, res) => {
   try {
     db.query($waitMyFriend, (err, rows) => {
       if (err) throw err;
-      console.log(rows);
       const waitMyFriendList = rows;
 
       res.render("editUserDetail", {

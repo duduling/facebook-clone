@@ -25,11 +25,9 @@
       // 효과 설정
       transition: all 0.3s ease-in-out 0s;
 
-      .header__dropMenu-link,
-      .header__dropMenu-div {
+      .header__dropMenu-link {
         background: #3b5898;
-        & > a,
-        div {
+        & > a {
           color: #cccccc;
           display: block;
           font-weight: 300;
@@ -48,6 +46,20 @@
             object-position: top;
             border: rgba(0, 0, 0, 0.1) solid 1px;
           }
+          & > span {
+            color: #cccccc;
+          }
+        }
+      }
+      .header__dropMenu-div {
+        background: #3b5898;
+        & > div {
+          color: #cccccc;
+          display: block;
+          font-weight: 300;
+          line-height: 45px;
+          padding: 0 15px;
+          cursor: pointer;
         }
       }
       .menuUserFeed {
@@ -81,7 +93,7 @@
       .menuUserFriend,
       .menuUserNotice,
       .menuUserLogout {
-        &:hover > * {
+        &:hover * {
           color: white;
         }
       }

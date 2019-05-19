@@ -74,7 +74,7 @@ export const handleAddCommentDocu = (comment, type) => {
   <div id="jsCommentBlockIdx${comment.idx}">
     <div class="feedBlock__comment-non-Re">
       <div class="feedBlock__comments-single">
-        <a href="#">
+        <a href="/feeds/${comment.writerIdx}">
           <img src="${comment.profile}" , alt="userProfile" />
         </a>
         <div class="feedBlock__comments-single--body">
@@ -152,7 +152,7 @@ export const handleAddCocommentDocu = cocomment => {
       cocomment.idx
     }">
       <div class="feedBlock__comments-single">
-        <a href="#">
+        <a href="/feeds/${cocomment.writerIdx}">
           <img src="${cocomment.profile}" , alt="userProfile" />
         </a>
         <div class="feedBlock__comments-single--body">
