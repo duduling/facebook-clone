@@ -536,7 +536,7 @@ const windowClickEvent = async event => {
     );
   }
 
-  window.removeEventListener("click", windowClickEvent);
+  window.addEventListener("click", windowClickEvent);
 };
 
 const init = async () => {
