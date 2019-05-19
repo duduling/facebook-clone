@@ -1,8 +1,12 @@
 import axios from "axios";
 
 const feedSection = document.getElementById("feedSection");
-const jsUserProfile = document.getElementById("jsUserProfile").src;
-const jsUserName = document.getElementById("jsUserName").innerText;
+const jsUserProfile = document.getElementById("jsUserProfile")
+  ? document.getElementById("jsUserProfile").src
+  : null;
+const jsUserName = document.getElementById("jsUserName")
+  ? document.getElementById("jsUserName").innerText
+  : null;
 
 let tempCommentSubMenuDocument;
 let tempCommentEditDocument;
@@ -70,7 +74,7 @@ export const handleAddCommentDocu = (comment, type) => {
   <div id="jsCommentBlockIdx${comment.idx}">
     <div class="feedBlock__comment-non-Re">
       <div class="feedBlock__comments-single">
-        <a href="#">
+        <a href="/feeds/${comment.writerIdx}">
           <img src="${comment.profile}" , alt="userProfile" />
         </a>
         <div class="feedBlock__comments-single--body">
@@ -148,7 +152,7 @@ export const handleAddCocommentDocu = cocomment => {
       cocomment.idx
     }">
       <div class="feedBlock__comments-single">
-        <a href="#">
+        <a href="/feeds/${cocomment.writerIdx}">
           <img src="${cocomment.profile}" , alt="userProfile" />
         </a>
         <div class="feedBlock__comments-single--body">
@@ -353,8 +357,6 @@ const handlePostEditComment = async event => {
     const targetDocuChild = document.getElementById(`jsCommentBlockIdx${idx}`)
       .children[0];
 
-    console.log(targetDocuChild);
-
     targetDocuChild.firstElementChild.lastElementChild.firstElementChild.firstElementChild.lastElementChild.innerText = description;
     handleEditInputOff(targetDocuChild.children);
   }
@@ -457,8 +459,6 @@ const handleCocomentToggle = async (eventPath, number) => {
 const handleCocommentAdd = async event => {
   const commentIdx = event.target[2].value;
   const description = event.target[0].value;
-
-  console.log(commentIdx);
 
   const feedIdx = event.composedPath().filter(e => {
     return e.className === "feedBlock";

@@ -50,26 +50,6 @@ const inputFileChange = inputFile => {
   }
 };
 
-// const textareaResponsiveRows = () => {
-//   console.log(jsUploadPreview.getAttribute("src"));
-//   if (jsUploadPreview.getAttribute("src") === "") {
-//     console.log("0");
-//     if (matchMedia("screen and (max-width: 480px)").matches) {
-//       console.log("1");
-
-//       jsUploadTextarea.setAttribute("rows", "5");
-//     } else if (matchMedia("screen and (max-width: 600px)").matches) {
-//       console.log("2");
-
-//       jsUploadTextarea.setAttribute("rows", "6");
-//     } else {
-//       console.log("3");
-
-//       jsUploadTextarea.setAttribute("rows", "7");
-//     }
-//   }
-// };
-
 const uploadImgDelete = () => {
   jsUploadPreview.setAttribute("src", "");
   fileOffCss();

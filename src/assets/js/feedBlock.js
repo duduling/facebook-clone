@@ -22,7 +22,7 @@ const postForm = document.createElement("form");
 
 let tempSubMenuDocument;
 
-const handleAddFeedDocu = feed => {
+const handleAddFeedDocu = (feed, likeList) => {
   const fromFeedCheck = () => {
     if (feed.otherName && feed.otherName !== feed.writer) {
       return `
@@ -55,20 +55,8 @@ const handleAddFeedDocu = feed => {
     return ``;
   };
 
-  const commentCountCheck = () => {
-    if (feed.edited === 1) {
-      return `
-      <span id="jsFeedCommentCountIdx${feed.idx}"> 0</span>
-
-  `;
-    }
-    return `
-      <span id="jsFeedCommentCountIdx${feed.idx}">${feed.comments}</span>
-`;
-  };
-
   const likeStyleCheck = () => {
-    if (feed.edited === 1) {
+    if (likeList.indexOf(feed.idx) !== -1) {
       return `
       <i class="far fa-thumbs-up" id="LikeBtnIdx${
         feed.idx
@@ -131,7 +119,7 @@ const handleAddFeedDocu = feed => {
       </div>
       <div class="feedBlock__footer-comment">
         <img src="/img/comment_on.png" alt="comment img" />
-        ${commentCountCheck(feed)}
+        <span id="jsFeedCommentCountIdx${feed.idx}">${feed.comments}</span>
       </div>
     </div>
     <div class="feedBlock__designLine"></div>
@@ -139,7 +127,7 @@ const handleAddFeedDocu = feed => {
       <button id="jsLikeBtn">
         ${likeStyleCheck(feed)}
       </button>
-      <button id="jdCommentBtn">
+      <button id="jsCommentBtn">
         <i class="far fa-comment-alt" id="CommentBtnIdx${feed.idx}"> Comment</i>
       </button>
     </div>
@@ -181,7 +169,7 @@ const handleAddFeedDocu = feed => {
 
 // Auto Scroll Paging Process-------------------------------------------------------------------------
 
-const autoScrollPaging = async () => {
+const autoScrollFeedPaging = async () => {
   const feedPagingNumber = feedSection.attributes[1].value;
   const typeOrOtherIdx = window.location.href.split("/feeds/")[1];
 
@@ -198,18 +186,54 @@ const autoScrollPaging = async () => {
 
   if (response.status === 200) {
     const returnFeedList = response.data.feedList;
+    const returnLikeList = response.data.likeList;
 
-    for (let i = 0; i < returnFeedList.length; i++) {
-      handleAddFeedDocu(returnFeedList[i]);
+    if (returnFeedList.length > 0) {
+      for (let i = 0; i < returnFeedList.length; i++) {
+        handleAddFeedDocu(returnFeedList[i], returnLikeList);
+      }
+
+      feedSection.attributes[1].value = Number(feedPagingNumber) + 1;
+
+      window.addEventListener("scroll", autoScrollEvent);
     }
+  }
+};
 
-    feedSection.attributes[1].value = Number(feedPagingNumber) + 1;
+const autoScrollSearchPaging = async () => {
+  const feedPagingNumber = feedSection.attributes[1].value;
+  const searchWord = document.getElementById("header__searchBar").value;
 
-    window.addEventListener("scroll", autoScrollEvent);
+  const response = await axios({
+    url: "/api/selectSearchPaging",
+    method: "POST",
+    data: {
+      feedPagingNumber,
+      searchWord
+    }
+  }).catch(err => {
+    console.log(err);
+  });
+
+  if (response.status === 200) {
+    const returnSearchList = response.data.searchList;
+    const returnLikeList = response.data.likeList;
+
+    if (returnSearchList.length > 0) {
+      for (let i = 0; i < returnSearchList.length; i++) {
+        handleAddFeedDocu(returnSearchList[i], returnLikeList);
+      }
+
+      feedSection.attributes[1].value = Number(feedPagingNumber) + 1;
+
+      window.addEventListener("scroll", autoScrollEvent);
+    }
   }
 };
 
 const autoScrollEvent = () => {
+  window.removeEventListener("scroll", autoScrollEvent);
+
   const scrollYPostion = window.scrollY + window.innerHeight;
 
   const autoScrollPagingPostionCheck = () => {
@@ -218,7 +242,14 @@ const autoScrollEvent = () => {
 
   if (autoScrollPagingPostionCheck() > 1) {
     window.removeEventListener("scroll", autoScrollEvent);
-    autoScrollPaging();
+
+    if (window.location.href.split("/feeds/search")[1] === undefined) {
+      autoScrollFeedPaging();
+    } else {
+      autoScrollSearchPaging();
+    }
+  } else {
+    window.addEventListener("scroll", autoScrollEvent);
   }
 };
 
@@ -447,23 +478,25 @@ const clickImageZoomOff = () => {
 };
 
 // SubMenu Click Event------------------------------------------------------------------
-const subMenuClickEvent = event => {
+const windowClickEvent = async event => {
+  window.removeEventListener("click", windowClickEvent);
+
   const eventPath = event.composedPath();
 
   if (eventPath[0].className === "feedBlock-imageZoom") {
-    clickImageZoomOff();
+    await clickImageZoomOff();
   }
 
   // Image Zoom
   if (eventPath[0].alt === "content img") {
-    clickImageZoomOn(eventPath);
+    await clickImageZoomOn(eventPath);
   }
 
   // Click Event SubMenu
   if (eventPath[1].id === "jsFeedBolckBtnIdx") {
-    feedSubMenuToggle(event);
+    await feedSubMenuToggle(event);
   } else if (tempSubMenuDocument) {
-    offTheSubMenu();
+    await offTheSubMenu();
   }
 
   //   Click Event Feed Edit
@@ -472,9 +505,9 @@ const subMenuClickEvent = event => {
     eventPath[1].id === "jsFeedBlockEdit" ||
     eventPath[2].id === "jsFeedBlockEdit"
   ) {
-    handleFeedEdit(event);
+    await handleFeedEdit(event);
   } else if (event.target.id === "jsFeedBlockEditCover") {
-    checkEditExit();
+    await checkEditExit();
   }
 
   //   Click Event Feed Delete
@@ -483,35 +516,35 @@ const subMenuClickEvent = event => {
     eventPath[1].id === "jsFeedBlockDelete" ||
     eventPath[2].id === "jsFeedBlockDelete"
   ) {
-    handleFeedDelte(event);
+    await handleFeedDelte(event);
   }
 
   //  Click Event LikeBtn
   if (eventPath[0].id === "jsLikeBtn" || eventPath[1].id === "jsLikeBtn") {
-    handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
+    await handleLikeCount(event.srcElement.offsetParent.attributes.value.value);
   }
 
   //  Click Event CommentBtn
   if (
-    eventPath[0].id === "jdCommentBtn" ||
-    eventPath[1].id === "jdCommentBtn"
+    eventPath[0].id === "jsCommentBtn" ||
+    eventPath[1].id === "jsCommentBtn"
   ) {
-    handleCommentToggle(event.srcElement.offsetParent.attributes.value.value);
+    await handleCommentToggle(
+      event.srcElement.offsetParent.attributes.value.value
+    );
   }
+
+  window.addEventListener("click", windowClickEvent);
 };
 
-const init = () => {
-  if (
-    window.location.href.split("http://localhost:3000/feeds/search")[1] ===
-    undefined
-  ) {
-    window.addEventListener("scroll", autoScrollEvent);
-    // window.addEventListener("resize", autoScrollEvent);
+const init = async () => {
+  if (window.location.href.split("/feeds/search")[1] === undefined) {
     jsEditFeedUpload.addEventListener("change", inputEditFileChange);
     jsEditImgDeleteBtn.addEventListener("click", editUploadImgDelete);
   }
+  window.addEventListener("scroll", autoScrollEvent);
   jsImgCloseBtn.addEventListener("click", clickImageZoomOff);
-  window.addEventListener("click", subMenuClickEvent);
+  window.addEventListener("click", windowClickEvent);
 };
 
 if (feedSection) {

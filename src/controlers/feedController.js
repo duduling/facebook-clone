@@ -131,7 +131,7 @@ export const postFeedsUpload = (req, res) => {
     file
   } = req;
 
-  const fromIdx = referer.split("http://localhost:3000/feeds/")[1];
+  const fromIdx = referer.split("/feeds/")[1];
 
   try {
     const $feedInsert = "INSERT INTO Feeds set ?;";
@@ -140,7 +140,7 @@ export const postFeedsUpload = (req, res) => {
       writer_idx: req.user.idx,
       fromIdx: fromIdx !== "main" ? fromIdx : req.user.idx,
       fromName,
-      fileUrl: file ? `/${file.path}` : null,
+      fileUrl: file ? file.location : null,
       description: uploadText
     };
     db.query($feedInsert, $dataObj, err => {
@@ -164,7 +164,7 @@ export const postFeedsEdit = (req, res) => {
   try {
     const $feedUpdate = `update Feeds set ? where idx = "${feedInputIdx}";`;
     const $dataObj = {
-      fileUrl: file ? `/${file.path}` : null,
+      fileUrl: file ? file.location : null,
       description: uploadText,
       edited: 1
     };
@@ -202,7 +202,7 @@ export const getFeedSearch = (req, res) => {
   const {
     query: { searchWord }
   } = req;
-  const $feedJoinUser = `select Feeds.idx, writer, writer_idx, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx where Feeds.writer like "%${searchWord}%" or Feeds.description like "%${searchWord}%" ORDER BY Feeds.createdAt DESC;`;
+  const $feedJoinUser = `select Feeds.idx, writer, writer_idx, comments, createdAt, fileUrl, description, likes, profile from Feeds left join Users on Feeds.writer_idx = Users.idx where Feeds.writer like "%${searchWord}%" or Feeds.description like "%${searchWord}%" ORDER BY Feeds.createdAt DESC limit 3;`;
   const $likeListSelect = `select feedIdx from FeedLikeList where userIdx = "${
     req.user.idx
   }";`;
@@ -242,7 +242,8 @@ export const getFeedSearch = (req, res) => {
           likeList,
           ramdomUsers,
           waitMyFriendList,
-          asideAd
+          asideAd,
+          searchWord
         });
       }
     );

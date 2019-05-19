@@ -38,7 +38,6 @@ passport.use(
               } else {
                 // 비밀번호가 일치하지 않습니다.
                 done(null, false, { message: "Incorrect password." });
-                console.log("비밀번호 틀림");
               }
             }
           );

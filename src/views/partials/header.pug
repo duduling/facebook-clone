@@ -6,7 +6,7 @@
                 i.fab.fa-facebook
         .header__search-bar
             form(action=`/feeds${routes.feedsSearch}`, method="get")
-                input(type="text", name="searchWord", placeholder="Searching",id="header__searchBar", autocomplete="off", required)
+                input(type="text", name="searchWord", placeholder="Searching", id="header__searchBar", value=`${searchWord ? searchWord : ""}` autocomplete="off", required)
                 input(type="submit", value="　")#header__searchBar-btn
         .header__subMenu
             ul.header__subMenu-friend
