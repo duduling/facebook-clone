@@ -28,12 +28,11 @@
       .header__dropMenu-link {
         background: #3b5898;
         & > a {
-          color: #cccccc;
+          color: #cccccc !important;
           display: block;
           font-weight: 300;
           line-height: 45px;
           padding: 0 15px;
-          cursor: pointer;
           & > img {
             width: 30px;
             height: 30px;
@@ -45,9 +44,6 @@
             object-fit: cover;
             object-position: top;
             border: rgba(0, 0, 0, 0.1) solid 1px;
-          }
-          & > span {
-            color: #cccccc;
           }
         }
       }

@@ -741,12 +741,11 @@ input {
       .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link {
         background: #3b5898; }
         .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a {
-          color: #cccccc;
+          color: #cccccc !important;
           display: block;
           font-weight: 300;
           line-height: 45px;
-          padding: 0 15px;
-          cursor: pointer; }
+          padding: 0 15px; }
           .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a > img {
             width: 30px;
             height: 30px;
@@ -765,8 +764,6 @@ input {
             -o-object-position: top;
                object-position: top;
             border: rgba(0, 0, 0, 0.1) solid 1px; }
-          .header__dropMenu > li .header__dropMenu-list .header__dropMenu-link > a > span {
-            color: #cccccc; }
       .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div {
         background: #3b5898; }
         .header__dropMenu > li .header__dropMenu-list .header__dropMenu-div > div {
