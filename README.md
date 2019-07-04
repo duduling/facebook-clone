@@ -2,7 +2,7 @@
 
 > **Facebook Minimalize Clone Coding**입니다.
 
-- [완성된 사이트 이동하기](https://glacial-refuge-58656.herokuapp.com/)
+- [완성된 사이트 이동하기](https://facebook-clone-web.herokuapp.com/)
 
 - [Facebook 바로가기](https://www.facebook.com)의 보고 만든 사이트 입니다.
 
