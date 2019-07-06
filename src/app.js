@@ -1,7 +1,6 @@
 // app.js
 
 // Imports
-import http from "http";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import express from "express";
@@ -55,11 +54,6 @@ app.use(passport.session());
 
 // Middle Wares
 app.use(localsMiddleware);
-
-/* Prevent Sleep in Heroku Server */
-setInterval(() => {
-  http.get("https://facebook-clone-web.herokuapp.com/");
-}, 1200000); // every 20 minutes
 
 // Route
 app.use(routes.home, globalRouter);
