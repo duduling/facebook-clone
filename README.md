@@ -2,7 +2,7 @@
 
 > **Facebook Minimalize Clone Coding**입니다.
 
-- [완성된 사이트 이동하기](https://facebook-clone-web.herokuapp.com/)
+- [완성된 사이트 이동하기](http://ec2-13-125-180-161.ap-northeast-2.compute.amazonaws.com:3000)
 
 - [Facebook 바로가기](https://www.facebook.com)의 보고 만든 사이트 입니다.
 
@@ -73,7 +73,7 @@
 
 #### 3. S3 (Aws)
 
-#### 4. Heroku
+#### 4. EC2 (Aws)
 
 ## 주로 사용한 기술
 
