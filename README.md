@@ -6,7 +6,16 @@
 
 - [Facebook 바로가기](https://www.facebook.com)의 보고 만든 사이트 입니다.
 
-### [Github - TIL로 이동하기](https://github.com/engus93/TIL)
+#### [Github - TIL로 이동하기](https://github.com/engus93/TIL)
+
+###### ※ 회원가입의 절차가 있기에 불편하신 분은 아래의 계정을 이용하면 더욱 빠르게 확인할 수 있습니다.
+
+```
+// Facebook Clone Test 계정
+
+아이디: qwe@qwe.qwe
+비밀번호: qweqwe
+```
 
 ## 기능
 
